@@ -37,7 +37,7 @@
 	diagnostic:(int)diagnostic
 {
     HyperText *	HT;			// the new hypertext
-    NXStream * sgmlStream;		// Input stream for marked up hypertext
+    NSStream * sgmlStream;		// Input stream for marked up hypertext
     int s;				// Socket number for returned data 
 
 /* Get node name:

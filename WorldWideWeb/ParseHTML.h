@@ -398,7 +398,7 @@ static int parse_example(SGML_style * style, char * terminator)
 **	that switch to get out of the next outer one, and so on.
 */
 #ifdef NeXT
-- readSGML: (NXStream *)stream diagnostic:(int)diagnostic
+- readSGML: (NSStream *)stream diagnostic:(int)diagnostic
 #else
 int readSGML(HyperText * self, FILE * stream, int diagnostic)
 
@@ -1235,7 +1235,7 @@ void change_run(NXRun *last, NXRun *r)
 
 /*	This is the body of the SGML output method.
 */
-- writeSGML:(NXStream *) stream relativeTo:(const char *)aName
+- writeSGML:(NSStream *) stream relativeTo:(const char *)aName
 {
     NXRun * r = theRuns->runs;
     int sor;				/* Character position of start of run */

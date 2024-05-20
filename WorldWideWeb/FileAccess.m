@@ -55,7 +55,7 @@ extern char * appDirectory;		/* Pointer to directory for application */
 
 - save: (HyperText *)HT inFile:(const char *)filename format:(int)format
 {
-    NXStream * s;				//	The file stream
+    NSStream * s;				//	The file stream
     
     s = NXOpenMemory(NULL, 0, NX_WRITEONLY);
 
@@ -239,7 +239,7 @@ const char * ask_name(HyperText * hint, int format)
 {
     const char * addr = [anAnchor address];
     
-    NXStream * s;			//	The file stream
+    NSStream * s;			//	The file stream
     HyperText * HT;			//	The new node
     char * filename;			//	The name of the file
     char * newname =  0;		//	The simplified name

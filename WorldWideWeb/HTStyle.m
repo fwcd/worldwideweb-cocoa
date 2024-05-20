@@ -53,7 +53,7 @@ HTStyle * HTStyleFree(HTStyle * self)
 */
 #define NONE_STRING "(None)"
 
-HTStyle * HTStyleRead(HTStyle * style, NXStream * stream)
+HTStyle * HTStyleRead(HTStyle * style, NSStream * stream)
 {
     char myTag[STYLE_NAME_LENGTH];
     char fontName[STYLE_NAME_LENGTH];
@@ -106,7 +106,7 @@ HTStyle * HTStyleRead(HTStyle * style, NXStream * stream)
 
 /*	Write a style to a stream in a compatible way
 */
-HTStyle * HTStyleWrite(HTStyle * style, NXStream * stream)
+HTStyle * HTStyleWrite(HTStyle * style, NSStream * stream)
 {
     int tab;
     NXTextStyle *p = style->paragraph;
@@ -308,7 +308,7 @@ HTStyleSheet * HTStyleSheetFree(HTStyleSheet * self)
 **	as existing styles, they replace the old ones without changing the ids.
 */
 
-HTStyleSheet * HTStyleSheetRead(HTStyleSheet * self, NXStream * stream)
+HTStyleSheet * HTStyleSheetRead(HTStyleSheet * self, NSStream * stream)
 {
     int numStyles;
     int i;
@@ -335,7 +335,7 @@ HTStyleSheet * HTStyleSheetRead(HTStyleSheet * self, NXStream * stream)
 **	Writes a style sheet to a stream.
 */
 
-HTStyleSheet * HTStyleSheetWrite(HTStyleSheet * self, NXStream * stream)
+HTStyleSheet * HTStyleSheetWrite(HTStyleSheet * self, NSStream * stream)
 {
     int numStyles = 0;
     HTStyle * style;

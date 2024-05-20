@@ -15,7 +15,7 @@
 #define HT_LINK_FROM_PART	32
 #define HT_DO_ANYTHING		63
 
-extern void write_rtf_header(NXStream* rtfStream);
+extern void write_rtf_header(NSStream* rtfStream);
 
 @interface HyperText:Text
 {
@@ -34,10 +34,10 @@ extern void write_rtf_header(NXStream* rtfStream);
 
 + newAnchor:(Anchor*)anAnchor Server:(id)server;
 
-- readSGML:(NXStream*)sgmlStream diagnostic:(int)diagnostic;
-- writeSGML:(NXStream*)sgmlStream relativeTo:(const char *)aName;
+- readSGML:(NSStream*)sgmlStream diagnostic:(int)diagnostic;
+- writeSGML:(NSStream*)sgmlStream relativeTo:(const char *)aName;
 
-- readText:(NXStream*)stream;	//	Overrides Text's method.
+- readText:(NSStream*)stream;	//	Overrides Text's method.
 - server;
 - (BOOL) isIndex;
 - setupWindow;
@@ -85,8 +85,8 @@ extern void write_rtf_header(NXStream* rtfStream);
 
 //	Override methods of superclasses:
 
-- readText: (NXStream *)stream;		// Also set format variable.
-- readRichText: (NXStream *)stream;	// Also set format variable.
+- readText: (NSStream *)stream;		// Also set format variable.
+- readRichText: (NSStream *)stream;	// Also set format variable.
 - mouseDown:(NXEvent*)theEvent;		// Double click become hyperjump
 - keyDown:(NXEvent*)theEvent;		//
 - paste:sender;				//

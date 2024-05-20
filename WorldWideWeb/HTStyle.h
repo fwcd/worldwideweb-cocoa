@@ -46,8 +46,8 @@ typedef struct _HTStyle {
 */
 extern HTStyle * HTStyleNew();
 extern HTStyle * HTStyleFree(HTStyle * self);
-extern HTStyle * HTStyleRead(HTStyle * self, NXStream * stream);
-extern HTStyle * HTStyleWrite(HTStyle * self, NXStream * stream);
+extern HTStyle * HTStyleRead(HTStyle * self, NSStream * stream);
+extern HTStyle * HTStyleWrite(HTStyle * self, NSStream * stream);
 extern HTStyle * HTStyleApply(HTStyle * self, Text * text);
 extern HTStyle * HTStylePick(HTStyle * self, Text * text);
 typedef struct _HTStyleSheet {
@@ -69,9 +69,9 @@ extern HTStyleSheet * HTStyleSheetAddStyle(HTStyleSheet * self,
 extern HTStyleSheet * HTStyleSheetRemoveStyle(HTStyleSheet * self,
 	HTStyle * style);
 extern HTStyleSheet * HTStyleSheetRead(HTStyleSheet * self,
-						NXStream * stream);
+						NSStream * stream);
 extern HTStyleSheet * HTStyleSheetWrite(HTStyleSheet * self,
-						NXStream * stream);
+						NSStream * stream);
 
 #define CLEAR_POINTER ((void *)-1)	/* Pointer value means "clear me" */
 

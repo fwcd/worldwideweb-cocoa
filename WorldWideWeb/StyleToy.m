@@ -144,7 +144,7 @@ static SavePanel * save_panel;		/* Keep a Save panel too */
 
 - open:sender
 {  
-    NXStream * s;			//	The file stream
+    NSStream * s;			//	The file stream
     const char * filename;		//	The name of the file
     char *typelist[2] = {"style",(char *)0};	//	Extension must be ".style."
 
@@ -188,7 +188,7 @@ static SavePanel * save_panel;		/* Keep a Save panel too */
 
 - loadDefaultStyleSheet
 {
-    NXStream * stream;
+    NSStream * stream;
     
     if (!styleSheet) styleSheet = HTStyleSheetNew();
     styleSheet->name = malloc(strlen(appDirectory)+13+1);
@@ -228,7 +228,7 @@ static SavePanel * save_panel;		/* Keep a Save panel too */
 
 - saveAs:sender
 {  
-    NXStream * s;			//	The file stream
+    NSStream * s;			//	The file stream
     char * slash;
     int status;
     char * suggestion=0;		//	The name of the file to suggest
