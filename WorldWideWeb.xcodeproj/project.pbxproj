@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3590F34F2BFC108E00E81CF2 /* WorldWideWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */; };
 		35DC78E12BFAD62100432284 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78E02BFAD62100432284 /* AppDelegate.m */; };
 		35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E22BFAD62200432284 /* Assets.xcassets */; };
 		35DC78E62BFAD62200432284 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E52BFAD62200432284 /* Base */; };
@@ -50,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldWideWeb.xib; sourceTree = "<group>"; };
 		35DC78DD2BFAD62100432284 /* WorldWideWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldWideWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DC78DF2BFAD62100432284 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35DC78E02BFAD62100432284 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */,
 				35DC79232BFAD6AB00432284 /* WorldWideWeb.iconheader */,
 				35DC79282BFAD6AB00432284 /* WorldWideWeb.nib */,
+				3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */,
 				35DC79162BFAD6AA00432284 /* WWW.h */,
 				35DC78FA2BFAD6AA00432284 /* WWWPageLayout.h */,
 				35DC79112BFAD6AA00432284 /* WWWPageLayout.m */,
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35DC79512BFAD74800432284 /* WorldWideWeb.nib in Resources */,
+				3590F34F2BFC108E00E81CF2 /* WorldWideWeb.xib in Resources */,
 				35DC79392BFAD6AB00432284 /* Makefile.dependencies in Resources */,
 				35DC79352BFAD6AB00432284 /* Bugs.html in Resources */,
 				35DC793D2BFAD6AB00432284 /* icon1.tiff in Resources */,
