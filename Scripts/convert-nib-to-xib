@@ -8,6 +8,9 @@ import argparse
 import typedstream
 import xml.etree.ElementTree as ET
 
+# TODO: Reverse-engineer the parameters of some common classes (e.g. View)
+# TODO: Generate a "modern" XIB and perhaps only keep the old one around as a reference
+
 @dataclass
 class State:
     visited_objects: set[typedstream.GenericArchivedObject] = field(default_factory=set)
