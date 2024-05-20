@@ -4,12 +4,12 @@
 // History:
 //	26 Sep 90	Written TBL
 
-#import <objc/Object.h>
+#import <Foundation/Foundation.h>
 #import <objc/List.h>
 #import "Anchor.h"
 #import "HyperText.h"
 
-@interface HyperAccess:Object
+@interface HyperAccess:NSObject
 
 //	Target variables for interface builder hookups:
 

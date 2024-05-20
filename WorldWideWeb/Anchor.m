@@ -8,7 +8,7 @@
 #define ANCHOR_CURRENT_VERSION 0
 
 #import <ctype.h>
-#import <objc/Object.h>
+#import <Foundation/Foundation.h>
 #import <objc/typedstream.h>
 #import <appkit/appkit.h>
 #import "Anchor.h"
@@ -17,7 +17,7 @@
 #import "HyperText.h"
 #import "HyperManager.h"
 
-@implementation Anchor:Object
+@implementation Anchor:NSObject
 
 static HyperManager *manager;
 static List * orphans;		// Grand list of all anchors with no parents

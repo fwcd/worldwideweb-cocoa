@@ -5,14 +5,14 @@
 **	to another anchor in the same or a different node.
 */
 
-#import <objc/Object.h>
+#import <Foundation/Foundation.h>
 #import <objc/List.h>
 #import <appkit/appkit.h>
 
 //			Main definition of anchor:
 //			========================== 
 
-@interface Anchor:Object
+@interface Anchor:NSObject
 {
     id		Node;		// The node within which this is an anchor
     				/* (HyperText *) */
