@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		35DC78E12BFAD62100432284 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78E02BFAD62100432284 /* AppDelegate.m */; };
+		35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E22BFAD62200432284 /* Assets.xcassets */; };
+		35DC78E62BFAD62200432284 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E52BFAD62200432284 /* Base */; };
+		35DC78E82BFAD62200432284 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78E72BFAD62200432284 /* main.m */; };
+		35DC792B2BFAD6AB00432284 /* Features.html in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78EE2BFAD6AA00432284 /* Features.html */; };
+		35DC792C2BFAD6AB00432284 /* icon2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78EF2BFAD6AA00432284 /* icon2.tiff */; };
+		35DC792D2BFAD6AB00432284 /* WorldWideWeb_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */; };
+		35DC792E2BFAD6AB00432284 /* HTParse.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F22BFAD6AA00432284 /* HTParse.c */; };
+		35DC792F2BFAD6AB00432284 /* docflash2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78F32BFAD6AA00432284 /* docflash2.tiff */; };
+		35DC79302BFAD6AB00432284 /* worldbook2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78F52BFAD6AA00432284 /* worldbook2.tiff */; };
+		35DC79312BFAD6AB00432284 /* TcpAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F72BFAD6AA00432284 /* TcpAccess.m */; };
+		35DC79322BFAD6AB00432284 /* HyperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F82BFAD6AA00432284 /* HyperManager.m */; };
+		35DC79332BFAD6AB00432284 /* worldbook.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78F92BFAD6AA00432284 /* worldbook.tiff */; };
+		35DC79342BFAD6AB00432284 /* IB.proj in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78FD2BFAD6AA00432284 /* IB.proj */; };
+		35DC79352BFAD6AB00432284 /* Bugs.html in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78FE2BFAD6AA00432284 /* Bugs.html */; };
+		35DC79362BFAD6AB00432284 /* Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78FF2BFAD6AA00432284 /* Anchor.m */; };
+		35DC79372BFAD6AB00432284 /* Makefile.preamble in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79002BFAD6AA00432284 /* Makefile.preamble */; };
+		35DC79382BFAD6AB00432284 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79022BFAD6AA00432284 /* Makefile */; };
+		35DC79392BFAD6AB00432284 /* Makefile.dependencies in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79052BFAD6AA00432284 /* Makefile.dependencies */; };
+		35DC793A2BFAD6AB00432284 /* PB.project in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79062BFAD6AA00432284 /* PB.project */; };
+		35DC793B2BFAD6AB00432284 /* HyperAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79092BFAD6AA00432284 /* HyperAccess.m */; };
+		35DC793C2BFAD6AB00432284 /* StyleToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC790A2BFAD6AA00432284 /* StyleToy.m */; };
+		35DC793D2BFAD6AB00432284 /* icon1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC790D2BFAD6AA00432284 /* icon1.tiff */; };
+		35DC793E2BFAD6AB00432284 /* HTTCP.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC790F2BFAD6AA00432284 /* HTTCP.c */; };
+		35DC793F2BFAD6AB00432284 /* WWWPageLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79112BFAD6AA00432284 /* WWWPageLayout.m */; };
+		35DC79402BFAD6AB00432284 /* FileAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79122BFAD6AA00432284 /* FileAccess.m */; };
+		35DC79412BFAD6AB00432284 /* SourceFiles.html in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79142BFAD6AA00432284 /* SourceFiles.html */; };
+		35DC79422BFAD6AB00432284 /* NewsAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79182BFAD6AA00432284 /* NewsAccess.m */; };
+		35DC79432BFAD6AB00432284 /* HTFile.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79192BFAD6AA00432284 /* HTFile.c */; };
+		35DC79442BFAD6AB00432284 /* HTFTP.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC791A2BFAD6AA00432284 /* HTFTP.c */; };
+		35DC79452BFAD6AB00432284 /* PB.gdbinit in Resources */ = {isa = PBXBuildFile; fileRef = 35DC791B2BFAD6AA00432284 /* PB.gdbinit */; };
+		35DC79462BFAD6AB00432284 /* HTAccess.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC791C2BFAD6AB00432284 /* HTAccess.c */; };
+		35DC79472BFAD6AB00432284 /* docflash.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC791D2BFAD6AB00432284 /* docflash.tiff */; };
+		35DC79482BFAD6AB00432284 /* HyperText.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC791E2BFAD6AB00432284 /* HyperText.m */; };
+		35DC794A2BFAD6AB00432284 /* HTTP.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79202BFAD6AB00432284 /* HTTP.c */; };
+		35DC794B2BFAD6AB00432284 /* WorldWideWeb.iconheader in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79232BFAD6AB00432284 /* WorldWideWeb.iconheader */; };
+		35DC794D2BFAD6AB00432284 /* HTString.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79252BFAD6AB00432284 /* HTString.c */; };
+		35DC794E2BFAD6AB00432284 /* TextToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79272BFAD6AB00432284 /* TextToy.m */; };
+		35DC79502BFAD6AB00432284 /* HTStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79292BFAD6AB00432284 /* HTStyle.m */; };
+		35DC79512BFAD74800432284 /* WorldWideWeb.nib in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79282BFAD6AB00432284 /* WorldWideWeb.nib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		35DC78DD2BFAD62100432284 /* WorldWideWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldWideWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		35DC78DF2BFAD62100432284 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		35DC78E02BFAD62100432284 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		35DC78E22BFAD62200432284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35DC78E52BFAD62200432284 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		35DC78E72BFAD62200432284 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		35DC78E92BFAD62200432284 /* WorldWideWeb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorldWideWeb.entitlements; sourceTree = "<group>"; };
+		35DC78ED2BFAD6AA00432284 /* ParseHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseHTML.h; sourceTree = "<group>"; };
+		35DC78EE2BFAD6AA00432284 /* Features.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Features.html; sourceTree = "<group>"; };
+		35DC78EF2BFAD6AA00432284 /* icon2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon2.tiff; sourceTree = "<group>"; };
+		35DC78F02BFAD6AA00432284 /* Anchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anchor.h; sourceTree = "<group>"; };
+		35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldWideWeb_main.m; sourceTree = "<group>"; };
+		35DC78F22BFAD6AA00432284 /* HTParse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTParse.c; sourceTree = "<group>"; };
+		35DC78F32BFAD6AA00432284 /* docflash2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = docflash2.tiff; sourceTree = "<group>"; };
+		35DC78F42BFAD6AA00432284 /* tcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcp.h; sourceTree = "<group>"; };
+		35DC78F52BFAD6AA00432284 /* worldbook2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = worldbook2.tiff; sourceTree = "<group>"; };
+		35DC78F62BFAD6AA00432284 /* HTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTUtils.h; sourceTree = "<group>"; };
+		35DC78F72BFAD6AA00432284 /* TcpAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TcpAccess.m; sourceTree = "<group>"; };
+		35DC78F82BFAD6AA00432284 /* HyperManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyperManager.m; sourceTree = "<group>"; };
+		35DC78F92BFAD6AA00432284 /* worldbook.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = worldbook.tiff; sourceTree = "<group>"; };
+		35DC78FA2BFAD6AA00432284 /* WWWPageLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWPageLayout.h; sourceTree = "<group>"; };
+		35DC78FC2BFAD6AA00432284 /* HyperManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyperManager.h; sourceTree = "<group>"; };
+		35DC78FD2BFAD6AA00432284 /* IB.proj */ = {isa = PBXFileReference; lastKnownFileType = file; path = IB.proj; sourceTree = "<group>"; };
+		35DC78FE2BFAD6AA00432284 /* Bugs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Bugs.html; sourceTree = "<group>"; };
+		35DC78FF2BFAD6AA00432284 /* Anchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anchor.m; sourceTree = "<group>"; };
+		35DC79002BFAD6AA00432284 /* Makefile.preamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.preamble; sourceTree = "<group>"; };
+		35DC79012BFAD6AA00432284 /* HTFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTFile.h; sourceTree = "<group>"; };
+		35DC79022BFAD6AA00432284 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		35DC79032BFAD6AA00432284 /* HTStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTStyle.h; sourceTree = "<group>"; };
+		35DC79042BFAD6AA00432284 /* HTAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAccess.h; sourceTree = "<group>"; };
+		35DC79052BFAD6AA00432284 /* Makefile.dependencies */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.dependencies; sourceTree = "<group>"; };
+		35DC79062BFAD6AA00432284 /* PB.project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PB.project; sourceTree = "<group>"; };
+		35DC79072BFAD6AA00432284 /* HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTP.h; sourceTree = "<group>"; };
+		35DC79082BFAD6AA00432284 /* HyperText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyperText.h; sourceTree = "<group>"; };
+		35DC79092BFAD6AA00432284 /* HyperAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyperAccess.m; sourceTree = "<group>"; };
+		35DC790A2BFAD6AA00432284 /* StyleToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleToy.m; sourceTree = "<group>"; };
+		35DC790C2BFAD6AA00432284 /* FileAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileAccess.h; sourceTree = "<group>"; };
+		35DC790D2BFAD6AA00432284 /* icon1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon1.tiff; sourceTree = "<group>"; };
+		35DC790E2BFAD6AA00432284 /* HTTCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTCP.h; sourceTree = "<group>"; };
+		35DC790F2BFAD6AA00432284 /* HTTCP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTTCP.c; sourceTree = "<group>"; };
+		35DC79102BFAD6AA00432284 /* HTString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTString.h; sourceTree = "<group>"; };
+		35DC79112BFAD6AA00432284 /* WWWPageLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWPageLayout.m; sourceTree = "<group>"; };
+		35DC79122BFAD6AA00432284 /* FileAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileAccess.m; sourceTree = "<group>"; };
+		35DC79132BFAD6AA00432284 /* NewsAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsAccess.h; sourceTree = "<group>"; };
+		35DC79142BFAD6AA00432284 /* SourceFiles.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SourceFiles.html; sourceTree = "<group>"; };
+		35DC79152BFAD6AA00432284 /* HTParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTParse.h; sourceTree = "<group>"; };
+		35DC79162BFAD6AA00432284 /* WWW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWW.h; sourceTree = "<group>"; };
+		35DC79172BFAD6AA00432284 /* HyperAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyperAccess.h; sourceTree = "<group>"; };
+		35DC79182BFAD6AA00432284 /* NewsAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsAccess.m; sourceTree = "<group>"; };
+		35DC79192BFAD6AA00432284 /* HTFile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTFile.c; sourceTree = "<group>"; };
+		35DC791A2BFAD6AA00432284 /* HTFTP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTFTP.c; sourceTree = "<group>"; };
+		35DC791B2BFAD6AA00432284 /* PB.gdbinit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PB.gdbinit; sourceTree = "<group>"; };
+		35DC791C2BFAD6AB00432284 /* HTAccess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTAccess.c; sourceTree = "<group>"; };
+		35DC791D2BFAD6AB00432284 /* docflash.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = docflash.tiff; sourceTree = "<group>"; };
+		35DC791E2BFAD6AB00432284 /* HyperText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyperText.m; sourceTree = "<group>"; };
+		35DC79202BFAD6AB00432284 /* HTTP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTTP.c; sourceTree = "<group>"; };
+		35DC79212BFAD6AB00432284 /* TcpAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpAccess.h; sourceTree = "<group>"; };
+		35DC79222BFAD6AB00432284 /* HTFTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTFTP.h; sourceTree = "<group>"; };
+		35DC79232BFAD6AB00432284 /* WorldWideWeb.iconheader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorldWideWeb.iconheader; sourceTree = "<group>"; };
+		35DC79252BFAD6AB00432284 /* HTString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTString.c; sourceTree = "<group>"; };
+		35DC79262BFAD6AB00432284 /* TextToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextToy.h; sourceTree = "<group>"; };
+		35DC79272BFAD6AB00432284 /* TextToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextToy.m; sourceTree = "<group>"; };
+		35DC79282BFAD6AB00432284 /* WorldWideWeb.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = WorldWideWeb.nib; sourceTree = "<group>"; };
+		35DC79292BFAD6AB00432284 /* HTStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTStyle.m; sourceTree = "<group>"; };
+		35DC792A2BFAD6AB00432284 /* StyleToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleToy.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		35DC78DA2BFAD62100432284 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		35DC78872BFAD16400432284 = {
+			isa = PBXGroup;
+			children = (
+				35DC78DE2BFAD62100432284 /* WorldWideWeb */,
+				35DC78C92BFAD21000432284 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		35DC78C92BFAD21000432284 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				35DC78DD2BFAD62100432284 /* WorldWideWeb.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		35DC78DE2BFAD62100432284 /* WorldWideWeb */ = {
+			isa = PBXGroup;
+			children = (
+				35DC78F02BFAD6AA00432284 /* Anchor.h */,
+				35DC78FF2BFAD6AA00432284 /* Anchor.m */,
+				35DC78FE2BFAD6AA00432284 /* Bugs.html */,
+				35DC791D2BFAD6AB00432284 /* docflash.tiff */,
+				35DC78F32BFAD6AA00432284 /* docflash2.tiff */,
+				35DC78EE2BFAD6AA00432284 /* Features.html */,
+				35DC790C2BFAD6AA00432284 /* FileAccess.h */,
+				35DC79122BFAD6AA00432284 /* FileAccess.m */,
+				35DC791C2BFAD6AB00432284 /* HTAccess.c */,
+				35DC79042BFAD6AA00432284 /* HTAccess.h */,
+				35DC79192BFAD6AA00432284 /* HTFile.c */,
+				35DC79012BFAD6AA00432284 /* HTFile.h */,
+				35DC791A2BFAD6AA00432284 /* HTFTP.c */,
+				35DC79222BFAD6AB00432284 /* HTFTP.h */,
+				35DC78F22BFAD6AA00432284 /* HTParse.c */,
+				35DC79152BFAD6AA00432284 /* HTParse.h */,
+				35DC79252BFAD6AB00432284 /* HTString.c */,
+				35DC79102BFAD6AA00432284 /* HTString.h */,
+				35DC79032BFAD6AA00432284 /* HTStyle.h */,
+				35DC79292BFAD6AB00432284 /* HTStyle.m */,
+				35DC790F2BFAD6AA00432284 /* HTTCP.c */,
+				35DC790E2BFAD6AA00432284 /* HTTCP.h */,
+				35DC79202BFAD6AB00432284 /* HTTP.c */,
+				35DC79072BFAD6AA00432284 /* HTTP.h */,
+				35DC78F62BFAD6AA00432284 /* HTUtils.h */,
+				35DC79172BFAD6AA00432284 /* HyperAccess.h */,
+				35DC79092BFAD6AA00432284 /* HyperAccess.m */,
+				35DC78FC2BFAD6AA00432284 /* HyperManager.h */,
+				35DC78F82BFAD6AA00432284 /* HyperManager.m */,
+				35DC79082BFAD6AA00432284 /* HyperText.h */,
+				35DC791E2BFAD6AB00432284 /* HyperText.m */,
+				35DC78FD2BFAD6AA00432284 /* IB.proj */,
+				35DC790D2BFAD6AA00432284 /* icon1.tiff */,
+				35DC78EF2BFAD6AA00432284 /* icon2.tiff */,
+				35DC79022BFAD6AA00432284 /* Makefile */,
+				35DC79052BFAD6AA00432284 /* Makefile.dependencies */,
+				35DC79002BFAD6AA00432284 /* Makefile.preamble */,
+				35DC79132BFAD6AA00432284 /* NewsAccess.h */,
+				35DC79182BFAD6AA00432284 /* NewsAccess.m */,
+				35DC78ED2BFAD6AA00432284 /* ParseHTML.h */,
+				35DC791B2BFAD6AA00432284 /* PB.gdbinit */,
+				35DC79062BFAD6AA00432284 /* PB.project */,
+				35DC79142BFAD6AA00432284 /* SourceFiles.html */,
+				35DC792A2BFAD6AB00432284 /* StyleToy.h */,
+				35DC790A2BFAD6AA00432284 /* StyleToy.m */,
+				35DC78F42BFAD6AA00432284 /* tcp.h */,
+				35DC79212BFAD6AB00432284 /* TcpAccess.h */,
+				35DC78F72BFAD6AA00432284 /* TcpAccess.m */,
+				35DC79262BFAD6AB00432284 /* TextToy.h */,
+				35DC79272BFAD6AB00432284 /* TextToy.m */,
+				35DC78F92BFAD6AA00432284 /* worldbook.tiff */,
+				35DC78F52BFAD6AA00432284 /* worldbook2.tiff */,
+				35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */,
+				35DC79232BFAD6AB00432284 /* WorldWideWeb.iconheader */,
+				35DC79282BFAD6AB00432284 /* WorldWideWeb.nib */,
+				35DC79162BFAD6AA00432284 /* WWW.h */,
+				35DC78FA2BFAD6AA00432284 /* WWWPageLayout.h */,
+				35DC79112BFAD6AA00432284 /* WWWPageLayout.m */,
+				35DC78DF2BFAD62100432284 /* AppDelegate.h */,
+				35DC78E02BFAD62100432284 /* AppDelegate.m */,
+				35DC78E22BFAD62200432284 /* Assets.xcassets */,
+				35DC78E42BFAD62200432284 /* MainMenu.xib */,
+				35DC78E72BFAD62200432284 /* main.m */,
+				35DC78E92BFAD62200432284 /* WorldWideWeb.entitlements */,
+			);
+			path = WorldWideWeb;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		35DC78DC2BFAD62100432284 /* WorldWideWeb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35DC78EA2BFAD62200432284 /* Build configuration list for PBXNativeTarget "WorldWideWeb" */;
+			buildPhases = (
+				35DC78D92BFAD62100432284 /* Sources */,
+				35DC78DA2BFAD62100432284 /* Frameworks */,
+				35DC78DB2BFAD62100432284 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WorldWideWeb;
+			productName = WorldWideWeb;
+			productReference = 35DC78DD2BFAD62100432284 /* WorldWideWeb.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		35DC78882BFAD16400432284 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					35DC78DC2BFAD62100432284 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 35DC788B2BFAD16400432284 /* Build configuration list for PBXProject "WorldWideWeb" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 35DC78872BFAD16400432284;
+			productRefGroup = 35DC78C92BFAD21000432284 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				35DC78DC2BFAD62100432284 /* WorldWideWeb */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		35DC78DB2BFAD62100432284 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35DC79512BFAD74800432284 /* WorldWideWeb.nib in Resources */,
+				35DC79392BFAD6AB00432284 /* Makefile.dependencies in Resources */,
+				35DC79352BFAD6AB00432284 /* Bugs.html in Resources */,
+				35DC793D2BFAD6AB00432284 /* icon1.tiff in Resources */,
+				35DC79412BFAD6AB00432284 /* SourceFiles.html in Resources */,
+				35DC79372BFAD6AB00432284 /* Makefile.preamble in Resources */,
+				35DC792C2BFAD6AB00432284 /* icon2.tiff in Resources */,
+				35DC792B2BFAD6AB00432284 /* Features.html in Resources */,
+				35DC792F2BFAD6AB00432284 /* docflash2.tiff in Resources */,
+				35DC79472BFAD6AB00432284 /* docflash.tiff in Resources */,
+				35DC79342BFAD6AB00432284 /* IB.proj in Resources */,
+				35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */,
+				35DC79452BFAD6AB00432284 /* PB.gdbinit in Resources */,
+				35DC78E62BFAD62200432284 /* Base in Resources */,
+				35DC793A2BFAD6AB00432284 /* PB.project in Resources */,
+				35DC79302BFAD6AB00432284 /* worldbook2.tiff in Resources */,
+				35DC79332BFAD6AB00432284 /* worldbook.tiff in Resources */,
+				35DC794B2BFAD6AB00432284 /* WorldWideWeb.iconheader in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		35DC78D92BFAD62100432284 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35DC792D2BFAD6AB00432284 /* WorldWideWeb_main.m in Sources */,
+				35DC792E2BFAD6AB00432284 /* HTParse.c in Sources */,
+				35DC79322BFAD6AB00432284 /* HyperManager.m in Sources */,
+				35DC793E2BFAD6AB00432284 /* HTTCP.c in Sources */,
+				35DC793B2BFAD6AB00432284 /* HyperAccess.m in Sources */,
+				35DC79312BFAD6AB00432284 /* TcpAccess.m in Sources */,
+				35DC79422BFAD6AB00432284 /* NewsAccess.m in Sources */,
+				35DC79432BFAD6AB00432284 /* HTFile.c in Sources */,
+				35DC79502BFAD6AB00432284 /* HTStyle.m in Sources */,
+				35DC78E82BFAD62200432284 /* main.m in Sources */,
+				35DC79482BFAD6AB00432284 /* HyperText.m in Sources */,
+				35DC793C2BFAD6AB00432284 /* StyleToy.m in Sources */,
+				35DC79362BFAD6AB00432284 /* Anchor.m in Sources */,
+				35DC79382BFAD6AB00432284 /* Makefile in Sources */,
+				35DC79462BFAD6AB00432284 /* HTAccess.c in Sources */,
+				35DC794A2BFAD6AB00432284 /* HTTP.c in Sources */,
+				35DC79402BFAD6AB00432284 /* FileAccess.m in Sources */,
+				35DC793F2BFAD6AB00432284 /* WWWPageLayout.m in Sources */,
+				35DC79442BFAD6AB00432284 /* HTFTP.c in Sources */,
+				35DC78E12BFAD62100432284 /* AppDelegate.m in Sources */,
+				35DC794E2BFAD6AB00432284 /* TextToy.m in Sources */,
+				35DC794D2BFAD6AB00432284 /* HTString.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		35DC78E42BFAD62200432284 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35DC78E52BFAD62200432284 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		35DC788C2BFAD16400432284 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		35DC788D2BFAD16400432284 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		35DC78EB2BFAD62200432284 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = WorldWideWeb/WorldWideWeb.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fwcd.WorldWideWeb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		35DC78EC2BFAD62200432284 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = WorldWideWeb/WorldWideWeb.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fwcd.WorldWideWeb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		35DC788B2BFAD16400432284 /* Build configuration list for PBXProject "WorldWideWeb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35DC788C2BFAD16400432284 /* Debug */,
+				35DC788D2BFAD16400432284 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35DC78EA2BFAD62200432284 /* Build configuration list for PBXNativeTarget "WorldWideWeb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35DC78EB2BFAD62200432284 /* Debug */,
+				35DC78EC2BFAD62200432284 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 35DC78882BFAD16400432284 /* Project object */;
+}
