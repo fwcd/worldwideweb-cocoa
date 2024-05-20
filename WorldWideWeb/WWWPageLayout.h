@@ -6,7 +6,7 @@
 **
 */
 
-#import <appkit/PageLayout.h>
+#import <AppKit/AppKit.h>
 
 @interface WWWPageLayout : PageLayout
 {

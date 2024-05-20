@@ -7,9 +7,7 @@
 **
 */
 #import "WWWPageLayout.h"
-#import <appkit/Application.h>
-#import <appkit/Matrix.h>
-#import <appkit/PrintInfo.h>
+#import <AppKit/AppKit.h>
 
 @implementation WWWPageLayout
 /*

@@ -8,7 +8,7 @@
 #define takeBackup YES		// Take backup when saving existing file Cmd/S
 
 #import "FileAccess.h"
-#import <appkit/appkit.h>
+#import <AppKit/AppKit.h>
 #import <stdio.h>
 #import <sys/types.h>
 #import <sys/stat.h>		// For fstat()

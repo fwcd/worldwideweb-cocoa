@@ -1,7 +1,7 @@
 //			HyperText Class
 //
 
-#import <appkit/Text.h>
+#import <AppKit/AppKit.h>
 #import "Anchor.h"
 #import "HTStyle.h"
 

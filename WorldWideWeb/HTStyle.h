@@ -9,7 +9,7 @@
 **	It is a linked list of styles.
 */
 
-#import <appkit/appkit.h>
+#import <AppKit/AppKit.h>
 
 #define STYLE_NAME_LENGTH	80
 

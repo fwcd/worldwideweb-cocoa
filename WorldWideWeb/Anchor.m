@@ -9,8 +9,7 @@
 
 #import <ctype.h>
 #import <Foundation/Foundation.h>
-#import <objc/typedstream.h>
-#import <appkit/appkit.h>
+#import <AppKit/AppKit.h>
 #import "Anchor.h"
 #import "HTUtils.h"
 #import "HTParse.h"

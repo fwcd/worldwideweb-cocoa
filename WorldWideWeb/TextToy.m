@@ -5,7 +5,7 @@
 //	current HyperText and then passes the buck to the HyperText class.
 
 #import "TextToy.h"
-#import <appkit/appkit.h>
+#import <AppKit/AppKit.h>
 #import "Anchor.h"
 #import "HyperText.h"
 

@@ -6,7 +6,7 @@
 */
 
 #import <Foundation/Foundation.h>
-#import <appkit/appkit.h>
+#import <AppKit/AppKit.h>
 
 //			Main definition of anchor:
 //			========================== 

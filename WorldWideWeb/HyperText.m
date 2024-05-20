@@ -19,7 +19,7 @@
 //	For all anchors to have addresses, the node must be made with
 //	newAnchor:Server: . Do not use any other creation methods inherited.
 
-#import <appkit/appkit.h>
+#import <AppKit/AppKit.h>
 #import "HyperText.h"
 #import "HyperAccess.h"
 #import "HTUtils.h"
