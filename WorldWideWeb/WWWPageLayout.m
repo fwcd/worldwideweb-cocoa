@@ -52,7 +52,7 @@
     NXCoord left, right, top, bottom;
 
     [super readPrintInfo];
-    pi = [NXApp printInfo];
+    pi = [NSApp printInfo];
     [self convertOldFactor:&conversion newFactor:&dummy];
     [pi getMarginLeft:&left right:&right top:&top bottom:&bottom];
     [leftMargin setFloatValue:left * conversion];
@@ -73,7 +73,7 @@
     float conversion, dummy;
 
     [super writePrintInfo];
-    pi = [NXApp printInfo];
+    pi = [NSApp printInfo];
     [self convertOldFactor:&conversion newFactor:&dummy];
     if (conversion) {
 	[pi setMarginLeft:[leftMargin floatValue] / conversion

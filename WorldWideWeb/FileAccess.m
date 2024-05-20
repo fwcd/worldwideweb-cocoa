@@ -21,7 +21,7 @@
 #import "HTFile.h"		// File access routines
 
 
-#define THIS_TEXT  (HyperText *)[[[NXApp mainWindow] contentView] docView]
+#define THIS_TEXT  (HyperText *)[[[NSApp mainWindow] contentView] docView]
 
 @implementation FileAccess : HyperAccess
 

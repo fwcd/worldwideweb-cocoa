@@ -17,7 +17,7 @@
 
 #import "WWWPageLayout.h"
 
-#define THIS_TEXT  (HyperText *)[[[NXApp mainWindow] contentView] docView]
+#define THIS_TEXT  (HyperText *)[[[NSApp mainWindow] contentView] docView]
 
 extern char * WWW_nameOfFile(const char * name);	/* In file access */
 
@@ -338,7 +338,7 @@ PRIVATE FileAccess * fileAccess = nil;
 
 - saveAll:sender
 {
-    NSArray * windows = [NXApp windowList];
+    NSArray * windows = [NSApp windowList];
     id cv;
     int i;
     int n = [windows count];
@@ -364,8 +364,8 @@ PRIVATE FileAccess * fileAccess = nil;
 
 - closeOthers:sender
 {
-    Window * thisWindow = [NXApp mainWindow];
-    NSArray * windows = [[NXApp windowList] copy];
+    Window * thisWindow = [NSApp mainWindow];
+    NSArray * windows = [[NSApp windowList] copy];
 
     {
         int i;
@@ -409,7 +409,7 @@ PRIVATE FileAccess * fileAccess = nil;
 
 - setTitle: sender
 {
-    Window * thisWindow = [NXApp mainWindow];
+    Window * thisWindow = [NSApp mainWindow];
     [thisWindow setTitle:[titleString stringValueAt:0]];
     [thisWindow setDocEdited:YES];
     return self;

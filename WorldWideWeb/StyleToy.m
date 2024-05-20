@@ -8,7 +8,7 @@
 #import "HTUtils.h"
 
 #import "HyperText.h"
-#define THIS_TEXT  (HyperText *)[[[NXApp mainWindow] contentView] docView]
+#define THIS_TEXT  (HyperText *)[[[NSApp mainWindow] contentView] docView]
 
 /*	Field numbers in the parameter form:
 */

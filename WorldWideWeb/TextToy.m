@@ -13,7 +13,7 @@
 
 @implementation TextToy
 
-#define THIS_TEXT  (HyperText *)[[[NXApp mainWindow] contentView] docView]
+#define THIS_TEXT  (HyperText *)[[[NSApp mainWindow] contentView] docView]
 
     Anchor *	Mark;		/* A marked Anchor */
     
