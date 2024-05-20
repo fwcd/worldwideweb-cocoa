@@ -8,7 +8,6 @@
 #import <appkit/appkit.h>
 #import "Anchor.h"
 #import "HyperText.h"
-#import <objc/List.h>
 
 #import "HTUtils.h"
 
@@ -98,7 +97,7 @@
 
 - registerAccess:(HyperAccess *)access
 {
-    if (!accesses) accesses=[List new];
+    if (!accesses) accesses=[NSMutableArray new];
     return [accesses addObject:access];
 }
 

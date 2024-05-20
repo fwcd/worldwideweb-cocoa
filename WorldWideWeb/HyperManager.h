@@ -8,12 +8,11 @@
 //	   Oct 90	Written TBL
 //
 #import "HyperAccess.h"
-#import <objc/List.h>
 
 @interface HyperManager : HyperAccess
 
 {
-	List * accesses;
+	NSMutableArray * accesses;
 }
 
 - traceOn:sender;		// 	Diagnostics: Enable output to console

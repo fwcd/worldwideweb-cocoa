@@ -6,7 +6,6 @@
 */
 
 #import <Foundation/Foundation.h>
-#import <objc/List.h>
 #import <appkit/appkit.h>
 
 //			Main definition of anchor:
@@ -18,7 +17,7 @@
     				/* (HyperText *) */
 				// If not a subanchor
     Anchor *	parent;		// If this is a subanchor
-    List *	children;	// If this has subanchors, these are they.
+    NSMutableArray *	children;	// If this has subanchors, these are they.
        
 //	Information about this anchor:
 
@@ -26,7 +25,7 @@
 
 //	Generated locally, not archived:
 
-    List *	Sources;	// A list of anchors pointing to this
+    NSMutableArray *	Sources;	// A list of anchors pointing to this
     id		DestAnchor;	// The anchor, if loaded, to which this leads
 }
 

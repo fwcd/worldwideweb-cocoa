@@ -34,7 +34,7 @@ PRIVATE FileAccess * fileAccess = nil;
 + new
 {
     self = [super new];
-    accesses = [List new];		// Create and clear list
+    accesses = [NSMutableArray new];		// Create and clear list
     return self;
 }
 
@@ -53,7 +53,7 @@ PRIVATE FileAccess * fileAccess = nil;
 //
 - registerAccess:(HyperAccess *)access
 {
-    if (!accesses) accesses=[List new];
+    if (!accesses) accesses=[NSMutableArray new];
     if (TRACE) printf(
     	"HyperManager: Registering access `%s'.\n", [access name]);
     if (0==strcmp([access name], "file"))
@@ -338,7 +338,7 @@ PRIVATE FileAccess * fileAccess = nil;
 
 - saveAll:sender
 {
-    List * windows = [NXApp windowList];
+    NSArray * windows = [NXApp windowList];
     id cv;
     int i;
     int n = [windows count];
@@ -365,7 +365,7 @@ PRIVATE FileAccess * fileAccess = nil;
 - closeOthers:sender
 {
     Window * thisWindow = [NXApp mainWindow];
-    List * windows = [[NXApp windowList] copy];
+    NSArray * windows = [[NXApp windowList] copy];
 
     {
         int i;

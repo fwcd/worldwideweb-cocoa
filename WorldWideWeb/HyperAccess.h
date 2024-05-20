@@ -5,7 +5,6 @@
 //	26 Sep 90	Written TBL
 
 #import <Foundation/Foundation.h>
-#import <objc/List.h>
 #import "Anchor.h"
 #import "HyperText.h"
 

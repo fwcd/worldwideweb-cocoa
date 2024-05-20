@@ -2,7 +2,6 @@
 //
 
 #import <appkit/Text.h>
-#import <objc/List.h>
 #import "Anchor.h"
 #import "HTStyle.h"
 
@@ -21,13 +20,13 @@ extern void write_rtf_header(NXStream* rtfStream);
 @interface HyperText:Text
 {
 	id 	server;		//	Responsible for maintaining this node
-//	List *	Anchors;	//	A list of the anchors 
+//	NSMutableArray *	Anchors;	//	A list of the anchors 
 	Anchor * nodeAnchor;	//	An anchor representing the node
-//	List *  unAnchors;	// 	List of unanchored links to other nodes
+//	NSMutableArray *  unAnchors;	// 	List of unanchored links to other nodes
 	int	nextAnchorNumber; //	The serial number of the next anchor
 	int	protection;	//	Server capability authorised
 	BOOL	isIndex;	//	Can accept a keyword search
-//	List *	alsoStore;	//	Store these nodes at the same time
+//	NSMutableArray *	alsoStore;	//	Store these nodes at the same time
 //	HyperText * storeWith;	//	Store along with the given node please.	
 	int	slotNumber;	//	Window display position
 	int	format;		//	See WWW.h for values
