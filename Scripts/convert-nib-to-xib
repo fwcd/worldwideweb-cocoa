@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+# A small tool to convert a legacy NeXTStep NIB bundle to a modern Interface
+# Builder XIB that recent versions of Xcode (e.g. 15.4) can read. Note that
+# the tool cannot handle many of the newer versions of the NIB file format
+# and is expressly built to handle the reverse engineered WorldWideWeb.nib
+
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
