@@ -61,7 +61,7 @@ static float page_width()
 {
     PrintInfo * pi = [NSPrintInfo sharedPrintInfo];			// Page layout details
     NXCoord topMargin, bottomMargin, leftMargin, rightMargin;
-    const NXRect * paper = [pi paperRect];		//	In points
+    const NSRect * paper = [pi paperRect];		//	In points
     
     [pi getMarginLeft:&leftMargin right:&rightMargin
     			top:&topMargin bottom:&bottomMargin];	/* In points */
@@ -80,7 +80,7 @@ static float page_width()
 
 + newAnchor:(Anchor *)anAnchor Server:(id)aServer
 {
-    NXRect aFrame = {{0.0, 0.0}, {page_width(), NICE_HEIGHT}};
+    NSRect aFrame = {{0.0, 0.0}, {page_width(), NICE_HEIGHT}};
     
     self = [super newFrame:&aFrame];
     if (TRACE) printf("New node, server is %i\n", aServer);
@@ -194,9 +194,9 @@ static float page_width()
 {
 #define MAX_WIDTH  paperWidth
 
-    NXRect scroll_frame;
-    NXRect old_scroll_frame;
-    NXSize size;
+    NSRect scroll_frame;
+    NSRect old_scroll_frame;
+    NSSize size;
     BOOL scroll_X, scroll_Y;			// Do we need scrollers?
     
     NSScrollView* scrollview = [window contentView];// Pick up id of ScrollView
@@ -264,13 +264,13 @@ static float page_width()
 // Now we want to leave the top left corner of the window unmoved:
 
 #ifdef OLD_METHOD	
-        NXRect oldframe;
+        NSRect oldframe;
 	[window getFrame:&oldframe];
     	[window sizeWindow:scroll_frame.size.width:scroll_frame.size.height];
 	[window moveTopLeftTo: oldframe.origin.x
 			     : oldframe.origin.y + oldframe.size.height];
 #else
-	NXRect newFrame;
+	NSRect newFrame;
 	scroll_frame.origin.x = 150 + (slotNumber % 10)   * 30
 				    + ((slotNumber/10)%3)* 40;
 	scroll_frame.origin.y = 185 + NICE_HEIGHT - scroll_frame.size.height
@@ -289,7 +289,7 @@ static float page_width()
 //	In version 2, the format of the last run is overwritten with the format
 //	of the preceding run!
     {
-      NXRect frm;		/* Try this to get over "text strangeness" */
+      NSRect frm;		/* Try this to get over "text strangeness" */
       [self getFrame:&frm];      
       [self renewRuns:NULL text:NULL frame:&frm tag:0];
     }
@@ -307,12 +307,12 @@ static float page_width()
 
 - setupWindow
 {
-    NXRect scroll_frame;				// Calculated later
-    NXSize min_size = {300.0,200.0};			// Minimum size of text
-    NXSize max_size = {1.0e30,1.0e30};			// Maximum size of text
+    NSRect scroll_frame;				// Calculated later
+    NSSize min_size = {300.0,200.0};			// Minimum size of text
+    NSSize max_size = {1.0e30,1.0e30};			// Maximum size of text
    
     NSScrollView * scrollview;
-    NXSize nice_size = { 0.0, NICE_HEIGHT };		// Guess height
+    NSSize nice_size = { 0.0, NICE_HEIGHT };		// Guess height
         
     nice_size.width = page_width();
     [ScrollView getFrameSize:&scroll_frame.size
@@ -1084,7 +1084,7 @@ BOOL run_match(NXRun* r1, NXRun *r2)
     
 #ifdef NOPE
     {
-      NXRect frm;		/* Try this to get over "text strangeness" */
+      NSRect frm;		/* Try this to get over "text strangeness" */
       [self getFrame:&frm];      /* on plain text only Aug 91 */
       [self renewRuns:NULL text:NULL frame:&frm tag:0];
     }
