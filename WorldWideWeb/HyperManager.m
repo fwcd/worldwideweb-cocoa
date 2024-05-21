@@ -98,7 +98,7 @@ PRIVATE FileAccess * fileAccess = nil;
     
     s= HTParse(addr, "", PARSE_ACCESS);
     for(i=0; i<[accesses count]; i++) {
-        access = [accesses objectAt:i];
+        access = [accesses objectAtIndex:i];
 	if (0==strcmp(s, [access name])) {
 	    id status;
 	    HyperText * HT;
@@ -135,7 +135,7 @@ PRIVATE FileAccess * fileAccess = nil;
 	: "No access prefix specified for `%s'\n    Accesses are: %s .\n";
 
 	for(i=0; i<[accesses count]; i++) {
-	    sprintf(got, "%s: ",[[accesses objectAt:i] name]);
+	    sprintf(got, "%s: ",[[accesses objectAtIndex:i] name]);
 	}
 	printf(format,[anAnchor address], got, s);
 
@@ -346,7 +346,7 @@ PRIVATE FileAccess * fileAccess = nil;
     int n = [windows count];
     
     for(i=0; i<n ; i++){
-	Window * w = [windows objectAt:i];
+	Window * w = [windows objectAtIndex:i];
 	if (cv=[w contentView])
 	 if ([cv respondsTo:@selector(docView)])
 	 if ([w isDocEdited]) {
@@ -374,7 +374,7 @@ PRIVATE FileAccess * fileAccess = nil;
 	id cv;					// Content view
 	int n = [windows count];
         for(i=0; i<n; i++){
-	    Window * w = [windows objectAt:i];
+	    Window * w = [windows objectAtIndex:i];
 	    if (w != thisWindow)
 	    if (cv=[w contentView])
 	    if ([cv respondsTo:@selector(docView)]) {

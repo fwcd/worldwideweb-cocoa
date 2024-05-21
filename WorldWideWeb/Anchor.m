@@ -136,7 +136,7 @@ PRIVATE BOOL equivalent(const char * s, const char *t)
 	int n=[orphans count];
 	free(anc);
 	for(i=0; i<n; i++) {
-	    self = [orphans objectAt:i];
+	    self = [orphans objectAtIndex:i];
 	    if (equivalent(Address, anAddress)) {
 		if (TRACE) printf(
 			"Anchor %p with address `%s' already exists.\n",
