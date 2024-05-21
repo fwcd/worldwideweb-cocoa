@@ -205,8 +205,8 @@ static float page_width()
     
     [window disableFlushWindow];	// Prevent flashes
     
-    [self setVertResizable:YES];	// Can change size automatically
-    [self setHorizResizable:tFlags.monoFont];
+    [self setVerticallyResizable:YES];	// Can change size automatically
+    [self setHorizontallyResizable:tFlags.monoFont];
     [self calcLine];			// Wrap text to current text size
     [self sizeToFit];			// Reduce size if possible.
     
@@ -251,8 +251,8 @@ static float page_width()
 			vertScroller:	scroll_Y
 			borderType: 	NX_LINE];
 			
-    [scrollview setVertScrollerRequired:scroll_Y];
-    [scrollview setHorizScrollerRequired:scroll_X];
+    [scrollview setHasVerticalScroller:scroll_Y];
+    [scrollview setHasHorizontalScroller:scroll_X];
 
 //	Has the frame size changed?
 
@@ -346,15 +346,15 @@ static float page_width()
     [window setBackgroundGray: 1.0];		// White seems to be necessary.
     
     scrollview = [NSScrollView newFrame:&scroll_frame];
-    [scrollview setVertScrollerRequired:YES];
-    [scrollview setHorizScrollerRequired:NO];		// Guess.
+    [scrollview setHasVerticalScroller:YES];
+    [scrollview setHasHorizontalScroller:NO];		// Guess.
     [[window setContentView:scrollview] free]; 	// Free old view, size new one.
 
 						
     [scrollview setDocView:self];
     [self setOpaque:YES];			// Suggested in the book
-    [self setVertResizable:YES];		// Changes size automatically
-    [self setHorizResizable:NO];
+    [self setVerticallyResizable:YES];		// Changes size automatically
+    [self setHorizontallyResizable:NO];
     [self setMinSize:&min_size];		// Stop it shrinking to nought
     [self setMaxSize:&max_size];		// Stop it being chopped when editing
     [self notifyAncestorWhenFrameChanged: YES]; // Tell scrollview See QA 555
@@ -1076,7 +1076,7 @@ BOOL run_match(NXRun* r1, NXRun *r2)
 - readText: (NSStream *)stream
 {
 //    [self setMonoFont:YES];		Seems to leave it in a strange state
-    [self setHorizResizable:YES];
+    [self setHorizontallyResizable:YES];
     [self setNoWrap];
     [self setFont:[Font newFont:"Ohlfs" size:10.0]];	// @@ Should be XMP
     [super readText:stream];
@@ -1357,7 +1357,7 @@ void finish_output()
 void loadPlainText()
 {
     [HT setMonoFont:YES];
-    [HT setHorizResizable:YES];
+    [HT setHorizontallyResizable:YES];
     [HT setNoWrap];
     [HT readText:sgmlStream];	/* will read to end */
     [HT adjustWindow];		/* Fix scrollers */
