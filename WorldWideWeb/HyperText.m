@@ -1444,7 +1444,7 @@ void loadPlainText()
 // The first click will have set the selection point.  On the second click,
 // we follow a link if possible, otherwise we allow Text to select a word as usual.
 //
-- mouseDown:(NXEvent*)theEvent
+- mouseDown:(NSEvent*)theEvent
 {
     if (theEvent->data.mouse.click != 2) return [super mouseDown:theEvent];
     if (![self followLink]) return [super mouseDown:theEvent];
@@ -1463,7 +1463,7 @@ void loadPlainText()
 //	We have to use a "dummy" flag to mean "This has an anchor: be careful!"
 //	This is horrible.
 
-- keyDown:(NXEvent*)theEvent
+- keyDown:(NSEvent*)theEvent
 #ifdef TRY1
 {
     id result;
