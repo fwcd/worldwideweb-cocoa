@@ -199,7 +199,7 @@ static float page_width()
     NXSize size;
     BOOL scroll_X, scroll_Y;			// Do we need scrollers?
     
-    ScrollView* scrollview = [window contentView];// Pick up id of ScrollView
+    NSScrollView* scrollview = [window contentView];// Pick up id of ScrollView
     float paperWidth = page_width();		// Get page layout width
     
     
@@ -311,7 +311,7 @@ static float page_width()
     NXSize min_size = {300.0,200.0};			// Minimum size of text
     NXSize max_size = {1.0e30,1.0e30};			// Maximum size of text
    
-    ScrollView * scrollview;
+    NSScrollView * scrollview;
     NXSize nice_size = { 0.0, NICE_HEIGHT };		// Guess height
         
     nice_size.width = page_width();
