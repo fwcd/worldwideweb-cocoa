@@ -17,7 +17,7 @@
 
 extern void write_rtf_header(NSStream* rtfStream);
 
-@interface HyperText:Text
+@interface HyperText:NSText
 {
 	id 	server;		//	Responsible for maintaining this node
 //	NSMutableArray *	Anchors;	//	A list of the anchors 
