@@ -12,6 +12,7 @@
 #import "HTUtils.h"
 #import "HTParse.h"
 #import "FileAccess.h"
+#import <AppKit/AppKit.h>
 
 @implementation HyperManager 
 
@@ -137,9 +138,10 @@ PRIVATE FileAccess * fileAccess = nil;
 	    sprintf(got, "%s: ",[[accesses objectAt:i] name]);
 	}
 	printf(format,[anAnchor address], got, s);
-	NXRunAlertPanel(NULL,format,
-	    	NULL,NULL,NULL,
-		[anAnchor address], got, s);
+
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setInformativeText:[NSString stringWithFormat:[NSString stringWithUTF8String:format], [anAnchor address], got, s]];
+    [alert runModal];
     }
     free(s);
     return nil;

@@ -124,9 +124,9 @@
 
 - saveNode:(HyperText *)aText
 {
-    NXRunAlertPanel(NULL,
-"You cannot overwrite this original document. You can use `save a copy in...'",
-	    	NULL,NULL,NULL);
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setInformativeText:[NSString stringWithFormat:@"You cannot overwrite this original document. You can use `save a copy in...'"]];
+    [alert runModal];
     printf(
     "HyperAccess: You cannot save a hypertext document in this domain.\n");
     return nil;

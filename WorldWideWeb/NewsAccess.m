@@ -127,9 +127,9 @@ PRIVATE char next_char(void)
     } else {		    /* Alphanumeric node name: */
 	phost=gethostbyname((char*)NewsHost);	/* See netdb.h */
 	if (!phost) {
-	    NXRunAlertPanel(NULL, "Can't find internet node name `%s'.",
-	    	NULL,NULL,NULL,
-		NewsHost);
+			NSAlert *alert = [[NSAlert alloc] init];
+			[alert setInformativeText:[NSString stringWithFormat:@"Can't find internet node name `%s'.", NewsHost]];
+			[alert runModal];
 	    CTRACE(tfp,
 	      "NewsAccess: Can't find internet node name `%s'.\n",NewsHost);
 	    return nil;  /* Fail */
@@ -811,10 +811,9 @@ void read_group(const char * groupName, int first_required, int last_required)
 		s=-1;
 		if (TRACE) printf("NewsAccess: Unable to connect to news host.\n");
 /*		if (retries<=1) continue;   WHY TRY AGAIN ? 	*/
-		NXRunAlertPanel(NULL,
-    		    "Could not access newshost %s.",
-		    NULL,NULL,NULL,
-		    NewsHost);
+		NSAlert *alert = [[NSAlert alloc] init];
+		[alert setInformativeText:[NSString stringWithFormat:@"Could not access newshost %s.", NewsHost]];
+		[alert runModal];
 		sprintf(message,
 "\nCould not access %s.\n\n (Check default WorldWideWeb NewsHost ?)\n",
 		    NewsHost);
@@ -826,11 +825,10 @@ void read_group(const char * groupName, int first_required, int last_required)
 		if ((response(NULL) / 100) !=2) {
 			close(s);
 			s=-1;
-			NXRunAlertPanel("News access",
-			    "Could not retrieve information:\n   %s.",
-			    NULL,NULL,NULL,
-			    response_text);
-    			[[HT window]setTitle: "News host response"];
+			NSAlert *alert = [[NSAlert alloc] init];
+			[alert setInformativeText:[NSString stringWithFormat:@"Could not retrieve information:\n   %s.", response_text]];
+			[alert runModal];
+			[[HT window]setTitle: "News host response"];
 			[HT setText:response_text];
 			return HT;
 		}
@@ -841,8 +839,10 @@ void read_group(const char * groupName, int first_required, int last_required)
 	status = response(command);
 	if (status<0) break;
 	if ((status/ 100) !=2) {
-	    NXRunAlertPanel("News access", response_text,
-	    	NULL,NULL,NULL);
+	    NSAlert *alert = [[NSAlert alloc] init];
+	    [alert setMessageText:@"News access"];
+	    [alert setInformativeText:[NSString stringWithUTF8String:response_text]];
+	    [alert runModal];
 	    [HT setText:response_text];
 	    close(s);
 	    s=-1;

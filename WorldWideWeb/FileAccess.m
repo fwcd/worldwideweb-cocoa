@@ -273,9 +273,9 @@ const char * ask_name(HyperText * hint, int format)
 	if (!s) {
 	    if (TRACE) printf("Could not open `%s' with FTP either.\n",
 		    newname);
-	    NXRunAlertPanel(NULL, "Could not open `%s'\n",
-	    	NULL,NULL,NULL,
-		newname   /*, strerror(errno) */ );
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setInformativeText:[NSString stringWithFormat:@"Could not open `%s'\n", newname]];
+        [alert runModal];
 	    free(filename);
     	    free(newname);
 	    return nil;
