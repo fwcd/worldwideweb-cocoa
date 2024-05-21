@@ -340,13 +340,13 @@ PRIVATE FileAccess * fileAccess = nil;
 
 - saveAll:sender
 {
-    NSArray * windows = [NSApp windowList];
+    NSArray * windows = [NSApp windows];
     id cv;
     int i;
     int n = [windows count];
     
     for(i=0; i<n ; i++){
-	Window * w = [windows objectAtIndex:i];
+	NSWindow * w = [windows objectAtIndex:i];
 	if (cv=[w contentView])
 	 if ([cv respondsTo:@selector(docView)])
 	 if ([w isDocEdited]) {
@@ -366,8 +366,8 @@ PRIVATE FileAccess * fileAccess = nil;
 
 - closeOthers:sender
 {
-    Window * thisWindow = [NSApp mainWindow];
-    NSArray * windows = [[NSApp windowList] copy];
+    NSWindow * thisWindow = [NSApp mainWindow];
+    NSArray * windows = [[NSApp windows] copy];
 
     {
         int i;

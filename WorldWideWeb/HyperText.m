@@ -276,7 +276,7 @@ static float page_width()
 	scroll_frame.origin.y = 185 + NICE_HEIGHT - scroll_frame.size.height
 				    - (slotNumber % 10)   * 20
 				    - ((slotNumber/10)%3)*  3;
-	[Window getFrameRect:&newFrame
+	[NSWindow getFrameRect:&newFrame
 		forContentRect:&scroll_frame
 		style:NX_TITLEDSTYLE];	// Doesn't allow space for resize bar
 	newFrame.origin.y = newFrame.origin.y - 9.0;
@@ -336,7 +336,7 @@ static float page_width()
  //	Build a window around the text in order to display it.
 
 #define NX_ALLBUTTONS 7  // Fudge -- the followin methos is obsolete in 3.0:    
-    window = [Window newContent:		&scroll_frame
+    window = [NSWindow newContent:		&scroll_frame
     				style:		NX_TITLEDSTYLE
 				backing: 	NX_BUFFERED
 				buttonMask:	NX_ALLBUTTONS
