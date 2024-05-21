@@ -256,7 +256,7 @@ static float page_width()
 
 //	Has the frame size changed?
 
-    [scrollview getFrame:&old_scroll_frame];
+    old_scroll_frame = scrollview.frame;
     if ( (old_scroll_frame.size.width != scroll_frame.size.width)
        ||(old_scroll_frame.size.height != scroll_frame.size.height)) {
 
@@ -265,7 +265,7 @@ static float page_width()
 
 #ifdef OLD_METHOD	
         NSRect oldframe;
-	[window getFrame:&oldframe];
+	oldframe = window.frame;
     	[window sizeWindow:scroll_frame.size.width:scroll_frame.size.height];
 	[window moveTopLeftTo: oldframe.origin.x
 			     : oldframe.origin.y + oldframe.size.height];
@@ -290,7 +290,7 @@ static float page_width()
 //	of the preceding run!
     {
       NSRect frm;		/* Try this to get over "text strangeness" */
-      [self getFrame:&frm];      
+      frm = self.frame;
       [self renewRuns:NULL text:NULL frame:&frm tag:0];
     }
 #endif
@@ -1085,7 +1085,7 @@ BOOL run_match(NXRun* r1, NXRun *r2)
 #ifdef NOPE
     {
       NSRect frm;		/* Try this to get over "text strangeness" */
-      [self getFrame:&frm];      /* on plain text only Aug 91 */
+      frm = self.frame;
       [self renewRuns:NULL text:NULL frame:&frm tag:0];
     }
 #endif
