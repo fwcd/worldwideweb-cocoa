@@ -57,7 +57,7 @@ HTStyle * HTStyleRead(HTStyle * style, NSStream * stream)
 {
     char myTag[STYLE_NAME_LENGTH];
     char fontName[STYLE_NAME_LENGTH];
-    NXTextStyle *p;
+    NSParagraphStyle *p;
     int	tab;
     int gotpara;		/* flag: have we got a paragraph definition? */
 	
@@ -109,7 +109,7 @@ HTStyle * HTStyleRead(HTStyle * style, NSStream * stream)
 HTStyle * HTStyleWrite(HTStyle * style, NSStream * stream)
 {
     int tab;
-    NXTextStyle *p = style->paragraph;
+    NSParagraphStyle *p = style->paragraph;
     NXPrintf(stream, "%s %i %s %f %i\n",
 	style->SGMLTag,
 	style->SGMLType,
@@ -142,7 +142,7 @@ HTStyle * HTStyleWrite(HTStyle * style, NSStream * stream)
 HTStyle * HTStyleDump(HTStyle * style)
 {
     int tab;
-    NXTextStyle *p = style->paragraph;
+    NSParagraphStyle *p = style->paragraph;
     printf("Style %i `%s' SGML:%s, type=%i. Font %s %.1f point.\n",
     	style,
 	style->name,
@@ -189,7 +189,7 @@ HTStyle * HTStyleNamed(HTStyleSheet * self, const char * name)
     return 0;
 }
 
-HTStyle * HTStyleForParagraph(HTStyleSheet * self, NXTextStyle *para)
+HTStyle * HTStyleForParagraph(HTStyleSheet * self, NSParagraphStyle *para)
 {
     HTStyle * scan;
     for (scan=self->styles; scan; scan=scan->next)
@@ -213,12 +213,12 @@ HTStyle * HTStyleForRun(HTStyleSheet *self, NXRun *run)
     HTStyle * scan;
     HTStyle * best = 0;
     int	bestMatch = 0;
-    NXTextStyle * rp = run->paraStyle;
+    NSParagraphStyle * rp = run->paraStyle;
     for (scan=self->styles; scan; scan=scan->next)
         if (scan->paragraph == run->paraStyle) return scan;	/* Exact */
 
     for (scan=self->styles; scan; scan=scan->next){
-    	NXTextStyle * sp = scan->paragraph;
+    	NSParagraphStyle * sp = scan->paragraph;
     	if (sp) {
 	    int match = 0;
 	    if (sp->indent1st ==	rp->indent1st)	match = match+1;

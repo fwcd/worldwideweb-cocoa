@@ -29,14 +29,14 @@ typedef struct _HTStyle {
 
 	id		font;		/* The character representation */
 	HTCoord		fontSize;	/* The size of font, not independent */
-	NXTextStyle	*paragraph;	/* Null means not defined */
+	NSParagraphStyle	*paragraph;	/* Null means not defined */
 #ifdef V1
 	float		textColor;	/* Colour of text */
 #else
 	float		textGray;	/* Gray level of text */
 	int		textRGBColor;	/* Colour levels of text */
 #endif
-	HTCoord		spaceBefore;	/* Omissions from NXTextStyle */
+	HTCoord		spaceBefore;	/* Omissions from NSParagraphStyle */
 	HTCoord		spaceAfter;
 	void		*anchor;	/* Anchor id if any, else zero */
 } HTStyle;
@@ -62,7 +62,7 @@ extern HTStyleSheet * HTStyleSheetNew();
 extern HTStyleSheet * HTStyleSheetFree(HTStyleSheet * self);
 extern HTStyle * HTStyleNamed(HTStyleSheet * self, const char * name);
 extern HTStyle * HTStyleForParagraph(HTStyleSheet * self,
-	NXTextStyle * paraStyle);
+	NSParagraphStyle * paraStyle);
 extern HTStyle * HTStyleForRun(HTStyleSheet *self, NXRun *run);
 extern HTStyleSheet * HTStyleSheetAddStyle(HTStyleSheet * self,
 	HTStyle * style);

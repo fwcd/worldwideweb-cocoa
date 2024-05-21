@@ -158,7 +158,7 @@ static float page_width()
 
     printf("\n    Current run:\n\tFont name:\t%s\n", [r->font name]);
     {
-        NXTextStyle *p = (NXTextStyle *)r->paraStyle;
+        NSParagraphStyle *p = (NSParagraphStyle *)r->paraStyle;
 	if (!p) {
 	    printf("\tNo paragraph style!\n");
 	} else {
@@ -1467,7 +1467,7 @@ void loadPlainText()
 #ifdef TRY1
 {
     id result;
-    NXTextStyle *typingPara = typingRun.paraStyle;
+    NSParagraphStyle *typingPara = typingRun.paraStyle;
     int originalLength = textLength;
     int originalStart = sp0.cp;
     int originalEnd = spN.cp;
