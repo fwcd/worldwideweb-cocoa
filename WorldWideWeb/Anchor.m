@@ -215,7 +215,7 @@ PRIVATE BOOL equivalent(const char * s, const char *t)
     if (Address) free(Address);
     if (parent) [parent->children removeObject:self];
     if (TRACE) printf("Anchor: free called!  Not removed from Node!!!!!!!\n");
-    [Sources makeObjectsPerform:@selector(unload)];
+    [Sources makeObjectsPerformSelector:@selector(unload)];
     if (!parent) [orphans removeObject:self];
     return [super free];
 }
@@ -253,7 +253,7 @@ PRIVATE BOOL equivalent(const char * s, const char *t)
 - delete
 {
     if (DestAnchor) [self unlink];		    // Remove outgoing link
-    [Sources makeObjectsPerform:@selector(unlink)]; // Remove incomming links
+    [Sources makeObjectsPerformSelector:@selector(unlink)]; // Remove incomming links
     return [self free];
 }
 
