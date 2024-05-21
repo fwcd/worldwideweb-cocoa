@@ -2,6 +2,8 @@
 **			====================
 */
 
+#include "HTUtils.h"
+
 /*	Retrieve File from Server
 **	-------------------------
 **
