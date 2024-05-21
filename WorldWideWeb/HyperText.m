@@ -129,7 +129,7 @@ static float page_width()
     int pos;				/* Start of run being scanned */
     int sob=0;				/* Start of text block being scanned */
     NXRun * r = theRuns->runs;
-    NXTextBlock * block = firstTextBlock;
+    NSTextBlock * block = firstTextBlock;
     
     printf("Hypertext %i, selected(%i,%i)", self, sp0.cp, spN.cp);
     if (delegate) printf(", has delegate");
@@ -718,7 +718,7 @@ static BOOL willChange(HTStyle * style, NXRun *r)
 //
 - (int) startOfParagraph: (int) pos
 {
-    NXTextBlock * block;
+    NSTextBlock * block;
     int sob;
     unsigned char * p;
     for(block=firstTextBlock, sob=0; sob+block->chars <=pos; block=block->next)
@@ -746,7 +746,7 @@ static BOOL willChange(HTStyle * style, NXRun *r)
 //
 - (int) endOfParagraph: (int) pos
 {
-    NXTextBlock * block;
+    NSTextBlock * block;
     int sob;
     unsigned char * p;
     BOOL found_newline = NO;
@@ -1152,7 +1152,7 @@ static HyperText * HT;				/* Pointer to self for C */
 
 static unsigned char * read_pointer;		/* next character to be read */
 static unsigned char * read_limit;
-static NXTextBlock * read_block;
+static NSTextBlock * read_block;
 
 void start_input()
 {
@@ -1181,7 +1181,7 @@ unsigned char next_input_block()
 //
 #define BLOCK_SIZE NX_TEXTPER			/* Match what Text seems to use */
 
-static NXTextBlock 	*write_block;		/* Pointer to block being filled */
+static NSTextBlock 	*write_block;		/* Pointer to block being filled */
 static unsigned char 	*write_pointer;	/* Pointer to next characetr to be written */
 static unsigned char	*write_limit;	/* Pointer to the end of the allocated area*/
 static NXRun *		lastRun;	/* Pointer to the run being appended to */
@@ -1207,13 +1207,13 @@ static int		original_length; /* of text */
 //
 void append_start_block()
 {	
-    NXTextBlock *previous_block=write_block;	/* to previous write block */
+    NSTextBlock *previous_block=write_block;	/* to previous write block */
     
     if (TRACE)printf("    Starting to append new block.\n");
         
     lastRun = ((NXRun*) ((char*)HT->theRuns->runs +
     				HT->theRuns->chunk.used))-1;
-    write_block = (NXTextBlock*)malloc(sizeof(*write_block));
+    write_block = (NSTextBlock*)malloc(sizeof(*write_block));
     write_block->tbFlags.malloced=0;		/* See comment above */
     write_block->text = (unsigned char *)malloc(BLOCK_SIZE);
     write_block->chars = 0;			// For completeness: not used.
