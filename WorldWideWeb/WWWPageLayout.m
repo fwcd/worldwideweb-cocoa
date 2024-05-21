@@ -52,7 +52,10 @@
     [super readPrintInfo];
     pi = [NSPrintInfo sharedPrintInfo];
     [self convertOldFactor:&conversion newFactor:&dummy];
-    [pi getMarginLeft:&left right:&right top:&top bottom:&bottom];
+    left = [pi leftMargin];
+    right = [pi rightMargin];
+    top = [pi topMargin];
+    bottom = [pi bottomMargin];
     [leftMargin setFloatValue:left * conversion];
     [rightMargin setFloatValue:right * conversion];
     [topMargin setFloatValue:top * conversion];
@@ -74,10 +77,10 @@
     pi = [NSPrintInfo sharedPrintInfo];
     [self convertOldFactor:&conversion newFactor:&dummy];
     if (conversion) {
-	[pi setMarginLeft:[leftMargin floatValue] / conversion
-		    right:[rightMargin floatValue] / conversion
-		      top:[topMargin floatValue] / conversion
-		   bottom:[bottomMargin floatValue] / conversion];
+        [pi setLeftMargin:[leftMargin floatValue] / conversion];
+        [pi setRightMargin:[rightMargin floatValue] / conversion];
+        [pi setTopMargin:[topMargin floatValue] / conversion];
+        [pi setBottomMargin:[bottomMargin floatValue] / conversion];
     }
     if (*[pi paperType])
     	NXWriteDefault("WorldWideWeb", "PaperType", [pi paperType]);	/* Save it */

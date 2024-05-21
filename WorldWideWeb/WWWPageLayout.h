@@ -8,7 +8,7 @@
 
 #import <AppKit/AppKit.h>
 
-@interface WWWPageLayout : PageLayout
+@interface WWWPageLayout : NSPageLayout
 {
     id leftMargin;
     id rightMargin;
