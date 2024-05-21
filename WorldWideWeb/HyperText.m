@@ -245,7 +245,7 @@ static float page_width()
 
 //	Set up the scroll view and window to match:
 
-    [ScrollView getFrameSize:&scroll_frame.size
+    [NSScrollView getFrameSize:&scroll_frame.size
     			forContentSize: &size
 			horizScroller:	scroll_X
 			vertScroller:	scroll_Y
@@ -315,7 +315,7 @@ static float page_width()
     NSSize nice_size = { 0.0, NICE_HEIGHT };		// Guess height
         
     nice_size.width = page_width();
-    [ScrollView getFrameSize:&scroll_frame.size
+    [NSScrollView getFrameSize:&scroll_frame.size
     			forContentSize: &nice_size
 			horizScroller:NO
 			vertScroller:YES
@@ -345,7 +345,7 @@ static float page_width()
     [window makeKeyAndOrderFront:self];		// Make it visible
     [window setBackgroundGray: 1.0];		// White seems to be necessary.
     
-    scrollview = [ScrollView newFrame:&scroll_frame];
+    scrollview = [NSScrollView newFrame:&scroll_frame];
     [scrollview setVertScrollerRequired:YES];
     [scrollview setHorizScrollerRequired:NO];		// Guess.
     [[window setContentView:scrollview] free]; 	// Free old view, size new one.
