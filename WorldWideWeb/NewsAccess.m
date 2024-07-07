@@ -894,7 +894,7 @@ void read_group(const char * groupName, int first_required, int last_required)
     if (![a node]) {
         HT = [self accessName:[a address] anchor:a diagnostic:diagnostic];
     	if (!HT) return nil;
-	[[HT window] setDocEdited:NO];
+	[[HT window] setDocumentEdited:NO];
     }
     return a;
 }

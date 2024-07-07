@@ -220,7 +220,7 @@ const char * ask_name(HyperText * hint, int format)
     
 
     status = [self save:HT inFile:filename format:[HT format]];
-    if (status) [[HT window] setDocEdited: NO];
+    if (status) [[HT window] setDocumentEdited: NO];
     free(filename);
     return status;
 }

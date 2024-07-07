@@ -150,7 +150,7 @@
 - textDidChange:textObject
 {
     if (TRACE) printf("HM: text Did Change.\n");
-    [[textObject window] setDocEdited:YES];	/* Broken cross in close button */
+    [[textObject window] setDocumentEdited:YES];	/* Broken cross in close button */
     return self;
 }
 

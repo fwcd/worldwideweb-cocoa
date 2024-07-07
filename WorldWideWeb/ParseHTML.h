@@ -1032,7 +1032,7 @@ printable:
 	free(N);
     }
     
-    [window setDocEdited:NO];
+    [window setDocumentEdited:NO];
     tFlags.changeState = 0; 		/* Please notify delegate if changed */
     return self;
     

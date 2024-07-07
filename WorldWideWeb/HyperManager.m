@@ -331,7 +331,7 @@ PRIVATE FileAccess * fileAccess = nil;
 {
     HyperText * HT = THIS_TEXT;
     id status = [(HyperAccess *)[HT server] saveNode:HT];
-    if (status) [[HT window] setDocEdited:NO];
+    if (status) [[HT window] setDocumentEdited:NO];
     return status;
 }
 
@@ -352,7 +352,7 @@ PRIVATE FileAccess * fileAccess = nil;
 	 if ([w isDocEdited]) {
 		HyperText * HT = [[w contentView] docView];
 		if ([(HyperAccess *)[HT server] saveNode:HT])
-			[w setDocEdited: NO];
+			[w setDocumentEdited: NO];
 	}
     }
 
@@ -413,7 +413,7 @@ PRIVATE FileAccess * fileAccess = nil;
 {
     Window * thisWindow = [NSApp mainWindow];
     [thisWindow setTitle:[titleString stringValueAt:0]];
-    [thisWindow setDocEdited:YES];
+    [thisWindow setDocumentEdited:YES];
     return self;
 }
 

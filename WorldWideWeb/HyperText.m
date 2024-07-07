@@ -425,7 +425,7 @@ static float page_width()
     a = [self anchorSelected];
     if (a) return a;			/* User asked for existing one */
     
-    if ([self isEditable]) [window setDocEdited:YES];
+    if ([self isEditable]) [window setDocumentEdited:YES];
     else return nil;
 
     a = [self anchor];
@@ -447,7 +447,7 @@ static float page_width()
     
     if (!anAnchor) return nil;			/* Anchor must exist */
     
-    if ([self isEditable]) [window setDocEdited:YES];
+    if ([self isEditable]) [window setDocumentEdited:YES];
     else return nil;
     
     a = [self anchorSelected];
@@ -478,7 +478,7 @@ static float page_width()
 {
     HTStyle * style = HTStyleNew();
     
-    if ([self isEditable]) [window setDocEdited:YES];
+    if ([self isEditable]) [window setDocumentEdited:YES];
     else return nil;
     
     style->anchor = CLEAR_POINTER;
@@ -984,7 +984,7 @@ BOOL run_match(NXRun* r1, NXRun *r2)
     
     if (!style) return nil;
 
-    if ([self isEditable]) [window setDocEdited:YES];
+    if ([self isEditable]) [window setDocumentEdited:YES];
     else return nil;
 
     	
