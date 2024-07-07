@@ -6,54 +6,51 @@
  *	19 Mar 91	Page info deafults
  */
 
-#import <stdlib.h>
+#import "HTUtils.h" /* TBL */
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
-#import "HTUtils.h"				/* TBL */
-#import <string.h>				/* TBL */
-#import <libc.h>				/* TBL */
+#import <libc.h> /* TBL */
+#import <stdlib.h>
+#import <string.h> /* TBL */
 
-extern char * appDirectory;	/* Name of the directory containing the application */
+extern char *appDirectory; /* Name of the directory containing the application */
 
-static int int_default(NSString *param)
-{
-    return [[NSUserDefaults standardUserDefaults] integerForKey:param];
-}
+static int int_default(NSString *param) { return [[NSUserDefaults standardUserDefaults] integerForKey:param]; }
 
-void main(int argc, char *argv[])
-{
-//    NXArgc = argc;		/* TBL */
-//    NXArgv = argv;		/* TBL */
+void main(int argc, char *argv[]) {
+    //    NXArgc = argc;		/* TBL */
+    //    NXArgv = argv;		/* TBL */
 
     char *p;
-    
+
     static NSDictionary<NSString *, id> *myDefaults = @{
-        @"PaperType": @"Letter",		// Non-USA users will have to override
-	    @"LeftMargin": @"72",			//  (72) Space for ring binding
-	    @"RightMargin": @"36",			//  (72) Note printers need some margin 
-	    @"TopMargin": @"36" ,			// (108) All margins in points
-	    @"BottomMargin": @"36",		// (108) PrintInfo defaults in brackets
+        @"PaperType" : @"Letter", // Non-USA users will have to override
+        @"LeftMargin" : @"72",    //  (72) Space for ring binding
+        @"RightMargin" : @"36",   //  (72) Note printers need some margin
+        @"TopMargin" : @"36",     // (108) All margins in points
+        @"BottomMargin" : @"36",  // (108) PrintInfo defaults in brackets
     };
-    
-    
+
     appDirectory = malloc(strlen(argv[0]));
     strcpy(appDirectory, argv[0]);
-    if (p = strrchr(appDirectory, '/')) p[1]=0;	/* Chop home directory after slash */
-    if (TRACE) printf("WWW: Run from %s\n", appDirectory);
+    if (p = strrchr(appDirectory, '/'))
+        p[1] = 0; /* Chop home directory after slash */
+    if (TRACE)
+        printf("WWW: Run from %s\n", appDirectory);
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:myDefaults];
 
     NSArray *tl;
     [[NSBundle mainBundle] loadNibNamed:@"WorldWideWeb.nib" owner:NSApp topLevelObjects:&tl];
 
-//	The default margins seem to be 72, 72, 108, 108 which is a lot.    
+    //	The default margins seem to be 72, 72, 108, 108 which is a lot.
     {
         int leftM = int_default(@"LeftMargin");
         int rightM = int_default(@"RightMargin");
         int topM = int_default(@"TopMargin");
         int bottomM = int_default(@"BottomMargin");
-        
-        NSPrintInfo * pi = [NSPrintInfo sharedPrintInfo];
+
+        NSPrintInfo *pi = [NSPrintInfo sharedPrintInfo];
         // TOOD: Is paper name the equivalent of paper type?
         [pi setPaperName:[[NSUserDefaults standardUserDefaults] stringForKey:@"PaperType"]];
         [pi setVerticallyCentered:NO];
@@ -62,7 +59,7 @@ void main(int argc, char *argv[])
         [pi setTopMargin:topM];
         [pi setBottomMargin:bottomM];
     }
-    
+
     [NSApp run];
     exit(0);
 }

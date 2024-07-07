@@ -4,12 +4,12 @@
 /*	These are flag bits which may be ORed together to form a number to give
 **	the 'wanted' argument to HTParse.
 */
-#define PARSE_ACCESS		16
-#define PARSE_HOST		 8
-#define PARSE_PATH		 4
-#define PARSE_ANCHOR		 2
-#define PARSE_PUNCTUATION	 1
-#define PARSE_ALL		31
+#define PARSE_ACCESS 16
+#define PARSE_HOST 8
+#define PARSE_PATH 4
+#define PARSE_ANCHOR 2
+#define PARSE_PUNCTUATION 1
+#define PARSE_ALL 31
 
 /*	Parse a Name relative to another name
 **	-------------------------------------
@@ -26,9 +26,9 @@
 **	returns		A pointer to a malloc'd string which MUST BE FREED
 */
 #ifdef __STDC__
-extern char * HTParse(const char * aName, const char * relatedName, int wanted);
+extern char *HTParse(const char *aName, const char *relatedName, int wanted);
 #else
-extern char * HTParse();
+extern char *HTParse();
 #endif
 
 /*	Strip white space off a string
@@ -39,9 +39,9 @@ extern char * HTParse();
 **	All trailing white space is OVERWRITTEN with zero.
 */
 #ifdef __STDC__
-extern char * HTStrip(char * s);
+extern char *HTStrip(char *s);
 #else
-extern char * HTStrip();
+extern char *HTStrip();
 #endif
 
 /*	        Simplify a filename
@@ -58,7 +58,7 @@ extern char * HTStrip();
 **		/etc/junk/./fred	becomes	/etc/junk/fred
 */
 #ifdef __STDC__
-extern void HTSimplify(char * filename);
+extern void HTSimplify(char *filename);
 #else
 extern void HTSimplify();
 #endif
@@ -81,7 +81,7 @@ extern void HTSimplify();
 **
 */
 #ifdef __STDC__
-extern char * HTRelative(const char * aName, const char *relatedName);
+extern char *HTRelative(const char *aName, const char *relatedName);
 #else
-extern char * HTRelative();
+extern char *HTRelative();
 #endif

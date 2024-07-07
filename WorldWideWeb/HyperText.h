@@ -1,95 +1,91 @@
 //			HyperText Class
 //
 
-#import <AppKit/AppKit.h>
 #import "Anchor.h"
 #import "HTStyle.h"
+#import <AppKit/AppKit.h>
 
 /*	Bit fields describing the capabilities of a node:
 */
-#define HT_READ			1
-#define HT_WRITE		2
-#define HT_LINK_TO_NODE		4
-#define HT_LINK_TO_PART		8
-#define HT_LINK_FROM_NODE	16
-#define HT_LINK_FROM_PART	32
-#define HT_DO_ANYTHING		63
+#define HT_READ 1
+#define HT_WRITE 2
+#define HT_LINK_TO_NODE 4
+#define HT_LINK_TO_PART 8
+#define HT_LINK_FROM_NODE 16
+#define HT_LINK_FROM_PART 32
+#define HT_DO_ANYTHING 63
 
-extern void write_rtf_header(NSStream* rtfStream);
+extern void write_rtf_header(NSStream *rtfStream);
 
-@interface HyperText:NSText
-{
-	id 	server;		//	Responsible for maintaining this node
-//	NSMutableArray *	Anchors;	//	A list of the anchors 
-	Anchor * nodeAnchor;	//	An anchor representing the node
-//	NSMutableArray *  unAnchors;	// 	List of unanchored links to other nodes
-	int	nextAnchorNumber; //	The serial number of the next anchor
-	int	protection;	//	Server capability authorised
-	BOOL	isIndex;	//	Can accept a keyword search
-//	NSMutableArray *	alsoStore;	//	Store these nodes at the same time
-//	HyperText * storeWith;	//	Store along with the given node please.	
-	int	slotNumber;	//	Window display position
-	int	format;		//	See WWW.h for values
+@interface HyperText : NSText {
+    id server;            //	Responsible for maintaining this node
+                          //	NSMutableArray *	Anchors;	//	A list of the anchors
+    Anchor *nodeAnchor;   //	An anchor representing the node
+                          //	NSMutableArray *  unAnchors;	// 	List of unanchored links to other nodes
+    int nextAnchorNumber; //	The serial number of the next anchor
+    int protection;       //	Server capability authorised
+    BOOL isIndex;         //	Can accept a keyword search
+                          //	NSMutableArray *	alsoStore;	//	Store these nodes at the same time
+                          //	HyperText * storeWith;	//	Store along with the given node please.
+    int slotNumber;       //	Window display position
+    int format;           //	See WWW.h for values
 }
 
-+ newAnchor:(Anchor*)anAnchor Server:(id)server;
++ newAnchor:(Anchor *)anAnchor Server:(id)server;
 
-- readSGML:(NSStream*)sgmlStream diagnostic:(int)diagnostic;
-- writeSGML:(NSStream*)sgmlStream relativeTo:(const char *)aName;
+- readSGML:(NSStream *)sgmlStream diagnostic:(int)diagnostic;
+- writeSGML:(NSStream *)sgmlStream relativeTo:(const char *)aName;
 
-- readText:(NSStream*)stream;	//	Overrides Text's method.
+- readText:(NSStream *)stream; //	Overrides Text's method.
 - server;
-- (BOOL) isIndex;
+- (BOOL)isIndex;
 - setupWindow;
-- adjustWindow;			// Adust scroll bars, sizeability, size, etc.
+- adjustWindow; // Adust scroll bars, sizeability, size, etc.
 
-- (int) format;
+- (int)format;
 - setFormat:(int)format;
 
 //	Style handling:
 
-- applyToSimilar: (HTStyle *)style;	// Apply this style to the selection
-- applyStyle: (HTStyle *)style;		// Apply this style to the selection
-- selectUnstyled: (HTStyleSheet *)sheet;// Select the first unstyled run.
-- updateStyle: (HTStyle *)style;	// Update all text with changed style.
-- (HTStyle *)selectionStyle:(HTStyleSheet*)sheet; // style if any of  selection
-- replaceSel:(const char *)aString style:(HTStyle*)aStyle; // Paste in styled text
+- applyToSimilar:(HTStyle *)style;                          // Apply this style to the selection
+- applyStyle:(HTStyle *)style;                              // Apply this style to the selection
+- selectUnstyled:(HTStyleSheet *)sheet;                     // Select the first unstyled run.
+- updateStyle:(HTStyle *)style;                             // Update all text with changed style.
+- (HTStyle *)selectionStyle:(HTStyleSheet *)sheet;          // style if any of  selection
+- replaceSel:(const char *)aString style:(HTStyle *)aStyle; // Paste in styled text
 
 //	"Fast" Methods for external parsers:
 
-- appendBegin;				// Start an append sequence
-- appendStyle:(HTStyle *) style;	// Set the style for future text
-- appendText: (const char *)text;	// Add a string
-- appendBeginAnchor: (const char *)name
-	to:(const char *)reference;	// Begin an anchor
-- appendEndAnchor;			// End it
-- appendEnd;				// Flush out all additions so far
-
+- appendBegin;                                                     // Start an append sequence
+- appendStyle:(HTStyle *)style;                                    // Set the style for future text
+- appendText:(const char *)text;                                   // Add a string
+- appendBeginAnchor:(const char *)name to:(const char *)reference; // Begin an anchor
+- appendEndAnchor;                                                 // End it
+- appendEnd;                                                       // Flush out all additions so far
 
 //	Anchor handling:
 
-
 //- anchors;				// Set of anchors
-- nodeAnchor;				// Single anchor representing this node
-- selectedLink;				// Return selected anchor if any
-- followLink;				// (If selected)
-- unlinkSelection;			// Remove anchor info from selection
-- (Anchor *) referenceSelected;		// Generate anchor for this node
-- (Anchor *) referenceAll;
-- (Anchor *) linkSelTo: (Anchor*)anchor;// Link selected text to this anchor.
-- disconnectAnchor: (Anchor*)anchor;	// Remove reference from this node.
-- selectAnchor: (Anchor*)anchor;	// Bring to front and highlight it.
+- nodeAnchor;                  // Single anchor representing this node
+- selectedLink;                // Return selected anchor if any
+- followLink;                  // (If selected)
+- unlinkSelection;             // Remove anchor info from selection
+- (Anchor *)referenceSelected; // Generate anchor for this node
+- (Anchor *)referenceAll;
+- (Anchor *)linkSelTo:(Anchor *)anchor; // Link selected text to this anchor.
+- disconnectAnchor:(Anchor *)anchor;    // Remove reference from this node.
+- selectAnchor:(Anchor *)anchor;        // Bring to front and highlight it.
 
 - setTitle:(const char *)title;
-- dump: sender;			// diagnostic output
+- dump:sender; // diagnostic output
 
 //	Override methods of superclasses:
 
-- readText: (NSStream *)stream;		// Also set format variable.
-- readRichText: (NSStream *)stream;	// Also set format variable.
-- mouseDown:(NSEvent*)theEvent;		// Double click become hyperjump
-- keyDown:(NSEvent*)theEvent;		//
-- paste:sender;				//
+- readText:(NSStream *)stream;     // Also set format variable.
+- readRichText:(NSStream *)stream; // Also set format variable.
+- mouseDown:(NSEvent *)theEvent;   // Double click become hyperjump
+- keyDown:(NSEvent *)theEvent;     //
+- paste:sender;                    //
 
 //	Window delegate methods:
 

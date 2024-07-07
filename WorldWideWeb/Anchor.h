@@ -5,53 +5,50 @@
 **	to another anchor in the same or a different node.
 */
 
-#import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
+#import <Foundation/Foundation.h>
 
 //			Main definition of anchor:
-//			========================== 
+//			==========================
 
-@interface Anchor:NSObject
-{
-    id		Node;		// The node within which this is an anchor
-    				/* (HyperText *) */
-				// If not a subanchor
-    Anchor *	parent;		// If this is a subanchor
-    NSMutableArray *	children;	// If this has subanchors, these are they.
-       
-//	Information about this anchor:
+@interface Anchor : NSObject {
+    id Node; // The node within which this is an anchor
+    /* (HyperText *) */
+    // If not a subanchor
+    Anchor *parent;           // If this is a subanchor
+    NSMutableArray *children; // If this has subanchors, these are they.
 
-    char * 	Address;	// The address of this anchor
+    //	Information about this anchor:
 
-//	Generated locally, not archived:
+    char *Address; // The address of this anchor
 
-    NSMutableArray *	Sources;	// A list of anchors pointing to this
-    id		DestAnchor;	// The anchor, if loaded, to which this leads
+    //	Generated locally, not archived:
+
+    NSMutableArray *Sources; // A list of anchors pointing to this
+    id DestAnchor;           // The anchor, if loaded, to which this leads
 }
 
 + initialize;
-+ setManager:aManager;		// Set class variable
++ setManager:aManager; // Set class variable
 
 + newAddress:(const char *)address;
-+ newParent:(Anchor*)anAnchor tag:(const char *)tag;
++ newParent:(Anchor *)anAnchor tag:(const char *)tag;
 
-+back;
-+next;
-+previous;
++ back;
++ next;
++ previous;
 
 - (void)setNode:(id)node;
 - (const char *)address;
 - (char *)fullAddress;
-- setAddress: (const char *) ref_string;
-- select;			// Load if nec, select and bring to front
-- selectDiagnostic:(int)diag;	// Same with source display option
-- isLastChild;			// Move it in the list of children
-- (BOOL)follow;			// Follow  link if we can, return "can we?"
-- (void) linkTo:(Anchor *)destination;
-- node;				// Return the node in which the anchor sits
-- destination;			// Return the desination anchor
-- parent;			// Return the parent if any
-- unload;			// Make link dangle
+- setAddress:(const char *)ref_string;
+- select;                     // Load if nec, select and bring to front
+- selectDiagnostic:(int)diag; // Same with source display option
+- isLastChild;                // Move it in the list of children
+- (BOOL)follow;               // Follow  link if we can, return "can we?"
+- (void)linkTo:(Anchor *)destination;
+- node;        // Return the node in which the anchor sits
+- destination; // Return the desination anchor
+- parent;      // Return the parent if any
+- unload;      // Make link dangle
 @end
-
-

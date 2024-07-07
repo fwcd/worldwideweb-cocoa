@@ -9,22 +9,22 @@
 **	22 Feb 91	Written (TBL) as part of the WWW project.
 */
 
-#define NETCLOSE close	    /* Routine to close a TCP-IP socket		*/
-#define NETREAD  read	    /* Routine to read from a TCP-IP socket	*/
-#define NETWRITE write	    /* Routine to write to a TCP-IP socket	*/
+#define NETCLOSE close /* Routine to close a TCP-IP socket		*/
+#define NETREAD read   /* Routine to read from a TCP-IP socket	*/
+#define NETWRITE write /* Routine to write to a TCP-IP socket	*/
 
 /*	On the NeXT, there's a little package of include files.
 */
 #ifdef NeXT
-#include <libc.h>		/* NeXT has all this packaged up */
+#include <libc.h> /* NeXT has all this packaged up */
 #define ntohs(x) (x)
 #define htons(x) (x)
-#include <sys/errno.h>		/* Get ECONNRESET etc */
-#define SELECT			/* Is supported ok */
+#include <sys/errno.h> /* Get ECONNRESET etc */
+#define SELECT         /* Is supported ok */
 #define INCLUDES_DONE
 extern int errno;
 
-#else				/* Not NeXT */
+#else /* Not NeXT */
 #include <stdio.h>
 
 /*	MVS is compiled as for VM. MVS has no unix-style I/O
@@ -45,11 +45,10 @@ extern int errno;
 #ifdef __STDIO__
 #define VM
 #else
-#include <string.h>		/* For bzero etc - not NeXT or VM */
+#include <string.h> /* For bzero etc - not NeXT or VM */
 #endif
-#define SELECT			/* Handle >1 channel if we can.		*/
-#endif				/* Not NeXT */
-
+#define SELECT /* Handle >1 channel if we can.		*/
+#endif         /* Not NeXT */
 
 /*	Under VMS, there are many versions of TCP-IP. Define one if you
 **	do not use Digital's UCX product:
@@ -69,19 +68,18 @@ extern int errno;
 #undef NETREAD
 #undef NETWRITE
 #undef NETCLOSE
-#define NETREAD(s,b,l)	((s)>10 ? netread((s),(b),(l)) : read((s),(b),(l)))
-#define NETWRITE(s,b,l)	((s)>10 ? netwrite((s),(b),(l)) : write((s),(b),(l)))
-#define NETCLOSE(s) 	((s)>10 ? netclose(s) : close(s))
+#define NETREAD(s, b, l) ((s) > 10 ? netread((s), (b), (l)) : read((s), (b), (l)))
+#define NETWRITE(s, b, l) ((s) > 10 ? netwrite((s), (b), (l)) : write((s), (b), (l)))
+#define NETCLOSE(s) ((s) > 10 ? netclose(s) : close(s))
 #endif
 
 #ifdef MULTINET
 #undef NETCLOSE
 #undef NETREAD
 #undef NETWRITE
-#define NETREAD(s,b,l)	((s)>10 ? socket_read((s),(b),(l)) : read((s),(b),(l)))
-#define NETWRITE(s,b,l)	((s)>10 ? socket_write((s),(b),(l)) : \
-				write((s),(b),(l)))
-#define NETCLOSE(s) 	((s)>10 ? socket_close(s) : close(s))
+#define NETREAD(s, b, l) ((s) > 10 ? socket_read((s), (b), (l)) : read((s), (b), (l)))
+#define NETWRITE(s, b, l) ((s) > 10 ? socket_write((s), (b), (l)) : write((s), (b), (l)))
+#define NETCLOSE(s) ((s) > 10 ? socket_close(s) : close(s))
 #endif
 
 /*	Certainly this works for UCX:	@@@
@@ -102,8 +100,7 @@ extern int errno;
 #include netdb
 #define TCP_INCLUDES_DONE
 
-#endif	/* vms */
-
+#endif /* vms */
 
 /*	IBM VM/CMS or MVS
 **	-----------------
@@ -116,22 +113,22 @@ extern int errno;
 **	  System include files TCPIP and COMMMAC neeed line number removal(!)
 */
 
-#ifdef VM			/* or MVS -- see above. */
-#define NOT_ASCII		/* char type is not ASCII */
-#define NO_UNIX_IO		/* Unix I/O routines are not supported */
-#define SHORT_NAMES		/* 8 character uniqueness for globals */
-#include <manifest.h>                                                           
-#include <bsdtypes.h>                                                           
-#include <stdefs.h>                                                             
-#include <socket.h>                                                             
+#ifdef VM           /* or MVS -- see above. */
+#define NOT_ASCII   /* char type is not ASCII */
+#define NO_UNIX_IO  /* Unix I/O routines are not supported */
+#define SHORT_NAMES /* 8 character uniqueness for globals */
+#include <bsdtypes.h>
+#include <errno.h> /* independent */
 #include <in.h>
-#include <netdb.h>                                                                 
-#include <errno.h>	    /* independent */
+#include <manifest.h>
+#include <netdb.h>
+#include <socket.h>
+#include <stdefs.h>
 extern char asciitoebcdic[], ebcdictoascii[];
-#define TOASCII(c)   (c=='\n' ?  10  : ebcdictoascii[c])
-#define FROMASCII(c) (c== 10  ? '\n' : asciitoebcdic[c])                                   
+#define TOASCII(c) (c == '\n' ? 10 : ebcdictoascii[c])
+#define FROMASCII(c) (c == 10 ? '\n' : asciitoebcdic[c])
 #include <bsdtime.h>
-#include <string.h>                                                            
+#include <string.h>
 #define INCLUDES_DONE
 #define TCP_INCLUDES_DONE
 #endif
@@ -141,41 +138,38 @@ extern char asciitoebcdic[], ebcdictoascii[];
 #ifndef INCLUDES_DONE
 #include <sys/types.h>
 /* #include <streams/streams.h>			not ultrix */
-#include <string.h>
+#include <errno.h> /* independent */
 #include <stdio.h>
-#include <errno.h>	    /* independent */
-#include <sys/time.h>	    /* independent */
-#include <sys/stat.h>
+#include <string.h>
+#include <sys/file.h> /* For open() etc */
 #include <sys/param.h>
-#include <sys/file.h>	    /* For open() etc */
-#endif	/* Normal includes */
-
+#include <sys/stat.h>
+#include <sys/time.h> /* independent */
+#endif                /* Normal includes */
 
 /*	Default include files for TCP
 */
 #ifndef TCP_INCLUDES_DONE
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>	    /* Must be after netinet/in.h */
+#include <arpa/inet.h> /* Must be after netinet/in.h */
 #include <netdb.h>
-#endif	/* TCP includes */
-
+#include <netinet/in.h>
+#include <sys/socket.h>
+#endif /* TCP includes */
 
 /*	Default macros for manipulating masks for select()
 */
 #ifndef FD_SET
 typedef unsigned int fd_set;
-#define FD_SET(fd,pmask) (*(pmask)) |=  (1<<(fd))
-#define FD_CLR(fd,pmask) (*(pmask)) &= ~(1<<(fd))
-#define FD_ZERO(pmask)   (*(pmask))=0
-#define FD_ISSET(fd,pmask) (*(pmask) & (1<<(fd)))
+#define FD_SET(fd, pmask) (*(pmask)) |= (1 << (fd))
+#define FD_CLR(fd, pmask) (*(pmask)) &= ~(1 << (fd))
+#define FD_ZERO(pmask) (*(pmask)) = 0
+#define FD_ISSET(fd, pmask) (*(pmask) & (1 << (fd)))
 #endif
-
 
 /*	Default macros for converting characters
 **
 */
 #ifndef TOASCII
 #define TOASCII(c) (c)
-#define FROMASCII(c) (c)                                   
+#define FROMASCII(c) (c)
 #endif

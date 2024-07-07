@@ -3,9 +3,7 @@
 
 #import "HyperAccess.h"
 
-@interface NewsAccess:HyperAccess
-{
+@interface NewsAccess : HyperAccess {
 }
-
 
 @end

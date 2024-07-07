@@ -3,9 +3,7 @@
 
 #import "HyperAccess.h"
 
-@interface TcpAccess:HyperAccess
-{
+@interface TcpAccess : HyperAccess {
 }
-
 
 @end

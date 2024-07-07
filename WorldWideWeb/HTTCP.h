@@ -4,9 +4,9 @@
 **	Requires tcp.h to be included first.
 */
 #ifdef SHORT_NAMES
-#define HTInetStatus            HTInStat
-#define HTInetString 		HTInStri
-#define HTParseInet		HTPaInet
+#define HTInetStatus HTInStat
+#define HTInetString HTInStri
+#define HTParseInet HTPaInet
 #endif
 
 /*	Produce a string for an internet address
@@ -17,11 +17,10 @@
 **		it is to be kept.
 */
 #ifdef __STDC__
-extern const char * HTInetString(struct sockaddr_in* sin);
+extern const char *HTInetString(struct sockaddr_in *sin);
 #else
-extern char * HTInetString();
+extern char *HTInetString();
 #endif
-
 
 /*	Encode INET status (as in sys/errno.h)			  inet_status()
 **	------------------
@@ -41,8 +40,8 @@ extern int HTInetStatus();
 
 /*	Publicly accesible variables
 */
-extern struct sockaddr_in HTHostAddress;/* The internet address of the host */
-					/* Valid after call to HTHostName() */
+extern struct sockaddr_in HTHostAddress; /* The internet address of the host */
+                                         /* Valid after call to HTHostName() */
 
 /*	Parse a cardinal value				       parse_cardinal()
 **	----------------------
@@ -58,9 +57,7 @@ extern struct sockaddr_in HTHostAddress;/* The internet address of the host */
 **	*pstatus    points to status updated iff bad
 */
 #ifdef __STDC__
-extern unsigned int HTCardinal(int *pstatus,
-	char		**pp,
-	unsigned int	max_value);
+extern unsigned int HTCardinal(int *pstatus, char **pp, unsigned int max_value);
 #else
 extern unsigned int HTCardinal();
 #endif
@@ -78,7 +75,7 @@ extern unsigned int HTCardinal();
 **		field is left unchanged in *sin.
 */
 #ifdef __STDC__
-extern int HTParseInet(struct sockaddr_in* sin, const char *str);
+extern int HTParseInet(struct sockaddr_in *sin, const char *str);
 #else
 extern int HTParseInet();
 #endif
@@ -88,7 +85,7 @@ extern int HTParseInet();
 **
 */
 #ifdef __STDC__
-extern const char * HTHostName(void);
+extern const char *HTHostName(void);
 #else
-extern char * HTHostName();
+extern char *HTHostName();
 #endif

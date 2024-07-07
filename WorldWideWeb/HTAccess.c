@@ -2,12 +2,12 @@
 **		==============
 */
 
+#include "HTFTP.h"
+#include "HTFile.h"
 #include "HTParse.h"
+#include "HTTP.h"
 #include "HTUtils.h"
 #include "WWW.h"
-#include "HTFTP.h"
-#include "HTTP.h"
-#include "HTFile.h"
 #include <errno.h>
 #include <stdio.h>
 
@@ -16,16 +16,15 @@
 #include <string.h>
 #include <sys/file.h>
 
-#else	/* VMS */
+#else /* VMS */
 #include <errno.h>
 #include file
 #include unixio
-#endif	/* VMS */
+#endif /* VMS */
 
-#else	/* not explicit includes */
+#else /* not explicit includes */
 #include "tcp.h"
 #endif
-
 
 /*	Open a file descriptor for a document
 **	-------------------------------------
@@ -42,25 +41,25 @@
 **
 */
 #ifdef __STDC__
-int HTOpen(const char * addr, WWW_Format * pFormat)
+int HTOpen(const char *addr, WWW_Format *pFormat)
 #else
 int HTOpen(addr, pFormat)
-    char 	* addr;
-    WWW_Format	* pFormat;
+char *addr;
+WWW_Format *pFormat;
 #endif
 {
-    char * access=0;	/* Name of access method */
-    
-    access =  HTParse(addr, "file:", PARSE_ACCESS);
-    if (0==strcmp(access, "file")) {
+    char *access = 0; /* Name of access method */
+
+    access = HTParse(addr, "file:", PARSE_ACCESS);
+    if (0 == strcmp(access, "file")) {
         return HTOpenFile(addr, pFormat);
 
-    } else if (0==strcmp(access, "http")) {
+    } else if (0 == strcmp(access, "http")) {
         free(access);
-	*pFormat = WWW_HTML;
-	return HTTP_Get(addr);
-	
-    } else if (0==strcmp(access, "news")) {
+        *pFormat = WWW_HTML;
+        return HTTP_Get(addr);
+
+    } else if (0 == strcmp(access, "news")) {
         printf("HTAccess: Sorry, Internet news not integrated yet.\n");
     }
 
@@ -68,7 +67,6 @@ int HTOpen(addr, pFormat)
     free(access);
     return -1;
 }
-
 
 /*	Close socket opened for reading a file
 **	--------------------------------------
@@ -78,7 +76,7 @@ int HTOpen(addr, pFormat)
 PUBLIC int HTClose(int soc)
 #else
 PUBLIC int HTClose(soc)
-    int soc;
+int soc;
 #endif
 {
     return HTFTP_close_file(soc);

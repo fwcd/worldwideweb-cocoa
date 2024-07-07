@@ -8,32 +8,31 @@
 #import "HTUtils.h"
 
 #import "HyperText.h"
-#define THIS_TEXT  (HyperText *)[[[NSApp mainWindow] contentView] docView]
+#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] docView]
 
 /*	Field numbers in the parameter form:
 */
-#define	SGMLTAG_FIELD		4
-#define FONT_NAME_FIELD		2
-#define FONT_SIZE_FIELD		3
-#define FIRST_INDENT_FIELD	0
-#define	SECOND_INDENT_FIELD	1
+#define SGMLTAG_FIELD 4
+#define FONT_NAME_FIELD 2
+#define FONT_SIZE_FIELD 3
+#define FIRST_INDENT_FIELD 0
+#define SECOND_INDENT_FIELD 1
 
 @implementation StyleToy
 
-extern char * appDirectory;		/* Pointer to directory for application */
+extern char *appDirectory; /* Pointer to directory for application */
 
 //	Global styleSheet available to every one:
 
-       HTStyleSheet * styleSheet = 0;
+HTStyleSheet *styleSheet = 0;
 
-static HTStyle * style;			/* Current Style */
-static NSOpenPanel * open_panel;		/* Keep the open panel alive */
-static NSSavePanel * save_panel;		/* Keep a Save panel too */
+static HTStyle *style;          /* Current Style */
+static NSOpenPanel *open_panel; /* Keep the open panel alive */
+static NSSavePanel *save_panel; /* Keep a Save panel too */
 
 //	Create new one:
 
-+ new
-{
++ new {
     self = [super new];
     [self loadDefaultStyleSheet];
     return self;
@@ -41,98 +40,102 @@ static NSSavePanel * save_panel;		/* Keep a Save panel too */
 
 //	Set connections to other objects:
 
-- setTabForm:(NSForm *)anObject
-{
+- setTabForm:(NSForm *)anObject {
     TabForm = anObject;
     return self;
 }
 
-- setParameterForm:(NSForm *)anObject
-{
+- setParameterForm:(NSForm *)anObject {
     ParameterForm = anObject;
     return self;
 }
 
-- setStylePanel:anObject
-{
+- setStylePanel:anObject {
     StylePanel = anObject;
     return self;
 }
 
-- setNameForm:(NSForm *)anObject
-{
+- setNameForm:(NSForm *)anObject {
     NameForm = anObject;
     return self;
 }
-
 
 //			ACTION METHODS
 //			==============
 
 //	Display style in the panel
 
-- display_style
-{
-    if(style->name) [(NSFormCell *)[NameForm cellAtIndex:0] setStringValue:[NSString stringWithCString:style->name encoding:NSUTF8StringEncoding]];
-    else [(NSFormCell *)[NameForm cellAtIndex:0] setStringValue:@""];
-    
-    if(style->SGMLTag) [(NSFormCell *)[ParameterForm cellAtIndex:SGMLTAG_FIELD] setStringValue:[NSString stringWithCString:style->SGMLTag encoding:NSUTF8StringEncoding]];
-    else [(NSFormCell *)[ParameterForm cellAtIndex:SGMLTAG_FIELD] setStringValue:@""];
-    
+- display_style {
+    if (style->name)
+        [(NSFormCell *)[NameForm cellAtIndex:0] setStringValue:[NSString stringWithCString:style->name
+                                                                                  encoding:NSUTF8StringEncoding]];
+    else
+        [(NSFormCell *)[NameForm cellAtIndex:0] setStringValue:@""];
+
+    if (style->SGMLTag)
+        [(NSFormCell *)[ParameterForm cellAtIndex:SGMLTAG_FIELD]
+            setStringValue:[NSString stringWithCString:style->SGMLTag encoding:NSUTF8StringEncoding]];
+    else
+        [(NSFormCell *)[ParameterForm cellAtIndex:SGMLTAG_FIELD] setStringValue:@""];
+
     [(NSFormCell *)[ParameterForm cellAtIndex:FONT_NAME_FIELD] setStringValue:[style->font name]];
 
     [(NSFormCell *)[ParameterForm cellAtIndex:FONT_SIZE_FIELD] setFloatValue:style->fontSize];
-    
-    if(style->paragraph) {
-    	char tabstring[255];
-	int i;
-       	[(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] setFloatValue:style->paragraph.firstLineHeadIndent];
+
+    if (style->paragraph) {
+        char tabstring[255];
+        int i;
+        [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD]
+            setFloatValue:style->paragraph.firstLineHeadIndent];
         [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] setFloatValue:style->paragraph.headIndent];
-	tabstring[0]=0;
-	for(NSTextTab *tab in style->paragraph.tabStops) {
-	    sprintf(tabstring+strlen(tabstring), "%.0f ", tab.location);
-	}
-	[(NSFormCell *)[TabForm cellAtIndex:0] setStringValue:[NSString stringWithCString:tabstring encoding:NSUTF8StringEncoding]];
-    }     
+        tabstring[0] = 0;
+        for (NSTextTab *tab in style->paragraph.tabStops) {
+            sprintf(tabstring + strlen(tabstring), "%.0f ", tab.location);
+        }
+        [(NSFormCell *)[TabForm cellAtIndex:0] setStringValue:[NSString stringWithCString:tabstring
+                                                                                 encoding:NSUTF8StringEncoding]];
+    }
     return self;
 }
-
 
 //	Load style from Panel
 //
 //	@@ Tabs not loaded
 
--load_style
-{
-    char * name = 0;
-    char * stripped;
-    
-    style->fontSize=[(NSFormCell *)[ParameterForm cellAtIndex:FONT_SIZE_FIELD] floatValue];
-    StrAllocCopy(name, [[(NSFormCell *)[NameForm cellAtIndex:0] stringValue] cStringUsingEncoding:NSUTF8StringEncoding]);
+- load_style {
+    char *name = 0;
+    char *stripped;
+
+    style->fontSize = [(NSFormCell *)[ParameterForm cellAtIndex:FONT_SIZE_FIELD] floatValue];
+    StrAllocCopy(name,
+                 [[(NSFormCell *)[NameForm cellAtIndex:0] stringValue] cStringUsingEncoding:NSUTF8StringEncoding]);
     stripped = HTStrip(name);
     if (*stripped) {
         NSFont *font;
-        font = [NSFont fontWithName:[NSString stringWithCString:stripped encoding:NSUTF8StringEncoding] size:style->fontSize];
-        if (font) style->font = font;
+        font = [NSFont fontWithName:[NSString stringWithCString:stripped encoding:NSUTF8StringEncoding]
+                               size:style->fontSize];
+        if (font)
+            style->font = font;
     }
     free(name);
     name = 0;
-    
-    StrAllocCopy(name, [[(NSFormCell *)[ParameterForm cellAtIndex:SGMLTAG_FIELD] stringValue] cStringUsingEncoding:NSUTF8StringEncoding]);
+
+    StrAllocCopy(name, [[(NSFormCell *)[ParameterForm cellAtIndex:SGMLTAG_FIELD] stringValue]
+                           cStringUsingEncoding:NSUTF8StringEncoding]);
     stripped = HTStrip(name);
     if (*stripped) {
         StrAllocCopy(style->SGMLTag, stripped);
     }
     free(name);
     name = 0;
-    
-    if (!style->paragraph) style->paragraph = malloc(sizeof(*(style->paragraph)));
+
+    if (!style->paragraph)
+        style->paragraph = malloc(sizeof(*(style->paragraph)));
     style->paragraph.firstLineHeadIndent = [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] floatValue];
     style->paragraph.headIndent = [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] floatValue];
 
     return self;
 }
-
 
 //	Open a style sheet from a file
 //	------------------------------
@@ -140,38 +143,40 @@ static NSSavePanel * save_panel;		/* Keep a Save panel too */
 //	We overlay any previously defined styles with new ones, but leave
 //	old ones which are not redefined.
 
-- open:sender
-{  
-    NSStream * s;			//	The file stream
-    const char * filename;		//	The name of the file
-    char *typelist[2] = {"style",(char *)0};	//	Extension must be ".style."
+- open:sender {
+    NSStream *s;                              //	The file stream
+    const char *filename;                     //	The name of the file
+    char *typelist[2] = {"style", (char *)0}; //	Extension must be ".style."
 
     if (!open_panel) {
-    	open_panel = [NSOpenPanel new];
+        open_panel = [NSOpenPanel new];
         [open_panel setAllowsMultipleSelection:NO];
     }
-    
+
     if (![open_panel runModalForTypes:typelist]) {
-    	if (TRACE) printf("No file selected.\n");
-	return nil;
+        if (TRACE)
+            printf("No file selected.\n");
+        return nil;
     }
 
     filename = [open_panel filename];
     s = NXMapFile(filename, NX_READONLY);
     if (!s) {
-        if(TRACE) printf("Styles: Can't open file %s\n", filename);
+        if (TRACE)
+            printf("Styles: Can't open file %s\n", filename);
         return nil;
     }
-    if (!styleSheet) styleSheet = HTStyleSheetNew();
+    if (!styleSheet)
+        styleSheet = HTStyleSheetNew();
     StrAllocCopy(styleSheet->name, filename);
-    if (TRACE) printf("Stylesheet: New one called %s.\n", styleSheet->name);
+    if (TRACE)
+        printf("Stylesheet: New one called %s.\n", styleSheet->name);
     (void)HTStyleSheetRead(styleSheet, s);
     NXCloseMemory(s, NX_FREEBUFFER);
     style = styleSheet->styles;
     [self display_style];
     return self;
 }
-
 
 //	Load default style sheet
 //	------------------------
@@ -184,81 +189,84 @@ static NSSavePanel * save_panel;		/* Keep a Save panel too */
 //	style sheet name, so that any changes will be saved in the user's
 //	$(HOME)/WWW directory.
 
-- loadDefaultStyleSheet
-{
-    NSStream * stream;
-    
-    if (!styleSheet) styleSheet = HTStyleSheetNew();
-    styleSheet->name = malloc(strlen(appDirectory)+13+1);
+- loadDefaultStyleSheet {
+    NSStream *stream;
+
+    if (!styleSheet)
+        styleSheet = HTStyleSheetNew();
+    styleSheet->name = malloc(strlen(appDirectory) + 13 + 1);
     strcpy(styleSheet->name, appDirectory);
     strcat(styleSheet->name, "default.style");
 
     if (getenv("HOME")) {
         char name[256];
-	strcpy(name, getenv("HOME"));
-	strcat(name, "/WWW/default.style");
-    	StrAllocCopy(styleSheet->name, name);
+        strcpy(name, getenv("HOME"));
+        strcat(name, "/WWW/default.style");
+        StrAllocCopy(styleSheet->name, name);
         stream = NXMapFile(name, NX_READONLY);
-    } else stream = 0;
+    } else
+        stream = 0;
 
     if (!stream) {
         char name[256];
-	strcpy(name, appDirectory);
-	strcat(name, "default.style");
-    	if (TRACE) printf("Couldn't open $(HOME)/WWW/default.style\n");
-	stream = NXMapFile(name, NX_READONLY);
-	if (!stream)
-	    printf("Couldn't open %s, errno=%i\n", name, errno);
+        strcpy(name, appDirectory);
+        strcat(name, "default.style");
+        if (TRACE)
+            printf("Couldn't open $(HOME)/WWW/default.style\n");
+        stream = NXMapFile(name, NX_READONLY);
+        if (!stream)
+            printf("Couldn't open %s, errno=%i\n", name, errno);
     }
-    
+
     if (stream) {
-	(void)HTStyleSheetRead(styleSheet, stream);
-	NXCloseMemory(stream, NX_FREEBUFFER);
-	style = styleSheet->styles;
-	[self display_style];
+        (void)HTStyleSheetRead(styleSheet, stream);
+        NXCloseMemory(stream, NX_FREEBUFFER);
+        style = styleSheet->styles;
+        [self display_style];
     }
     return self;
 }
 
-
 //	Save style sheet to a file
 //	--------------------------
 
-- saveAs:sender
-{  
-    NSStream * s;			//	The file stream
-    char * slash;
+- saveAs:sender {
+    NSStream *s; //	The file stream
+    char *slash;
     int status;
-    char * suggestion=0;		//	The name of the file to suggest
-    const char * filename;		//	The name chosen
+    char *suggestion = 0; //	The name of the file to suggest
+    const char *filename; //	The name chosen
 
     if (!save_panel) {
-        save_panel = [NSSavePanel new];	//	Keep between invocations
+        save_panel = [NSSavePanel new]; //	Keep between invocations
     }
-    
-    StrAllocCopy(suggestion,styleSheet->name);
-    slash = rindex(suggestion, '/');	//	Point to last slash
+
+    StrAllocCopy(suggestion, styleSheet->name);
+    slash = rindex(suggestion, '/'); //	Point to last slash
     if (slash) {
-    	*slash++ = 0;			/* Separate directory and filename */
-	status = [save_panel runModalForDirectory:suggestion file:slash];
+        *slash++ = 0; /* Separate directory and filename */
+        status = [save_panel runModalForDirectory:suggestion file:slash];
     } else {
-	status = [save_panel runModalForDirectory:"." file:suggestion];
+        status = [save_panel runModalForDirectory:"." file:suggestion];
     }
     free(suggestion);
-    
+
     if (!status) {
-    	if (TRACE) printf("No file selected.\n");
-	return nil;
+        if (TRACE)
+            printf("No file selected.\n");
+        return nil;
     }
-    
+
     filename = [save_panel filename];
     s = NXMapFile(filename, NX_WRITEONLY);
     if (!s) {
-        if(TRACE) printf("Styles: Can't open file %s for write\n", filename);
+        if (TRACE)
+            printf("Styles: Can't open file %s for write\n", filename);
         return nil;
     }
     StrAllocCopy(styleSheet->name, filename);
-    if (TRACE) printf("StylestyleSheet: Saving as `%s'.\n", styleSheet->name);
+    if (TRACE)
+        printf("StylestyleSheet: Saving as `%s'.\n", styleSheet->name);
     (void)HTStyleSheetWrite(styleSheet, s);
     NXSaveToFile(s, styleSheet->name);
     NXCloseMemory(s, NX_FREEBUFFER);
@@ -267,96 +275,107 @@ static NSSavePanel * save_panel;		/* Keep a Save panel too */
     return self;
 }
 
-
 //	Move to next style
 //	------------------
 
-- NextButton:sender
-{
+- NextButton:sender {
     if (styleSheet->styles)
         if (styleSheet->styles->next)
             if (style->next) {
-	        style = style->next;
+                style = style->next;
             } else {
-	        style = styleSheet->styles;
+                style = styleSheet->styles;
             }
     [self display_style];
     return self;
 }
 
-
-- FindUnstyledButton:sender
-{
-    [THIS_TEXT selectUnstyled: styleSheet];
+- FindUnstyledButton:sender {
+    [THIS_TEXT selectUnstyled:styleSheet];
     return self;
 }
 
 //	Apply current style to selection
 //	--------------------------------
 
-- ApplyButton:sender
-{
+- ApplyButton:sender {
     [THIS_TEXT applyStyle:style];
     return self;
 }
 
-- applyStyleNamed: (const char *)name
-{
-     HTStyle * thisStyle = HTStyleNamed(styleSheet, name);
-     if (!thisStyle) return nil;
-     return [THIS_TEXT applyStyle:thisStyle];
+- applyStyleNamed:(const char *)name {
+    HTStyle *thisStyle = HTStyleNamed(styleSheet, name);
+    if (!thisStyle)
+        return nil;
+    return [THIS_TEXT applyStyle:thisStyle];
 }
 
-- heading1Button:sender	{ return [self applyStyleNamed:"Heading1" ]; }
-- heading2Button:sender	{ return [self applyStyleNamed:"Heading2" ]; }
-- heading3Button:sender	{ return [self applyStyleNamed:"Heading3" ]; }
-- heading4Button:sender	{ return [self applyStyleNamed:"Heading4" ]; }
-- heading5Button:sender	{ return [self applyStyleNamed:"Heading5" ]; }
-- heading6Button:sender	{ return [self applyStyleNamed:"Heading6" ]; }
-- normalButton:sender	{ return [self applyStyleNamed:"Normal" ]; }
-- addressButton:sender	{ return [self applyStyleNamed:"Address" ]; }
-- exampleButton:sender	{ return [self applyStyleNamed:"Example" ]; }
-- listButton:sender	{ return [self applyStyleNamed:"List" ]; }
-- glossaryButton:sender	{ return [self applyStyleNamed:"Glossary" ]; }
-
+- heading1Button:sender {
+    return [self applyStyleNamed:"Heading1"];
+}
+- heading2Button:sender {
+    return [self applyStyleNamed:"Heading2"];
+}
+- heading3Button:sender {
+    return [self applyStyleNamed:"Heading3"];
+}
+- heading4Button:sender {
+    return [self applyStyleNamed:"Heading4"];
+}
+- heading5Button:sender {
+    return [self applyStyleNamed:"Heading5"];
+}
+- heading6Button:sender {
+    return [self applyStyleNamed:"Heading6"];
+}
+- normalButton:sender {
+    return [self applyStyleNamed:"Normal"];
+}
+- addressButton:sender {
+    return [self applyStyleNamed:"Address"];
+}
+- exampleButton:sender {
+    return [self applyStyleNamed:"Example"];
+}
+- listButton:sender {
+    return [self applyStyleNamed:"List"];
+}
+- glossaryButton:sender {
+    return [self applyStyleNamed:"Glossary"];
+}
 
 //	Move to previous style
 //	----------------------
 
-- PreviousButton:sender
-{
-    HTStyle * scan;
-    for (scan = styleSheet->styles; scan; scan=scan->next) {
-        if ((scan->next==style) || (scan->next==0)){
-	    style = scan;
-	    break;
-	}
+- PreviousButton:sender {
+    HTStyle *scan;
+    for (scan = styleSheet->styles; scan; scan = scan->next) {
+        if ((scan->next == style) || (scan->next == 0)) {
+            style = scan;
+            break;
+        }
     }
     [self display_style];
     return self;
 }
 
-- SetButton:sender
-{
+- SetButton:sender {
     [self load_style];
     [THIS_TEXT updateStyle:style];
     return self;
 }
 
-- PickButton:sender
-{
-    HTStyle * st = [THIS_TEXT selectionStyle:styleSheet];
+- PickButton:sender {
+    HTStyle *st = [THIS_TEXT selectionStyle:styleSheet];
     if (st) {
-    	style = st;
-	[self display_style];
+        style = st;
+        [self display_style];
     }
     return self;
 }
 
-- ApplyToSimilar:sender
-{
+- ApplyToSimilar:sender {
     return [THIS_TEXT applyToSimilar:style];
 }
-
 
 @end

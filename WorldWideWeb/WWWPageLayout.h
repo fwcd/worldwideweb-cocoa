@@ -8,8 +8,7 @@
 
 #import <AppKit/AppKit.h>
 
-@interface WWWPageLayout : NSPageLayout
-{
+@interface WWWPageLayout : NSPageLayout {
     id leftMargin;
     id rightMargin;
     id topMargin;
@@ -23,5 +22,3 @@
 - writePrintInfo;
 
 @end
-
-

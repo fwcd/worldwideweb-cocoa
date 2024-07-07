@@ -13,31 +13,29 @@
 **		$(HOME)/WWW/http/crnvmc/FIND/xx.xxx.xx
 */
 #ifdef __STDC__
-extern char * HTLocalName(const char * name);
+extern char *HTLocalName(const char *name);
 #else
-extern char * HTLocalName();
+extern char *HTLocalName();
 #endif
 
 /*	Make a WWW name from a full local path name
 **
 */
 #ifdef __STDC__
-extern char * WWW_nameOfFile(const char * name);
+extern char *WWW_nameOfFile(const char *name);
 #else
-extern char * WWW_nameOfFile();
+extern char *WWW_nameOfFile();
 #endif
-
 
 /*	Determine file format from file name
 **	------------------------------------
 */
 
 #ifdef __STDC__
-extern int HTFileFormat(const char * filename);
+extern int HTFileFormat(const char *filename);
 #else
 extern int HTFileFormat();
-#endif	
-
+#endif
 
 /*	Determine write access to a file
 //	--------------------------------
@@ -49,11 +47,10 @@ extern int HTFileFormat();
 */
 
 #ifdef __STDC__
-extern BOOL HTEditable(const char * filename);
+extern BOOL HTEditable(const char *filename);
 #else
 extern BOOL HTEditable();
 #endif
-
 
 /*	Open a file descriptor for a document
 **	-------------------------------------
@@ -70,8 +67,7 @@ extern BOOL HTEditable();
 **
 */
 #ifdef __STDC__
-extern int HTOpenFile(const char * addr, WWW_Format* format);
+extern int HTOpenFile(const char *addr, WWW_Format *format);
 #else
 extern int HTOpenFile();
 #endif
-

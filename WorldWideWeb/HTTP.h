@@ -2,7 +2,6 @@
 **	==========================
 */
 
-
 /*		Open Socket for reading from HTTP Server		HTTP_get()
 **		========================================
 **
@@ -18,7 +17,7 @@
 **
 */
 #ifdef __STDC__
-extern int HTTP_Get(const char * arg);
+extern int HTTP_Get(const char *arg);
 #else
 extern int HTTP_Get();
 #endif

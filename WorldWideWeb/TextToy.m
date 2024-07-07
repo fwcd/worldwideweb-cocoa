@@ -5,21 +5,19 @@
 //	current HyperText and then passes the buck to the HyperText class.
 
 #import "TextToy.h"
-#import <AppKit/AppKit.h>
 #import "Anchor.h"
 #import "HyperText.h"
+#import <AppKit/AppKit.h>
 
 #import "HTUtils.h"
 
 @implementation TextToy
 
-#define THIS_TEXT  (HyperText *)[[[NSApp mainWindow] contentView] docView]
+#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] docView]
 
-    Anchor *	Mark;		/* A marked Anchor */
-    
+Anchor *Mark; /* A marked Anchor */
 
-- setSearchWindow:anObject
-{
+- setSearchWindow:anObject {
     SearchWindow = anObject;
     return self;
 }
@@ -30,76 +28,65 @@
 
 /*	Set up the start and end of a link
 */
-- linkToMark:sender
-{
+- linkToMark:sender {
     return [THIS_TEXT linkSelTo:Mark];
 }
 
-- linkToNew:sender
-{
+- linkToNew:sender {
     return nil;
 }
 
 - unlink:sender;
-{
-    return [THIS_TEXT unlinkSelection];
-}
+{ return [THIS_TEXT unlinkSelection]; }
 
-- markSelected:sender
-{
+- markSelected:sender {
     Mark = [THIS_TEXT referenceSelected];
     return Mark;
 }
-- markAll:sender
-{
+- markAll:sender {
     Mark = [THIS_TEXT referenceAll];
     return Mark;
 }
 
-- followLink:sender
-{
-    return [THIS_TEXT followLink];	// never mind whether there is a link
+- followLink:sender {
+    return [THIS_TEXT followLink]; // never mind whether there is a link
 }
 
-- dump : sender
-{
+- dump:sender {
     return [THIS_TEXT dump:sender];
 }
 
 //		Window Delegate Functions
 //		-------------------------
 
-- windowDidBecomeKey:window
-{
+- windowDidBecomeKey:window {
     return self;
 }
 
 //	When a document is selected, turn the index search on or off as
 //	appropriate
 
-- windowDidBecomeMain:window
-{
-    HyperText * HT =  [[window  contentView] docView];
-    if (!HT) return self;
-    
+- windowDidBecomeMain:window {
+    HyperText *HT = [[window contentView] docView];
+    if (!HT)
+        return self;
+
     if ([HT isIndex]) {
-	[SearchWindow makeKeyAndOrderFront:self];
+        [SearchWindow makeKeyAndOrderFront:self];
     } else {
-	[SearchWindow orderOut:self];
+        [SearchWindow orderOut:self];
     }
-    
+
     return self;
 }
-
 
 //			Access Management functions
 //			===========================
 
-- registerAccess:(HyperAccess *)access
-{
-    if (!accesses) accesses=[NSMutableArray new];
+- registerAccess:(HyperAccess *)access {
+    if (!accesses)
+        accesses = [NSMutableArray new];
     return [accesses addObject:access];
 }
-
 
 @end

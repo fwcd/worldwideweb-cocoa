@@ -3,14 +3,13 @@
 
 #import "HyperAccess.h"
 
-@interface FileAccess:HyperAccess
-{
+@interface FileAccess : HyperAccess {
 }
 + initialize;
 
-- saveAs: sender;
-- saveAsRichText: sender;
-- saveAsPlainText: sender;
+- saveAs:sender;
+- saveAsRichText:sender;
+- saveAsPlainText:sender;
 - makeNew:sender;
 - linkToNew:sender;
 - linkToFile:sender;

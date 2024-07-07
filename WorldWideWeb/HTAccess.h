@@ -17,11 +17,10 @@
 **
 */
 #ifdef __STDC__
-extern int HTOpen(char * addr, WWW_Format * format);
+extern int HTOpen(char *addr, WWW_Format *format);
 #else
 extern int HTOpen();
 #endif
-
 
 /*	Close socket opened for reading a file
 **	--------------------------------------

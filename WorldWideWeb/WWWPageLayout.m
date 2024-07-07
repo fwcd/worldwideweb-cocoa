@@ -32,10 +32,10 @@
     float old, new;
 
     [self convertOldFactor:&old newFactor:&new];
-    [leftMargin setFloatValue:new * [leftMargin floatValue] / old];
-    [rightMargin setFloatValue:new * [rightMargin floatValue] / old];
-    [topMargin setFloatValue:new * [topMargin floatValue] / old];
-    [bottomMargin setFloatValue:new * [bottomMargin floatValue] / old];
+    [leftMargin setFloatValue:new *[leftMargin floatValue] / old];
+    [rightMargin setFloatValue:new *[rightMargin floatValue] / old];
+    [topMargin setFloatValue:new *[topMargin floatValue] / old];
+    [bottomMargin setFloatValue:new *[bottomMargin floatValue] / old];
 
     return [super pickedUnits:sender];
 }
@@ -83,51 +83,44 @@
         [pi setBottomMargin:[bottomMargin floatValue] / conversion];
     }
     if (*[pi paperType])
-    	NXWriteDefault("WorldWideWeb", "PaperType", [pi paperType]);	/* Save it */
+        NXWriteDefault("WorldWideWeb", "PaperType", [pi paperType]); /* Save it */
     return self;
 }
 
 /* NIB outlet setting methods */
 
-- setTopBotForm:anObject
-{
+- setTopBotForm:anObject {
     [anObject setTarget:ok];
     [anObject setAction:@selector(performClick:)];
     [anObject setNextText:width];
     return self;
 }
 
-- setSideForm:anObject
-{
+- setSideForm:anObject {
     [scale setNextText:anObject];
     [anObject setTarget:ok];
     [anObject setAction:@selector(performClick:)];
     return self;
 }
 
-- setLeftMargin:anObject
-{
+- setLeftMargin:anObject {
     leftMargin = anObject;
     return self;
 }
 
-- setRightMargin:anObject
-{
+- setRightMargin:anObject {
     rightMargin = anObject;
     return self;
 }
 
-- setTopMargin:anObject
-{
+- setTopMargin:anObject {
     topMargin = anObject;
     return self;
 }
 
-- setBottomMargin:anObject
-{
+- setBottomMargin:anObject {
     bottomMargin = anObject;
     return self;
 }
 
 @end
-

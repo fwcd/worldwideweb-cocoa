@@ -7,11 +7,10 @@
 // History:
 //	26 Sep 90	Written TBL
 
-
 #import "TcpAccess.h"
 #import "Anchor.h"
-#import "HTUtils.h"
 #import "HTTP.h"
+#import "HTUtils.h"
 
 /*	Module parameters:
 **	-----------------
@@ -24,52 +23,50 @@
 //	Return the name of the access
 //	-----------------------------
 
-- (const char *)name
-{
+- (const char *)name {
     return "http";
 }
 
 //	Open or search  by name
 //	-----------------------
-	
-- accessName:(const char *)arg
-	anchor:(Anchor *)anAnchor
-	diagnostic:(int)diagnostic
-{
-    HyperText *	HT;			// the new hypertext
-    NSStream * sgmlStream;		// Input stream for marked up hypertext
-    int s;				// Socket number for returned data 
 
-/* Get node name:
+- accessName:(const char *)arg anchor:(Anchor *)anAnchor diagnostic:(int)diagnostic {
+    HyperText *HT;        // the new hypertext
+    NSStream *sgmlStream; // Input stream for marked up hypertext
+    int s;                // Socket number for returned data
+
+    /* Get node name:
 */
-    
-//	Make a hypertext object with an anchor list.
-        
+
+    //	Make a hypertext object with an anchor list.
+
     HT = [HyperText newAnchor:anAnchor Server:self];
 
-    [HT setupWindow];			
-    [[HT window]setTitle:"Connecting..."];	/* Tell user something's happening */
-    [HT setEditable:NO];			/* This is read-only data */
+    [HT setupWindow];
+    [[HT window] setTitle:"Connecting..."]; /* Tell user something's happening */
+    [HT setEditable:NO];                    /* This is read-only data */
 
-//	Now, let's get a stream setup up from the server for the sgml data:
-        
+    //	Now, let's get a stream setup up from the server for the sgml data:
+
     s = HTTP_Get(arg);
-    if (s<0) return nil;	/* Failed .. error will be reported by HTTP_get */
+    if (s < 0)
+        return nil; /* Failed .. error will be reported by HTTP_get */
     sgmlStream = NXOpenFile(s, NX_READONLY);
 
-    if (diagnostic == 2) {			/* Can read the SGML straight */
-	[HT readText:sgmlStream];
-	return HT;
+    if (diagnostic == 2) { /* Can read the SGML straight */
+        [HT readText:sgmlStream];
+        return HT;
     }
 
-//	Now we parse the SGML
+    //	Now we parse the SGML
 
-    [[HT window]setTitle:"Loading..."];	/* Tell user something's happening */
-    [HT readSGML:sgmlStream diagnostic:diagnostic];    
-    
-//	Clean up now it's on the screen:
-    
-    if (TRACE) printf("Closing streams\n");
+    [[HT window] setTitle:"Loading..."]; /* Tell user something's happening */
+    [HT readSGML:sgmlStream diagnostic:diagnostic];
+
+    //	Clean up now it's on the screen:
+
+    if (TRACE)
+        printf("Closing streams\n");
     NXClose(sgmlStream);
     close(s);
 
@@ -77,8 +74,6 @@
 }
 
 //		Actions:
-
-
 
 //	This will load an anchor which has a name
 //
@@ -89,16 +84,16 @@
 //	Otherwise, the anchor is returned.
 //
 
-- loadAnchor: (Anchor *) a Diagnostic:(int)diagnostic
-{
-    HyperText * HT;
+- loadAnchor:(Anchor *)a Diagnostic:(int)diagnostic {
+    HyperText *HT;
 
     if ([a node]) {
-    	return a;		/* Already loaded */
+        return a; /* Already loaded */
     } else {
         HT = [self accessName:[a address] anchor:a diagnostic:diagnostic];
-    	if (!HT) return nil;
-	return a;
+        if (!HT)
+            return nil;
+        return a;
     }
 }
 

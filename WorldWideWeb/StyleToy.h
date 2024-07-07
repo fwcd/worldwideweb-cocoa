@@ -3,15 +3,14 @@
 
 #import <AppKit/AppKit.h>
 
-@interface StyleToy:NSObject
-{
-    NSForm	*TabForm;
-    NSForm	*ParameterForm;
+@interface StyleToy : NSObject {
+    NSForm *TabForm;
+    NSForm *ParameterForm;
     NSWindow *StylePanel;
-    NSForm	*NameForm;
+    NSForm *NameForm;
 }
 
-+new;
++ new;
 
 - loadDefaultStyleSheet;
 - setTabForm:(NSForm *)anObject;

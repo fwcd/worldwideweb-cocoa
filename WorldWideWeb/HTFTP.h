@@ -12,7 +12,7 @@
 **			<0 if bad.
 */
 #ifdef __STDC__
-extern int HTFTP_open_file_read(CONST char * name);
+extern int HTFTP_open_file_read(CONST char *name);
 #else
 extern int HTFTP_open_file_read();
 #endif
@@ -27,12 +27,11 @@ extern int HTFTP_close_file(int soc);
 extern int HTFTP_close_file();
 #endif
 
-
 /*	Return Host Name
 **	----------------
 */
 #ifdef __STDC__
-extern const char * HTHostName(void);
+extern const char *HTHostName(void);
 #else
-extern char * HTHostName();
+extern char *HTHostName();
 #endif
