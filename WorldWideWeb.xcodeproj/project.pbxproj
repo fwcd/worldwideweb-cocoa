@@ -11,7 +11,6 @@
 		35DC78E12BFAD62100432284 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78E02BFAD62100432284 /* AppDelegate.m */; };
 		35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E22BFAD62200432284 /* Assets.xcassets */; };
 		35DC78E62BFAD62200432284 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E52BFAD62200432284 /* Base */; };
-		35DC78E82BFAD62200432284 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78E72BFAD62200432284 /* main.m */; };
 		35DC792B2BFAD6AB00432284 /* Features.html in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78EE2BFAD6AA00432284 /* Features.html */; };
 		35DC792C2BFAD6AB00432284 /* icon2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78EF2BFAD6AA00432284 /* icon2.tiff */; };
 		35DC792D2BFAD6AB00432284 /* WorldWideWeb_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */; };
@@ -56,7 +55,6 @@
 		35DC78E02BFAD62100432284 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		35DC78E22BFAD62200432284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35DC78E52BFAD62200432284 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		35DC78E72BFAD62200432284 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		35DC78E92BFAD62200432284 /* WorldWideWeb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorldWideWeb.entitlements; sourceTree = "<group>"; };
 		35DC78ED2BFAD6AA00432284 /* ParseHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseHTML.h; sourceTree = "<group>"; };
 		35DC78EE2BFAD6AA00432284 /* Features.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Features.html; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 				35DC78E02BFAD62100432284 /* AppDelegate.m */,
 				35DC78E22BFAD62200432284 /* Assets.xcassets */,
 				35DC78E42BFAD62200432284 /* MainMenu.xib */,
-				35DC78E72BFAD62200432284 /* main.m */,
 				35DC78E92BFAD62200432284 /* WorldWideWeb.entitlements */,
 			);
 			path = WorldWideWeb;
@@ -309,7 +306,6 @@
 				35DC79422BFAD6AB00432284 /* NewsAccess.m in Sources */,
 				35DC79432BFAD6AB00432284 /* HTFile.c in Sources */,
 				35DC79502BFAD6AB00432284 /* HTStyle.m in Sources */,
-				35DC78E82BFAD62200432284 /* main.m in Sources */,
 				35DC79482BFAD6AB00432284 /* HyperText.m in Sources */,
 				35DC793C2BFAD6AB00432284 /* StyleToy.m in Sources */,
 				35DC79362BFAD6AB00432284 /* Anchor.m in Sources */,

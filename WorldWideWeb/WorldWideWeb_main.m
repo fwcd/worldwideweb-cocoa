@@ -17,7 +17,7 @@ extern char *appDirectory; /* Name of the directory containing the application *
 
 static int int_default(NSString *param) { return [[NSUserDefaults standardUserDefaults] integerForKey:param]; }
 
-void main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
     //    NXArgc = argc;		/* TBL */
     //    NXArgv = argv;		/* TBL */
 
@@ -61,5 +61,5 @@ void main(int argc, char *argv[]) {
     }
 
     [NSApp run];
-    exit(0);
+    return 0;
 }
