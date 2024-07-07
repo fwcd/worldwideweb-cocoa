@@ -47,7 +47,6 @@
 		35DC794D2BFAD6AB00432284 /* HTString.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79252BFAD6AB00432284 /* HTString.c */; };
 		35DC794E2BFAD6AB00432284 /* TextToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79272BFAD6AB00432284 /* TextToy.m */; };
 		35DC79502BFAD6AB00432284 /* HTStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79292BFAD6AB00432284 /* HTStyle.m */; };
-		35DC79512BFAD74800432284 /* WorldWideWeb.nib in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79282BFAD6AB00432284 /* WorldWideWeb.nib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,7 +113,6 @@
 		35DC79252BFAD6AB00432284 /* HTString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTString.c; sourceTree = "<group>"; };
 		35DC79262BFAD6AB00432284 /* TextToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextToy.h; sourceTree = "<group>"; };
 		35DC79272BFAD6AB00432284 /* TextToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextToy.m; sourceTree = "<group>"; };
-		35DC79282BFAD6AB00432284 /* WorldWideWeb.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = WorldWideWeb.nib; sourceTree = "<group>"; };
 		35DC79292BFAD6AB00432284 /* HTStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTStyle.m; sourceTree = "<group>"; };
 		35DC792A2BFAD6AB00432284 /* StyleToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleToy.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,7 +201,6 @@
 				35DC78F52BFAD6AA00432284 /* worldbook2.tiff */,
 				35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */,
 				35DC79232BFAD6AB00432284 /* WorldWideWeb.iconheader */,
-				35DC79282BFAD6AB00432284 /* WorldWideWeb.nib */,
 				3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */,
 				35DC79162BFAD6AA00432284 /* WWW.h */,
 				35DC78FA2BFAD6AA00432284 /* WWWPageLayout.h */,
@@ -275,7 +272,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35DC79512BFAD74800432284 /* WorldWideWeb.nib in Resources */,
 				3590F34F2BFC108E00E81CF2 /* WorldWideWeb.xib in Resources */,
 				35DC79392BFAD6AB00432284 /* Makefile.dependencies in Resources */,
 				35DC79352BFAD6AB00432284 /* Bugs.html in Resources */,
