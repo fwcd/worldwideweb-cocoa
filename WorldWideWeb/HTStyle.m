@@ -74,11 +74,11 @@ HTStyle * HTStyleRead(HTStyle * style, NSStream * stream)
 	}
 	p = style->paragraph;
 	NXScanf(stream, "%f%f%f%f%hd%f%f%hd",
-	    &p->indent1st,
-	    &p->indent2nd,
-	    &p->lineHt,
-	    &p->descentLine,
-	    &p->alignment,
+	    &p.firstLineHeadIndent,
+	    &p.headIndent,
+	    &p.lineHt /* FIXME: Non-existent */,
+	    &p.lineSpacing,
+	    &p.alignment,
 	    &style->spaceBefore,
 	    &style->spaceAfter,
 	    &p->numTabs);
@@ -119,11 +119,11 @@ HTStyle * HTStyleWrite(HTStyle * style, NSStream * stream)
 
     if (p) {
 	NXPrintf(stream, "\t%f %f %f %f %i %f %f\t%i\n",
-	    p->indent1st,
-	    p->indent2nd,
-	    p->lineHt,
-	    p->descentLine,
-	    p->alignment,
+	    p.firstLineHeadIndent,
+	    p.headIndent,
+	    p.lineHt /* FIXME: Non-existent */,
+	    p.lineSpacing,
+	    p.alignment,
 	    style->spaceBefore,
 	    style->spaceAfter,
 	    p->numTabs);
@@ -154,11 +154,11 @@ HTStyle * HTStyleDump(HTStyle * style)
         printf(
     	"\tIndents: first=%.0f others=%.0f, Height=%.1f Desc=%.1f\n"
 	"\tAlign=%i, %i tabs. (%.0f before, %.0f after)\n",
-	    p->indent1st,
-	    p->indent2nd,
-	    p->lineHt,
-	    p->descentLine,
-	    p->alignment,
+	    p.firstLineHeadIndent,
+	    p.headIndent,
+	    p.lineHt /* FIXME: Non-existent */,
+	    p.lineSpacing,
+	    p.alignment,
 	    p->numTabs,
 	    style->spaceBefore,
 	    style->spaceAfter);
@@ -221,11 +221,11 @@ HTStyle * HTStyleForRun(HTStyleSheet *self, NXRun *run)
     	NSParagraphStyle * sp = scan->paragraph;
     	if (sp) {
 	    int match = 0;
-	    if (sp->indent1st ==	rp->indent1st)	match = match+1;
-	    if (sp->indent2nd ==	rp->indent2nd)	match = match+2;
-	    if (sp->lineHt ==		rp->lineHt)	match = match+1;
+	    if (sp.firstLineHeadIndent ==	rp.firstLineHeadIndent)	match = match+1;
+	    if (sp.headIndent ==	rp.headIndent)	match = match+2;
+	    if (sp.lineHt /* FIXME: Non-existent */ ==		rp.lineHt /* FIXME: Non-existent */)	match = match+1;
 	    if (sp->numTabs ==		rp->numTabs)	match = match+1;
-	    if (sp->alignment ==	rp->alignment)	match = match+3;
+	    if (sp.alignment ==	rp.alignment)	match = match+3;
 	    if (scan->font ==		run->font)	match = match+10;
 	    if (match>bestMatch) {
 		    best=scan;

@@ -183,7 +183,7 @@ void get_styles()
 void output_paragraph()
 {
     HTStyle * s = current_style->style;
-    int newlines = ((s->spaceBefore+s->spaceAfter) / s->paragraph->lineHt) + 1;
+    int newlines = ((s->spaceBefore+s->spaceAfter) / s->paragraph.lineHt /* FIXME: Non-existent */) + 1;
     int i;
     for(i=0; i<newlines; i++) OUTPUT('\n');	/* Rather approximate! @@	*/
     OUTPUTS(current_style->paragraph_text);
@@ -212,7 +212,7 @@ void update_style()
     	int i;
 	float space = cur->spaceAfter > next->spaceBefore ?
 			cur->spaceAfter : next->spaceBefore;	/* max */
-        int newlines = (space/cur->paragraph->lineHt) + 1;
+        int newlines = (space/cur->paragraph.lineHt /* FIXME: Non-existent */) + 1;
 	
 	output_in_word = 0;
         for(i=0; i<newlines; i++) OUTPUT('\n');	/* Rather approximate! 	*/

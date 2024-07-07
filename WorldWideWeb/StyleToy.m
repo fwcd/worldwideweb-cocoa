@@ -86,8 +86,8 @@ static NSSavePanel * save_panel;		/* Keep a Save panel too */
     if(style->paragraph) {
     	char tabstring[255];
 	int i;
-       	[(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] setFloatValue:style->paragraph->indent1st];
-        [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] setFloatValue:style->paragraph->indent2nd];
+       	[(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] setFloatValue:style->paragraph.firstLineHeadIndent];
+        [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] setFloatValue:style->paragraph.headIndent];
 	tabstring[0]=0;
 	for(NSTextTab *tab in style->paragraph.tabStops) {
 	    sprintf(tabstring+strlen(tabstring), "%.0f ", tab.location);
@@ -127,8 +127,8 @@ static NSSavePanel * save_panel;		/* Keep a Save panel too */
     name = 0;
     
     if (!style->paragraph) style->paragraph = malloc(sizeof(*(style->paragraph)));
-    style->paragraph->indent1st = [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] floatValue];
-    style->paragraph->indent2nd = [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] floatValue];
+    style->paragraph.firstLineHeadIndent = [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] floatValue];
+    style->paragraph.headIndent = [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] floatValue];
 
     return self;
 }

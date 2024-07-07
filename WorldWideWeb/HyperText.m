@@ -165,9 +165,9 @@ static float page_width()
 	    int tab;
 	    printf("\tParagraph style %i\n", p);
 	    printf("\tIndents: first=%f, left=%f\n",
-	    	p->indent1st, p->indent2nd);
+	    	p.firstLineHeadIndent, p.headIndent);
 	    printf("\tAlignment type=%i, %i tabs:\n",
-	    	p->alignment, p->numTabs);
+	    	p.alignment, p->numTabs);
 	    for (tab=0; tab<p->numTabs; tab++) {
 	    	printf("\t    Tab kind=%i at %f\n",
 			p->tabs[tab].kind, p->tabs[tab].x);
