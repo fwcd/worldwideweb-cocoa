@@ -55,52 +55,49 @@ HTStyle * HTStyleFree(HTStyle * self)
 
 HTStyle * HTStyleRead(HTStyle * style, NSStream * stream)
 {
-    char myTag[STYLE_NAME_LENGTH];
-    char fontName[STYLE_NAME_LENGTH];
-    NSParagraphStyle *p;
-    int	tab;
-    int gotpara;		/* flag: have we got a paragraph definition? */
-	
-    NXScanf(stream, "%s%i%s%f%i",
-	myTag,
-	&style->SGMLType,
-	fontName,
-	&style->fontSize,
-	&gotpara);
-    if (gotpara) {
-	if (!style->paragraph) {
-	    style->paragraph = malloc(sizeof(*(style->paragraph)));
-	    style->paragraph->tabs = 0;
-	}
-	p = style->paragraph;
-	NXScanf(stream, "%f%f%f%f%hd%f%f%hd",
-	    &p.firstLineHeadIndent,
-	    &p.headIndent,
-	    &p.lineHt /* FIXME: Non-existent */,
-	    &p.lineSpacing,
-	    &p.alignment,
-	    &style->spaceBefore,
-	    &style->spaceAfter,
-	    &p->numTabs);
-	if (p->tabs) free(p->tabs);
-	p->tabs = malloc(p->numTabs * sizeof(p->tabs[0]));
-	for (tab=0; tab < p->numTabs; tab++) {
-	    NXScanf(stream, "%hd%f",
-		    &p->tabs[tab].kind,
-		    &p->tabs[tab].x);
-	}
-    } else { /* No paragraph */
-        if (style->paragraph) {
-    	    free(style->paragraph);
-    	    style->paragraph = 0;
-	}
-    } /* if no paragraph */
-    StrAllocCopy(style->SGMLTag, myTag);
-    if (strcmp(fontName, NONE_STRING)==0)
-        style->font = 0;
-    else
-        style->font = [NSFont fontWithName:[NSString stringWithCString:fontName encoding:NSUTF8StringEncoding] size:style->fontSize];
-    return 0;
+  char myTag[STYLE_NAME_LENGTH];
+  char fontName[STYLE_NAME_LENGTH];
+  NSMutableParagraphStyle *p;
+  int gotpara;    /* flag: have we got a paragraph definition? */
+
+  NXScanf(stream, "%s%i%s%f%i",
+    myTag,
+    &style->SGMLType,
+    fontName,
+    &style->fontSize,
+    &gotpara);
+  if (gotpara) {
+    if (!style->paragraph) {
+      style->paragraph = [[NSMutableParagraphStyle alloc] init];
+    }
+    p = style->paragraph;
+    int tabCount = 0;
+    NXScanf(stream, "%f%f%f%f%hd%f%f%hd",
+      &p.firstLineHeadIndent,
+      &p.headIndent,
+      &p.lineHt /* FIXME: Non-existent */,
+      &p.lineSpacing,
+      &p.alignment,
+      &style->spaceBefore,
+      &style->spaceAfter,
+      &tabCount);
+    for (int tab=0; tab < tabCount; tab++) {
+      NSTextTabType type;
+      CGFloat location;
+      NXScanf(stream, "%hd%f", &type, &location);
+      [p addTabStop:[[NSTextTab alloc] initWithType:type location:location]];
+    }
+  } else { /* No paragraph */
+    if (style->paragraph) {
+      style->paragraph = 0;
+    }
+  } /* if no paragraph */
+  StrAllocCopy(style->SGMLTag, myTag);
+  if (strcmp(fontName, NONE_STRING)==0)
+    style->font = 0;
+  else
+    style->font = [NSFont fontWithName:[NSString stringWithCString:fontName encoding:NSUTF8StringEncoding] size:style->fontSize];
+  return 0;
 }
 
 
@@ -126,12 +123,12 @@ HTStyle * HTStyleWrite(HTStyle * style, NSStream * stream)
 	    p.alignment,
 	    style->spaceBefore,
 	    style->spaceAfter,
-	    p->numTabs);
+	    p.tabStops.count);
 	    
-	for (tab=0; tab < p->numTabs; tab++)
+	for (tab=0; tab < p.tabStops.count; tab++)
 	    NXPrintf(stream, "\t%i %f\n",
-		    p->tabs[tab].kind,
-		    p->tabs[tab].x);
+		    p.tabStops[tab].kind,
+		    p.tabStops[tab].x);
 	}
     return style;
 }
@@ -159,14 +156,14 @@ HTStyle * HTStyleDump(HTStyle * style)
 	    p.lineHt /* FIXME: Non-existent */,
 	    p.lineSpacing,
 	    p.alignment,
-	    p->numTabs,
+	    p.tabStops.count,
 	    style->spaceBefore,
 	    style->spaceAfter);
 	    
-	for (tab=0; tab < p->numTabs; tab++) {
+	for (tab=0; tab < p.tabStops.count; tab++) {
 	    printf("\t\tTab kind=%i at %.0f\n",
-		    p->tabs[tab].kind,
-		    p->tabs[tab].x);
+		    p.tabStops[tab].kind,
+		    p.tabStops[tab].x);
     	}
 	printf("\n");
     } /* if paragraph */
@@ -224,7 +221,7 @@ HTStyle * HTStyleForRun(HTStyleSheet *self, NXRun *run)
 	    if (sp.firstLineHeadIndent ==	rp.firstLineHeadIndent)	match = match+1;
 	    if (sp.headIndent ==	rp.headIndent)	match = match+2;
 	    if (sp.lineHt /* FIXME: Non-existent */ ==		rp.lineHt /* FIXME: Non-existent */)	match = match+1;
-	    if (sp->numTabs ==		rp->numTabs)	match = match+1;
+	    if (sp.tabStops.count ==		rp.tabStops.count)	match = match+1;
 	    if (sp.alignment ==	rp.alignment)	match = match+3;
 	    if (scan->font ==		run->font)	match = match+10;
 	    if (match>bestMatch) {

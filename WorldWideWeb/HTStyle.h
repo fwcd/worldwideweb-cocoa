@@ -29,7 +29,7 @@ typedef struct _HTStyle {
 
 	NSFont		*font;		/* The character representation */
 	HTCoord		fontSize;	/* The size of font, not independent */
-	NSParagraphStyle	*paragraph;	/* Null means not defined */
+	NSMutableParagraphStyle	*paragraph;	/* Null means not defined */
 #ifdef V1
 	float		textColor;	/* Colour of text */
 #else
