@@ -98,11 +98,11 @@ const char * ask_name(HyperText * hint, int format)
         save_panel = [SavePanel new];	//	Keep between invocations
     }
     
-    if (format==WWW_HTML) [save_panel setRequiredFileType: "html"];
-    else if (format==WWW_RICHTEXT) [save_panel setRequiredFileType: "rtf"];
-    else if (format==WWW_PLAINTEXT) [save_panel setRequiredFileType: "txt"];
-    else if (format==WWW_POSTSCRIPT) [save_panel setRequiredFileType: "ps"];
-    else [save_panel setRequiredFileType: ""];
+    if (format==WWW_HTML) [save_panel setRequiredFileType:@"html"];
+    else if (format==WWW_RICHTEXT) [save_panel setRequiredFileType:@"rtf"];
+    else if (format==WWW_PLAINTEXT) [save_panel setRequiredFileType:@"txt"];
+    else if (format==WWW_POSTSCRIPT) [save_panel setRequiredFileType:@"ps"];
+    else [save_panel setRequiredFileType:@""];
     
     suggestion = HTLocalName([[hint nodeAnchor]address]);
     slash = strrchr(suggestion, '/');	//	Point to last slash
@@ -111,7 +111,7 @@ const char * ask_name(HyperText * hint, int format)
 	status = [save_panel runModalForDirectory:suggestion file:slash];
     } else {
         if (TRACE) printf ("No slash in directory!!\n");
-	status = [save_panel runModalForDirectory:"." file:suggestion];
+	status = [save_panel runModalForDirectory:@"." file:suggestion];
     }
     free(suggestion);
     
@@ -392,13 +392,13 @@ const char * existing_filename()
 	if (slash) {
 	    *slash++ = 0;			/* Separate directory and filename */
 	    status = [openPanel runModalForDirectory:suggestion
-	    			file:""
+	    			file:@""
 				types:&typelist];
 	    // (was: file:slash but this is silly as that is already open.)
 	} else {
             if (TRACE) printf ("No slash in directory!!\n");
-	    status = [openPanel runModalForDirectory:"."
-	    	file:"" types:&typelist];
+	    status = [openPanel runModalForDirectory:@"."
+	    	file:@"" types:&typelist];
 	    // (was: file:suggestion but this is silly as above)
 	}
 	free(suggestion);
