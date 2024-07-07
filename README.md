@@ -4,6 +4,8 @@ An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://
 
 ## Background
 
+The main motivation behind this port is mostly academic curiosity, specifically learning about the implementation of the first web browser (how HTML rendering works etc.) and learning about the NeXTStep API. The goal is to eventually have a working Cocoa application that stays as faithful to the original code as possible.
+
 ### The NeXTStep API vs. Cocoa/AppKit
 
 While the original NeXTStep API and modern AppKit still share substantial similarities, many things have changed over the last 30 years. The most noticeable difference is perhaps the `NS` prefix, which replaced the older `NX` prefix, but more subtle changes exist too, specifically classes like [`NSParagraphStyle`](https://developer.apple.com/documentation/uikit/nsparagraphstyle?language=objc), which are more encapsulated (i.e. expose a lot less of their internal state) than back in the NeXTStep days. This unfortunately complicates the migration, because much of the rendering engine (see e.g. the [`HyperText`](https://github.com/fwcd/worldwideweb-cocoa/blob/4276fe7bd1e70c24a6d70fc96a13e06aa5f6fc67/WorldWideWeb/HyperText.m) class) relied on these internals of [`NSText`](https://developer.apple.com/documentation/appkit/nstext) (or `Text` in the NeXTStep API) etc.
