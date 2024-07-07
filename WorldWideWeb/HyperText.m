@@ -1078,7 +1078,7 @@ BOOL run_match(NXRun* r1, NXRun *r2)
 //    [self setMonoFont:YES];		Seems to leave it in a strange state
     [self setHorizontallyResizable:YES];
     [self setNoWrap];
-    [self setFont:[Font newFont:"Ohlfs" size:10.0]];	// @@ Should be XMP
+    [self setFont:[NSFont fontWithName:@"Ohlfs" size:10.0]];	// @@ Should be XMP
     [super readText:stream];
     format = WWW_PLAINTEXT;				// Remember
     

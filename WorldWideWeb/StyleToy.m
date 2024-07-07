@@ -111,9 +111,9 @@ static NSSavePanel * save_panel;		/* Keep a Save panel too */
     StrAllocCopy(name, [[(NSFormCell *)[NameForm cellAtIndex:0] stringValue] cStringUsingEncoding:NSUTF8StringEncoding]);
     stripped = HTStrip(name);
     if (*stripped) {
-        id font;
-	font = [Font newFont:stripped size:style->fontSize];
-	if (font) style->font = font;
+        NSFont *font;
+        font = [NSFont fontWithName:[NSString stringWithCString:stripped encoding:NSUTF8StringEncoding] size:style->fontSize];
+        if (font) style->font = font;
     }
     free(name);
     name = 0;

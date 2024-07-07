@@ -99,7 +99,7 @@ HTStyle * HTStyleRead(HTStyle * style, NSStream * stream)
     if (strcmp(fontName, NONE_STRING)==0)
         style->font = 0;
     else
-        style->font = [Font newFont:fontName size:style->fontSize];
+        style->font = [NSFont fontWithName:[NSString stringWithCString:fontName encoding:NSUTF8StringEncoding] size:style->fontSize];
     return 0;
 }
 

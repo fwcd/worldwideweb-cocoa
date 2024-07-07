@@ -27,7 +27,7 @@ typedef struct _HTStyle {
 	char *		SGMLTag;	/* Tag name to start */
 	SGML_tagtype	SGMLType;	/* How to end it */
 
-	id		font;		/* The character representation */
+	NSFont		*font;		/* The character representation */
 	HTCoord		fontSize;	/* The size of font, not independent */
 	NSParagraphStyle	*paragraph;	/* Null means not defined */
 #ifdef V1
