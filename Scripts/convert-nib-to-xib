@@ -21,6 +21,12 @@ import xml.etree.ElementTree as ET
 class State:
     visited_objects: set[typedstream.GenericArchivedObject] = field(default_factory=set)
 
+def convert_class_name(c: str) -> str:
+    if c.startswith('IB'):
+        return c
+    else:
+        return f"NS{c.removeprefix('NX').removesuffix('Template')}"
+
 def convert_value(value: Any, state: State) -> ET.Element:
     if value is None:
         return ET.Element('nil')
@@ -37,11 +43,23 @@ def convert_value(value: Any, state: State) -> ET.Element:
         element.text = value.decode()
         return element
     elif isinstance(value, typedstream.Class):
-        element = ET.Element('class', attrib={'name': value.name.decode(), **({'superclass': value.superclass.name.decode()} if value.superclass else {})})
+        element = ET.Element(
+            'class',
+            attrib={
+                'name': convert_class_name(value.name.decode()),
+                **({'superclass': convert_class_name(value.superclass.name.decode())} if value.superclass else {}),
+            },
+        )
         return element
     elif isinstance(value, typedstream.GenericArchivedObject):
         if value in state.visited_objects:
-            return ET.Element('reference', attrib={'class': value.clazz.name.decode(), 'ref': str(id(value))})
+            return ET.Element(
+                'reference',
+                attrib={
+                    'class': convert_class_name(value.clazz.name.decode()),
+                    'ref': str(id(value)),
+                },
+            )
         state.visited_objects.add(value)
 
         return convert_object(value, name='object', state=state)
@@ -58,7 +76,13 @@ def convert_group(group: typedstream.TypedGroup, state: State) -> Iterable[ET.El
         yield convert_value(value, state=state)
 
 def convert_object(object: typedstream.GenericArchivedObject, name: str, state: State) -> ET.Element:
-    element = ET.Element(name, attrib={'class': object.clazz.name.decode(), 'id': str(id(object))} if name == 'object' else {})
+    element = ET.Element(
+        name,
+        attrib={
+            'class': convert_class_name(object.clazz.name.decode()),
+            'id': str(id(object))
+        } if name == 'object' else {},
+    )
 
     for group in object.contents:
         group_element = ET.SubElement(element, 'group')
