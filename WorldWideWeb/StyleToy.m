@@ -27,8 +27,8 @@ extern char * appDirectory;		/* Pointer to directory for application */
        HTStyleSheet * styleSheet = 0;
 
 static HTStyle * style;			/* Current Style */
-static OpenPanel * open_panel;		/* Keep the open panel alive */
-static SavePanel * save_panel;		/* Keep a Save panel too */
+static NSOpenPanel * open_panel;		/* Keep the open panel alive */
+static NSSavePanel * save_panel;		/* Keep a Save panel too */
 
 //	Create new one:
 
@@ -149,7 +149,7 @@ static SavePanel * save_panel;		/* Keep a Save panel too */
     char *typelist[2] = {"style",(char *)0};	//	Extension must be ".style."
 
     if (!open_panel) {
-    	open_panel = [OpenPanel new];
+    	open_panel = [NSOpenPanel new];
         [open_panel allowMultipleFiles:NO];
     }
     
@@ -235,7 +235,7 @@ static SavePanel * save_panel;		/* Keep a Save panel too */
     const char * filename;		//	The name chosen
 
     if (!save_panel) {
-        save_panel = [SavePanel new];	//	Keep between invocations
+        save_panel = [NSSavePanel new];	//	Keep between invocations
     }
     
     StrAllocCopy(suggestion,styleSheet->name);

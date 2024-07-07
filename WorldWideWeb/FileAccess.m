@@ -91,11 +91,11 @@ const char * ask_name(HyperText * hint, int format)
     char * 		suggestion;
     char * 		slash;
     int			status;
-    static SavePanel * 	save_panel;		/* Keep a Save panel alive  */
+    static NSSavePanel * 	save_panel;		/* Keep a Save panel alive  */
     
     if (!hint) return 0;
     if (!save_panel) {
-        save_panel = [SavePanel new];	//	Keep between invocations
+        save_panel = [NSSavePanel new];	//	Keep between invocations
     }
     
     if (format==WWW_HTML) [save_panel setRequiredFileType:@"html"];
@@ -375,13 +375,13 @@ const char * existing_filename()
     char * slash;
     int	status;
     char * typelist = 0;		//	Any extension.
-    static OpenPanel * openPanel=0;
+    static NSOpenPanel * openPanel=0;
 
 
 //	Get The Filename from the User
     
     if (!openPanel) {
-    	openPanel = [OpenPanel new];
+    	openPanel = [NSOpenPanel new];
     	[openPanel allowMultipleFiles:NO];
     }
 
