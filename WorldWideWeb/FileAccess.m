@@ -55,9 +55,10 @@ extern char * appDirectory;		/* Pointer to directory for application */
 
 - save: (HyperText *)HT inFile:(const char *)filename format:(int)format
 {
-    NSStream * s;				//	The file stream
+    NSOutputStream * s;				//	The file stream
     
-    s = NXOpenMemory(NULL, 0, NX_WRITEONLY);
+    s = [[NSOutputStream alloc] initToFileAtPath:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding] append:NO];
+    [s open];
 
     if (format==WWW_HTML) {
     	char *saveName = WWW_nameOfFile(filename);	//	The WWW address
@@ -68,12 +69,9 @@ extern char * appDirectory;		/* Pointer to directory for application */
     else if (format==WWW_PLAINTEXT || format==WWW_SOURCE) [HT writeText:s];
     else fprintf(stderr, "HT/File: Unknown format!\n"); 
     
-    if (TRACE) printf("HT file: %li bytes in file `%s' format %i.\n",
-    	NXTell(s), filename, format);
+    if (TRACE) printf("HT file: file `%s' in format %i.\n", filename, format);
 	
-    NXFlush(s);			/* Try to get over missing end */
-    NXSaveToFile(s, filename);
-    NXCloseMemory(s, NX_FREEBUFFER);
+    [s close];
     return self;
 }
 
