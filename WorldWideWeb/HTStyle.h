@@ -48,8 +48,8 @@ extern HTStyle * HTStyleNew();
 extern HTStyle * HTStyleFree(HTStyle * self);
 extern HTStyle * HTStyleRead(HTStyle * self, NSStream * stream);
 extern HTStyle * HTStyleWrite(HTStyle * self, NSStream * stream);
-extern HTStyle * HTStyleApply(HTStyle * self, Text * text);
-extern HTStyle * HTStylePick(HTStyle * self, Text * text);
+extern HTStyle * HTStyleApply(HTStyle * self, NSText * text);
+extern HTStyle * HTStylePick(HTStyle * self, NSText * text);
 typedef struct _HTStyleSheet {
 	char *		name;
 	HTStyle *	styles;
