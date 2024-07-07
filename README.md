@@ -2,9 +2,12 @@
 
 An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wiki/WorldWideWeb) web browser.
 
+> [!IMPORTANT]
+> This project is still in its early stages and does even not compile yet due to the large number of to-be-ported legacy APIs. Anyone interested is highly encouraged to explore the codebase and hack on it though.
+
 ## Background
 
-The main motivation behind this port is mostly academic curiosity, specifically learning about the implementation of the first web browser (how HTML rendering works etc.) and learning about the NeXTStep API. The goal is to eventually have a working Cocoa application that stays as faithful to the original code as possible.
+This port is mainly motivated by academic curiosity, specifically learning about the implementation of the first web browser (how HTML rendering works etc.) and the history of the NeXTStep API. The goal is to eventually have a working Cocoa application that stays as faithful to the original code as possible. This is not a small goal and may even be infeasible given the complexity of the project and potential need to replace or reimplement removed APIs.
 
 ### The NeXTStep API vs. Cocoa/AppKit
 
