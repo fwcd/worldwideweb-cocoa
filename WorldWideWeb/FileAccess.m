@@ -382,7 +382,7 @@ const char * existing_filename()
     
     if (!openPanel) {
     	openPanel = [NSOpenPanel new];
-    	[openPanel allowMultipleFiles:NO];
+    	[openPanel setAllowsMultipleSelection:NO];
     }
 
     HT = THIS_TEXT;			// Hypertext in main window, if selected.

@@ -150,7 +150,7 @@ static NSSavePanel * save_panel;		/* Keep a Save panel too */
 
     if (!open_panel) {
     	open_panel = [NSOpenPanel new];
-        [open_panel allowMultipleFiles:NO];
+        [open_panel setAllowsMultipleSelection:NO];
     }
     
     if (![open_panel runModalForTypes:typelist]) {
