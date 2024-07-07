@@ -46,7 +46,7 @@ void main(int argc, char *argv[])
     NSArray *tl;
     [[NSBundle mainBundle] loadNibNamed:@"WorldWideWeb.nib" owner:NSApp topLevelObjects:&tl];
 
-//	The deafult Margins seem to be 72, 72, 108, 108 which is a lot.    
+//	The default margins seem to be 72, 72, 108, 108 which is a lot.    
     {
         int leftM = int_default(@"LeftMargin");
         int rightM = int_default(@"RightMargin");
