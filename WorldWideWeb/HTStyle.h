@@ -10,6 +10,7 @@
 */
 
 #import <AppKit/AppKit.h>
+#import "NXShims.h"
 
 #define STYLE_NAME_LENGTH 80
 
