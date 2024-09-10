@@ -8,17 +8,13 @@
 #ifndef NXShims_h
 #define NXShims_h
 
+#import <AppKit/AppKit.h>
+
 /// These are largely just copied from Next Manual
 /// http://www.bitsavers.org/pdf/next/Release_1_Dec90/NEXTstep_Reference_Volume_1_Dec90.pdf
 /// http://www.bitsavers.org/pdf/next/Release_1_Dec90/NEXTstep_Reference_Volume_2_Dec90.pdf
 
-typedef struct NXRect {
-    NXPoint origin;
-    NXSize size;
-} NXRect;
-
-
-typedef struct NXTextBlock {
+typedef struct _NXTextBlock {
     struct _NXTextBlock *next; /* Next block in linked list */
     struct _NXTextBlock *prior; /* Previous block in linked list */
     struct _bFlags {
@@ -32,15 +28,15 @@ typedef struct NXTextBlock {
 /* Describes tabstop. */
 typedef struct _NXTabStop {
     short kind; /* Only NX_LEFTTAB implemented */
-    NXCoord x; /* x coordinate for stop */
+    CGFloat x; /* x coordinate for stop */
 } NXTabStop;
 
 /* Describes text layout and tab stops. */
 typedef struct _NXTextStyle {
-    NXCoord indent1st; /* How far first line in paragraph is */ /* indented */
-    NXCoord indent2nd; /* How far second and subsequent lines */ /* are indented */
-    NXCoord lineHt; /* Line height */
-    NXCoord descentLine; /* Distance from baseline to bottom of line */
+    CGFloat indent1st; /* How far first line in paragraph is */ /* indented */
+    CGFloat indent2nd; /* How far second and subsequent lines */ /* are indented */
+    CGFloat lineHt; /* Line height */
+    CGFloat descentLine; /* Distance from baseline to bottom of line */
     short alignment; /* Text alignment */
     short numTabs; /* Number of tab stops */
     NXTabStop *tabs; /* Array of tab stops */
