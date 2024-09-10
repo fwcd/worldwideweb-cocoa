@@ -130,7 +130,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     name = 0;
 
     if (!style->paragraph)
-        style->paragraph = malloc(sizeof(*(style->paragraph)));
+        style->paragraph = [[NSMutableParagraphStyle alloc] init];
     style->paragraph.firstLineHeadIndent = [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] floatValue];
     style->paragraph.headIndent = [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] floatValue];
 
