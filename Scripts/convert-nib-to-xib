@@ -106,11 +106,10 @@ class XIBNode:
     def add_object(self, class_or_tag_name: str, id: Optional[str]=None, **kwargs) -> Self:
         '''Adds an object under this node.'''
 
-        id = id or str(uuid4())
-
         assert len(class_or_tag_name) > 0
         is_custom = class_or_tag_name[0].isupper()
 
+        id = id or str(uuid4())
         child = ET.Element('customObject' if is_custom else class_or_tag_name, attrib={
             'id': id,
             **kwargs,
@@ -135,9 +134,11 @@ class XIBNode:
             self.connections = ET.Element('connections')
             self.element.append(self.connections)
         
+        id = str(uuid4())
         outlet = ET.Element('outlet', attrib={
             'property': property,
             'destination': destination if isinstance(destination, str) else destination.id,
+            'id': id,
         })
         self.connections.append(outlet)
     
@@ -172,6 +173,9 @@ class XIB:
 
         # Add window
         window = self.objects.add_object('window', title='WorldWideWeb')
+        window.add('rect', key='contentRect', x='0', y='0', width='480', height='360')
+        window.add_object('view', key='contentView')
+        window.connect('delegate', app_delegate)
         app_delegate.connect('window', window)
 
     def add_node(self, name: str) -> XIBNode:
