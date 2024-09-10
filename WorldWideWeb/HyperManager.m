@@ -12,11 +12,10 @@
 #import "HTParse.h"
 #import "HTUtils.h"
 #import "HyperText.h"
+#import "WWWPageLayout.h"
 #import <AppKit/AppKit.h>
 
 @implementation HyperManager
-
-#import "WWWPageLayout.h"
 
 #define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] docView]
 
