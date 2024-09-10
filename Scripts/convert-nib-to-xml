@@ -1,0 +1,119 @@
+#!/usr/bin/env python3
+
+# A small tool to convert a legacy NeXTStep NIB bundle to an XML. Note that
+# the tool cannot handle many of the newer versions of the NIB file format
+# and is expressly built to handle the reverse engineered WorldWideWeb.nib
+
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Iterable
+
+import argparse
+import typedstream
+import xml.etree.ElementTree as ET
+
+# TODO: Reverse-engineer the parameters of some common classes (e.g. View)
+# TODO: Use a better order for "expanding" referenced objects (e.g. breadth-first)
+
+@dataclass
+class Options:
+    convert_class_names: bool
+
+@dataclass
+class State:
+    options: Options
+    visited_objects: set[typedstream.GenericArchivedObject] = field(default_factory=set)
+
+def convert_class_name(c: str, state: State) -> str:
+    if not state.options.convert_class_names or c.startswith('IB'):
+        return c
+    else:
+        return f"NS{c.removeprefix('NX').removesuffix('Template')}"
+
+def convert_value(value: Any, state: State) -> ET.Element:
+    if value is None:
+        return ET.Element('nil')
+    elif isinstance(value, int):
+        element = ET.Element('int')
+        element.text = str(value)
+        return element
+    elif isinstance(value, float):
+        element = ET.Element('float')
+        element.text = str(value)
+        return element
+    elif isinstance(value, bytes):
+        element = ET.Element('string')
+        element.text = value.decode()
+        return element
+    elif isinstance(value, typedstream.Class):
+        element = ET.Element(
+            'class',
+            attrib={
+                'name': convert_class_name(value.name.decode(), state=state),
+                **({'superclass': convert_class_name(value.superclass.name.decode(), state=state)} if value.superclass else {}),
+            },
+        )
+        return element
+    elif isinstance(value, typedstream.GenericArchivedObject):
+        if value in state.visited_objects:
+            return ET.Element(
+                'reference',
+                attrib={
+                    'class': convert_class_name(value.clazz.name.decode(), state=state),
+                    'ref': str(id(value)),
+                },
+            )
+        state.visited_objects.add(value)
+
+        return convert_object(value, name='obj', state=state)
+    elif isinstance(value, typedstream.types.nextstep.List):
+        element = ET.Element('list')
+        for item in value.elements:
+            element.append(convert_value(item, state=state))
+        return element
+    else:
+        return ET.Element('unknown', attrib={'name': str(type(value))})
+
+def convert_group(group: typedstream.TypedGroup, state: State) -> Iterable[ET.Element]:
+    for value in group.values:
+        yield convert_value(value, state=state)
+
+def convert_object(obj: typedstream.GenericArchivedObject, name: str, state: State) -> ET.Element:
+    element = ET.Element(
+        name,
+        attrib={
+            'class': convert_class_name(obj.clazz.name.decode(), state=state),
+            'id': str(id(obj))
+        } if name == 'obj' else {},
+    )
+
+    for group in obj.contents:
+        group_element = ET.SubElement(element, 'group')
+        for value in convert_group(group, state=state):
+            group_element.append(value)
+
+    return element
+
+def convert_root(obj: typedstream.GenericArchivedObject, options: Options):
+    root = convert_object(obj, name='data', state=State(options=options))
+    return ET.ElementTree(root)
+
+def main():
+    parser = argparse.ArgumentParser(description='Converts a legacy NeXTStep NIB to XML.')
+    parser.add_argument('-o', '--output', required=True, type=Path, help='The path to the output XML.')
+    parser.add_argument('--convert-class-names', action=argparse.BooleanOptionalAction, default=True, help="Convert class names to Cocoa's NS prefix.")
+    parser.add_argument('input', type=Path, help='The path to the input NIB.')
+
+    args = parser.parse_args()
+    options = Options(
+        convert_class_names=args.convert_class_names,
+    )
+
+    nib = typedstream.unarchive_from_file(args.input / 'data.nib')
+    xml = convert_root(nib, options=options)
+
+    ET.indent(xml, space=' ' * 2)
+    xml.write(args.output, encoding='utf-8')
+
+if __name__ == '__main__':
+    main()
