@@ -131,12 +131,8 @@ class XIB:
         quit_item = app_menu.add_menu_item(title='Quit WorldWideWeb', keyEquivalent='q')
         quit_item.connect_action('terminate:', first_responder)
 
-        file_item = main_menu.add_menu_item(title='File')
-        file_menu = file_item.add_submenu()
-
         self.main_menu = main_menu
         self.app_menu = app_menu
-        self.file_menu = file_menu
 
         # Add window
         window = self.objects.add_object('window', title='WorldWideWeb')
@@ -177,23 +173,26 @@ class XIBConverter:
         self.xib = XIB()
         self.visited_objects: set[typedstream.GenericArchivedObject] = set()
     
-    def traverse_menu_cell(self, cell: typedstream.GenericArchivedObject, level: int):
+    def convert_menu_cell(self, cell: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int):
         assert cell.clazz.name == b'MenuCell', cell.clazz.name
 
-        title = cell.contents[0].values[0]
-
+        title = cell.contents[0].values[0].decode()
         submenu = cell.contents[1].values[0]
-        if isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate':
-            self.traverse_menu(submenu, level=level)
-        else:
-            print(f"{'  ' * level}{title.decode()}")
 
-    def traverse_menu(self, menu: typedstream.GenericArchivedObject, level: int=0):
+        xib_item = xib_menu.add_menu_item(title=title)
+
+        if isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate':
+            xib_submenu = xib_item.add_submenu()
+            self.convert_menu(submenu, xib_submenu, level=level)
+        else:
+            print(f"{'  ' * level}{title}")
+
+    def convert_menu(self, menu: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int=0):
         assert menu.clazz.name == b'MenuTemplate', menu.clazz.name
 
-        title = menu.contents[2].values[0]
+        title = menu.contents[2].values[0].decode()
         matrix = menu.contents[2].values[1]
-        print(f"{'  ' * level}{title.decode()} @ {id(menu)}")
+        print(f"{'  ' * level}{title} @ {id(menu)}")
         assert isinstance(matrix, typedstream.GenericArchivedObject) and matrix.clazz.name == b'Matrix'
 
         matrix_list = matrix.contents[12].values[0]
@@ -201,10 +200,10 @@ class XIBConverter:
 
         for cell in matrix_list.elements:
             assert isinstance(cell, typedstream.GenericArchivedObject)
-            self.traverse_menu_cell(cell, level=level + 1)
+            self.convert_menu_cell(cell, xib_menu, level=level + 1)
 
     def traverse_main_menu(self, menu: typedstream.GenericArchivedObject):
-        self.traverse_menu(menu)
+        self.convert_menu(menu, self.xib.main_menu)
 
     def traverse_group(self, group: typedstream.TypedGroup):
         if len(group.values) == 2 and group.values[1] == b'MainMenu':
@@ -216,12 +215,6 @@ class XIBConverter:
 
     def traverse_object(self, obj: typedstream.GenericArchivedObject):
         self.visited_objects.add(obj)
-
-        clazz = obj.clazz.name.decode()
-        match clazz:
-            case 'MenuCell':
-                title = obj.contents[0].values[0].decode()
-                self.xib.file_menu.add_menu_item(title=title)
 
         for group in obj.contents:
             self.traverse_group(group)
