@@ -31,9 +31,9 @@ char *appDirectory; /* Name of the directory containing the application */
 PRIVATE FileAccess *fileAccess = nil;
 
 + new {
-    self = [super new];
-    accesses = [NSMutableArray new]; // Create and clear list
-    return self;
+    HyperManager *obj = [super new];
+    obj->accesses = [NSMutableArray new]; // Create and clear list
+    return obj;
 }
 
 - traceOn:sender {
