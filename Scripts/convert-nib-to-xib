@@ -177,6 +177,43 @@ class State:
     xib: XIB
     visited_objects: set[typedstream.GenericArchivedObject] = field(default_factory=set)
 
+def traverse_menu_cell(cell: typedstream.GenericArchivedObject, state: State, level: int):
+    assert cell.clazz.name == b'MenuCell', cell.clazz.name
+
+    title = cell.contents[0].values[0]
+
+    submenu = cell.contents[1].values[0]
+    if isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate':
+        traverse_menu(submenu, state=state, level=level)
+    else:
+        print(f"{'  ' * level}{title.decode()}")
+
+def traverse_menu(menu: typedstream.GenericArchivedObject, state: State, level: int=0):
+    assert menu.clazz.name == b'MenuTemplate', menu.clazz.name
+
+    title = menu.contents[2].values[0]
+    matrix = menu.contents[2].values[1]
+    print(f"{'  ' * level}{title.decode()} @ {id(menu)}")
+    assert isinstance(matrix, typedstream.GenericArchivedObject) and matrix.clazz.name == b'Matrix'
+
+    matrix_list = matrix.contents[12].values[0]
+    assert isinstance(matrix_list, typedstream.types.nextstep.List), type(matrix_list)
+
+    for cell in matrix_list.elements:
+        assert isinstance(cell, typedstream.GenericArchivedObject)
+        traverse_menu_cell(cell, state=state, level=level + 1)
+
+def traverse_main_menu(menu: typedstream.GenericArchivedObject, state: State):
+    traverse_menu(menu, state=state)
+
+def traverse_group(group: typedstream.TypedGroup, state: State):
+    if len(group.values) == 2 and group.values[1] == b'MainMenu':
+        traverse_main_menu(group.values[0], state=state)
+    else:
+        for value in group.values:
+            if isinstance(value, typedstream.GenericArchivedObject) and value not in state.visited_objects:
+                traverse_object(value, state=state)
+
 def traverse_object(obj: typedstream.GenericArchivedObject, state: State):
     state.visited_objects.add(obj)
 
@@ -186,11 +223,8 @@ def traverse_object(obj: typedstream.GenericArchivedObject, state: State):
             title = obj.contents[0].values[0].decode()
             state.xib.file_menu.add_menu_item(title=title)
 
-    # Traverse children
     for group in obj.contents:
-        for value in group.values:
-            if isinstance(value, typedstream.GenericArchivedObject) and value not in state.visited_objects:
-                traverse_object(value, state=state)
+        traverse_group(group, state=state)
 
 def convert_root(obj: typedstream.GenericArchivedObject, options: Options) -> XIB:
     xib = XIB()
