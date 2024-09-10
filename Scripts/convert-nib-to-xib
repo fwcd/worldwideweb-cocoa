@@ -68,7 +68,7 @@ def convert_value(value: Any, state: State) -> ET.Element:
             )
         state.visited_objects.add(value)
 
-        return convert_object(value, name='object', state=state)
+        return convert_object(value, name='obj', state=state)
     elif isinstance(value, typedstream.types.nextstep.List):
         element = ET.Element('list')
         for item in value.elements:
@@ -81,16 +81,16 @@ def convert_group(group: typedstream.TypedGroup, state: State) -> Iterable[ET.El
     for value in group.values:
         yield convert_value(value, state=state)
 
-def convert_object(object: typedstream.GenericArchivedObject, name: str, state: State) -> ET.Element:
+def convert_object(obj: typedstream.GenericArchivedObject, name: str, state: State) -> ET.Element:
     element = ET.Element(
         name,
         attrib={
-            'class': convert_class_name(object.clazz.name.decode(), state=state),
-            'id': str(id(object))
-        } if name == 'object' else {},
+            'class': convert_class_name(obj.clazz.name.decode(), state=state),
+            'id': str(id(obj))
+        } if name == 'obj' else {},
     )
 
-    for group in object.contents:
+    for group in obj.contents:
         group_element = ET.SubElement(element, 'group')
         for value in convert_group(group, state=state):
             group_element.append(value)
@@ -98,6 +98,15 @@ def convert_object(object: typedstream.GenericArchivedObject, name: str, state: 
     return element
 
 class XIB:
+    root: ET.Element
+    dependencies: ET.Element
+    objects: ET.Element
+
+    tree: ET.ElementTree
+
+    id_to_object: dict[str, ET.Element]
+    id_to_connections: dict[str, ET.Element]
+
     def __init__(self):
         self.root = ET.Element('document', attrib={
             'type': 'com.apple.InterfaceBuilder3.Cocoa.XIB',
@@ -109,38 +118,73 @@ class XIB:
             'customObjectInstantiationMethod': 'direct',
         })
 
-        self.deps = ET.Element('dependencies')
-        self.deps.append(ET.Element('plugIn', attrib={'identifier': 'com.apple.InterfaceBuilder.CocoaPlugin', 'version': '22690'}))
-        self.deps.append(ET.Element('capability', attrib={'name': 'documents saved in the Xcode 8 format', 'minToolsVersion': '8.0'}))
-        self.root.append(self.deps)
+        self.dependencies = ET.Element('dependencies')
+        self.dependencies.append(ET.Element('plugIn', attrib={'identifier': 'com.apple.InterfaceBuilder.CocoaPlugin', 'version': '22690'}))
+        self.dependencies.append(ET.Element('capability', attrib={'name': 'documents saved in the Xcode 8 format', 'minToolsVersion': '8.0'}))
+        self.root.append(self.dependencies)
 
-        self.objs = ET.Element('objects')
-        self.root.append(self.objs)
+        self.objects = ET.Element('objects')
+        self.root.append(self.objects)
 
+        self.id_to_object = {}
+        self.id_to_connections = {}
+
+        # Add placeholders
+        files_owner = self.add_object('NSApplication', id='-2', userLabel="File's Owner")
         self.add_object('FirstResponder', id='-1', userLabel='First Responder')
-        self.add_object('NSApplication', id='-2', userLabel="File's Owner")
         self.add_object('NSObject', id='-3', userLabel='Application')
 
-        window = ET.Element('window', attrib={'title': 'WorldWideWeb'})
-        self.objs.append(window)
+        # Add custom objects
+        app_delegate = self.add_object('AppDelegate')
+        self.connect(files_owner, 'delegate', app_delegate)
 
+        window = ET.Element('window', attrib={'title': 'WorldWideWeb'})
+        self.objects.append(window)
 
         self.tree = ET.ElementTree(self.root)
     
     def add_object(self, custom_class: str, id: Optional[str]=None, **kwargs) -> str:
+        '''Adds an object of the given class.'''
+
         id = id or str(uuid4())
-        self.objs.append(ET.Element('customObject', attrib={'id': id, **kwargs}))
+
+        obj = ET.Element('customObject', attrib={'id': id, **kwargs, 'customClass': custom_class})
+        self.objects.append(obj)
+
+        self.id_to_object[id] = obj
+
+        return id
+
+    def connect(self, src_id: str, property: str, dest_id: str) -> str:
+        '''Adds an outlet to the given source referencing the given destination.'''
+
+        id = str(uuid4())
+
+        if src_id not in self.id_to_connections:
+            conns = ET.Element('connections')
+            obj = self.id_to_object[src_id]
+            obj.append(conns)
+            self.id_to_connections[src_id] = conns
+        
+        conns = self.id_to_connections[src_id]
+        outlet = ET.Element('outlet', attrib={'property': property, 'id': id, 'destination': dest_id})
+        conns.append(outlet)
+
         return id
 
     def indent(self, indent: str=' ' * 4):
+        '''Indents the tree with the given indent (4 spaces by default).'''
+
         ET.indent(self.tree, space=indent)
     
     def write(self, path: Path):
+        '''Writes the XIB to the given path.'''
+
         self.tree.write(path, encoding='utf-8', xml_declaration=True)
 
-def convert_root(object: typedstream.GenericArchivedObject, options: Options) -> XIB:
+def convert_root(obj: typedstream.GenericArchivedObject, options: Options) -> XIB:
     # TODO
-    # root.append(convert_object(object, name='data', state=State(options=options)))
+    # root.append(convert_object(obj, name='data', state=State(options=options)))
 
     xib = XIB()
     return xib
