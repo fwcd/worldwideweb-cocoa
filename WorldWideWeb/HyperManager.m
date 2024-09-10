@@ -58,7 +58,7 @@ PRIVATE FileAccess *fileAccess = nil;
 
 //			Access Management functions
 //
-- registerAccess:(HyperAccess *)access {
+- (void)registerAccess:(HyperAccess *)access {
     if (!accesses)
         accesses = [NSMutableArray new];
     if (TRACE)
