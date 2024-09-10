@@ -5,5 +5,4 @@ cd "$(dirname $0)/.."
 
 # TODO: We should move this to a Makefile or ideally a custom Xcode build rule
 
-Scripts/convert-nib-to-json WorldWideWeb/WorldWideWeb.nib -o Reference/WorldWideWeb.json
 Scripts/convert-nib-to-xib WorldWideWeb/WorldWideWeb.nib -o WorldWideWeb/WorldWideWeb.xib
