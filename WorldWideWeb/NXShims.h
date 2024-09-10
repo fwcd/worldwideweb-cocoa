@@ -8,9 +8,6 @@
 #ifndef NXShims_h
 #define NXShims_h
 
-
-#endif /* NXShims_h */
-
 /// These are largely just copied from Next Manual
 /// http://www.bitsavers.org/pdf/next/Release_1_Dec90/NEXTstep_Reference_Volume_1_Dec90.pdf
 /// http://www.bitsavers.org/pdf/next/Release_1_Dec90/NEXTstep_Reference_Volume_2_Dec90.pdf
@@ -83,3 +80,4 @@ typedef struct _NXRunArray {
     NXRun runs[1];
 } NXRunArray;
 
+#endif /* NXShims_h */
