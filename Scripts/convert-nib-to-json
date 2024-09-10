@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+# A small tool to convert a legacy NeXTStep NIB bundle to a JSON file. Note that
+# the tool cannot handle many of the newer versions of the NIB file format and
+# is expressly built to handle the reverse engineered WorldWideWeb.nib
+
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any
+
+import argparse
+import json
+import typedstream
+import xml.etree.ElementTree as ET
+
+# TODO: Reverse-engineer the parameters of some common classes (e.g. View)
+# TODO: Use a better order for "expanding" referenced objects (e.g. breadth-first)
+
+@dataclass
+class Options:
+    convert_class_names: bool
+
+@dataclass
+class State:
+    options: Options
+    visited_objects: set[typedstream.GenericArchivedObject] = field(default_factory=set)
+
+def convert_class_name(c: str, state: State) -> str:
+    if not state.options.convert_class_names or c.startswith('IB'):
+        return c
+    else:
+        return f"NS{c.removeprefix('NX').removesuffix('Template')}"
+
+def convert_value(value: Any, state: State) -> Any:
+    if value is None or isinstance(value, (int, float)):
+        return value
+    elif isinstance(value, bytes):
+        return value.decode()
+    elif isinstance(value, typedstream.Class):
+        return {
+            'type': 'class',
+            'name': convert_class_name(value.name.decode(), state=state),
+            **({'superclass': convert_class_name(value.superclass.name.decode(), state=state)} if value.superclass else {}),
+        }
+    elif isinstance(value, typedstream.GenericArchivedObject):
+        if value in state.visited_objects:
+            return {
+                'type': 'reference',
+                'class': convert_class_name(value.clazz.name.decode(), state=state),
+                'ref': str(id(value)),
+            }
+        state.visited_objects.add(value)
+
+        return convert_object(value, name='obj', state=state)
+    elif isinstance(value, typedstream.types.nextstep.List):
+        element = []
+        for item in value.elements:
+            element.append(convert_value(item, state=state))
+        return element
+    else:
+        return {
+            'type': 'unknown',
+            'name': str(type(value)),
+        }
+
+def convert_group(group: typedstream.TypedGroup, state: State) -> list[Any]:
+    return [convert_value(value, state=state) for value in group.values]
+
+def convert_object(obj: typedstream.GenericArchivedObject, name: str, state: State) -> dict[str, Any]:
+    return {
+        'name': name,
+        **({
+            'class': convert_class_name(obj.clazz.name.decode(), state=state),
+            'id': str(id(obj))
+        } if name == 'obj' else {}),
+        'contents': [
+            convert_group(group, state=state)
+            for group in obj.contents
+        ],
+    }
+
+def convert_root(obj: typedstream.GenericArchivedObject, options: Options) -> dict[str, Any]:
+    return convert_object(obj, name='data', state=State(options=options))
+
+def main():
+    parser = argparse.ArgumentParser(description='Converts a legacy NeXTStep NIB to a JSON file.')
+    parser.add_argument('-o', '--output', required=True, type=Path, help='The path to the output JSON.')
+    parser.add_argument('--convert-class-names', action=argparse.BooleanOptionalAction, default=True, help="Convert class names to Cocoa's NS prefix.")
+    parser.add_argument('input', type=Path, help='The path to the input NIB.')
+
+    args = parser.parse_args()
+    options = Options(
+        convert_class_names=args.convert_class_names,
+    )
+
+    nib = typedstream.unarchive_from_file(args.input / 'data.nib')
+    value = convert_root(nib, options=options)
+
+    with open(args.output, 'w') as f:
+        json.dump(value, f, indent=2)
+
+if __name__ == '__main__':
+    main()
