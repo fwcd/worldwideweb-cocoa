@@ -45,9 +45,10 @@ def traverse_object(obj: typedstream.GenericArchivedObject, state: State):
     for group in obj.contents:
         state.edges.append((node_from(obj), node_from(group)))
         for value in group.values:
-            state.edges.append((node_from(group), node_from(value)))
-            if isinstance(value, typedstream.GenericArchivedObject) and id(value) not in state.visited:
-                traverse_object(value, state=state)
+            if isinstance(value, typedstream.GenericArchivedObject):
+                state.edges.append((node_from(group), node_from(value)))
+                if id(value) not in state.visited:
+                    traverse_object(value, state=state)
 
 def traverse_root(obj: typedstream.GenericArchivedObject, state: State):
     traverse_object(obj, state=state)
