@@ -363,7 +363,7 @@ PRIVATE FileAccess *fileAccess = nil;
         id cv; // Content view
         int n = [windows count];
         for (i = 0; i < n; i++) {
-            Window *w = [windows objectAtIndex:i];
+            NSWindow *w = [windows objectAtIndex:i];
             if (w != thisWindow)
                 if (cv = [w contentView])
                     if ([cv respondsTo:@selector(docView)]) {
@@ -389,7 +389,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //	Run the page layout panel
 //
 - runPagelayout:sender {
-    PageLayout *pl = [WWWPageLayout new];
+    NSPageLayout *pl = [WWWPageLayout new];
     [pl runModal];
     return self;
 }
@@ -398,7 +398,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //	--------------------------------
 
 - setTitle:sender {
-    Window *thisWindow = [NSApp mainWindow];
+    NSWindow *thisWindow = [NSApp mainWindow];
     [thisWindow setTitle:[titleString stringValueAt:0]];
     [thisWindow setDocumentEdited:YES];
     return self;
