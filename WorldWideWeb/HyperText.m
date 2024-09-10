@@ -313,14 +313,13 @@ static float page_width() {
     //	Build a window around the text in order to display it.
 
 #define NX_ALLBUTTONS 7 // Fudge -- the followin methos is obsolete in 3.0:
-    window = [NSWindow newContent:&scroll_frame
-                            style:NX_TITLEDSTYLE
-                          backing:NX_BUFFERED
-                       buttonMask:NX_ALLBUTTONS
-                            defer:NO];  // display now
-    [window setDelegate:self];          // Get closure warning
-    [window makeKeyAndOrderFront:self]; // Make it visible
-    [window setBackgroundGray:1.0];     // White seems to be necessary.
+    window = [[NSWindow alloc] initWithContentRect:&scroll_frame
+                                             style:NSWindowStyleMaskTitled
+                                           backing:NSBackingStoreBuffered
+                                             defer:NO]; // display now
+    [window setDelegate:self];                          // Get closure warning
+    [window makeKeyAndOrderFront:self];                 // Make it visible
+    [window setBackgroundGray:1.0];                     // White seems to be necessary.
 
     scrollview = [NSScrollView newFrame:&scroll_frame];
     [scrollview setHasVerticalScroller:YES];

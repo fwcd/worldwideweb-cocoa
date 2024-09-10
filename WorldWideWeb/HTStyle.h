@@ -9,8 +9,8 @@
 **	It is a linked list of styles.
 */
 
-#import <AppKit/AppKit.h>
 #import "NXShims.h"
+#import <AppKit/AppKit.h>
 
 #define STYLE_NAME_LENGTH 80
 
