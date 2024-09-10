@@ -171,68 +171,65 @@ class XIB:
 class Options:
     pass
 
-@dataclass
-class State:
-    options: Options
-    xib: XIB
-    visited_objects: set[typedstream.GenericArchivedObject] = field(default_factory=set)
+class XIBConverter:
+    def __init__(self, options: Options):
+        self.options = options
+        self.xib = XIB()
+        self.visited_objects: set[typedstream.GenericArchivedObject] = set()
+    
+    def traverse_menu_cell(self, cell: typedstream.GenericArchivedObject, level: int):
+        assert cell.clazz.name == b'MenuCell', cell.clazz.name
 
-def traverse_menu_cell(cell: typedstream.GenericArchivedObject, state: State, level: int):
-    assert cell.clazz.name == b'MenuCell', cell.clazz.name
+        title = cell.contents[0].values[0]
 
-    title = cell.contents[0].values[0]
+        submenu = cell.contents[1].values[0]
+        if isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate':
+            self.traverse_menu(submenu, level=level)
+        else:
+            print(f"{'  ' * level}{title.decode()}")
 
-    submenu = cell.contents[1].values[0]
-    if isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate':
-        traverse_menu(submenu, state=state, level=level)
-    else:
-        print(f"{'  ' * level}{title.decode()}")
+    def traverse_menu(self, menu: typedstream.GenericArchivedObject, level: int=0):
+        assert menu.clazz.name == b'MenuTemplate', menu.clazz.name
 
-def traverse_menu(menu: typedstream.GenericArchivedObject, state: State, level: int=0):
-    assert menu.clazz.name == b'MenuTemplate', menu.clazz.name
+        title = menu.contents[2].values[0]
+        matrix = menu.contents[2].values[1]
+        print(f"{'  ' * level}{title.decode()} @ {id(menu)}")
+        assert isinstance(matrix, typedstream.GenericArchivedObject) and matrix.clazz.name == b'Matrix'
 
-    title = menu.contents[2].values[0]
-    matrix = menu.contents[2].values[1]
-    print(f"{'  ' * level}{title.decode()} @ {id(menu)}")
-    assert isinstance(matrix, typedstream.GenericArchivedObject) and matrix.clazz.name == b'Matrix'
+        matrix_list = matrix.contents[12].values[0]
+        assert isinstance(matrix_list, typedstream.types.nextstep.List), type(matrix_list)
 
-    matrix_list = matrix.contents[12].values[0]
-    assert isinstance(matrix_list, typedstream.types.nextstep.List), type(matrix_list)
+        for cell in matrix_list.elements:
+            assert isinstance(cell, typedstream.GenericArchivedObject)
+            self.traverse_menu_cell(cell, level=level + 1)
 
-    for cell in matrix_list.elements:
-        assert isinstance(cell, typedstream.GenericArchivedObject)
-        traverse_menu_cell(cell, state=state, level=level + 1)
+    def traverse_main_menu(self, menu: typedstream.GenericArchivedObject):
+        self.traverse_menu(menu)
 
-def traverse_main_menu(menu: typedstream.GenericArchivedObject, state: State):
-    traverse_menu(menu, state=state)
+    def traverse_group(self, group: typedstream.TypedGroup):
+        if len(group.values) == 2 and group.values[1] == b'MainMenu':
+            self.traverse_main_menu(group.values[0])
+        else:
+            for value in group.values:
+                if isinstance(value, typedstream.GenericArchivedObject) and value not in self.visited_objects:
+                    self.traverse_object(value)
 
-def traverse_group(group: typedstream.TypedGroup, state: State):
-    if len(group.values) == 2 and group.values[1] == b'MainMenu':
-        traverse_main_menu(group.values[0], state=state)
-    else:
-        for value in group.values:
-            if isinstance(value, typedstream.GenericArchivedObject) and value not in state.visited_objects:
-                traverse_object(value, state=state)
+    def traverse_object(self, obj: typedstream.GenericArchivedObject):
+        self.visited_objects.add(obj)
 
-def traverse_object(obj: typedstream.GenericArchivedObject, state: State):
-    state.visited_objects.add(obj)
+        clazz = obj.clazz.name.decode()
+        match clazz:
+            case 'MenuCell':
+                title = obj.contents[0].values[0].decode()
+                self.xib.file_menu.add_menu_item(title=title)
 
-    clazz = obj.clazz.name.decode()
-    match clazz:
-        case 'MenuCell':
-            title = obj.contents[0].values[0].decode()
-            state.xib.file_menu.add_menu_item(title=title)
-
-    for group in obj.contents:
-        traverse_group(group, state=state)
+        for group in obj.contents:
+            self.traverse_group(group)
 
 def convert_root(obj: typedstream.GenericArchivedObject, options: Options) -> XIB:
-    xib = XIB()
-
-    state = State(options=options, xib=xib)
-    traverse_object(obj, state=state)
-
-    return xib
+    converter = XIBConverter(options)
+    converter.traverse_object(obj)
+    return converter.xib
 
 def main():
     parser = argparse.ArgumentParser(description='Converts a legacy NeXTStep NIB to XIB.')
