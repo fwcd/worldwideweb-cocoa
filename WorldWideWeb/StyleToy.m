@@ -32,8 +32,8 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
 //	Create new one:
 
-+ new {
-    self = [super new];
+- init {
+    self = [super init];
     [self loadDefaultStyleSheet];
     return self;
 }

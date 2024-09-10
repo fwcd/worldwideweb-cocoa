@@ -41,15 +41,14 @@ NSMutableArray *HTHistory;      // List of visited anchors
 //	anchor you are creating.
 //
 
-+ new {
-    Anchor *new_anchor;
-    new_anchor = [super new];
-    new_anchor->DestAnchor = nil;
-    new_anchor->Address = (char *)0;
-    new_anchor->Sources = [NSMutableArray new];
-    new_anchor->children = [NSMutableArray new];
-    new_anchor->parent = 0;
-    return new_anchor;
+- init {
+    self = [super init];
+    DestAnchor = nil;
+    Address = (char *)0;
+    Sources = [NSMutableArray new];
+    children = [NSMutableArray new];
+    parent = 0;
+    return self;
 }
 
 //	Case insensitive string comparison
@@ -75,7 +74,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //	This one is for a new anchor being edited into an existing
 //	document. The parent anchor must already exist.
 
-+ newParent:(Anchor *)anAnchor tag:(const char *)tag {
+- initWithParent:(Anchor *)anAnchor tag:(const char *)tag {
     NSMutableArray *kids = anAnchor->children;
     int n = [kids count];
     int i;
@@ -106,7 +105,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //	Note: You are not guarranteed a new anchor -- you might get an old one,
 //	like with fonts.
 
-+ newAddress:(const char *)anAddress;
+- initWithAddress:(const char *)anAddress;
 {
     char *anc = HTParse(anAddress, "", PARSE_ANCHOR); // Anchor id specified?
 
@@ -115,9 +114,9 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 
     if (*anc) {
         char *nod = HTParse(anAddress, "", PARSE_ACCESS | PARSE_HOST | PARSE_PATH | PARSE_PUNCTUATION);
-        Anchor *foundParent = [Anchor newAddress:nod];
+        Anchor *foundParent = [[Anchor alloc] initWithAddress:nod];
         free(nod);
-        self = [Anchor newParent:foundParent tag:anc];
+        self = [[Anchor alloc] initWithParent:foundParent tag:anc];
         free(anc);
 
         //	If the node has no parent, we check in a list of such nodes to see

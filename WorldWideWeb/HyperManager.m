@@ -30,10 +30,10 @@ char *appDirectory; /* Name of the directory containing the application */
 */
 PRIVATE FileAccess *fileAccess = nil;
 
-+ new {
-    HyperManager *obj = [super new];
-    obj->accesses = [NSMutableArray new]; // Create and clear list
-    return obj;
+- init {
+    self = [super init];
+    accesses = [NSMutableArray new]; // Create and clear list
+    return self;
 }
 
 - traceOn:sender {
@@ -161,7 +161,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //
 //
 - accessName:(const char *)arg Diagnostic:(int)diagnostic {
-    return [[Anchor newAddress:arg] selectDiagnostic:diagnostic];
+    return [[[Anchor alloc] initWithAddress:arg] selectDiagnostic:diagnostic];
 }
 
 //	Search with a given diagnostic level
@@ -306,7 +306,7 @@ PRIVATE FileAccess *fileAccess = nil;
 }
 
 - linkToString:sender {
-    return [THIS_TEXT linkSelTo:[Anchor newAddress:[openString stringValueAt:0]]];
+    return [THIS_TEXT linkSelTo:[[Anchor alloc] initWithAddress:[openString stringValueAt:0]]];
 }
 
 - openRTF:sender {

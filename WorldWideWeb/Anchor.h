@@ -31,8 +31,8 @@
 + initialize;
 + setManager:aManager; // Set class variable
 
-+ newAddress:(const char *)address;
-+ newParent:(Anchor *)anAnchor tag:(const char *)tag;
+- initWithAddress:(const char *)address;
+- initWithParent:(Anchor *)anAnchor tag:(const char *)tag;
 
 + back;
 + next;

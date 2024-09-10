@@ -801,7 +801,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                 reference[reference_length] = 0;     /* Terminate it */
                 anchor_name[anchor_name_length] = 0; /* Terminate it */
 
-                style->anchor = *anchor_name ? [Anchor newParent:nodeAnchor tag:anchor_name] : [self anchor];
+                style->anchor = *anchor_name ? [[Anchor alloc] initWithParent:nodeAnchor tag:anchor_name] : [self anchor];
 
                 /* If next anchor number not specified, ensure it is safe */
 
@@ -813,7 +813,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                 [(Anchor *)style->anchor isLastChild]; /* Put in correct order */
                 if (*reference) {                      /* Link only if href */
                     parsed_address = HTParse(reference, [nodeAnchor address], PARSE_ALL);
-                    [(Anchor *)(style->anchor) linkTo:[Anchor newAddress:parsed_address]];
+                    [(Anchor *)(style->anchor) linkTo:[[Anchor alloc] initWithAddress:parsed_address]];
                     free(parsed_address);
                 }
 

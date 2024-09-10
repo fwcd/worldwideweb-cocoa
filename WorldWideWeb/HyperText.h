@@ -31,7 +31,7 @@ extern void write_rtf_header(NSStream *rtfStream);
     int format;           //	See WWW.h for values
 }
 
-+ newAnchor:(Anchor *)anAnchor Server:(id)server;
+- initWithAnchor:(Anchor *)anAnchor Server:(id)server;
 
 - readSGML:(NSStream *)sgmlStream diagnostic:(int)diagnostic;
 - writeSGML:(NSStream *)sgmlStream relativeTo:(const char *)aName;

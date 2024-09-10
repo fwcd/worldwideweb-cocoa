@@ -291,7 +291,7 @@ const char *ask_name(HyperText *hint, int format) {
 
             //	Make the new node:
 
-            HT = [HyperText newAnchor:anAnchor Server:self];
+            HT = [[HyperText alloc] initWithAnchor:anAnchor Server:self];
             [HT setupWindow];
             [[HT window] setTitle:filename]; // Show something's happening
 
@@ -353,7 +353,7 @@ const char *ask_name(HyperText *hint, int format) {
 - openFile:(const char *)filename diagnostic:(BOOL)diagnostic {
     Anchor *a;
     char *node_address = WWW_nameOfFile(filename);
-    a = [self loadAnchor:[Anchor newAddress:node_address] Diagnostic:diagnostic];
+    a = [self loadAnchor:[[Anchor alloc] initWithAddress:node_address] Diagnostic:diagnostic];
     free(node_address);
     return a;
 }
@@ -411,7 +411,7 @@ const char *existing_filename() {
     const char *filename = existing_filename(); // Ask for filename
     if (filename) {
         char *node_address = WWW_nameOfFile(filename);
-        Anchor *a = [Anchor newAddress:node_address];
+        Anchor *a = [[Anchor alloc] initWithAddress:node_address];
         free(node_address);
 
         return [THIS_TEXT linkSelTo:a];

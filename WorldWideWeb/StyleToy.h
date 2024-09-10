@@ -10,7 +10,7 @@
     NSForm *NameForm;
 }
 
-+ new;
+- init;
 
 - loadDefaultStyleSheet;
 - setTabForm:(NSForm *)anObject;

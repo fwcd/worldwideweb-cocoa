@@ -70,10 +70,10 @@ static float page_width() {
 //	Build a HyperText GIVEN its nodeAnchor.
 //	--------------------------------------
 
-+ newAnchor:(Anchor *)anAnchor Server:(id)aServer {
+- initWithAnchor:(Anchor *)anAnchor Server:(id)aServer {
     NSRect aFrame = {{0.0, 0.0}, {page_width(), NICE_HEIGHT}};
 
-    self = [super newFrame:&aFrame];
+    self = [self initWithFrame:aFrame];
     if (TRACE)
         printf("New node, server is %i\n", aServer);
 
@@ -360,7 +360,7 @@ static float page_width() {
     char s[20];
 
     sprintf(s, "%c%i", ANCHOR_ID_PREFIX, nextAnchorNumber++);
-    a = [Anchor newParent:nodeAnchor tag:s];
+    a = [[Anchor alloc] initWithParent:nodeAnchor tag:s];
     [delegate textDidChange:self];
     return a;
 }
@@ -1345,13 +1345,13 @@ void loadPlainText() {
 - (Anchor *)appendBeginAnchor:(const char *)name to:(const char *)reference {
     HTStyle *style = HTStyleNew();
     char *parsed_address;
-    Anchor *a = *name ? [Anchor newParent:nodeAnchor tag:name] : [self anchor];
+    Anchor *a = *name ? [[Anchor alloc] initWithParent:nodeAnchor tag:name] : [self anchor];
 
     style->anchor = a;
     [(Anchor *)style->anchor isLastChild]; /* Put in correct order */
     if (*reference) {                      /* Link only if href */
         parsed_address = HTParse(reference, [nodeAnchor address], PARSE_ALL);
-        [(Anchor *)(style->anchor) linkTo:[Anchor newAddress:parsed_address]];
+        [(Anchor *)(style->anchor) linkTo:[[Anchor alloc] initWithAddress:parsed_address]];
         free(parsed_address);
     }
     SET_STYLE(style); /* Start anchor here */
