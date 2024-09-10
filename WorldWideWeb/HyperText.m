@@ -23,6 +23,7 @@
 #import "HTStyle.h"
 #import "HTUtils.h"
 #import "HyperAccess.h"
+#import "NXShims.h"
 #import "WWW.h"
 #import <AppKit/AppKit.h>
 

@@ -113,6 +113,7 @@
 		35DC79272BFAD6AB00432284 /* TextToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextToy.m; sourceTree = "<group>"; };
 		35DC79292BFAD6AB00432284 /* HTStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTStyle.m; sourceTree = "<group>"; };
 		35DC792A2BFAD6AB00432284 /* StyleToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleToy.h; sourceTree = "<group>"; };
+		834673772C796EB4006F7FC0 /* NXShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NXShims.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +185,7 @@
 				35DC79002BFAD6AA00432284 /* Makefile.preamble */,
 				35DC79132BFAD6AA00432284 /* NewsAccess.h */,
 				35DC79182BFAD6AA00432284 /* NewsAccess.m */,
+				834673772C796EB4006F7FC0 /* NXShims.h */,
 				35DC78ED2BFAD6AA00432284 /* ParseHTML.h */,
 				35DC791B2BFAD6AA00432284 /* PB.gdbinit */,
 				35DC79062BFAD6AA00432284 /* PB.project */,
