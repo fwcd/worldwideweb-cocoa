@@ -171,8 +171,26 @@ class XIB:
         app_delegate = self.objects.add_object('AppDelegate')
         files_owner.connect('delegate', app_delegate)
 
+        # Add main menu
+        main_menu = self.objects.add_object('menu', systemMenu='main')
+        main_menu.add('point', key='canvasLocation', x='200', y='121')
+        main_items = main_menu.add('items')
+
+        app_item = main_items.add_object('menuItem', title='WorldWideWeb')
+        app_item.add('modifierMask', key='keyEquivalentModifierMask')
+        app_menu = app_item.add_object('menu', key='submenu', title='WorldWideWeb')
+        app_items = app_menu.add('items')
+        app_items.add('menuItem', title='About WorldWideWeb')
+        app_items.add('menuItem', isSeparatorItem='YES')
+        app_items.add('menuItem', title='Quit WorldWideWeb', keyEquivalent='q')
+
+        file_item = main_items.add_object('menuItem', title='File')
+        file_item.add('modifierMask', key='keyEquivalentModifierMask')
+        file_item.add_object('menu', key='submenu', title='File')
+
         # Add window
         window = self.objects.add_object('window', title='WorldWideWeb')
+        window.add('point', key='canvasLocation', x='200', y='400')
         window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
         window.add('rect', key='contentRect', x='0', y='0', width='480', height='360')
         window.add_object('view', key='contentView')
