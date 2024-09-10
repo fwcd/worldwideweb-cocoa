@@ -57,7 +57,7 @@ static HyperText *HT; /* Global pointer to self to allow C mixing */
 //
 static float page_width() {
     PrintInfo *pi = [NSPrintInfo sharedPrintInfo]; // Page layout details
-    NXCoord topMargin, bottomMargin, leftMargin, rightMargin;
+    CGFloat topMargin, bottomMargin, leftMargin, rightMargin;
     const NSRect *paper = [pi paperRect]; //	In points
 
     [pi getMarginLeft:&leftMargin right:&rightMargin top:&topMargin bottom:&bottomMargin]; /* In points */

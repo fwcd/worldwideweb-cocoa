@@ -47,7 +47,7 @@
 {
     id pi;
     float conversion, dummy;
-    NXCoord left, right, top, bottom;
+    CGFloat left, right, top, bottom;
 
     [super readPrintInfo];
     pi = [NSPrintInfo sharedPrintInfo];
