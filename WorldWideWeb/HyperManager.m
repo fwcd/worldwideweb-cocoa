@@ -65,7 +65,7 @@ PRIVATE FileAccess *fileAccess = nil;
         printf("HyperManager: Registering access `%s'.\n", [access name]);
     if (0 == strcmp([access name], "file"))
         fileAccess = (FileAccess *)access; /* We need that one */
-    return [accesses addObject:access];
+    [accesses addObject:access];
 }
 
 //	Load an anchor from some access				loadAnchor:
