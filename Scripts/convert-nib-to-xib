@@ -136,20 +136,28 @@ class XIB:
 
         # Add custom objects
         app_delegate = self.add_object('AppDelegate')
-        self.add_object('NSFontManager')
         self.connect(files_owner, 'delegate', app_delegate)
+        self.add_object('NSFontManager')
 
-        window = ET.Element('window', attrib={'title': 'WorldWideWeb'})
-        self.objects.append(window)
+        # Add window
+        window = self.add_object('window', title='WorldWideWeb')
+        self.connect(app_delegate, 'window', window)
 
         self.tree = ET.ElementTree(self.root)
     
-    def add_object(self, custom_class: str, id: Optional[str]=None, **kwargs) -> str:
+    def add_object(self, name: str, id: Optional[str]=None, **kwargs) -> str:
         '''Adds an object of the given class.'''
 
         id = id or str(uuid4())
 
-        obj = ET.Element('customObject', attrib={'id': id, **kwargs, 'customClass': custom_class})
+        assert len(name) > 0
+        is_custom = name[0].isupper()
+
+        obj = ET.Element('customObject' if is_custom else name, attrib={
+            'id': id,
+            **kwargs,
+            **({'customClass': name} if is_custom else {}),
+        })
         self.objects.append(obj)
 
         self.id_to_object[id] = obj

@@ -6,12 +6,19 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="c2c39722-244c-4ce5-9890-7e77a28f1544" id="0a1dead5-dfb2-4ef0-83d4-af6d8bfbe0ab"/>
+                <outlet property="delegate" destination="c3b21242-7be2-47a0-9725-8ec0aac2e5b7" id="0297b201-5736-4192-8016-a323a83d43bd"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="c2c39722-244c-4ce5-9890-7e77a28f1544" customClass="AppDelegate"/>
-        <customObject id="3d904b1a-3741-436d-b6eb-e750e783d19b" customClass="NSFontManager"/>
+        <customObject id="c3b21242-7be2-47a0-9725-8ec0aac2e5b7" customClass="AppDelegate">
+            <connections>
+                <outlet property="window" destination="d265e67a-1464-4a79-a826-0bb7b8d0d5f8" id="8dd2c1e2-1f43-40d4-9407-bfc707fb063b"/>
+            </connections>
+        </customObject>
+        <customObject id="b475ddb4-233b-49ad-833d-7eacf01bd580" customClass="NSFontManager"/>
+        <window title="WorldWideWeb" animationBehavior="default" id="d265e67a-1464-4a79-a826-0bb7b8d0d5f8">
+            <point key="canvasLocation" x="1" y="49"/>
+        </window>
     </objects>
 </document>
