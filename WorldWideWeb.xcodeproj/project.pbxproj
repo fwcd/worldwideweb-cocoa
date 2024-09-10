@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3590F34F2BFC108E00E81CF2 /* WorldWideWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */; };
+		359DEE7E2C91147900FDB95E /* WorldWideWeb.json in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE7C2C91147900FDB95E /* WorldWideWeb.json */; };
+		359DEE7F2C91147900FDB95E /* WorldWideWeb.xml in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE7D2C91147900FDB95E /* WorldWideWeb.xml */; };
+		359DEE882C91148100FDB95E /* convert-nib-to-graph in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE802C91148100FDB95E /* convert-nib-to-graph */; };
+		359DEE892C91148100FDB95E /* convert-nib-to-json in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE812C91148100FDB95E /* convert-nib-to-json */; };
+		359DEE8A2C91148100FDB95E /* convert-nib-to-xib in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE822C91148100FDB95E /* convert-nib-to-xib */; };
+		359DEE8B2C91148100FDB95E /* convert-nib-to-xml in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE832C91148100FDB95E /* convert-nib-to-xml */; };
+		359DEE8C2C91148100FDB95E /* format in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE842C91148100FDB95E /* format */; };
+		359DEE8D2C91148100FDB95E /* regenerate-xibs in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE852C91148100FDB95E /* regenerate-xibs */; };
+		359DEE8E2C91148100FDB95E /* requirements.txt in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE862C91148100FDB95E /* requirements.txt */; };
 		35DC78E12BFAD62100432284 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78E02BFAD62100432284 /* AppDelegate.m */; };
 		35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E22BFAD62200432284 /* Assets.xcassets */; };
 		35DC78E62BFAD62200432284 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E52BFAD62200432284 /* Base */; };
@@ -54,7 +63,15 @@
 		359DEE772C90CFCB00FDB95E /* Minimal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Minimal.xib; sourceTree = "<group>"; };
 		359DEE782C90CFCB00FDB95E /* MinimalPlaceholders.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinimalPlaceholders.xib; sourceTree = "<group>"; };
 		359DEE792C90CFCB00FDB95E /* MinimalWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinimalWindow.xib; sourceTree = "<group>"; };
-		359DEE7A2C90CFCB00FDB95E /* WorldWideWeb.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldWideWeb.xib; sourceTree = "<group>"; };
+		359DEE7C2C91147900FDB95E /* WorldWideWeb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WorldWideWeb.json; sourceTree = "<group>"; };
+		359DEE7D2C91147900FDB95E /* WorldWideWeb.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WorldWideWeb.xml; sourceTree = "<group>"; };
+		359DEE802C91148100FDB95E /* convert-nib-to-graph */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = "convert-nib-to-graph"; sourceTree = "<group>"; };
+		359DEE812C91148100FDB95E /* convert-nib-to-json */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = "convert-nib-to-json"; sourceTree = "<group>"; };
+		359DEE822C91148100FDB95E /* convert-nib-to-xib */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = "convert-nib-to-xib"; sourceTree = "<group>"; };
+		359DEE832C91148100FDB95E /* convert-nib-to-xml */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = "convert-nib-to-xml"; sourceTree = "<group>"; };
+		359DEE842C91148100FDB95E /* format */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = format; sourceTree = "<group>"; };
+		359DEE852C91148100FDB95E /* regenerate-xibs */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = "regenerate-xibs"; sourceTree = "<group>"; };
+		359DEE862C91148100FDB95E /* requirements.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = requirements.txt; sourceTree = "<group>"; };
 		35DC78DD2BFAD62100432284 /* WorldWideWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldWideWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DC78DF2BFAD62100432284 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35DC78E02BFAD62100432284 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -139,15 +156,31 @@
 				359DEE772C90CFCB00FDB95E /* Minimal.xib */,
 				359DEE782C90CFCB00FDB95E /* MinimalPlaceholders.xib */,
 				359DEE792C90CFCB00FDB95E /* MinimalWindow.xib */,
-				359DEE7A2C90CFCB00FDB95E /* WorldWideWeb.xib */,
+				359DEE7C2C91147900FDB95E /* WorldWideWeb.json */,
+				359DEE7D2C91147900FDB95E /* WorldWideWeb.xml */,
 			);
 			path = Reference;
+			sourceTree = "<group>";
+		};
+		359DEE872C91148100FDB95E /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				359DEE802C91148100FDB95E /* convert-nib-to-graph */,
+				359DEE812C91148100FDB95E /* convert-nib-to-json */,
+				359DEE822C91148100FDB95E /* convert-nib-to-xib */,
+				359DEE832C91148100FDB95E /* convert-nib-to-xml */,
+				359DEE842C91148100FDB95E /* format */,
+				359DEE852C91148100FDB95E /* regenerate-xibs */,
+				359DEE862C91148100FDB95E /* requirements.txt */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		35DC78872BFAD16400432284 = {
 			isa = PBXGroup;
 			children = (
 				359DEE7B2C90CFCB00FDB95E /* Reference */,
+				359DEE872C91148100FDB95E /* Scripts */,
 				35DC78DE2BFAD62100432284 /* WorldWideWeb */,
 				35DC78C92BFAD21000432284 /* Products */,
 			);
@@ -299,14 +332,23 @@
 				35DC792B2BFAD6AB00432284 /* Features.html in Resources */,
 				35DC792F2BFAD6AB00432284 /* docflash2.tiff in Resources */,
 				35DC79472BFAD6AB00432284 /* docflash.tiff in Resources */,
+				359DEE8D2C91148100FDB95E /* regenerate-xibs in Resources */,
 				35DC79342BFAD6AB00432284 /* IB.proj in Resources */,
+				359DEE8A2C91148100FDB95E /* convert-nib-to-xib in Resources */,
 				35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */,
 				35DC79452BFAD6AB00432284 /* PB.gdbinit in Resources */,
 				35DC78E62BFAD62200432284 /* Base in Resources */,
+				359DEE7F2C91147900FDB95E /* WorldWideWeb.xml in Resources */,
 				35DC793A2BFAD6AB00432284 /* PB.project in Resources */,
+				359DEE882C91148100FDB95E /* convert-nib-to-graph in Resources */,
+				359DEE892C91148100FDB95E /* convert-nib-to-json in Resources */,
+				359DEE7E2C91147900FDB95E /* WorldWideWeb.json in Resources */,
+				359DEE8C2C91148100FDB95E /* format in Resources */,
 				35DC79302BFAD6AB00432284 /* worldbook2.tiff in Resources */,
 				35DC79332BFAD6AB00432284 /* worldbook.tiff in Resources */,
+				359DEE8E2C91148100FDB95E /* requirements.txt in Resources */,
 				35DC794B2BFAD6AB00432284 /* WorldWideWeb.iconheader in Resources */,
+				359DEE8B2C91148100FDB95E /* convert-nib-to-xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
