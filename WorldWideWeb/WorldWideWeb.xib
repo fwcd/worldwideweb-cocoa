@@ -7,22 +7,22 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="47ec5d99-f983-4eb1-ab69-2c8dab403e12" id="77dba802-4a4f-4169-97b4-18cfae823ed6"/>
+                <outlet property="delegate" destination="4bc7d1b1-fcf7-4f7c-9adb-3c3f3bfb3d4a" id="785d059b-2250-4fb5-a43f-bdafe586cdb4"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="b8484e0f-8af3-41d1-8300-849a7c414213" customClass="NSFontManager"/>
-        <customObject id="47ec5d99-f983-4eb1-ab69-2c8dab403e12" customClass="AppDelegate">
+        <customObject id="8015446b-2271-4f04-b0f6-59bd7a572d87" customClass="NSFontManager"/>
+        <customObject id="4bc7d1b1-fcf7-4f7c-9adb-3c3f3bfb3d4a" customClass="AppDelegate">
             <connections>
-                <outlet property="window" destination="20363239-8ab7-4a85-8b35-8e9ea68ac351" id="9f44c507-254c-465e-9f9b-9cd2281f377f"/>
+                <outlet property="window" destination="a39558f5-7ac5-45bf-8be8-59a06ed8bf2e" id="d92f3227-615e-41af-bb09-a89356542f2d"/>
             </connections>
         </customObject>
-        <menu systemMenu="main" id="b56d425e-4847-4043-ac31-86c8cb8e95df">
+        <menu systemMenu="main" id="840f3439-ccc4-4b62-be2c-51b7d76ef0e4">
             <items>
-                <menuItem title="WorldWideWeb" id="8a1c20f7-5bb3-499a-9c8d-24bcec17766f">
+                <menuItem title="WorldWideWeb" id="c059c242-7454-48d4-bbc5-6e6541ed48fa">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="WorldWideWeb" id="c24205f9-6c1e-4b42-a82a-79182ee81a45">
+                    <menu key="submenu" title="WorldWideWeb" id="1e0d8587-df85-4a96-bbb9-ec564cf22c0e">
                         <items>
                             <menuItem title="About WorldWideWeb"/>
                             <menuItem isSeparatorItem="YES"/>
@@ -30,23 +30,23 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="File" id="28310921-0392-4d4e-b611-d34f0d9ee270">
+                <menuItem title="File" id="7f884ae2-8d28-4f40-bdec-0197e178dfbb">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="File" id="5b3db725-f04b-4535-a93d-9de7f2d2ee88"/>
+                    <menu key="submenu" title="File" id="0e1aaf5f-2252-40a1-bf64-ebfa0ab7295e"/>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="200" y="121"/>
         </menu>
-        <window title="WorldWideWeb" animationBehavior="default" id="20363239-8ab7-4a85-8b35-8e9ea68ac351">
+        <window title="WorldWideWeb" animationBehavior="default" id="a39558f5-7ac5-45bf-8be8-59a06ed8bf2e">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="480" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="90aa70f2-17dc-4a11-b1ba-fc1043f1ab23">
+            <view key="contentView" id="226173b8-8817-45df-b759-5dcd7cd2cd86">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
             </view>
             <connections>
-                <outlet property="delegate" destination="47ec5d99-f983-4eb1-ab69-2c8dab403e12" id="f0dfac5c-8598-4faa-90a3-0d1cc948196d"/>
+                <outlet property="delegate" destination="4bc7d1b1-fcf7-4f7c-9adb-3c3f3bfb3d4a" id="29e1f209-c6c6-45e6-9590-8458735ca654"/>
             </connections>
             <point key="canvasLocation" x="200" y="400"/>
         </window>

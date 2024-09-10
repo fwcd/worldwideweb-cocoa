@@ -102,7 +102,8 @@ class XIBNode:
         self.element = element
         self.id = id
 
-        self._connections: Optional[ET.Element] = None
+        self._connections: Optional[Self] = None
+        self._items: Optional[Self] = None
 
     def add_object(self, class_or_tag_name: str, id: Optional[str]=None, **kwargs) -> Self:
         '''Adds an object under this node.'''
@@ -129,22 +130,26 @@ class XIBNode:
         return XIBNode(child)
     
     @property
-    def connections(self) -> ET.Element:
+    def connections(self) -> Self:
         if self._connections is None:
-            self._connections = ET.Element('connections')
-            self.element.append(self._connections)
+            self._connections = XIBNode(ET.Element('connections'))
+            self.element.append(self._connections.element)
         return self._connections
+
+    @property
+    def items(self) -> Self:
+        if self._items is None:
+            self._items = XIBNode(ET.Element('items'))
+            self.element.append(self._items.element)
+        return self._items
 
     def connect(self, property: str, destination: str | Self):
         '''Adds an outlet to the given destination.'''
 
-        id = str(uuid4())
-        outlet = ET.Element('outlet', attrib={
-            'property': property,
-            'destination': destination if isinstance(destination, str) else destination.id,
-            'id': id,
-        })
-        self.connections.append(outlet)
+        return self.connections.add_object('outlet',
+            property=property,
+            destination=destination if isinstance(destination, str) else destination.id,
+        )
     
 class XIB:
     def __init__(self):
@@ -178,17 +183,15 @@ class XIB:
         # Add main menu
         main_menu = self.objects.add_object('menu', systemMenu='main')
         main_menu.add('point', key='canvasLocation', x='200', y='121')
-        main_items = main_menu.add('items')
 
-        app_item = main_items.add_object('menuItem', title='WorldWideWeb')
+        app_item = main_menu.items.add_object('menuItem', title='WorldWideWeb')
         app_item.add('modifierMask', key='keyEquivalentModifierMask')
         app_menu = app_item.add_object('menu', key='submenu', title='WorldWideWeb')
-        app_items = app_menu.add('items')
-        app_items.add('menuItem', title='About WorldWideWeb')
-        app_items.add('menuItem', isSeparatorItem='YES')
-        app_items.add('menuItem', title='Quit WorldWideWeb', keyEquivalent='q')
+        app_menu.items.add('menuItem', title='About WorldWideWeb')
+        app_menu.items.add('menuItem', isSeparatorItem='YES')
+        app_menu.items.add('menuItem', title='Quit WorldWideWeb', keyEquivalent='q')
 
-        file_item = main_items.add_object('menuItem', title='File')
+        file_item = main_menu.items.add_object('menuItem', title='File')
         file_item.add('modifierMask', key='keyEquivalentModifierMask')
         file_item.add_object('menu', key='submenu', title='File')
 
