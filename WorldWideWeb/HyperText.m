@@ -47,7 +47,6 @@ static HyperText *HT; /* Global pointer to self to allow C mixing */
     int i;
     for (i = 0; i < SLOTS; i++)
         slot[i] = 0;
-    return [super initialize];
 }
 
 //	Get Application page layout's Page Width
