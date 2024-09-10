@@ -4,8 +4,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
     </dependencies>
     <objects>
-        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
+        <customObject id="-1" userLabel="First Responder"/>
+        <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
     </objects>
 </document>

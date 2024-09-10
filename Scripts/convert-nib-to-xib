@@ -7,7 +7,8 @@
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Iterable
+from uuid import uuid4
+from typing import Any, Iterable, Optional
 
 import argparse
 import typedstream
@@ -114,18 +115,23 @@ class XIB:
         self.root.append(self.deps)
 
         self.objs = ET.Element('objects')
+        self.root.append(self.objs)
 
-        self.objs.append(ET.Element('customObject', attrib={'id': '-1', 'userLabel': 'First Responder', 'customClass': 'FirstResponder'}))
-        self.objs.append(ET.Element('customObject', attrib={'id': '-2', 'userLabel': "File's Owner", 'customClass': 'NSApplication'}))
-        self.objs.append(ET.Element('customObject', attrib={'id': '-3', 'userLabel': 'Application', 'customClass': 'NSObject'}))
+        self.add_object('FirstResponder', id='-1', userLabel='First Responder')
+        self.add_object('NSApplication', id='-2', userLabel="File's Owner")
+        self.add_object('NSObject', id='-3', userLabel='Application')
 
         window = ET.Element('window', attrib={'title': 'WorldWideWeb'})
         self.objs.append(window)
 
-        self.root.append(self.objs)
 
         self.tree = ET.ElementTree(self.root)
     
+    def add_object(self, custom_class: str, id: Optional[str]=None, **kwargs) -> str:
+        id = id or str(uuid4())
+        self.objs.append(ET.Element('customObject', attrib={'id': id, **kwargs}))
+        return id
+
     def indent(self, indent: str=' ' * 4):
         ET.indent(self.tree, space=indent)
     
