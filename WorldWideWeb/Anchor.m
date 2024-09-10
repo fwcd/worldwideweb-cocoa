@@ -189,13 +189,12 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //	This is necessary to ensure that an anchor which might have existed already
 //	in fact is put in the correct order as we load the node.
 //
-- isLastChild {
+- (void)isLastChild {
     if (parent) {
         NSMutableArray *siblings = parent->children;
         [siblings removeObject:self];
-        return [siblings addObject:self];
+        [siblings addObject:self];
     }
-    return nil;
 }
 
 //

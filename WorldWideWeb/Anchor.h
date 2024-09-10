@@ -46,7 +46,7 @@
 - setAddress:(const char *)ref_string;
 - select;                     // Load if nec, select and bring to front
 - selectDiagnostic:(int)diag; // Same with source display option
-- isLastChild;                // Move it in the list of children
+- (void)isLastChild;          // Move it in the list of children
 - (BOOL)follow;               // Follow  link if we can, return "can we?"
 - (void)linkTo:(Anchor *)destination;
 - node;        // Return the node in which the anchor sits
