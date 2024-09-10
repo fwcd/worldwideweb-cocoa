@@ -134,6 +134,10 @@ class XIB:
         file_item = main_menu.add_menu_item(title='File')
         file_menu = file_item.add_submenu()
 
+        self.main_menu = main_menu
+        self.app_menu = app_menu
+        self.file_menu = file_menu
+
         # Add window
         window = self.objects.add_object('window', title='WorldWideWeb')
         window.add('point', key='canvasLocation', x='200', y='400')
@@ -165,100 +169,44 @@ class XIB:
 
 @dataclass
 class Options:
-    convert_class_names: bool
+    pass
 
 @dataclass
 class State:
     options: Options
+    xib: XIB
     visited_objects: set[typedstream.GenericArchivedObject] = field(default_factory=set)
 
-def convert_class_name(c: str, state: State) -> str:
-    if not state.options.convert_class_names or c.startswith('IB'):
-        return c
-    else:
-        return f"NS{c.removeprefix('NX').removesuffix('Template')}"
+def traverse_object(obj: typedstream.GenericArchivedObject, state: State):
+    state.visited_objects.add(obj)
 
-def convert_value(value: Any, state: State) -> ET.Element:
-    if value is None:
-        return ET.Element('nil')
-    elif isinstance(value, int):
-        element = ET.Element('int')
-        element.text = str(value)
-        return element
-    elif isinstance(value, float):
-        element = ET.Element('float')
-        element.text = str(value)
-        return element
-    elif isinstance(value, bytes):
-        element = ET.Element('string')
-        element.text = value.decode()
-        return element
-    elif isinstance(value, typedstream.Class):
-        element = ET.Element(
-            'class',
-            attrib={
-                'name': convert_class_name(value.name.decode(), state=state),
-                **({'superclass': convert_class_name(value.superclass.name.decode(), state=state)} if value.superclass else {}),
-            },
-        )
-        return element
-    elif isinstance(value, typedstream.GenericArchivedObject):
-        if value in state.visited_objects:
-            return ET.Element(
-                'reference',
-                attrib={
-                    'class': convert_class_name(value.clazz.name.decode(), state=state),
-                    'ref': str(id(value)),
-                },
-            )
-        state.visited_objects.add(value)
+    clazz = obj.clazz.name.decode()
+    match clazz:
+        case 'MenuCell':
+            title = obj.contents[0].values[0].decode()
+            state.xib.file_menu.add_menu_item(title=title)
 
-        return convert_object(value, name='obj', state=state)
-    elif isinstance(value, typedstream.types.nextstep.List):
-        element = ET.Element('list')
-        for item in value.elements:
-            element.append(convert_value(item, state=state))
-        return element
-    else:
-        return ET.Element('unknown', attrib={'name': str(type(value))})
-
-def convert_group(group: typedstream.TypedGroup, state: State) -> Iterable[ET.Element]:
-    for value in group.values:
-        yield convert_value(value, state=state)
-
-def convert_object(obj: typedstream.GenericArchivedObject, name: str, state: State) -> ET.Element:
-    element = ET.Element(
-        name,
-        attrib={
-            'class': convert_class_name(obj.clazz.name.decode(), state=state),
-            'id': str(id(obj))
-        } if name == 'obj' else {},
-    )
-
+    # Traverse children
     for group in obj.contents:
-        group_element = ET.SubElement(element, 'group')
-        for value in convert_group(group, state=state):
-            group_element.append(value)
-
-    return element
+        for value in group.values:
+            if isinstance(value, typedstream.GenericArchivedObject) and value not in state.visited_objects:
+                traverse_object(value, state=state)
 
 def convert_root(obj: typedstream.GenericArchivedObject, options: Options) -> XIB:
-    # TODO
-    # root.append(convert_object(obj, name='data', state=State(options=options)))
-
     xib = XIB()
+
+    state = State(options=options, xib=xib)
+    traverse_object(obj, state=state)
+
     return xib
 
 def main():
     parser = argparse.ArgumentParser(description='Converts a legacy NeXTStep NIB to XIB.')
     parser.add_argument('-o', '--output', required=True, type=Path, help='The path to the output XIB.')
-    parser.add_argument('--convert-class-names', action=argparse.BooleanOptionalAction, default=True, help="Convert class names to Cocoa's NS prefix.")
     parser.add_argument('input', type=Path, help='The path to the input NIB.')
 
     args = parser.parse_args()
-    options = Options(
-        convert_class_names=args.convert_class_names,
-    )
+    options = Options()
 
     nib = typedstream.unarchive_from_file(args.input / 'data.nib')
     xib = convert_root(nib, options=options)
