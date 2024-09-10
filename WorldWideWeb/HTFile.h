@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include "WWW.h"
+
 /*	Convert filenames between local and WWW formats
 **	-----------------------------------------------
 **	Make up a suitable name for saving the node in

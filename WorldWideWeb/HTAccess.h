@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "WWW.h"
+
 /*	Open a file descriptor for a document
 **	-------------------------------------
 **
