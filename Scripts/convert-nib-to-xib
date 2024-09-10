@@ -173,6 +173,7 @@ class XIB:
 
         # Add window
         window = self.objects.add_object('window', title='WorldWideWeb')
+        window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
         window.add('rect', key='contentRect', x='0', y='0', width='480', height='360')
         window.add_object('view', key='contentView')
         window.connect('delegate', app_delegate)

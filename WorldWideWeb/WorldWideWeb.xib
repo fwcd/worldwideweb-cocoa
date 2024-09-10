@@ -7,28 +7,29 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="c30a5f4e-2bc5-4087-87f7-a7d82154ee8c" id="0f840389-c966-4f96-b6eb-cf6662aa9924"/>
+                <outlet property="delegate" destination="877c08bf-c225-442c-87a1-22a1ffa87dba" id="c8acc723-26e1-4db8-8f12-a4d21c8d9d18"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="d3f6eb21-8d0b-4101-bb42-de6b0843de07" customClass="NSFontManager"/>
-        <customObject id="c30a5f4e-2bc5-4087-87f7-a7d82154ee8c" customClass="AppDelegate">
+        <customObject id="15fbb6a3-1d0e-4d28-95e8-658c2ca3dfc8" customClass="NSFontManager"/>
+        <customObject id="877c08bf-c225-442c-87a1-22a1ffa87dba" customClass="AppDelegate">
             <connections>
-                <outlet property="window" destination="fbb0fc72-d570-4167-8195-4ab0b809037d" id="73691bcd-c251-4d4f-a7d1-8c0470371ac4"/>
+                <outlet property="window" destination="79885a5e-52c1-4de7-b230-2fadc4c083ec" id="6a6d8a88-b7ef-4051-b287-96b584cb0b80"/>
             </connections>
         </customObject>
-        <window title="WorldWideWeb" animationBehavior="default" id="fbb0fc72-d570-4167-8195-4ab0b809037d">
+        <window title="WorldWideWeb" animationBehavior="default" id="79885a5e-52c1-4de7-b230-2fadc4c083ec">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="480" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="4916efc6-be5c-4128-a883-5474dfa1fdc5">
+            <view key="contentView" id="0f9fb47c-a002-4d3d-a897-a3622c9ab973">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
             </view>
             <connections>
-                <outlet property="delegate" destination="c30a5f4e-2bc5-4087-87f7-a7d82154ee8c" id="750f66b6-42fb-4e32-8141-645c84b63b37"/>
+                <outlet property="delegate" destination="877c08bf-c225-442c-87a1-22a1ffa87dba" id="3803a621-17e8-48a8-936d-878b5061ed52"/>
             </connections>
-            <point key="canvasLocation" x="1" y="49"/>
+            <point key="canvasLocation" x="1" y="39"/>
         </window>
     </objects>
 </document>
