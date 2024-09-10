@@ -6,11 +6,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="4c126773-6061-4e3d-8bf7-19d0fa3536b5" id="dca61e47-42ab-4e3d-bd41-5b3d4aa4e285"/>
+                <outlet property="delegate" destination="c2c39722-244c-4ce5-9890-7e77a28f1544" id="0a1dead5-dfb2-4ef0-83d4-af6d8bfbe0ab"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="4c126773-6061-4e3d-8bf7-19d0fa3536b5" customClass="AppDelegate"/>
+        <customObject id="c2c39722-244c-4ce5-9890-7e77a28f1544" customClass="AppDelegate"/>
+        <customObject id="3d904b1a-3741-436d-b6eb-e750e783d19b" customClass="NSFontManager"/>
     </objects>
 </document>

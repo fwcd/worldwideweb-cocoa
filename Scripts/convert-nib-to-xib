@@ -136,6 +136,7 @@ class XIB:
 
         # Add custom objects
         app_delegate = self.add_object('AppDelegate')
+        self.add_object('NSFontManager')
         self.connect(files_owner, 'delegate', app_delegate)
 
         window = ET.Element('window', attrib={'title': 'WorldWideWeb'})
