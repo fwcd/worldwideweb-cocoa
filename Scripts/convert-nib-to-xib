@@ -96,33 +96,47 @@ def convert_object(object: typedstream.GenericArchivedObject, name: str, state: 
 
     return element
 
-def convert_root(object: typedstream.GenericArchivedObject, options: Options) -> ET.ElementTree:
-    root = ET.Element('document', attrib={
-        'type': 'com.apple.InterfaceBuilder3.Cocoa.XIB',
-        'version': '3.0',
-        'toolsVersion': '32700.99.1234',
-        'targetRuntime': 'MacOSX.Cocoa',
-        'propertyAccessControl': 'none',
-        'useAutolayout': 'NO',
-        'customObjectInstantiationMethod': 'direct',
-    })
+class XIB:
+    def __init__(self):
+        self.root = ET.Element('document', attrib={
+            'type': 'com.apple.InterfaceBuilder3.Cocoa.XIB',
+            'version': '3.0',
+            'toolsVersion': '32700.99.1234',
+            'targetRuntime': 'MacOSX.Cocoa',
+            'propertyAccessControl': 'none',
+            'useAutolayout': 'NO',
+            'customObjectInstantiationMethod': 'direct',
+        })
 
-    deps = ET.Element('dependencies')
-    deps.append(ET.Element('plugIn', attrib={'identifier': 'com.apple.InterfaceBuilder.CocoaPlugin', 'version': '22690'}))
-    deps.append(ET.Element('capability', attrib={'name': 'documents saved in the Xcode 8 format', 'minToolsVersion': '8.0'}))
-    root.append(deps)
+        self.deps = ET.Element('dependencies')
+        self.deps.append(ET.Element('plugIn', attrib={'identifier': 'com.apple.InterfaceBuilder.CocoaPlugin', 'version': '22690'}))
+        self.deps.append(ET.Element('capability', attrib={'name': 'documents saved in the Xcode 8 format', 'minToolsVersion': '8.0'}))
+        self.root.append(self.deps)
 
-    objs = ET.Element('objects')
-    objs.append(ET.Element('customObject', attrib={'id': '-1', 'userLabel': 'First Responder', 'customClass': 'FirstResponder'}))
-    objs.append(ET.Element('customObject', attrib={'id': '-2', 'userLabel': "File's Owner", 'customClass': 'NSApplication'}))
-    objs.append(ET.Element('customObject', attrib={'id': '-3', 'userLabel': 'Application', 'customClass': 'NSObject'}))
-    root.append(objs)
+        self.objs = ET.Element('objects')
 
+        self.objs.append(ET.Element('customObject', attrib={'id': '-1', 'userLabel': 'First Responder', 'customClass': 'FirstResponder'}))
+        self.objs.append(ET.Element('customObject', attrib={'id': '-2', 'userLabel': "File's Owner", 'customClass': 'NSApplication'}))
+        self.objs.append(ET.Element('customObject', attrib={'id': '-3', 'userLabel': 'Application', 'customClass': 'NSObject'}))
+
+        window = ET.Element('window', attrib={'title': 'WorldWideWeb'})
+        self.objs.append(window)
+
+        self.root.append(self.objs)
+
+        self.tree = ET.ElementTree(self.root)
+    
+    def indent(self, indent: str=' ' * 4):
+        ET.indent(self.tree, space=indent)
+    
+    def write(self, path: Path):
+        self.tree.write(path, encoding='utf-8', xml_declaration=True)
+
+def convert_root(object: typedstream.GenericArchivedObject, options: Options) -> XIB:
     # TODO
     # root.append(convert_object(object, name='data', state=State(options=options)))
 
-    xib = ET.ElementTree(root)
-    ET.indent(xib, space=' ' * 4)
+    xib = XIB()
     return xib
 
 def main():
@@ -137,9 +151,10 @@ def main():
     )
 
     nib = typedstream.unarchive_from_file(args.input / 'data.nib')
-
     xib = convert_root(nib, options=options)
-    xib.write(args.output, encoding='utf-8', xml_declaration=True)
+
+    xib.indent()
+    xib.write(args.output)
 
 if __name__ == '__main__':
     main()
