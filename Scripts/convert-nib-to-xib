@@ -143,12 +143,20 @@ class XIBNode:
             self.element.append(self._items.element)
         return self._items
 
-    def connect(self, property: str, destination: str | Self):
+    def connect_outlet(self, property: str, destination: str | Self):
         '''Adds an outlet to the given destination.'''
 
         return self.connections.add_object('outlet',
             property=property,
             destination=destination if isinstance(destination, str) else destination.id,
+        )
+    
+    def connect_action(self, selector: str, target: str | Self):
+        '''Adds an action invoking the given target with the given selector.'''
+
+        return self.connections.add_object('outlet',
+            selector=selector,
+            target=target if isinstance(target, str) else target.id,
         )
     
 class XIB:
@@ -178,7 +186,7 @@ class XIB:
         self.objects.add_object('NSFontManager')
 
         app_delegate = self.objects.add_object('AppDelegate')
-        files_owner.connect('delegate', app_delegate)
+        files_owner.connect_outlet('delegate', app_delegate)
 
         # Add main menu
         main_menu = self.objects.add_object('menu', systemMenu='main')
@@ -201,8 +209,8 @@ class XIB:
         window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
         window.add('rect', key='contentRect', x='0', y='0', width='480', height='360')
         window.add_object('view', key='contentView')
-        window.connect('delegate', app_delegate)
-        app_delegate.connect('window', window)
+        window.connect_outlet('delegate', app_delegate)
+        app_delegate.connect_outlet('window', window)
 
     def add_node(self, name: str) -> XIBNode:
         '''Creates a new node under the document root.'''
