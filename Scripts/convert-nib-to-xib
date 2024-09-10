@@ -98,15 +98,6 @@ def convert_object(obj: typedstream.GenericArchivedObject, name: str, state: Sta
     return element
 
 class XIB:
-    root: ET.Element
-    dependencies: ET.Element
-    objects: ET.Element
-
-    tree: ET.ElementTree
-
-    id_to_object: dict[str, ET.Element]
-    id_to_connections: dict[str, ET.Element]
-
     def __init__(self):
         self.root = ET.Element('document', attrib={
             'type': 'com.apple.InterfaceBuilder3.Cocoa.XIB',
@@ -126,8 +117,8 @@ class XIB:
         self.objects = ET.Element('objects')
         self.root.append(self.objects)
 
-        self.id_to_object = {}
-        self.id_to_connections = {}
+        self.id_to_object: dict[str, ET.Element] = {}
+        self.id_to_connections: dict[str, ET.Element] = {}
 
         # Add placeholders
         files_owner = self.add_object('NSApplication', id='-2', userLabel="File's Owner")
