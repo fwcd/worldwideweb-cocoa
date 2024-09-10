@@ -8,7 +8,7 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 from uuid import uuid4
-from typing import Any, Iterable, Optional
+from typing import Any, Iterable, Optional, Self
 
 import argparse
 import typedstream
@@ -97,6 +97,50 @@ def convert_object(obj: typedstream.GenericArchivedObject, name: str, state: Sta
 
     return element
 
+class XIBNode:
+    def __init__(self, element: ET.Element, id: Optional[str]=None):
+        self.element = element
+        self.id = id
+        self.connections: Optional[ET.Element] = None
+
+    def add_object(self, class_or_tag_name: str, id: Optional[str]=None, **kwargs) -> Self:
+        '''Adds an object under this node.'''
+
+        id = id or str(uuid4())
+
+        assert len(class_or_tag_name) > 0
+        is_custom = class_or_tag_name[0].isupper()
+
+        child = ET.Element('customObject' if is_custom else class_or_tag_name, attrib={
+            'id': id,
+            **kwargs,
+            **({'customClass': class_or_tag_name} if is_custom else {}),
+        })
+        self.element.append(child)
+
+        return XIBNode(child, id)
+    
+    def add(self, tag_name: str, **kwargs) -> Self:
+        '''Adds a custom node under this node.'''
+
+        child = ET.Element(tag_name, attrib={**kwargs})
+        self.element.append(child)
+
+        return XIBNode(child)
+    
+    def connect(self, property: str, destination: str | Self):
+        '''Adds an outlet to the given destination.'''
+
+        if self.connections is None:
+            self.connections = ET.Element('connections')
+            self.element.append(self.connections)
+        
+        outlet = ET.Element('outlet', attrib={
+            'property': property,
+            'destination': destination if isinstance(destination, str) else destination.id,
+        })
+        self.connections.append(outlet)
+    
 class XIB:
     def __init__(self):
         self.root = ET.Element('document', attrib={
@@ -109,68 +153,33 @@ class XIB:
             'customObjectInstantiationMethod': 'direct',
         })
 
-        self.dependencies = ET.Element('dependencies')
-        self.dependencies.append(ET.Element('plugIn', attrib={'identifier': 'com.apple.InterfaceBuilder.CocoaPlugin', 'version': '22690'}))
-        self.dependencies.append(ET.Element('capability', attrib={'name': 'documents saved in the Xcode 8 format', 'minToolsVersion': '8.0'}))
-        self.root.append(self.dependencies)
-
-        self.objects = ET.Element('objects')
-        self.root.append(self.objects)
-
-        self.id_to_object: dict[str, ET.Element] = {}
-        self.id_to_connections: dict[str, ET.Element] = {}
-
-        # Add placeholders
-        files_owner = self.add_object('NSApplication', id='-2', userLabel="File's Owner")
-        self.add_object('FirstResponder', id='-1', userLabel='First Responder')
-        self.add_object('NSObject', id='-3', userLabel='Application')
-
-        # Add custom objects
-        app_delegate = self.add_object('AppDelegate')
-        self.connect(files_owner, 'delegate', app_delegate)
-        self.add_object('NSFontManager')
-
-        # Add window
-        window = self.add_object('window', title='WorldWideWeb')
-        self.connect(app_delegate, 'window', window)
-
         self.tree = ET.ElementTree(self.root)
     
-    def add_object(self, name: str, id: Optional[str]=None, **kwargs) -> str:
-        '''Adds an object of the given class.'''
+        self.dependencies = self.add_node('dependencies')
+        self.dependencies.add('plugIn', identifier='com.apple.InterfaceBuilder.CocoaPlugin', version='22690')
+        self.dependencies.add('capability', name='documents saved in the Xcode 8 format', minToolsVersion='8.0')
 
-        id = id or str(uuid4())
+        self.objects = self.add_node('objects')
 
-        assert len(name) > 0
-        is_custom = name[0].isupper()
+        # Add default objects
+        files_owner = self.objects.add_object('NSApplication', id='-2', userLabel="File's Owner")
+        self.objects.add_object('FirstResponder', id='-1', userLabel='First Responder')
+        self.objects.add_object('NSObject', id='-3', userLabel='Application')
+        self.objects.add_object('NSFontManager')
 
-        obj = ET.Element('customObject' if is_custom else name, attrib={
-            'id': id,
-            **kwargs,
-            **({'customClass': name} if is_custom else {}),
-        })
-        self.objects.append(obj)
+        app_delegate = self.objects.add_object('AppDelegate')
+        files_owner.connect('delegate', app_delegate)
 
-        self.id_to_object[id] = obj
+        # Add window
+        window = self.objects.add_object('window', title='WorldWideWeb')
+        app_delegate.connect('window', window)
 
-        return id
+    def add_node(self, name: str) -> XIBNode:
+        '''Creates a new node under the document root.'''
 
-    def connect(self, src_id: str, property: str, dest_id: str) -> str:
-        '''Adds an outlet to the given source referencing the given destination.'''
-
-        id = str(uuid4())
-
-        if src_id not in self.id_to_connections:
-            conns = ET.Element('connections')
-            obj = self.id_to_object[src_id]
-            obj.append(conns)
-            self.id_to_connections[src_id] = conns
-        
-        conns = self.id_to_connections[src_id]
-        outlet = ET.Element('outlet', attrib={'property': property, 'id': id, 'destination': dest_id})
-        conns.append(outlet)
-
-        return id
+        element = ET.Element(name)
+        self.root.append(element)
+        return XIBNode(element)
 
     def indent(self, indent: str=' ' * 4):
         '''Indents the tree with the given indent (4 spaces by default).'''

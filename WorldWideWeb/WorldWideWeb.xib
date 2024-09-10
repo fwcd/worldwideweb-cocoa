@@ -4,20 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
-            <connections>
-                <outlet property="delegate" destination="c3b21242-7be2-47a0-9725-8ec0aac2e5b7" id="0297b201-5736-4192-8016-a323a83d43bd"/>
-            </connections>
-        </customObject>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="c3b21242-7be2-47a0-9725-8ec0aac2e5b7" customClass="AppDelegate">
-            <connections>
-                <outlet property="window" destination="d265e67a-1464-4a79-a826-0bb7b8d0d5f8" id="8dd2c1e2-1f43-40d4-9407-bfc707fb063b"/>
-            </connections>
-        </customObject>
-        <customObject id="b475ddb4-233b-49ad-833d-7eacf01bd580" customClass="NSFontManager"/>
-        <window title="WorldWideWeb" animationBehavior="default" id="d265e67a-1464-4a79-a826-0bb7b8d0d5f8">
+        <customObject id="922113b6-e9e8-42b0-b17b-f6166db39314" customClass="NSFontManager"/>
+        <customObject id="b0bedc01-ce17-4c36-a7ec-858e5286a870" customClass="AppDelegate"/>
+        <window title="WorldWideWeb" animationBehavior="default" id="8faeb931-5590-437b-9a73-7fb99f02efaa">
             <point key="canvasLocation" x="1" y="49"/>
         </window>
     </objects>
