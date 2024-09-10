@@ -149,7 +149,8 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //		Go back in history
 //		------------------
 + back {
-    return [[HTHistory removeLastObject] select]; // nil if no history
+    id lastObject = [HTHistory lastObject];
+    return [lastObject select]; // nil if no history
 }
 
 //		Go to next logical step
