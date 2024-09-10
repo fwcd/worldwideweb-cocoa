@@ -50,6 +50,11 @@
 
 /* Begin PBXFileReference section */
 		3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldWideWeb.xib; sourceTree = "<group>"; };
+		359DEE762C90CFCB00FDB95E /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		359DEE772C90CFCB00FDB95E /* Minimal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Minimal.xib; sourceTree = "<group>"; };
+		359DEE782C90CFCB00FDB95E /* MinimalPlaceholders.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinimalPlaceholders.xib; sourceTree = "<group>"; };
+		359DEE792C90CFCB00FDB95E /* MinimalWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinimalWindow.xib; sourceTree = "<group>"; };
+		359DEE7A2C90CFCB00FDB95E /* WorldWideWeb.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldWideWeb.xib; sourceTree = "<group>"; };
 		35DC78DD2BFAD62100432284 /* WorldWideWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldWideWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DC78DF2BFAD62100432284 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35DC78E02BFAD62100432284 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -127,9 +132,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		359DEE7B2C90CFCB00FDB95E /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				359DEE762C90CFCB00FDB95E /* MainMenu.xib */,
+				359DEE772C90CFCB00FDB95E /* Minimal.xib */,
+				359DEE782C90CFCB00FDB95E /* MinimalPlaceholders.xib */,
+				359DEE792C90CFCB00FDB95E /* MinimalWindow.xib */,
+				359DEE7A2C90CFCB00FDB95E /* WorldWideWeb.xib */,
+			);
+			path = Reference;
+			sourceTree = "<group>";
+		};
 		35DC78872BFAD16400432284 = {
 			isa = PBXGroup;
 			children = (
+				359DEE7B2C90CFCB00FDB95E /* Reference */,
 				35DC78DE2BFAD62100432284 /* WorldWideWeb */,
 				35DC78C92BFAD21000432284 /* Products */,
 			);
