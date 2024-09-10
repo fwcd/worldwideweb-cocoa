@@ -78,7 +78,7 @@ def main():
         case suffix:
             format = suffix[1:]
             subprocess.run(
-                [args.layout, f'-T{format}', '-o', str(args.output)],
+                [args.layout, f'-T{format}', '-Goverlap=scale', '-o', str(args.output)],
                 input=dot.encode(),
                 check=True,
             )
