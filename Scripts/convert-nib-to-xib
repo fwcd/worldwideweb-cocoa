@@ -130,8 +130,21 @@ class XIBNode:
 
         return XIBNode(child)
     
+    def add_menu_item(self, **kwargs) -> Self:
+        '''Adds a menu item to this menu.'''
+
+        items = self if self.element.tag == 'items' else self.items
+        return items.add_object('menuItem', **kwargs)
+
+    def add_submenu(self, **kwargs) -> Self:
+        '''Adds a submenu to this menu.'''
+
+        assert self.element.tag == 'menuItem', 'Can only add a submenu to a menu item'
+        return self.add_object('menu', key='submenu', title=self.element.attrib['title'], **kwargs)
+
     @property
     def connections(self) -> Self:
+        assert self.id is not None, 'Can only connect to an object with an id'
         if self._connections is None:
             self._connections = XIBNode(ET.Element('connections'))
             self.element.append(self._connections.element)
@@ -139,6 +152,7 @@ class XIBNode:
 
     @property
     def items(self) -> Self:
+        assert self.element.tag == 'menu', 'Can only fetch items on a menu (object)'
         if self._items is None:
             self._items = XIBNode(ET.Element('items'))
             self.element.append(self._items.element)
@@ -194,17 +208,15 @@ class XIB:
         main_menu = self.objects.add_object('menu', systemMenu='main')
         main_menu.add('point', key='canvasLocation', x='200', y='121')
 
-        app_item = main_menu.items.add_object('menuItem', title='WorldWideWeb')
-        app_item.add('modifierMask', key='keyEquivalentModifierMask')
-        app_menu = app_item.add_object('menu', key='submenu', title='WorldWideWeb')
-        app_menu.items.add_object('menuItem', title='About WorldWideWeb')
-        app_menu.items.add_object('menuItem', isSeparatorItem='YES')
-        quit_item = app_menu.items.add_object('menuItem', title='Quit WorldWideWeb', keyEquivalent='q')
+        app_item = main_menu.add_menu_item(title='WorldWideWeb')
+        app_menu = app_item.add_submenu(systemMenu='apple')
+        app_menu.add_menu_item(title='About WorldWideWeb')
+        app_menu.add_menu_item(isSeparatorItem='YES')
+        quit_item = app_menu.add_menu_item(title='Quit WorldWideWeb', keyEquivalent='q')
         quit_item.connect_action('terminate:', first_responder)
 
-        file_item = main_menu.items.add_object('menuItem', title='File')
-        file_item.add('modifierMask', key='keyEquivalentModifierMask')
-        file_item.add_object('menu', key='submenu', title='File')
+        file_item = main_menu.add_menu_item(title='File')
+        file_menu = file_item.add_submenu()
 
         # Add window
         window = self.objects.add_object('window', title='WorldWideWeb')

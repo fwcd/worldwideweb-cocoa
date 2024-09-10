@@ -7,50 +7,48 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="e6d3e71a-4b02-4e59-a2c7-2864a027d89d" id="42c89707-3185-46b4-9c90-3e2e42c65d06"/>
+                <outlet property="delegate" destination="2c52de8b-a6cf-4f7a-9434-e6e6fccdb91c" id="85b4e55b-17a2-48a5-aad4-5a9480ffe0a4"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="84703265-49fc-4d96-9ee1-3a01b1f1e09d" customClass="NSFontManager"/>
-        <customObject id="e6d3e71a-4b02-4e59-a2c7-2864a027d89d" customClass="AppDelegate">
+        <customObject id="aa46d014-c47e-40ef-b04d-55b81ec449b6" customClass="NSFontManager"/>
+        <customObject id="2c52de8b-a6cf-4f7a-9434-e6e6fccdb91c" customClass="AppDelegate">
             <connections>
-                <outlet property="window" destination="41759c82-69f7-41c8-90d8-609cbbe763ff" id="716cdbcc-c20e-4ca6-af40-3e6e936a3550"/>
+                <outlet property="window" destination="5b2585d7-5bb8-4f24-81b6-2ecde59163a3" id="ad6fe8ea-ce3a-4181-9913-4e486e9fa0c5"/>
             </connections>
         </customObject>
-        <menu systemMenu="main" id="2af03d8e-84ac-4e86-9350-b2d2f2bef2e0">
+        <menu systemMenu="main" id="5acc9320-1934-4826-bfa6-17e1ff708b20">
             <items>
-                <menuItem title="WorldWideWeb" id="0eb1b3e3-0fcf-4d42-96cf-c1f0b06b974b">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="WorldWideWeb" id="cc5d98bf-860e-43d0-ae45-d5df5594ef82">
+                <menuItem title="WorldWideWeb" id="61f4558e-96bb-49c7-8c83-cb27c4386634">
+                    <menu key="submenu" title="WorldWideWeb" systemMenu="apple" id="56406f4c-a091-4c3e-92cc-3359d1f96b36">
                         <items>
-                            <menuItem title="About WorldWideWeb" id="5faf8ae0-a6c8-4f5b-9a43-eadffcb41f15"/>
-                            <menuItem isSeparatorItem="YES" id="ae34f879-0f0f-46da-b673-ed009dbdd5f9"/>
-                            <menuItem title="Quit WorldWideWeb" keyEquivalent="q" id="b9489e48-2a8c-40be-9706-6fed94d21be1">
+                            <menuItem title="About WorldWideWeb" id="62b41ae1-d5be-4b50-9499-8e8d56aca94f"/>
+                            <menuItem isSeparatorItem="YES" id="3ea894bf-bf08-4ada-a9d6-986c50d97297"/>
+                            <menuItem title="Quit WorldWideWeb" keyEquivalent="q" id="e31f56db-f405-4e73-9d9e-ea6704afc99e">
                                 <connections>
-                                    <action selector="terminate:" target="-1" id="4bf98b8e-bd67-4dbe-baa7-597b635c014e"/>
+                                    <action selector="terminate:" target="-1" id="128779d7-6884-4fd6-a4de-3cb37fe5c0fa"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="File" id="2c964dc7-320d-49be-bc35-968008837921">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="File" id="e5f89824-6983-42fb-96a1-751c4f989a1d"/>
+                <menuItem title="File" id="68b52b77-e548-4555-b8cc-9a18619c6511">
+                    <menu key="submenu" title="File" id="d47d909b-e52d-41a8-afda-925014c24cf7"/>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="200" y="121"/>
         </menu>
-        <window title="WorldWideWeb" animationBehavior="default" id="41759c82-69f7-41c8-90d8-609cbbe763ff">
+        <window title="WorldWideWeb" animationBehavior="default" id="5b2585d7-5bb8-4f24-81b6-2ecde59163a3">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="480" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="0f37f979-df6c-4e5e-8d04-bba44f8fa031">
+            <view key="contentView" id="dd6b7638-2772-4fbc-bf61-e4b3d83362e8">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
             </view>
             <connections>
-                <outlet property="delegate" destination="e6d3e71a-4b02-4e59-a2c7-2864a027d89d" id="2fcfb5c5-df6f-460b-9187-b62944a95124"/>
+                <outlet property="delegate" destination="2c52de8b-a6cf-4f7a-9434-e6e6fccdb91c" id="65a0da4b-ba97-4f96-ab15-de1ebbf4525d"/>
             </connections>
             <point key="canvasLocation" x="200" y="400"/>
         </window>
