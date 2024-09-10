@@ -227,11 +227,10 @@ static float page_width() {
 
     //	Set up the scroll view and window to match:
 
-    [NSScrollView getFrameSize:&scroll_frame.size
-                forContentSize:&size
-                 horizScroller:scroll_X
-                  vertScroller:scroll_Y
-                    borderType:NX_LINE];
+    scroll_frame.size = [NSScrollView frameSizeForContentSize:size
+                                        hasHorizontalScroller:scroll_X
+                                          hasVerticalScroller:scroll_Y
+                                                   borderType:NSLineBorder];
 
     [scrollview setHasVerticalScroller:scroll_Y];
     [scrollview setHasHorizontalScroller:scroll_X];
@@ -291,11 +290,10 @@ static float page_width() {
     NSSize nice_size = {0.0, NICE_HEIGHT}; // Guess height
 
     nice_size.width = page_width();
-    [NSScrollView getFrameSize:&scroll_frame.size
-                forContentSize:&nice_size
-                 horizScroller:NO
-                  vertScroller:YES
-                    borderType:NX_LINE];
+    scroll_frame.size = [NSScrollView frameSizeForContentSize:nice_size
+                                        hasHorizontalScroller:NO
+                                          hasVerticalScroller:YES
+                                                   borderType:NSLineBorder];
 
     {
         int i; /* Slot address */
