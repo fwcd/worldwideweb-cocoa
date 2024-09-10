@@ -128,7 +128,7 @@ static SGML_style Example = /* Fixed width font, at least 80 chars wide */
 static SGML_style Preformatted =                            /* Fixed width font, at least 80 chars wide */
     {"\n<PRE>", "\n", "\t", "</PRE>", "", "", "", 0, 0, 0}; /* not litteral */
 
-static SGML_style Fixed = /* Fixed width font, at least 80 chars wide */
+static SGML_style Fixed_ = /* Fixed width font, at least 80 chars wide */
     {"\n<FIXED>", "<P>", "\t", "</FIXED>", "", "", "", 0, 1, 0};
 
 static SGML_style Listing = /* Fixed width font, at least 80 chars wide */
@@ -138,7 +138,7 @@ static SGML_style Listing = /* Fixed width font, at least 80 chars wide */
 */
 static SGML_style *styleTable[] = {&Normal,       &Heading[0], &Heading[1], &Heading[2], &Heading[3],
                                    &Heading[4],   &Heading[5], &Glossary,   &listStyle,  &addressStyle,
-                                   &Preformatted, &Fixed,      &Example,    &Listing}; /* style table */
+                                   &Preformatted, &Fixed_,     &Example,    &Listing}; /* style table */
 
 #define NUMBER_OF_STYLES (sizeof(styleTable) / sizeof(styleTable[0]))
 
