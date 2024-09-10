@@ -16,7 +16,6 @@ import xml.etree.ElementTree as ET
 
 # TODO: Reverse-engineer the parameters of some common classes (e.g. View)
 # TODO: Use a better order for "expanding" referenced objects (e.g. breadth-first)
-# TODO: Generate a "modern" XIB and perhaps only keep the old one around as a reference
 
 @dataclass
 class Options:
@@ -26,6 +25,8 @@ class Options:
 class State:
     options: Options
     visited_objects: set[typedstream.GenericArchivedObject] = field(default_factory=set)
+
+# FIXME: Port these conversion methods to the "new" XIB/XIBNode builder
 
 def convert_class_name(c: str, state: State) -> str:
     if not state.options.convert_class_names or c.startswith('IB'):
@@ -189,6 +190,7 @@ class XIB:
         files_owner.connect_outlet('delegate', app_delegate)
 
         # Add main menu
+        # TODO: Add other standard menu items, see Reference/MainMenu.xib
         main_menu = self.objects.add_object('menu', systemMenu='main')
         main_menu.add('point', key='canvasLocation', x='200', y='121')
 
