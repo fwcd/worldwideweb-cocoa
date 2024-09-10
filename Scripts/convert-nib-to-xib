@@ -101,7 +101,8 @@ class XIBNode:
     def __init__(self, element: ET.Element, id: Optional[str]=None):
         self.element = element
         self.id = id
-        self.connections: Optional[ET.Element] = None
+
+        self._connections: Optional[ET.Element] = None
 
     def add_object(self, class_or_tag_name: str, id: Optional[str]=None, **kwargs) -> Self:
         '''Adds an object under this node.'''
@@ -127,13 +128,16 @@ class XIBNode:
 
         return XIBNode(child)
     
+    @property
+    def connections(self) -> ET.Element:
+        if self._connections is None:
+            self._connections = ET.Element('connections')
+            self.element.append(self._connections)
+        return self._connections
+
     def connect(self, property: str, destination: str | Self):
         '''Adds an outlet to the given destination.'''
 
-        if self.connections is None:
-            self.connections = ET.Element('connections')
-            self.element.append(self.connections)
-        
         id = str(uuid4())
         outlet = ET.Element('outlet', attrib={
             'property': property,
