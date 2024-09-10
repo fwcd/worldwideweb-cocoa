@@ -18,7 +18,7 @@ import typedstream
 
 @dataclass
 class Options:
-    pass
+    skip_groups: bool
 
 @dataclass
 class State:
@@ -43,10 +43,14 @@ def node_from(value: Any):
 def traverse_object(obj: typedstream.GenericArchivedObject, state: State):
     state.visited.add(id(obj))
     for group in obj.contents:
-        state.edges.append((node_from(obj), node_from(group)))
+        if not state.options.skip_groups:
+            state.edges.append((node_from(obj), node_from(group)))
         for value in group.values:
             if isinstance(value, typedstream.GenericArchivedObject):
-                state.edges.append((node_from(group), node_from(value)))
+                if state.options.skip_groups:
+                    state.edges.append((node_from(obj), node_from(value)))
+                else:
+                    state.edges.append((node_from(group), node_from(value)))
                 if id(value) not in state.visited:
                     traverse_object(value, state=state)
 
@@ -55,12 +59,15 @@ def traverse_root(obj: typedstream.GenericArchivedObject, state: State):
 
 def main():
     parser = argparse.ArgumentParser(description='Converts a legacy NeXTStep NIB to a graph visualization.')
+    parser.add_argument('--skip-groups', action='store_true', help='Whether to skip any groups.')
     parser.add_argument('-l', '--layout', default='sfdp', help='The GraphViz layout algorithm (e.g. dot, fdp, sfdp).')
     parser.add_argument('-o', '--output', required=True, type=Path, help='The path to the output file (e.g. a DOT or PDF file).')
     parser.add_argument('input', type=Path, help='The path to the input NIB.')
 
     args = parser.parse_args()
-    options = Options()
+    options = Options(
+        skip_groups=args.skip_groups,
+    )
     state = State(options=options)
 
     nib = typedstream.unarchive_from_file(args.input / 'data.nib')
