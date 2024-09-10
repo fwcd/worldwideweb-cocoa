@@ -1,10 +1,10 @@
 /*			Generic Communication Code		HTTCP.h
 **			==========================
-**
-**	Requires tcp.h to be included first.
 */
 
 #pragma once
+
+#include "tcp.h"
 
 #ifdef SHORT_NAMES
 #define HTInetStatus HTInStat
