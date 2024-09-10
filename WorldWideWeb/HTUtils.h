@@ -3,10 +3,9 @@
 **	See also: the system dependent file "tcp.h"
 */
 
-/* extern void *malloc(size_t size); */
+#pragma once
 
-#ifndef HTUTILS_H
-#define HTUTILS_H
+/* extern void *malloc(size_t size); */
 
 #define DEBUG /* Turn on trace output when WWW_TraceFlag set */
 
@@ -251,5 +250,3 @@ extern void msg_exit PARAMS((int wait_for_key));
 #define TOLOWER(c) (isupper(c) ? tolower(c) : (c))
 #define TOUPPER(c) (islower(c) ? toupper(c) : (c))
 #endif /* ndef TOLOWER */
-
-#endif /* HTUTILS_H */

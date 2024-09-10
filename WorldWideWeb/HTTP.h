@@ -2,6 +2,8 @@
 **	==========================
 */
 
+#pragma once
+
 /*		Open Socket for reading from HTTP Server		HTTP_get()
 **		========================================
 **

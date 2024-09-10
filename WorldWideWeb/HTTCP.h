@@ -3,6 +3,9 @@
 **
 **	Requires tcp.h to be included first.
 */
+
+#pragma once
+
 #ifdef SHORT_NAMES
 #define HTInetStatus HTInStat
 #define HTInetString HTInStri

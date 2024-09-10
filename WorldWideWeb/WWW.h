@@ -1,6 +1,8 @@
 /*	Include file for WorldWideWeb project-wide definitions
 */
 
+#pragma once
+
 /*	Formats:
 */
 typedef int WWW_Format; /* Can take the following values: */

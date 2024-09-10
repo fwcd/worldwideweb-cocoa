@@ -5,6 +5,8 @@
 **	to another anchor in the same or a different node.
 */
 
+#pragma once
+
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 

@@ -4,6 +4,8 @@
 // History:
 //	26 Sep 90	Written TBL
 
+#pragma once
+
 #import "Anchor.h"
 #import "HyperText.h"
 #import <Foundation/Foundation.h>

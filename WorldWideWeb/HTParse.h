@@ -4,6 +4,9 @@
 /*	These are flag bits which may be ORed together to form a number to give
 **	the 'wanted' argument to HTParse.
 */
+
+#pragma once
+
 #define PARSE_ACCESS 16
 #define PARSE_HOST 8
 #define PARSE_PATH 4

@@ -7,6 +7,8 @@
 **			REMOVE_SCRIPT ifdefed out -- did ignore lines starting with "."
 */
 
+#pragma once
+
 #import "HTStyle.h"
 
 extern HTStyleSheet *styleSheet;

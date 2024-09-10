@@ -1,6 +1,8 @@
 //			HyperText Class
 //
 
+#pragma once
+
 #import "Anchor.h"
 #import "HTStyle.h"
 #import <AppKit/AppKit.h>

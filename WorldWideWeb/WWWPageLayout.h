@@ -6,6 +6,8 @@
 **
 */
 
+#pragma once
+
 #import <AppKit/AppKit.h>
 
 @interface WWWPageLayout : NSPageLayout {

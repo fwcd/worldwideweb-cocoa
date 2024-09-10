@@ -7,6 +7,9 @@
 // History:
 //	   Oct 90	Written TBL
 //
+
+#pragma once
+
 #import "HyperAccess.h"
 
 @interface HyperManager : HyperAccess

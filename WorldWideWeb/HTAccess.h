@@ -2,6 +2,8 @@
 **		==============
 */
 
+#pragma once
+
 /*	Open a file descriptor for a document
 **	-------------------------------------
 **

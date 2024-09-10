@@ -9,6 +9,8 @@
 **	22 Feb 91	Written (TBL) as part of the WWW project.
 */
 
+#pragma once
+
 #define NETCLOSE close /* Routine to close a TCP-IP socket		*/
 #define NETREAD read   /* Routine to read from a TCP-IP socket	*/
 #define NETWRITE write /* Routine to write to a TCP-IP socket	*/

@@ -9,6 +9,8 @@
 **	It is a linked list of styles.
 */
 
+#pragma once
+
 #import "NXShims.h"
 #import <AppKit/AppKit.h>
 

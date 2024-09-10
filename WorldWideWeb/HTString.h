@@ -1,8 +1,8 @@
 /*		Case-independent string comparison		HTString.h
 **		and allocations with copies
 */
-#ifndef HTSTRING_H
-#define HTSTRING_H
+
+#pragma once
 
 #include "HTUtils.h"
 
@@ -19,5 +19,3 @@ extern char *HTSACat PARAMS((char **dest, CONST char *src));
 /* Enable the old macro-like calling methods */
 #define StrAllocCopy(dest, src) HTSACopy(&(dest), src)
 #define StrAllocCat(dest, src) HTSACat(&(dest), src)
-
-#endif

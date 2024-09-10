@@ -5,8 +5,7 @@
 //  Created by Chris Brandow on 8/23/24.
 //
 
-#ifndef NXShims_h
-#define NXShims_h
+#pragma once
 
 #import <AppKit/AppKit.h>
 
@@ -74,5 +73,3 @@ typedef struct _NXRunArray {
     NXChunk chunk;
     NXRun runs[1];
 } NXRunArray;
-
-#endif /* NXShims_h */
