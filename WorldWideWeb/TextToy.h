@@ -35,6 +35,6 @@
 
 //	Access manager function:
 
-- registerAccess:(HyperAccess *)access;
+- (void)registerAccess:(HyperAccess *)access;
 
 @end

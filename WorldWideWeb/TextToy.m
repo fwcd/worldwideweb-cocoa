@@ -83,10 +83,10 @@ Anchor *Mark; /* A marked Anchor */
 //			Access Management functions
 //			===========================
 
-- registerAccess:(HyperAccess *)access {
+- (void)registerAccess:(HyperAccess *)access {
     if (!accesses)
         accesses = [NSMutableArray new];
-    return [accesses addObject:access];
+    [accesses addObject:access];
 }
 
 @end
