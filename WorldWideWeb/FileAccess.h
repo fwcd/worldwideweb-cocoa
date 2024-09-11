@@ -18,6 +18,6 @@
 - (IBAction)makeNew:sender;
 - (IBAction)linkToNew:sender;
 - (IBAction)linkToFile:sender;
-- openMy:(const char *)filename diagnostic:(int)diagnostic;
-- goHome:sender;
+- (Anchor *)openMy:(const char *)filename diagnostic:(int)diagnostic;
+- (void)goHome:sender;
 @end

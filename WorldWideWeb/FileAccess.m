@@ -453,7 +453,7 @@ NSString *existing_filename() {
 //	Returns	If successful, the anchor of the node loaded or found.
 //		If failed, nil.
 
-- openMy:(const char *)filename diagnostic:(int)diagnostic {
+- (Anchor *)openMy:(const char *)filename diagnostic:(int)diagnostic {
     Anchor *a;
     char name[256];
     char template[256];
@@ -496,8 +496,8 @@ NSString *existing_filename() {
 //	This accesses the default page of text for the user or, failing that,
 //	for the system.
 //
-- goHome:sender {
-    return [self openMy:"default.html" diagnostic:0];
+- (void)goHome:sender {
+    [self openMy:"default.html" diagnostic:0];
 }
 
 //	Make a new blank node named like the current node
@@ -585,45 +585,42 @@ NSString *existing_filename() {
 //	Make a new blank node named like the current node and link to it
 //	----------------------------------------------------------------
 //
-- linkToNew:sender {
+- (IBAction)linkToNew:sender {
     HyperText *HT = THIS_TEXT;
     Anchor *a;
     if (![HT isEditable])
-        return nil; /* Won't be able to link to it */
+        return; /* Won't be able to link to it */
 
     a = [self makeNewNode:sender]; /* Make the new node */
     if (!a)
-        return nil;
+        return;
 
-    return [HT linkSelTo:a]; /* Link the selection to it */
+    [HT linkSelTo:a]; /* Link the selection to it */
 }
 
 //		Actions:
 //
-- search:sender {
-    return nil;
+- (IBAction)search:sender {
 }
 
-- searchRTF:sender {
-    return nil;
+- (IBAction)searchRTF:sender {
 }
 
-- searchSGML:sender {
-    return nil;
+- (IBAction)searchSGML:sender {
 }
 
 //	Direct open buttons:
 
-- open:sender {
-    return [self openDiagnostic:0];
+- (IBAction)open:sender {
+    [self openDiagnostic:0];
 }
 
-- openRTF:sender {
-    return [self openDiagnostic:1];
+- (IBAction)openRTF:sender {
+    [self openDiagnostic:1];
 }
 
-- openSGML:sender {
-    return [self openDiagnostic:2];
+- (IBAction)openSGML:sender {
+    [self openDiagnostic:2];
 }
 
 @end

@@ -35,12 +35,10 @@
 - (IBAction)search:sender {
 }
 
-- searchRTF:sender {
-    return nil;
+- (IBAction)searchRTF:sender {
 }
 
-- searchSGML:sender {
-    return nil;
+- (IBAction)searchSGML:sender {
 }
 
 //	Direct open buttons:
