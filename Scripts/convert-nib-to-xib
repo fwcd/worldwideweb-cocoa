@@ -128,8 +128,6 @@ class XIB:
         app_menu = app_item.add_submenu(systemMenu='apple')
         app_menu.add_menu_item(title='About WorldWideWeb')
         app_menu.add_menu_item(isSeparatorItem='YES')
-        quit_item = app_menu.add_menu_item(title='Quit WorldWideWeb', keyEquivalent='q')
-        quit_item.connect_action('terminate:', first_responder)
 
         self.main_menu = main_menu
         self.app_menu = app_menu
@@ -180,6 +178,7 @@ class XIBConverter:
 
         title = cell.contents[0].values[0].decode()
         submenu = cell.contents[1].values[0]
+        has_submenu = isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate'
 
         xib_properties = {}
 
@@ -189,9 +188,14 @@ class XIBConverter:
             if key_equivalent > 0:
                 xib_properties['keyEquivalent'] = chr(key_equivalent)
 
-        xib_item = xib_menu.add_menu_item(title=title, **xib_properties)
+        # Avoid adding menu items or special menus (e.g. Services) to the menu
+        # bar directly to match the macOS conventions.
+        if (not has_submenu or title in {'Services'}) and xib_menu == self.xib.main_menu:
+            xib_item = self.xib.app_menu.add_menu_item(title=title, **xib_properties)
+        else:
+            xib_item = xib_menu.add_menu_item(title=title, **xib_properties)
 
-        if isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate':
+        if has_submenu:
             xib_submenu = xib_item.add_submenu()
             self.convert_menu(submenu, xib_submenu, level=level)
         else:
