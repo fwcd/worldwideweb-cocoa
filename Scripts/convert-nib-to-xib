@@ -355,7 +355,15 @@ class XIBConverter:
 
         title = obj.contents[0].values[0].decode()
 
-        xib_cell = xib_button.add('buttonCell', key='cell', title=title)
+        # TODO: Figure out a cleaner looking button style that preserves the intended look and feel
+        xib_cell = xib_button.add('buttonCell',
+            key='cell',
+            title=title,
+            type='square',
+            bezelStyle='shadowlessSquare',
+            borderStyle='border',
+            alignment='center',
+        )
         self.object_to_xib_node[obj] = xib_cell
 
     def traverse_button(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode):
