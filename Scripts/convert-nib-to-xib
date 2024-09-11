@@ -474,6 +474,56 @@ class XIBConverter:
                 assert isinstance(cell, typedstream.GenericArchivedObject), type(cell)
                 self.traverse_form_cell(cell, xib_form.cells.column)
 
+    def traverse_clip_view(self, obj: typedstream.GenericArchivedObject, xib_scroll_view: XIBNode, **kwargs):
+        '''Traverses the given NIB clip view and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'ClipView', obj.clazz.name
+
+        frame = self.convert_rect(obj.contents[2])
+        children = obj.contents[6].values[0]
+
+        xib_clip_view = xib_scroll_view.add_object('clipView', key='contentView')
+        xib_clip_view.add('rect', key='frame', **frame)
+        self.object_to_xib_node[obj] = xib_clip_view
+
+        if children is not None:
+            assert isinstance(children, typedstream.types.nextstep.List)
+            for child in children.elements:
+                assert isinstance(child, typedstream.GenericArchivedObject), type(child)
+                self.traverse_any_view(child, xib_clip_view.subviews)
+
+    def traverse_scroller(self, obj: typedstream.GenericArchivedObject, xib_scroll_view: XIBNode, **kwargs):
+        '''Traverses the given NIB scroller and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'Scroller', obj.clazz.name
+
+        frame = self.convert_rect(obj.contents[2])
+
+        # TODO: Are we guaranteed to get vertical scrollers? Currently the only one seems to be in the Info window
+        xib_scroller = xib_scroll_view.add_object('scroller', key='verticalScroller')
+        xib_scroller.add('rect', key='frame', **frame)
+
+    def traverse_scroll_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
+        '''Traverses the given NIB scroll view and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'ScrollView', obj.clazz.name
+
+        frame = self.convert_rect(obj.contents[2])
+        children = obj.contents[6].values[0]
+
+        assert isinstance(children, typedstream.types.nextstep.List)
+
+        clip_view = children.elements[0]
+        scrollers = children.elements[1:]
+
+        xib_scroll_view = xib_parent.add_object('scrollView', **kwargs)
+        xib_scroll_view.add('rect', key='frame', **frame)
+        self.object_to_xib_node[obj] = xib_scroll_view
+
+        self.traverse_clip_view(clip_view, xib_scroll_view)
+        for scroller in scrollers:
+            self.traverse_scroller(scroller, xib_scroll_view)
+
     def traverse_any_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         match obj.clazz.name.decode():
             case 'View':
@@ -486,6 +536,8 @@ class XIBConverter:
                 self.traverse_text_field(obj, xib_parent, **kwargs)
             case 'Form':
                 self.traverse_form(obj, xib_parent, **kwargs)
+            case 'ScrollView':
+                self.traverse_scroll_view(obj, xib_parent, **kwargs)
             case class_name:
                 print(f'Warning: Skipping unrecognized view class name {class_name}')
 
