@@ -310,7 +310,7 @@ class XIBConverter:
         else:
             print(f'Warning: Could not connect outlet due to untranslated source object ({src_obj.clazz.name.decode()} and {dest_obj.clazz.name.decode()})')
 
-    def convert_frame(self, group: typedstream.TypedGroup) -> dict[str, str]:
+    def convert_rect(self, group: typedstream.TypedGroup) -> dict[str, str]:
         return {
             'x': str(group.values[0]),
             'y': str(group.values[1]),
@@ -325,7 +325,7 @@ class XIBConverter:
         
         assert obj.clazz.name == b'View', obj.clazz.name
 
-        frame = self.convert_frame(obj.contents[2])
+        frame = self.convert_rect(obj.contents[2])
         children = obj.contents[6].values[0]
 
         xib_view = xib_parent.add_object('view', **kwargs)
@@ -343,7 +343,7 @@ class XIBConverter:
         
         assert obj.clazz.name == b'Box', obj.clazz.name
 
-        frame = self.convert_frame(obj.contents[2])
+        frame = self.convert_rect(obj.contents[2])
         children = obj.contents[6].values[0]
 
         xib_box = xib_parent.add_object('box')
@@ -377,7 +377,7 @@ class XIBConverter:
         
         assert obj.clazz.name == b'Button', obj.clazz.name
 
-        frame = self.convert_frame(obj.contents[2])
+        frame = self.convert_rect(obj.contents[2])
         cell = obj.contents[7].values[1]
 
         xib_button = xib_parent.add_object('button')
@@ -405,7 +405,7 @@ class XIBConverter:
         
         assert obj.clazz.name == b'TextField', obj.clazz.name
 
-        frame = self.convert_frame(obj.contents[2])
+        frame = self.convert_rect(obj.contents[2])
         cell = obj.contents[7].values[1]
 
         xib_text_field = xib_parent.add_object('textField')
