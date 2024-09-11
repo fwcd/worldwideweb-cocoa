@@ -468,7 +468,7 @@ The "Home" button reselects the original page which you get when you started the
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="505" y="-46"/>
+            <point key="canvasLocation" x="480" y="-559"/>
         </window>
         <window title="Info" animationBehavior="default" id="25">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -524,7 +524,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="553" y="-46"/>
+            <point key="canvasLocation" x="647" y="-33"/>
         </window>
         <window title="Style editor" animationBehavior="default" id="35">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -678,7 +678,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     </box>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="546" y="-46"/>
+            <point key="canvasLocation" x="1027" y="-167"/>
         </window>
         <window title="Navigation" animationBehavior="default" id="53">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -845,7 +845,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="505" y="-46"/>
+            <point key="canvasLocation" x="670" y="-507"/>
         </window>
         <window title="Document Inspector" animationBehavior="default" id="74">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
