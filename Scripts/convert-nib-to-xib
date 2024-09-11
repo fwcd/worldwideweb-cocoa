@@ -176,17 +176,21 @@ class XIBConverter:
 
         assert cell.clazz.name == b'MenuCell', cell.clazz.name
 
+        # Parse basic metadata
         title = cell.contents[0].values[0].decode()
-        submenu = cell.contents[1].values[0]
-        has_submenu = isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate'
 
         xib_properties = {}
 
+        # Parse the key equivalent/keyboard shortcut
         shortcut_info = cell.contents[4]
         if len(shortcut_info.values) == 4 and isinstance(shortcut_info.values[3], int):
             key_equivalent = shortcut_info.values[3] >> 8
             if key_equivalent > 0:
                 xib_properties['keyEquivalent'] = chr(key_equivalent)
+
+        # Parse the submenu
+        submenu = cell.contents[1].values[0]
+        has_submenu = isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate'
 
         # Avoid adding menu items or special menus (e.g. Services) to the menu
         # bar directly to match the macOS conventions.
@@ -206,14 +210,21 @@ class XIBConverter:
 
         assert menu.clazz.name == b'MenuTemplate', menu.clazz.name
 
+        # Parse basic metadata
         title = menu.contents[2].values[0].decode()
-        matrix = menu.contents[2].values[1]
+
+        # Output an indented short description for debugging
         print(f"{'  ' * level}{title} @ {id(menu)}")
+
+        # Parse the matrix
+        matrix = menu.contents[2].values[1]
         assert isinstance(matrix, typedstream.GenericArchivedObject) and matrix.clazz.name == b'Matrix'
 
+        # Parse the list holding the cells from the matrix
         matrix_list = matrix.contents[12].values[0]
         assert isinstance(matrix_list, typedstream.types.nextstep.List), type(matrix_list)
 
+        # Convert the menu cells to XIB items
         for cell in matrix_list.elements:
             assert isinstance(cell, typedstream.GenericArchivedObject)
             self.convert_menu_cell(cell, xib_menu, level=level + 1)
