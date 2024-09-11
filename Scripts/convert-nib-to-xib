@@ -295,7 +295,7 @@ class XIBConverter:
             case 'CustomObject':
                 self.traverse_custom_object(obj)
             case 'IBControlConnector':
-                # NOTE: We rely on these connectors being listed after 
+                # NOTE: We rely on these connectors being listed after the relevant objects
                 self.traverse_control_connector(obj)
 
         for group in obj.contents:
