@@ -211,6 +211,16 @@ class XIBConverter:
 
         self.convert_menu(menu, self.xib.main_menu)
 
+    def traverse_custom_object(self, obj: typedstream.GenericArchivedObject):
+        '''Traverses the given NIB custom object and adds it to the XIB.'''
+
+        custom_class = obj.contents[0].values[0].decode()
+        # TODO: We could translate these too, we'd just have to add the NS prefix and replace the XIB's own File's Owner etc. 
+        # Alternatively, we should try to map these references to the pregenerated File's Owner from the XIB
+        if custom_class not in {'Application', 'FontManager'}:
+            print(f'Adding custom object {custom_class}')
+            self.xib.objects.add_object(custom_class)
+
     def traverse_group(self, group: typedstream.TypedGroup):
         '''Recursively traverses the given NIB group.'''
 
@@ -225,6 +235,9 @@ class XIBConverter:
         '''Recursively traverses the given NIB object.'''
 
         self.visited_objects.add(obj)
+
+        if obj.clazz.name == b'CustomObject':
+            self.traverse_custom_object(obj)
 
         for group in obj.contents:
             self.traverse_group(group)

@@ -7,192 +7,199 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="a2a7b43a-7188-4791-bbcc-03f1aafd542e" id="6f7e3f85-bd28-41dc-981b-38fc17f67217"/>
+                <outlet property="delegate" destination="6db36ed8-a19e-4d50-99b2-8c567f70ffbe" id="5f547cb3-d9b1-4fbf-ac5e-d7f189c39b30"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="5412aa32-57fe-47a3-ab1f-9c01643bb814" customClass="NSFontManager"/>
-        <customObject id="a2a7b43a-7188-4791-bbcc-03f1aafd542e" customClass="AppDelegate">
+        <customObject id="5f84b0f2-30f3-4dcd-af4e-22158b732070" customClass="NSFontManager"/>
+        <customObject id="6db36ed8-a19e-4d50-99b2-8c567f70ffbe" customClass="AppDelegate">
             <connections>
-                <outlet property="window" destination="0ca2d73a-382f-4e85-96f9-2e7ea0375945" id="2dc0ee06-4aa8-42cf-b3dd-769838c766b3"/>
+                <outlet property="window" destination="e602a889-d370-4b44-9bd3-b38cf857265f" id="26934b26-c17c-437d-ae96-e2fa278a73ed"/>
             </connections>
         </customObject>
-        <menu systemMenu="main" id="de2cbe79-1171-4d22-9a81-53428995edca">
+        <menu systemMenu="main" id="70b335ad-9ccb-491e-8bf7-cfe5a556e608">
             <items>
-                <menuItem title="WorldWideWeb" id="62d428be-c449-49e0-8f64-45dfc3da2358">
-                    <menu key="submenu" title="WorldWideWeb" systemMenu="apple" id="3616d5f6-04ec-491e-95d2-805d475ecf10">
+                <menuItem title="WorldWideWeb" id="518ab469-d025-4aaf-9160-48d2039a34a4">
+                    <menu key="submenu" title="WorldWideWeb" systemMenu="apple" id="1f5fb6be-95ca-4dce-a06a-519e20ec0dfe">
                         <items>
-                            <menuItem title="About WorldWideWeb" id="3271188c-f58f-4ff4-bdfd-150a1db4ad13"/>
-                            <menuItem isSeparatorItem="YES" id="3483b96b-a2bf-4eb1-8d20-06b9f5d5a3d0"/>
-                            <menuItem title="Quit WorldWideWeb" keyEquivalent="q" id="af28f5df-3d8e-48f0-a6d5-f0491dae6ac7">
+                            <menuItem title="About WorldWideWeb" id="c8d449a5-0c4b-4497-995d-e71aa3acd076"/>
+                            <menuItem isSeparatorItem="YES" id="592c9591-62b7-43dd-9189-d1e9087c2665"/>
+                            <menuItem title="Quit WorldWideWeb" keyEquivalent="q" id="46d7f35d-a8f1-405c-bb1b-099ac7c0a849">
                                 <connections>
-                                    <action selector="terminate:" target="-1" id="d0ccf1d9-216c-49a9-89b6-1de3d827b6e8"/>
+                                    <action selector="terminate:" target="-1" id="71e0dc1f-3d12-4dde-ac46-53d6758dadb2"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Info" id="e227455f-ebee-48cb-8fc1-cd45e14ca72a">
-                    <menu key="submenu" title="Info" id="5583e6c2-0625-4b6a-9b98-6c0d9540590c">
+                <menuItem title="Info" id="9b3301e7-ca1d-405f-9751-18a1e1f57c74">
+                    <menu key="submenu" title="Info" id="fc780c7c-2fb1-4b49-9f15-090a54541504">
                         <items>
-                            <menuItem title="Panel..." id="eab5009b-5223-46db-8e0d-4fce4be1cd60"/>
-                            <menuItem title="Help..." id="19c821b1-83a7-456c-b32b-13d5c1518b93"/>
+                            <menuItem title="Panel..." id="9b66223a-0b5a-4891-9efb-327c1ca636ab"/>
+                            <menuItem title="Help..." id="279107b2-7c21-4c48-99a3-920f015794b2"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Navigate" id="5e54f10c-c82a-4da9-9d07-d6d4a394b717">
-                    <menu key="submenu" title="Navigate" id="4adcf82e-7d04-4da1-9b61-3e713af8c6f6">
+                <menuItem title="Navigate" id="85df0c80-e2a1-4feb-bdf7-bb6f85bc0ca4">
+                    <menu key="submenu" title="Navigate" id="e8d08a48-4d87-4187-be72-7d6f0ad933a9">
                         <items>
-                            <menuItem title="Back" id="f0033c7c-ed9b-4c95-a29c-15895ac7676a"/>
-                            <menuItem title="Next" id="4ba97968-6732-41f2-ad40-8a0cffdea184"/>
-                            <menuItem title="Previous" id="ff931970-e5b7-4046-bb92-d6a91b423c19"/>
-                            <menuItem title="Home" id="b3e9eb1e-7b1b-49e3-8e00-21c3caef66bd"/>
-                            <menuItem title="Panel..." id="e7091ec7-c867-43ce-9dc7-969fb2f25c8f"/>
+                            <menuItem title="Back" id="40fd8ab5-683c-431c-94e9-208d521a5934"/>
+                            <menuItem title="Next" id="b313ea01-8be5-4c44-8634-229580b1d96b"/>
+                            <menuItem title="Previous" id="ec90a9dd-bb5b-4dfd-9cdd-3cb07a17b0c2"/>
+                            <menuItem title="Home" id="481fa3cc-430f-45db-baf4-3ad4cb80d1f6"/>
+                            <menuItem title="Panel..." id="efe6dd12-16b5-4a91-b857-b8a5475ca365"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Document" id="537b9cee-9191-4e08-b058-47e8a60a6d8a">
-                    <menu key="submenu" title="Document" id="2f087887-7276-4c06-bfd6-0fc680352a43">
+                <menuItem title="Document" id="6faf3fb2-20e2-4b7f-a6fe-2d4753f9695d">
+                    <menu key="submenu" title="Document" id="543644ba-dc1d-4d84-bd5b-fcdd2a54c0a9">
                         <items>
-                            <menuItem title="Open file..." id="c839c916-affe-43f5-9425-b0931380e773"/>
-                            <menuItem title="Open given document address" id="5f124faf-c9b6-4407-a7e2-8fe2bea8c8a4"/>
-                            <menuItem title="New file..." id="deec3371-084e-4eca-91c7-a8314375cbb6"/>
-                            <menuItem title="Save" id="c8381033-261a-4649-9f40-20a774da35d3"/>
-                            <menuItem title="Save all edited windows" id="a7f1e89f-a41c-4045-921a-13926fdcb61f"/>
-                            <menuItem title="Save a copy in" id="d2ca5691-e1f6-4fb6-8770-61511b5fe079">
-                                <menu key="submenu" title="Save a copy in" id="c14cb708-b3e4-4990-a32c-236a33cfad79">
+                            <menuItem title="Open file..." id="e828b070-0ea6-497c-8756-0829c17ff540"/>
+                            <menuItem title="Open given document address" id="283b09bd-a9a6-45e2-9922-938b7c07bfe9"/>
+                            <menuItem title="New file..." id="5dc27fe1-0c76-4348-aee4-7901942f80c7"/>
+                            <menuItem title="Save" id="a7cdcdf7-da78-4903-9322-629306291b28"/>
+                            <menuItem title="Save all edited windows" id="0d36ce7f-02e3-4463-a259-21ee53d3ec7a"/>
+                            <menuItem title="Save a copy in" id="1457d250-9901-46aa-8f44-5a372a22b1bd">
+                                <menu key="submenu" title="Save a copy in" id="4c673616-afa1-400f-af87-aaa6c76d5fdf">
                                     <items>
-                                        <menuItem title="HyperText Markup Language..." id="4606d847-ece5-4ffa-8e8b-c466e4cd6cf3"/>
-                                        <menuItem title="Rich Text Format ..." id="0ee7ee59-9545-425a-8c85-c11fa9520745"/>
-                                        <menuItem title="Plain Text..." id="b012fb39-5a08-4e01-b337-2dc83bc9fa82"/>
-                                        <menuItem title="PostScript..." id="37b31447-4309-4ee6-b9d4-a10f9656059c"/>
+                                        <menuItem title="HyperText Markup Language..." id="5ec44fe7-7617-4d82-be4b-583e2a1ca4eb"/>
+                                        <menuItem title="Rich Text Format ..." id="2bfd3897-2b30-4c24-b4f0-3a87e6861d88"/>
+                                        <menuItem title="Plain Text..." id="bb26358f-fc95-400c-8b43-07c66dd54541"/>
+                                        <menuItem title="PostScript..." id="37e2244c-ca2d-4c20-828a-c43eaa330a38"/>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Inspect ..." id="ab35c85a-c98c-4dba-9be7-c7a201420e87"/>
-                            <menuItem title="(Diagnostics)" id="1576e6fb-112f-4839-9aa5-b260ab12f62f">
-                                <menu key="submenu" title="(Diagnostics)" id="48182326-0730-4a63-a2d7-4aa4dbb013a0">
+                            <menuItem title="Inspect ..." id="d9ff653b-a30d-4d5a-a484-d8f025db95ef"/>
+                            <menuItem title="(Diagnostics)" id="24b6ab85-b9fd-42c9-9dd8-09ae7a49cd82">
+                                <menu key="submenu" title="(Diagnostics)" id="e0b52358-fb2b-4ab9-b389-19fb1bf10d41">
                                     <items>
-                                        <menuItem title="Panel" id="7302eeee-7cf7-4c4b-a47d-664f92edf0d0"/>
-                                        <menuItem title="Open HTML file showing SGML source" id="372dab27-0622-44a3-aec6-986f2aa94aa6"/>
-                                        <menuItem title="Open HTML file showing RTF" id="53e2b47d-9060-4967-8f56-1470c3515648"/>
-                                        <menuItem title="Dump text format to standard out" id="001ceb4a-9bd9-465a-b902-0fcadd7f468c"/>
-                                        <menuItem title="Turn console trace on" id="42e10c0d-c0f8-4da0-9da2-adaab1a1d388"/>
-                                        <menuItem title="Turn console trace off" id="22aff414-9b2f-46da-a69f-eccf63469e93"/>
-                                        <menuItem title="Item" id="5c00378f-b12b-4ef8-a48d-faa6cc085bd8"/>
+                                        <menuItem title="Panel" id="10b5c5e7-3b0a-4f8e-b29c-c21364c3a98e"/>
+                                        <menuItem title="Open HTML file showing SGML source" id="370a1f9e-931c-4794-9246-49ca79640e01"/>
+                                        <menuItem title="Open HTML file showing RTF" id="6cc21997-a1ca-4694-93d9-a14f780f7a66"/>
+                                        <menuItem title="Dump text format to standard out" id="7c7a5826-bdaa-45c8-a3a1-ad0a111a7ff0"/>
+                                        <menuItem title="Turn console trace on" id="347ddcb1-6763-49e6-801d-b868466355ce"/>
+                                        <menuItem title="Turn console trace off" id="7f2cee26-74d9-42f1-9863-9534afdff473"/>
+                                        <menuItem title="Item" id="6fc4ee17-30a4-4817-a5f2-b4734672720a"/>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Miniaturize" id="22894e7d-14e9-4c87-8ec8-5ab617510956"/>
-                            <menuItem title="Open master template document" id="d5c48ea7-14d0-4143-bf97-44e00dec5973"/>
-                            <menuItem title="Close all other windows" id="f85ab8ab-6d1a-4bbd-8d6c-5700d7396345"/>
-                            <menuItem title="Close" id="370cd023-161c-4795-9edb-708d6b272ea3"/>
+                            <menuItem title="Miniaturize" id="bb185d20-6e37-4603-9758-2a5aa0a37eab"/>
+                            <menuItem title="Open master template document" id="5b344c9c-54b2-419d-b453-9c6dfa093743"/>
+                            <menuItem title="Close all other windows" id="d83c6cc1-260f-495b-8f06-ef33e25771ea"/>
+                            <menuItem title="Close" id="11cb04dc-9024-4ba2-a030-523e4f09d209"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Edit" id="aea307ea-6925-4414-af5d-7a04dc98886b">
-                    <menu key="submenu" title="Edit" id="f0fa91e8-03d2-4d9b-9e42-e7746b90de0e">
+                <menuItem title="Edit" id="a0e12213-e603-42a1-b5cb-b9636d99b428">
+                    <menu key="submenu" title="Edit" id="2eb8c71d-1934-4c12-8135-9508c2b46c80">
                         <items>
-                            <menuItem title="Cut" id="a62a53b4-ec9a-4780-aa58-4c58547346e1"/>
-                            <menuItem title="Copy" id="3027cb7a-4488-447e-b6fe-a97e1cd5aa78"/>
-                            <menuItem title="Paste" id="ef97632b-1a5c-4fb6-9f10-5f0cffe2499e"/>
-                            <menuItem title="Paste As" id="5e3eaf4c-d701-4489-90b6-baa71efad590">
-                                <menu key="submenu" title="Paste As" id="f81bb066-457a-4163-b0d1-861c935debe2"/>
+                            <menuItem title="Cut" id="b08c8752-d2a1-4bdb-b4ff-752f09d596ef"/>
+                            <menuItem title="Copy" id="3de4ca99-576d-4b33-9c50-fd5ec4c35b2d"/>
+                            <menuItem title="Paste" id="0c29c6d4-8638-4157-9881-c82bc9956023"/>
+                            <menuItem title="Paste As" id="e00cf150-a3ed-425a-91ee-580f57b59e6e">
+                                <menu key="submenu" title="Paste As" id="cdfd7dea-aeec-4105-a62e-807067b7b6ab"/>
                             </menuItem>
-                            <menuItem title="Delete" id="1e6ed43d-7bab-44ec-9d1e-1e065c52d484"/>
-                            <menuItem title="Undo" id="dd82eb12-05dc-4384-a16f-0b3e6afec958"/>
-                            <menuItem title="Find" id="a504bbdc-cc4e-445b-912d-2785578a1bb2">
-                                <menu key="submenu" title="Find" id="2425f099-fb6f-459b-bf6e-75ef57116752">
+                            <menuItem title="Delete" id="0509af68-a7dd-403b-9907-c82cd47e632c"/>
+                            <menuItem title="Undo" id="6caf779c-3d20-42d4-80d8-5c0157d1a662"/>
+                            <menuItem title="Find" id="747d3755-93a3-4237-aa60-230f45078c40">
+                                <menu key="submenu" title="Find" id="3aa0039c-fec9-47d1-a3cc-962797845529">
                                     <items>
-                                        <menuItem title="Find Panel..." id="a42ccf35-6d4d-4e78-86f1-b94142e894c6"/>
-                                        <menuItem title="Find Next" id="285086c0-a096-4fc1-bccc-699091d3f8fe"/>
-                                        <menuItem title="Find Previous" id="32b28623-4878-4d74-b57c-2c02dc29b561"/>
-                                        <menuItem title="Enter Selection" id="15348943-59a0-4ecc-958a-76406c188208"/>
-                                        <menuItem title="Jump To Selection" id="692e060f-3100-48dd-803d-61c75090e40a"/>
+                                        <menuItem title="Find Panel..." id="b5e27dc9-bbab-4f4e-b294-9a32509db762"/>
+                                        <menuItem title="Find Next" id="fcc7b74f-800e-49b9-8f96-45852e3a9184"/>
+                                        <menuItem title="Find Previous" id="22598f1e-5ee6-4456-b879-61123cc00de3"/>
+                                        <menuItem title="Enter Selection" id="249ac921-e7b6-4521-8fd1-d71bf84abc65"/>
+                                        <menuItem title="Jump To Selection" id="b1841800-b863-4c01-bf0e-f8c689180fad"/>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Spelling..." id="e1848ac9-879a-4dac-8aef-0c6526520f31"/>
-                            <menuItem title="Check Spelling" id="cf2f4ebd-33ec-4e06-be5e-649d8c151f7b"/>
-                            <menuItem title="Select All" id="f0bdd373-275d-46da-84a6-4569c4b5feb4"/>
+                            <menuItem title="Spelling..." id="4db21a57-711d-4219-ac89-e239e594abaa"/>
+                            <menuItem title="Check Spelling" id="963657c4-5a85-43c6-a743-0ce5dcc42b8b"/>
+                            <menuItem title="Select All" id="8addb83d-4cd8-41fa-ad23-7f7b67187043"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Find" id="a9638481-274b-4ac1-a0d6-0cf31b3acd75">
-                    <menu key="submenu" title="Find" id="19d76d16-d0ef-4c07-8aa1-77967bb00d14">
+                <menuItem title="Find" id="83648516-d163-42ea-938c-cebf0b23f26b">
+                    <menu key="submenu" title="Find" id="ae2ab447-b7a6-4abe-91ee-374c89b90290">
                         <items>
-                            <menuItem title="Find Panel..." id="e847f50c-9531-4adf-83f1-a232a2cbd591"/>
-                            <menuItem title="Find Next" id="bd031e56-ac47-4854-a839-0e43a758c6bf"/>
-                            <menuItem title="Find Previous" id="a873820a-d8f2-454e-9f97-2f8be25fd177"/>
-                            <menuItem title="Enter Selection" id="a72a1289-3ed2-4253-bae5-2ec472d74fa8"/>
-                            <menuItem title="Jump to Selection" id="ee668fd8-10f7-41e3-bd85-eb47bf8cf2d7"/>
+                            <menuItem title="Find Panel..." id="3bfc7246-90f6-4b82-810c-596f9af57bc2"/>
+                            <menuItem title="Find Next" id="ad639f2f-44e8-438b-8ef0-671e944cde98"/>
+                            <menuItem title="Find Previous" id="23ad0537-089c-4fc8-97ea-8c698e0ed64b"/>
+                            <menuItem title="Enter Selection" id="cfe8466b-fd4e-457c-a57d-3a5aa625b27f"/>
+                            <menuItem title="Jump to Selection" id="bb789e77-25be-4ce7-b9f1-9a7b3f83f95d"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Links" id="349d659d-fcac-428a-8cb2-6f5c93709075">
-                    <menu key="submenu" title="Links" id="8cd7dc81-b6af-4eaf-948a-12dc607a4e17">
+                <menuItem title="Links" id="1105dea1-46d1-44db-8d9f-04426dc9758c">
+                    <menu key="submenu" title="Links" id="7521070f-9ead-457c-9299-03977028a787">
                         <items>
-                            <menuItem title="Mark all " id="3c8c15b5-bab4-472f-95af-0edf7b88b9c7"/>
-                            <menuItem title="Mark selection " id="93dc6a8e-a0fd-4d55-9602-8d21a63b8ffe"/>
-                            <menuItem title="Link to marked" id="8ca51f8e-59f4-4535-a951-7413bf4865fa"/>
-                            <menuItem title="Link to file..." id="4f880a88-0ed8-444e-bfef-a4cb50d64d09"/>
-                            <menuItem title="Link to New" id="0faaa454-8355-46ef-baa4-994686d26c51"/>
-                            <menuItem title="Follow link" id="25e81b31-f5a2-4f32-a5a3-7ec20e5ce384"/>
-                            <menuItem title="Unlink" id="53945388-9675-4438-bcd7-3ba7850c8837"/>
-                            <menuItem title="Help" id="fa306aa8-b0b1-486c-8495-73ffc16c22ae"/>
+                            <menuItem title="Mark all " id="e8d5ed91-9598-4004-8257-c8e3f84774d4"/>
+                            <menuItem title="Mark selection " id="7454848a-5478-45d7-ac55-b2f517a0c3f8"/>
+                            <menuItem title="Link to marked" id="7a9edd12-afd4-40c1-8027-7b51b960c33d"/>
+                            <menuItem title="Link to file..." id="a098cbca-047d-4012-a6d6-5a749b0883b7"/>
+                            <menuItem title="Link to New" id="47c871e1-678a-45ad-967e-67d4806f99e4"/>
+                            <menuItem title="Follow link" id="5ded544f-224c-4ddd-bdfd-5e9c61c6df13"/>
+                            <menuItem title="Unlink" id="8ad695b9-ed2e-4fbc-8192-dc2543056d26"/>
+                            <menuItem title="Help" id="35ac72b2-2191-4be8-8e7b-539461d69722"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Style" id="03c9a26d-322a-4342-a1c2-04aa52e91ec1">
-                    <menu key="submenu" title="Style" id="ba645c0b-96ae-4c78-bbaa-a729346cb4c7">
+                <menuItem title="Style" id="544eb2b9-e0db-43ce-a556-fd866e02c300">
+                    <menu key="submenu" title="Style" id="a0aa1b4e-c5d5-40d6-b14a-72b3f817f04c">
                         <items>
-                            <menuItem title="Copy style" id="1f0b0d45-87df-492f-a7c1-fb78d814e117"/>
-                            <menuItem title="Apply style" id="990b46a7-fd94-40d3-9d3f-265f1944cf09"/>
-                            <menuItem title="Glossary" id="e6c509dd-d555-46b6-b441-d52043a0e548"/>
-                            <menuItem title="List" id="e102d41c-23ff-444a-914d-b3793e5cda26"/>
-                            <menuItem title="Example" id="df109c9a-e2d8-4e7c-b46a-854c8f901181"/>
-                            <menuItem title="Address" id="566201da-912f-4ec2-88d0-6bfb8d190fe7"/>
-                            <menuItem title="Normal" id="da3fb718-1707-4862-ab7e-232504cd1421"/>
-                            <menuItem title="Heading 1" id="b5725c60-26b2-42e5-8cd8-b892d693958b"/>
-                            <menuItem title="Heading 2" id="723a15d3-ce84-489e-828e-46a863a347fb"/>
-                            <menuItem title="Heading 3" id="0da948ea-ef6e-42d6-a949-92df2a7da2f6"/>
-                            <menuItem title="Heading 4" id="6c476968-69f4-4ffc-adc9-61d27755a6cc"/>
-                            <menuItem title="Panel..." id="6f5bacab-240d-47a2-985f-f4e7ad62c6f7"/>
+                            <menuItem title="Copy style" id="b42ae3fb-da24-48e1-bc7e-dd794f5a2d2a"/>
+                            <menuItem title="Apply style" id="7023c951-887f-4d3d-bf35-2732e6fa06f5"/>
+                            <menuItem title="Glossary" id="76451734-a5d0-43f7-b7f2-4ea3478f699a"/>
+                            <menuItem title="List" id="fec0e4c7-b126-4730-9ad1-ad1485e281f1"/>
+                            <menuItem title="Example" id="2897b384-d242-4c1c-975f-5b21f4075049"/>
+                            <menuItem title="Address" id="436933e2-64cf-4e9d-b788-49ec5e5da7db"/>
+                            <menuItem title="Normal" id="b027623e-be19-4c85-8a12-914f59540b55"/>
+                            <menuItem title="Heading 1" id="fc3bc689-189a-4894-8d6e-b1d3c75ea0c5"/>
+                            <menuItem title="Heading 2" id="207285d1-6868-4772-82c9-33a2d5c2ccff"/>
+                            <menuItem title="Heading 3" id="8dd4bd4b-29e2-421a-9722-9a48973d9a0a"/>
+                            <menuItem title="Heading 4" id="959f63f9-ba05-411c-b4f3-c4b7aa7ff629"/>
+                            <menuItem title="Panel..." id="0a518b08-cb83-424f-bc24-97f81362b2a4"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Print..." id="a2909e61-e244-4d2f-bfa6-8698a5e79f9f"/>
-                <menuItem title="Page layout..." id="a2e6f905-a870-46b1-979b-968ecc3523bc"/>
-                <menuItem title="Windows" id="4e86b613-eed5-47df-b971-0bb98bdb23b7">
-                    <menu key="submenu" title="Windows" id="ce857efa-4664-435a-b451-632aed6a4bee">
+                <menuItem title="Print..." id="415c8035-91dc-42e2-988a-832eec8bea85"/>
+                <menuItem title="Page layout..." id="363f7558-6eb1-4b33-b4a2-ad007d0f3c0d"/>
+                <menuItem title="Windows" id="62723eb6-cc20-4787-947f-709501319beb">
+                    <menu key="submenu" title="Windows" id="e51766df-f446-483a-a705-a720e2754324">
                         <items>
-                            <menuItem title="Arrange in Front" id="1aca03f9-f32f-4ace-8aac-1aaf7562d5be"/>
-                            <menuItem title="Miniaturize Window" id="a4b01b47-caa4-4a58-a3d2-30121c392ee2"/>
-                            <menuItem title="Close Window" id="c67fd5fe-3040-4ab6-b2d1-f4fc4495ac22"/>
+                            <menuItem title="Arrange in Front" id="235fbe41-f83f-44bf-bbf8-f0254d4e4d4d"/>
+                            <menuItem title="Miniaturize Window" id="7c51ef1d-d48a-444e-93bc-76e7ecb34ccc"/>
+                            <menuItem title="Close Window" id="285ff253-b237-49cc-81fa-6c09724e5212"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Services" id="217a1813-afc6-46fb-9116-4aa3e2283e4f">
-                    <menu key="submenu" title="Services" id="b6f522f3-ac3b-484c-8a59-91f82232f549"/>
+                <menuItem title="Services" id="99914478-4307-4b33-87f1-a5e56aac8789">
+                    <menu key="submenu" title="Services" id="bfcb1e00-c161-47d8-b0ef-c2d2ce56ef51"/>
                 </menuItem>
-                <menuItem title="Hide" id="4b2c04e1-fde5-4f78-8d7e-009ef3eab03e"/>
-                <menuItem title="Quit" id="14edef57-d95a-40c0-a4db-65e548fc996d"/>
+                <menuItem title="Hide" id="d1e16cda-5d21-4e0d-9061-466ccbafc849"/>
+                <menuItem title="Quit" id="a7c46b9b-5098-4de3-82eb-8633951191bf"/>
             </items>
             <point key="canvasLocation" x="200" y="121"/>
         </menu>
-        <window title="WorldWideWeb" animationBehavior="default" id="0ca2d73a-382f-4e85-96f9-2e7ea0375945">
+        <window title="WorldWideWeb" animationBehavior="default" id="e602a889-d370-4b44-9bd3-b38cf857265f">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="480" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="15a07df7-c94c-48d1-aef7-23e0ccd4b743">
+            <view key="contentView" id="988365b1-be39-4b89-b21d-7610951b5aa2">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
             </view>
             <connections>
-                <outlet property="delegate" destination="a2a7b43a-7188-4791-bbcc-03f1aafd542e" id="3914fc17-f8fa-4e40-bd08-944dd0d9d1c9"/>
+                <outlet property="delegate" destination="6db36ed8-a19e-4d50-99b2-8c567f70ffbe" id="279f9a8e-0288-4045-a921-852f8452e84e"/>
             </connections>
             <point key="canvasLocation" x="200" y="400"/>
         </window>
+        <customObject id="5bcf1a9c-8f38-4c8f-a22e-e9514a436201" customClass="StyleToy"/>
+        <customObject id="20cda2e4-2dc3-437e-aaa9-b8fee2120300" customClass="NewsAccess"/>
+        <customObject id="e8da529f-6e65-4afd-9abb-4389ac6f611d" customClass="WWWPageLayout"/>
+        <customObject id="43f05005-96ca-4d5a-8ff6-6f0402b477eb" customClass="TextToy"/>
+        <customObject id="d0b07159-888e-49c6-8a20-2690c8878eff" customClass="TcpAccess"/>
+        <customObject id="ab961b15-7420-4372-89f9-f30c0ef6143c" customClass="HyperManager"/>
+        <customObject id="941feee4-d0ec-4573-9e67-fbdaa162aa05" customClass="FileAccess"/>
     </objects>
 </document>
