@@ -235,24 +235,23 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
 - saveAs:sender {
     NXStream *s; //	The file stream
-    char *slash;
+    NSString *slash;
     int status;
-    char *suggestion = 0; //	The name of the file to suggest
-    const char *filename; //	The name chosen
+    NSString *suggestion = 0; //	The name of the file to suggest
+    NSString *filename; //	The name chosen
 
     if (!save_panel) {
         save_panel = [NSSavePanel new]; //	Keep between invocations
     }
 
-    StrAllocCopy(suggestion, styleSheet->name);
-    slash = rindex(suggestion, '/'); //	Point to last slash
+    suggestion = [NSString stringWithCString:styleSheet->name encoding:NSUTF8StringEncoding];
+    slash = [suggestion lastPathComponent];
     if (slash) {
-        *slash++ = 0; /* Separate directory and filename */
+        suggestion = [suggestion stringByDeletingLastPathComponent];
         status = [save_panel runModalForDirectory:suggestion file:slash];
     } else {
-        status = [save_panel runModalForDirectory:"." file:suggestion];
+        status = [save_panel runModalForDirectory:@"." file:suggestion];
     }
-    free(suggestion);
 
     if (!status) {
         if (TRACE)
@@ -261,7 +260,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     }
 
     filename = [save_panel filename];
-    StrAllocCopy(styleSheet->name, filename);
+    StrAllocCopy(styleSheet->name, [filename cStringUsingEncoding:NSUTF8StringEncoding]);
     s = NXOpenFile(styleSheet->name, NX_WRITEONLY);
     if (!s) {
         if (TRACE)
@@ -271,7 +270,6 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     if (TRACE)
         printf("StylestyleSheet: Saving as `%s'.\n", styleSheet->name);
     (void)HTStyleSheetWrite(styleSheet, s);
-    NXSaveToFile(s, styleSheet->name);
     NXClose(s);
     style = styleSheet->styles;
     [self display_style];
