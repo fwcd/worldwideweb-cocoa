@@ -1163,7 +1163,7 @@ SGML_style *findSGML(void *para) {
 /*	This function generates the code for one run, given the previous run.
 **
 */
-void change_run(NXRun *last, NXRun *r) {
+void change_run(NSTextStorage *last, NSTextStorage *r) {
     int chars_left = r->chars;
 
     if (r->info != last->info) { /* End anchor */
@@ -1307,7 +1307,7 @@ void change_run(NXRun *last, NXRun *r) {
 /*	This is the body of the SGML output method.
 */
 - writeSGML:(NXStream *)stream relativeTo:(const char *)aName {
-    NXRun *r = theRuns->runs;
+    NSTextStorage *r = theRuns->runs;
     int sor; /* Character position of start of run */
     NXRun dummy;
 

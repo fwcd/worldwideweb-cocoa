@@ -178,13 +178,15 @@ HTStyle *HTStyleForParagraph(HTStyleSheet *self, NSParagraphStyle *para) {
 **	A style matching in paragraph style exactly
 **	A style matching in paragraph to a degree
 */
-HTStyle *HTStyleForRun(HTStyleSheet *self, NXRun *run) {
+HTStyle *HTStyleForRun(HTStyleSheet *self, NSTextStorage *run) {
     HTStyle *scan;
     HTStyle *best = 0;
     int bestMatch = 0;
-    NSParagraphStyle *rp = run->paraStyle;
+    NSRange range = NSMakeRange(0, run.length);
+    NSParagraphStyle *rp = [run attribute:NSParagraphStyleAttributeName atIndex:0 longestEffectiveRange:NULL inRange:range];
+    NSFont *font = [run attribute:NSFontAttributeName atIndex:0 longestEffectiveRange:NULL inRange:range];
     for (scan = self->styles; scan; scan = scan->next)
-        if (scan->paragraph == run->paraStyle)
+        if (scan->paragraph == rp)
             return scan; /* Exact */
 
     for (scan = self->styles; scan; scan = scan->next) {
@@ -201,7 +203,7 @@ HTStyle *HTStyleForRun(HTStyleSheet *self, NXRun *run) {
                 match = match + 1;
             if (sp.alignment == rp.alignment)
                 match = match + 3;
-            if (scan->font == run->font)
+            if (scan->font == font)
                 match = match + 10;
             if (match > bestMatch) {
                 best = scan;

@@ -44,7 +44,7 @@ static HyperText *slot[SLOTS];  /* Ids of HT objects taking them */
 #define MIN_WIDTH 200.0
 
 static HyperText *HT; /* Global pointer to self to allow C mixing */
-+ initialize {
++ (void)initialize {
     int i;
     for (i = 0; i < SLOTS; i++)
         slot[i] = 0;
@@ -118,49 +118,50 @@ static float page_width() {
 //	then it lists the attributes of the current run.
 //
 - dump:sender {
-    int pos;     /* Start of run being scanned */
-    int sob = 0; /* Start of text block being scanned */
-    NXRun *r = theRuns->runs;
-    NXTextBlock *block = firstTextBlock;
-
-    printf("Hypertext %i, selected(%i,%i)", self, sp0.cp, spN.cp);
-    if (self.delegate)
-        printf(", has delegate");
-    printf(".\n");
-
-    NSRect frame = self.frame;
-    printf("    Frame is at (%f, %f, size is (%f, %f)\n", frame.origin.x, frame.origin.y, frame.size.width,
-           frame.size.height);
-
-    printf("    Text blocks and runs up to character %i:\n", sp0.cp);
-    for (pos = 0; pos <= sp0.cp; pos = pos + ((r++)->chars)) {
-        while (sob <= pos) {
-            printf("%5i: Block of %i/%i characters at 0x%x starts `%10.10s'\n", sob, block->chars,
-                   malloc_size(block->text), block->text, block->text);
-            sob = sob + block->chars;
-            block = block->next;
-        }
-        printf("%5i: %3i of fnt=%i p=%i gy=%3.2f RGB=%i i=%i fl=%x\n", pos, r->chars, (int)r->font, r->paraStyle,
-               r->textGray, r->textRGBColor, (int)(r->info), *(int *)&(r->rFlags));
-    }
-    r--; /* Point to run for start of selection */
-
-    printf("\n    Current run:\n\tFont name:\t%s\n", [r->font name]);
-    {
-        NSParagraphStyle *p = (NSParagraphStyle *)r->paraStyle;
-        if (!p) {
-            printf("\tNo paragraph style!\n");
-        } else {
-            int tab;
-            printf("\tParagraph style %i\n", p);
-            printf("\tIndents: first=%f, left=%f\n", p.firstLineHeadIndent, p.headIndent);
-            printf("\tAlignment type=%i, %i tabs:\n", p.alignment, p.tabStops.count);
-            for (tab = 0; tab < p.tabStops.count; tab++) {
-                printf("\t    Tab kind=%i at %f\n", p.tabStops[tab].kind, p.tabStops[tab].x);
-            }
-        }
-    }
-    printf("\n");
+// TODO: Fix implementation
+//    int pos;     /* Start of run being scanned */
+//    int sob = 0; /* Start of text block being scanned */
+//    NSArray<NSTextStorage *> *r = self.textStorage.attributeRuns;
+//    NXTextBlock *block = firstTextBlock;
+//
+//    printf("Hypertext %i, selected(%i,%i)", self, sp0.cp, spN.cp);
+//    if (self.delegate)
+//        printf(", has delegate");
+//    printf(".\n");
+//
+//    NSRect frame = self.frame;
+//    printf("    Frame is at (%f, %f, size is (%f, %f)\n", frame.origin.x, frame.origin.y, frame.size.width,
+//           frame.size.height);
+//
+//    printf("    Text blocks and runs up to character %i:\n", sp0.cp);
+//    for (pos = 0; pos <= sp0.cp; pos = pos + ((r++)->chars)) {
+//        while (sob <= pos) {
+//            printf("%5i: Block of %i/%i characters at 0x%x starts `%10.10s'\n", sob, block->chars,
+//                   malloc_size(block->text), block->text, block->text);
+//            sob = sob + block->chars;
+//            block = block->next;
+//        }
+//        printf("%5i: %3i of fnt=%i p=%i gy=%3.2f RGB=%i i=%i fl=%x\n", pos, r->chars, (int)r->font, r->paraStyle,
+//               r->textGray, r->textRGBColor, (int)(r->info), *(int *)&(r->rFlags));
+//    }
+//    r--; /* Point to run for start of selection */
+//
+//    printf("\n    Current run:\n\tFont name:\t%s\n", [r->font fontName]);
+//    {
+//        NSParagraphStyle *p = (NSParagraphStyle *)r->paraStyle;
+//        if (!p) {
+//            printf("\tNo paragraph style!\n");
+//        } else {
+//            int tab;
+//            printf("\tParagraph style %i\n", p);
+//            printf("\tIndents: first=%f, left=%f\n", p.firstLineHeadIndent, p.headIndent);
+//            printf("\tAlignment type=%i, %i tabs:\n", p.alignment, p.tabStops.count);
+//            for (tab = 0; tab < p.tabStops.count; tab++) {
+//                printf("\t    Tab kind=%i at %f\n", p.tabStops[tab].tabStopType, p.tabStops[tab].location);
+//            }
+//        }
+//    }
+//    printf("\n");
     return self;
 }
 
@@ -370,7 +371,7 @@ static float page_width() {
 
 - (Anchor *)anchorSelected {
     int sor;
-    NXRun *r, *s, *e; /* Scan, Start and end runs */
+    NSTextStorage *r, *s, *e; /* Scan, Start and end runs */
     Anchor *a;
 
     for (sor = 0, s = theRuns->runs; sor + s->chars <= sp0.cp; sor = sor + ((s++)->chars))
@@ -401,7 +402,7 @@ static float page_width() {
         return a; /* User asked for existing one */
 
     if ([self isEditable])
-        [window setDocumentEdited:YES];
+        [self.window setDocumentEdited:YES];
     else
         return nil;
 
@@ -478,9 +479,9 @@ static float page_width() {
 //	we just bring the window to the front.
 
 - selectAnchor:(Anchor *)anchor {
-    NXRun *s, *e; /* run for start, run for end */
+    NSTextStorage *s, *e; /* run for start, run for end */
     int start, sor;
-    NXRun *limit = (NXRun *)((char *)theRuns->runs + theRuns->chunk.used);
+    NSTextStorage *limit = (NSTextStorage *)((char *)theRuns->runs + theRuns->chunk.used);
     for (sor = 0, s = theRuns->runs; s < limit; sor = sor + (s++)->chars) {
         if (s->info == (void *)anchor) {
             start = sor;
@@ -509,7 +510,7 @@ static float page_width() {
 - selectedLink {
 
     int sor;          /* Start of run */
-    NXRun *r, *s, *e; /* Scan, Start and end runs */
+    NSTextStorage *r, *s, *e; /* Scan, Start and end runs */
     Anchor *a;
     int startPos, endPos;
 
@@ -578,7 +579,7 @@ static float page_width() {
 // on the style sheet.
 //
 - selectUnstyled:(HTStyleSheet *)sheet {
-    NXRun *r = theRuns->runs;
+    NSTextStorage *r = theRuns->runs;
     int sor;
     for (sor = 0; sor < textLength; r++) {
         if (!HTStyleForParagraph(sheet, r->paraStyle)) {
@@ -592,7 +593,7 @@ static float page_width() {
 
 //	Copy a style into a run
 //	-----------------------
-static void apply(HTStyle *style, NXRun *r) {
+static void apply(HTStyle *style, NSTextStorage *r) {
     if (style->font) {
         r->font = style->font;
     }
@@ -623,7 +624,7 @@ static void apply(HTStyle *style, NXRun *r) {
 //	Check whether copying a style into a run will change it
 //	-------------------------------------------------------
 
-static BOOL willChange(HTStyle *style, NXRun *r) {
+static BOOL willChange(HTStyle *style, NSTextStorage *r) {
     if (r->font != style->font)
         return YES;
 
@@ -651,7 +652,7 @@ static BOOL willChange(HTStyle *style, NXRun *r) {
 //
 //
 - updateStyle:(HTStyle *)style {
-    NXRun *r = theRuns->runs;
+    NSTextStorage *r = theRuns->runs;
     int sor;
     for (sor = 0; sor < textLength; r++) {
         if (r->paraStyle == style->paragraph)
@@ -668,7 +669,7 @@ static BOOL willChange(HTStyle *style, NXRun *r) {
 //
 //
 - disconnectAnchor:(Anchor *)anchor {
-    NXRun *r = theRuns->runs;
+    NSTextStorage *r = theRuns->runs;
     int sor;
     for (sor = 0; sor < textLength; r++) {
         if (r->info == (void *)anchor)
@@ -749,7 +750,7 @@ static BOOL willChange(HTStyle *style, NXRun *r) {
 //	Do two runs imply the same format?
 //	----------------------------------
 
-BOOL run_match(NXRun *r1, NXRun *r2) {
+BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) {
     return (r1->font == r2->font) && (r1->paraStyle == r2->paraStyle) && (r1->textGray == r2->textGray) &&
            (r1->textRGBColor == r2->textRGBColor) && (r1->superscript == r2->superscript) &&
            (r1->subscript == r2->subscript) && (r1->info == r2->info) && (*(int *)&r1->rFlags == *(int *)&r2->rFlags);
@@ -761,13 +762,13 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
 //	If the runs match in EVERY way, they are combined into one, and
 //	all the other runs are shuffled down.
 //
-- (BOOL)mergeRun:(NXRun *)run {
-    NXRun *r, *last;
+- (BOOL)mergeRun:(NSTextStorage *)run {
+    NSTextStorage *r, *last;
     if (run_match(run, run + 1)) {
         if (TRACE)
             printf("HT: Merging run %i\n", run);
         run->chars = run->chars + (run + 1)->chars;
-        last = ((NXRun *)((char *)theRuns->runs + theRuns->chunk.used)) - 1;
+        last = ((NSTextStorage *)((char *)theRuns->runs + theRuns->chunk.used)) - 1;
         for (r = run + 1; r < last; r++)
             r[0] = r[1];
         theRuns->chunk.used = theRuns->chunk.used - sizeof(*r);
@@ -794,10 +795,10 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
     int new_used;                         /* New number of bytes in runs	*/
     BOOL need_run_before, need_run_after; /* Sometimes we don't need them	*/
     int run_before_start, run_after_end;  /* Start of run_before etc 	*/
-    NXRun *s, *e;                         /* Start and end run 		*/
-    NXRun *p;                             /* Pointer to run being read	*/
-    NXRun *w;                             /* Pointer to run being written	*/
-    NXRun *r;                             /* Pointer to end of runs	*/
+    NSTextStorage *s, *e;                         /* Start and end run 		*/
+    NSTextStorage *p;                             /* Pointer to run being read	*/
+    NSTextStorage *w;                             /* Pointer to run being written	*/
+    NSTextStorage *r;                             /* Pointer to end of runs	*/
 
     if (start == end) {
         apply(style, &typingRun); /* Will this work? */
@@ -819,7 +820,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
           /*	e points to run containing character before selection end */
     run_after_end = pos + e->chars;
 
-    r = (NXRun *)(((char *)(theRuns->runs)) + theRuns->chunk.used); /* The end*/
+    r = (NSTextStorage *)(((char *)(theRuns->runs)) + theRuns->chunk.used); /* The end*/
 
     if (TRACE) {
         printf("Runs: used=%i, elt. size=%i, %i elts, total=%i\n", theRuns->chunk.used, sizeof(*r), r - theRuns->runs,
@@ -846,7 +847,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
     if (increase) {
         new_used = theRuns->chunk.used + increase * sizeof(*r);
         if (new_used > theRuns->chunk.allocated) {
-            NXRun *old = theRuns->runs;
+            NSTextStorage *old = theRuns->runs;
             theRuns = (NXRunArray *)NXChunkGrow(&theRuns->chunk, new_used);
             if (theRuns->runs != old) { /* Move pointers */
                 if (TRACE)
@@ -966,7 +967,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
 //
 //
 - applyToSimilar:(HTStyle *)style {
-    NXRun *r = theRuns->runs;
+    NSTextStorage *r = theRuns->runs;
     int sor;
     NXRun old_run;
 
@@ -997,7 +998,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
 //	----------------------------------
 
 - (HTStyle *)selectionStyle:(HTStyleSheet *)sheet {
-    NXRun *r = theRuns->runs;
+    NSTextStorage *r = theRuns->runs;
     int sor;
 
     for (sor = 0; sor <= sp0.cp; sor = sor + ((r++)->chars))
@@ -1013,7 +1014,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
 //	current style of the selection.
 
 - replaceSel:(const char *)aString style:(HTStyle *)aStyle {
-    NXRun *r = theRuns->runs;
+    NSTextStorage *r = theRuns->runs;
     int sor;
     NXRunArray newRuns;
 
@@ -1139,7 +1140,7 @@ unsigned char next_input_block() {
 static NXTextBlock *write_block;     /* Pointer to block being filled */
 static unsigned char *write_pointer; /* Pointer to next characetr to be written */
 static unsigned char *write_limit;   /* Pointer to the end of the allocated area*/
-static NXRun *lastRun;               /* Pointer to the run being appended to */
+static NSTextStorage *lastRun;               /* Pointer to the run being appended to */
 static int original_length;          /* of text */
 
 #define OUTPUT(c)                                                                                                      \
@@ -1176,7 +1177,7 @@ void append_start_block() {
     if (TRACE)
         printf("    Starting to append new block.\n");
 
-    lastRun = ((NXRun *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
+    lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
     write_block = (NXTextBlock *)malloc(sizeof(*write_block));
     write_block->tbFlags.malloced = 0; /* See comment above */
     write_block->text = (unsigned char *)malloc(BLOCK_SIZE);
@@ -1206,7 +1207,7 @@ void append_begin() {
     if (TRACE)
         printf("Text now contains %i characters\n", original_length);
 
-    lastRun = ((NXRun *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
+    lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
 
     //	Use the last existing text block:
 
@@ -1250,7 +1251,7 @@ void set_style(HTStyle *style) {
                 if (TRACE)
                     printf("    HT: Extending runs.\n");
                 HT->theRuns = (NXRunArray *)NXChunkGrow(&HT->theRuns->chunk, new_used);
-                lastRun = ((NXRun *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
+                lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
             }
             lastRun[1] = lastRun[0];
             lastRun++;
@@ -1423,7 +1424,7 @@ void loadPlainText() {
                    originalEnd, textLength, sp0.cp, spN.cp);
 
         if (inserted > 0) {
-            NXRun *s;
+            NSTextStorage *s;
             int pos;
             int start = sp0.cp - inserted;
             for (pos = 0, s = theRuns->runs; pos + s->chars <= start; pos = pos + ((s++)->chars)) /*loop*/
@@ -1451,7 +1452,7 @@ void loadPlainText() {
 {
     NXRun run;
     {
-        NXRun *s; /* To point to run BEFORE selection */
+        NSTextStorage *s; /* To point to run BEFORE selection */
         int pos;
 
         /* 	If there is a nonzero selection, take the run containing the
@@ -1509,7 +1510,7 @@ void loadPlainText() {
                        originalEnd, textLength, sp0.cp, spN.cp);
 
             if (inserted > 0) {
-                NXRun *s;
+                NSTextStorage *s;
                 int pos;
                 int start = sp0.cp - inserted;
                 for (pos = 0, s = theRuns->runs; pos + s->chars <= start; pos = pos + ((s++)->chars)) /*loop*/
@@ -1556,7 +1557,7 @@ void loadPlainText() {
                    textLength, sp0.cp, spN.cp);
 
         if (inserted > 0) {
-            NXRun *s, *r;
+            NSTextStorage *s, *r;
             int pos;
             int start = sp0.cp - inserted;
             for (pos = 0, s = theRuns->runs; pos + s->chars <= start; pos = pos + ((s++)->chars)) /*loop*/
