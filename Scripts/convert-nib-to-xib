@@ -468,10 +468,8 @@ class XIBConverter:
 
         title = cell.contents[0].values[0].decode()
 
-        xib_cell = xib_cells.add('formCell', title=title)
-        # TODO: This currently doesn't work, since it causes Nones in connectors
-        # (so probably something to debug there)
-        # self.object_to_xib_node[obj] = xib_cell
+        xib_cell = xib_cells.add_object('formCell', title=title)
+        self.object_to_xib_node[obj] = xib_cell
 
     def traverse_form(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         '''Traverses the given NIB form and adds it to the XIB.'''
