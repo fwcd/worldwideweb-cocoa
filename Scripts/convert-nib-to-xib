@@ -311,6 +311,8 @@ class XIBConverter:
             'width': str(group.values[2]),
             'height': str(group.values[3]),
         }
+    
+    # TODO: Abstract over more commonalities between the different view types
 
     def traverse_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         '''Traverses the given NIB view and adds it to the XIB.'''
@@ -346,12 +348,38 @@ class XIBConverter:
         content_view = children.elements[0]
         self.traverse_view(content_view, xib_box, key='contentView')
 
+    def traverse_button_cell(self, obj: typedstream.GenericArchivedObject, xib_button: XIBNode):
+        '''Traverses the given NIB button cell and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'ButtonCell', obj.clazz.name
+
+        title = obj.contents[0].values[0].decode()
+
+        xib_cell = xib_button.add('buttonCell', key='cell', title=title)
+        self.object_to_xib_node[obj] = xib_cell
+
+    def traverse_button(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode):
+        '''Traverses the given NIB button and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'Button', obj.clazz.name
+
+        frame = self.convert_frame(obj.contents[2])
+        cell = obj.contents[7].values[1]
+
+        xib_button = xib_parent.add_object('button')
+        xib_button.add('rect', key='frame', **frame)
+        self.object_to_xib_node[obj] = xib_button
+
+        self.traverse_button_cell(cell, xib_button)
+
     def traverse_any_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         match obj.clazz.name.decode():
             case 'View':
                 self.traverse_view(obj, xib_parent, **kwargs)
             case 'Box':
                 self.traverse_box(obj, xib_parent, **kwargs)
+            case 'Button':
+                self.traverse_button(obj, xib_parent, **kwargs)
             case class_name:
                 print(f'Warning: Skipping unrecognized view class name {class_name}')
 

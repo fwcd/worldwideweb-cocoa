@@ -7,402 +7,411 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="6d650091-2da0-4c8f-a1ac-b74391f83231"/>
+                <outlet property="delegate" destination="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="b59a1de4-81e3-4909-af35-c010ab5dd8fb"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="ec98b7cb-3e6c-4ca8-a2aa-94dfdc52c05b" customClass="NSFontManager"/>
-        <menu systemMenu="main" id="837f7b5a-dc84-425c-aecc-c7c302d64c37">
+        <customObject id="2819e9b7-1dda-44f4-a64e-40277366f449" customClass="NSFontManager"/>
+        <menu systemMenu="main" id="33994b69-a772-4fb8-938a-b83deff4ca0e">
             <items>
-                <menuItem title="WorldWideWeb" id="392f630a-741b-4b19-ac4d-4304f682b287">
-                    <menu key="submenu" title="WorldWideWeb" systemMenu="apple" id="28b310cf-8466-4f90-9ff7-bb205785b6a3">
+                <menuItem title="WorldWideWeb" id="0342bda5-ffa7-410b-b5a9-8a7f822553a4">
+                    <menu key="submenu" title="WorldWideWeb" systemMenu="apple" id="603ce1ce-7846-425e-bb86-d3b4a8b80961">
                         <items>
-                            <menuItem title="About WorldWideWeb" id="f8956e0b-47d9-42f7-8353-3a0523537583"/>
-                            <menuItem isSeparatorItem="YES" id="d1637478-bef3-423e-b899-b6b38a038637"/>
-                            <menuItem title="Print..." keyEquivalent="p" id="b8c4bf1c-04fa-41da-b7e2-fd17640a3c7b">
+                            <menuItem title="About WorldWideWeb" id="945561a4-1c2b-460e-984a-a0432c637af4"/>
+                            <menuItem isSeparatorItem="YES" id="c62cbe0e-640f-4ce4-9dba-b83b04e86ef2"/>
+                            <menuItem title="Print..." keyEquivalent="p" id="eb17da6f-e7f1-47df-abe1-cb80e0112da9">
                                 <connections>
-                                    <action selector="print:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="4cf990b8-460b-44bb-b7a8-1f4e8923a621"/>
+                                    <action selector="print:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="8ee4e48a-ef00-4afe-be83-f7f7e0d9025d"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Page layout..." id="fe23fe89-9034-4242-8594-7c131a3977aa">
+                            <menuItem title="Page layout..." id="4bdf463e-0065-4374-bb17-854612e050c0">
                                 <connections>
-                                    <action selector="runPagelayout:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="c2e4162b-4ec9-4dbd-ba49-76c0aece5dfc"/>
+                                    <action selector="runPagelayout:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="6e7f9242-15b6-4f00-a5e9-342b72f5083f"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Services" id="e9d044fb-c8df-4431-99ec-0fff8b4477c1">
-                                <menu key="submenu" title="Services" id="8941d172-0135-4b54-8a7e-114d6df2957f"/>
+                            <menuItem title="Services" id="c03181cd-5dcf-4c7e-a9e8-ac8bbf59f70a">
+                                <menu key="submenu" title="Services" id="b1a1d6a6-bd20-4196-bca5-0dea94ce18a6"/>
                             </menuItem>
-                            <menuItem title="Hide" keyEquivalent="h" id="9b1a52cc-6267-463f-b92a-3915eb19e49c">
+                            <menuItem title="Hide" keyEquivalent="h" id="89142f54-d551-4617-8c68-fa41b875a0a6">
                                 <connections>
-                                    <action selector="hide:" target="-2" id="93d573a2-7338-48ed-8c77-ac608b734c09"/>
+                                    <action selector="hide:" target="-2" id="31d24f1d-dd63-4f2b-bc72-f6fdc3055f83"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Quit" keyEquivalent="q" id="5965ebe5-ffe9-4a50-b0f2-d37732b81281">
+                            <menuItem title="Quit" keyEquivalent="q" id="45b38a08-7d14-4025-85ed-4d350542abba">
                                 <connections>
-                                    <action selector="terminate:" target="-2" id="e9f52bbd-67ee-4fc7-90af-85c64ce196f7"/>
+                                    <action selector="terminate:" target="-2" id="a9e3c1fa-d80d-43e7-8371-aa9788f95f8e"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Info" id="3b55b8fe-5b45-4724-b86a-614f9e8fcbdc">
-                    <menu key="submenu" title="Info" id="5fbe29e3-af33-4143-aaa0-4d669d3cd080">
+                <menuItem title="Info" id="63195df5-4bc8-4e93-b330-7ec1502374da">
+                    <menu key="submenu" title="Info" id="21942f4a-f89f-4b16-8278-01369da2d6e8">
                         <items>
-                            <menuItem title="Panel..." id="8333dede-777e-4253-84e9-81b28d9446f4"/>
-                            <menuItem title="Help..." id="2889a9ad-b1f6-4da0-920d-513a07b7e6f1">
+                            <menuItem title="Panel..." id="2c27c034-1bf2-412a-b549-ce3522568fc9"/>
+                            <menuItem title="Help..." id="8c67cd33-fe42-438b-96b3-68a20a6389ca">
                                 <connections>
-                                    <action selector="help:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="5f2496c2-9d22-42b4-ac5a-982a9c291fae"/>
+                                    <action selector="help:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="75f8bb9b-fbf1-41d6-aaa9-e066a3bacaf6"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Navigate" id="12287376-9806-4770-a44b-8ce62e56c965">
-                    <menu key="submenu" title="Navigate" id="d1de048f-8dd7-487f-a5e5-57797ac6803b">
+                <menuItem title="Navigate" id="20b529bc-f384-4266-a999-a105c60f58f5">
+                    <menu key="submenu" title="Navigate" id="554bd029-d74c-4f29-9be4-23f61ff07e77">
                         <items>
-                            <menuItem title="Back" keyEquivalent="^" id="2b29b68b-b2ce-49ed-ab94-8b4ff49a1afb">
+                            <menuItem title="Back" keyEquivalent="^" id="a584c1cd-4db5-48de-9093-a457cf8dbc82">
                                 <connections>
-                                    <action selector="back:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="2aeb4fc3-c8bf-4602-a6b0-18911010e728"/>
+                                    <action selector="back:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="125e3c6f-22e0-4a65-bcb9-05def69526c7"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Next" keyEquivalent="&gt;" id="6a112334-04db-442b-94c2-4823f1a31b57">
+                            <menuItem title="Next" keyEquivalent="&gt;" id="4f625c81-1b27-4a79-a580-71b03cb5e22d">
                                 <connections>
-                                    <action selector="next:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="f43eff4d-1018-4c23-87f7-dc7828b00500"/>
+                                    <action selector="next:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="1d7ce58e-c7fd-4ed0-b3d7-8c63b7dcd4e9"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Previous" keyEquivalent="&lt;" id="7fa147b0-55a7-447c-a6f1-04407ec92c98">
+                            <menuItem title="Previous" keyEquivalent="&lt;" id="c34abe13-20b0-416e-8083-a74a3356c9e2">
                                 <connections>
-                                    <action selector="previous:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="d195c86e-060b-407c-8072-0f8d23fe1039"/>
+                                    <action selector="previous:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="10d80cb7-85b3-46f7-8900-6d837e58f45e"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Home" keyEquivalent="H" id="bd3364c8-c22f-466c-8912-aedf0267c89f">
+                            <menuItem title="Home" keyEquivalent="H" id="398dd3a0-75e0-49c9-9235-9de126e0772a">
                                 <connections>
-                                    <action selector="goHome:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="93c45d0d-195b-48ec-ac7b-e9ce4a9b9c9f"/>
+                                    <action selector="goHome:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="c7596e1a-16f6-4794-b537-c405f7e72055"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Panel..." id="36c67d64-4de8-4361-ac46-72abd5fe22c9"/>
+                            <menuItem title="Panel..." id="1aa75d57-5273-44c0-80fa-65e3fbf795bf"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Document" id="5e3c24a9-82be-413c-b218-91f5b17fddbf">
-                    <menu key="submenu" title="Document" id="634fce77-16fb-4965-a0c4-ed2169cc4dbe">
+                <menuItem title="Document" id="ce6e174d-45ef-4cfb-ad29-7c80197efdbf">
+                    <menu key="submenu" title="Document" id="a00233f5-1e68-4cc8-9448-b5149c98b947">
                         <items>
-                            <menuItem title="Open file..." keyEquivalent="o" id="fc955165-9db8-4252-a392-f74bc09d75c4">
+                            <menuItem title="Open file..." keyEquivalent="o" id="bf9ed532-7504-4f3d-9101-70c34ccb6260">
                                 <connections>
-                                    <action selector="open:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="bbca9f71-45c0-4f62-b631-e1dc19eeccb4"/>
+                                    <action selector="open:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="4a31aa3f-7aae-4921-bdbe-a2f0177721b9"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open given document address" keyEquivalent="O" id="402723c3-3ed0-4307-a13e-1b037980ac56"/>
-                            <menuItem title="New file..." keyEquivalent="n" id="296dec18-8611-45fc-9297-fc2d30e01ec6">
+                            <menuItem title="Open given document address" keyEquivalent="O" id="46356a00-8ac7-4288-8cbc-977cce4cbeb8"/>
+                            <menuItem title="New file..." keyEquivalent="n" id="8c35b0e1-597f-4d01-9487-0f73c5a1a34a">
                                 <connections>
-                                    <action selector="makeNew:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="43b663c0-6c2c-4a45-aa65-89e5e3ea9854"/>
+                                    <action selector="makeNew:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="7822720a-59c4-49fe-9293-9c7e5a42d7be"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save" keyEquivalent="s" id="17bae626-a439-4a3b-bd1b-fd19c3c7031f">
+                            <menuItem title="Save" keyEquivalent="s" id="285d029a-14d5-41cf-a79c-2e81e62494ba">
                                 <connections>
-                                    <action selector="save:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="a10bdab0-177a-4460-bf51-709192b129ba"/>
+                                    <action selector="save:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="bdf51e8d-c3a0-41a3-be15-3988b3a03517"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save all edited windows" keyEquivalent="S" id="647e6c8d-cfb3-4078-9e2a-a5ef7ad448bd">
+                            <menuItem title="Save all edited windows" keyEquivalent="S" id="e3b9968e-3422-4def-8a18-2bf30ab57e5d">
                                 <connections>
-                                    <action selector="saveAll:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="39fb4d95-2a91-45e6-96d9-c68a67173daf"/>
+                                    <action selector="saveAll:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="d1fddbd6-c744-483e-b057-61305c1dc36e"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save a copy in" id="d6d55e24-24f3-4efc-84da-1de4edc522f2">
-                                <menu key="submenu" title="Save a copy in" id="a68a7358-316e-4b22-8d0c-2291449a8d41">
+                            <menuItem title="Save a copy in" id="df901bfa-1696-44fd-80d6-0b762999cb92">
+                                <menu key="submenu" title="Save a copy in" id="ff8debbe-d0d1-47a7-80be-a5b94a74c40c">
                                     <items>
-                                        <menuItem title="HyperText Markup Language..." id="70b5b456-6f7f-4e7c-b4a5-4070026a3123">
+                                        <menuItem title="HyperText Markup Language..." id="b9a90fe1-ce02-437d-a6e0-cb4d849afd82">
                                             <connections>
-                                                <action selector="saveAs:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="68132f7b-4058-4aad-9b65-a95f1388bb60"/>
+                                                <action selector="saveAs:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="ffeb8746-ed49-4201-a8c6-2ad608b326f1"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Rich Text Format ..." id="c651bafb-240a-4ebf-8308-16871bd3fcff">
+                                        <menuItem title="Rich Text Format ..." id="a9c8f39e-d571-4936-8b84-fcafab5e1967">
                                             <connections>
-                                                <action selector="saveAsRichText:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="44647d64-30f8-4012-8308-f0d69d1adf88"/>
+                                                <action selector="saveAsRichText:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="b3769708-d451-48c5-8852-415f9acd1b2d"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Plain Text..." id="e705c261-a0f7-47ff-b43a-6bc8072233c2">
+                                        <menuItem title="Plain Text..." id="bb533c69-4a38-49c0-8689-0a5216415998">
                                             <connections>
-                                                <action selector="saveAsPlainText:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="6cfc739d-7777-485c-95ba-208554fe0aa6"/>
+                                                <action selector="saveAsPlainText:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="13db222e-b4c2-46c9-bf3e-cf98fc7e86ae"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="PostScript..." id="7d063c8a-565c-48d0-ae61-8de75dc37a04">
+                                        <menuItem title="PostScript..." id="4b5a7972-f966-40bd-ba0a-46d961c0ba2d">
                                             <connections>
-                                                <action selector="print:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="2c71f3ba-b83f-47be-909f-0a8d4a8bf5ad"/>
+                                                <action selector="print:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="d5c8feed-39fc-40c1-ae12-fc54453aa46d"/>
                                             </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Inspect ..." keyEquivalent="3" id="b00014f3-39a0-42ff-8486-258d18f99884"/>
-                            <menuItem title="(Diagnostics)" id="39c9122c-65d0-4ad6-9ffa-b026cdc5137a">
-                                <menu key="submenu" title="(Diagnostics)" id="1d4cbeab-5e37-4357-bbce-98691a0b7936">
+                            <menuItem title="Inspect ..." keyEquivalent="3" id="33854b9a-1fd8-4900-9846-481764857a19"/>
+                            <menuItem title="(Diagnostics)" id="0c125386-3adc-4911-98a9-dbca96c09849">
+                                <menu key="submenu" title="(Diagnostics)" id="7fb6a9b7-1cb1-4a32-8d69-bea181a8f820">
                                     <items>
-                                        <menuItem title="Panel" id="155c31ba-588e-4a39-83e6-165181a5b70e"/>
-                                        <menuItem title="Open HTML file showing SGML source" id="5d64fb0c-a382-410d-b0df-0b7429a42767">
+                                        <menuItem title="Panel" id="6ba484ef-724e-42e7-a701-10f3091cf319"/>
+                                        <menuItem title="Open HTML file showing SGML source" id="2be341d1-1774-4c91-b8a6-f4863b46c940">
                                             <connections>
-                                                <action selector="openSGML:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="eb675678-1fca-4c34-98fb-94a5a3577354"/>
+                                                <action selector="openSGML:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="d254c685-5f30-4f3e-b716-b835850d0dc1"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open HTML file showing RTF" id="6450d827-02c3-4c1f-9b41-e8d8a3be49e2">
+                                        <menuItem title="Open HTML file showing RTF" id="f1fcd6f1-f06a-4c9d-960e-fca1b22dcfc6">
                                             <connections>
-                                                <action selector="openRTF:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="64df1674-7af7-4cec-8bbd-5ddc9f95610f"/>
+                                                <action selector="openRTF:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="e501287c-39ba-460e-acf9-99b8bbc59117"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Dump text format to standard out" keyEquivalent="?" id="cde096b9-9bc9-4897-8352-9248abf3802e">
+                                        <menuItem title="Dump text format to standard out" keyEquivalent="?" id="fe08e491-cf4d-4e94-8b64-5844bc08dae3">
                                             <connections>
-                                                <action selector="dump:" target="9081e9c2-9f89-4f81-958d-da47b2cde288" id="4abd45f3-f608-44a7-b09f-ad2df52dbcbc"/>
+                                                <action selector="dump:" target="de45e53f-6372-4308-9d9b-afc4e06e1ceb" id="3c93195d-a86c-4f87-a496-f0a8cf8de5ec"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Turn console trace on" keyEquivalent="+" id="e54270b5-ceed-4501-98fb-3ae39f0eab4d">
+                                        <menuItem title="Turn console trace on" keyEquivalent="+" id="e6c40ebc-282b-436a-b8ba-4aedf6f4d648">
                                             <connections>
-                                                <action selector="traceOn:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="80e03793-422b-4731-b876-c1cde640c68c"/>
+                                                <action selector="traceOn:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="7e5ec6dd-f917-47fb-b857-8efdc206d0f8"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Turn console trace off" keyEquivalent="-" id="9ae2fbad-10fb-49b6-bcae-46f3fc8a3991">
+                                        <menuItem title="Turn console trace off" keyEquivalent="-" id="18fc1e31-43e6-45e5-8d0d-958f35e83b83">
                                             <connections>
-                                                <action selector="traceOff:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="419710fb-7509-40b6-b0f4-d4df684db2b3"/>
+                                                <action selector="traceOff:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="a97e7866-2e6c-492c-afa2-56f5c3ba7c9d"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Item" id="85738b9c-6f2b-489a-b423-6e319d233b28"/>
+                                        <menuItem title="Item" id="77114980-c3e8-475d-a8e4-e4c8af27f066"/>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Miniaturize" id="ca3d4404-e84d-4616-8cd2-8dbf1e17f103"/>
-                            <menuItem title="Open master template document" id="cc1c387f-eac4-4ffe-a117-11b1b2fa936f">
+                            <menuItem title="Miniaturize" id="92057b50-90bc-49db-b6a0-6882bb5e40d6"/>
+                            <menuItem title="Open master template document" id="fdab2edf-db39-4c92-a1c9-3b0827969351">
                                 <connections>
-                                    <action selector="goToBlank:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="7af6e6a8-dfe8-4829-9ca6-cc8ca25b760e"/>
+                                    <action selector="goToBlank:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="d8af89c2-7271-4344-b4e6-2fdd88b44998"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Close all other windows" keyEquivalent="W" id="b4747068-209e-45ed-b8f0-8d54a730e29f">
+                            <menuItem title="Close all other windows" keyEquivalent="W" id="be773b53-f22b-4658-8f01-e76b472b5e0f">
                                 <connections>
-                                    <action selector="closeOthers:" target="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="246bd80a-3941-457c-a4cc-3936918c8fe3"/>
+                                    <action selector="closeOthers:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="6e0b8929-4c51-4f79-8319-7953a74699b0"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Close" keyEquivalent="w" id="83940847-d7f1-4e9d-842e-313268fe5060"/>
+                            <menuItem title="Close" keyEquivalent="w" id="46b9c95e-4a39-496f-82ac-f3c33994906a"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Edit" id="63cb32ee-e758-42a2-90ca-afc1ed950bcf">
-                    <menu key="submenu" title="Edit" id="ee123739-e3a5-4b47-a1e8-62a69f5f157d">
+                <menuItem title="Edit" id="62b4f341-9aa3-4b82-80a1-b93aa25ef2f0">
+                    <menu key="submenu" title="Edit" id="e24a86a6-7c72-4e23-89a2-8d40c3428c0f">
                         <items>
-                            <menuItem title="Cut" keyEquivalent="x" id="cfef405f-30ab-4853-a822-be2b249021c9"/>
-                            <menuItem title="Copy" keyEquivalent="c" id="83f5028e-dc9f-4b60-bff5-ef7bc7c21258"/>
-                            <menuItem title="Paste" keyEquivalent="v" id="7b05910d-60f6-4db8-80da-d2c17ae18570"/>
-                            <menuItem title="Paste As" id="ed950f60-9019-4ca4-b397-f085740d6237">
-                                <menu key="submenu" title="Paste As" id="bc955498-a0e2-4bda-a27e-af3e9bef486b"/>
+                            <menuItem title="Cut" keyEquivalent="x" id="24cd3588-5592-4d75-87f6-bfc8589bde66"/>
+                            <menuItem title="Copy" keyEquivalent="c" id="0854b679-d291-4873-b742-739e31816882"/>
+                            <menuItem title="Paste" keyEquivalent="v" id="a96d5d92-b305-4a63-bb4d-0a9a9ce2404a"/>
+                            <menuItem title="Paste As" id="c57ad0d7-53e8-4835-b9b5-c745a1931094">
+                                <menu key="submenu" title="Paste As" id="4b61e207-2f60-4e4f-add2-c9ada8e17151"/>
                             </menuItem>
-                            <menuItem title="Delete" id="de79368e-dd08-4b84-93fa-43c01f2d174b"/>
-                            <menuItem title="Undo" keyEquivalent="z" id="984f9dd4-88cc-48e1-bbf8-49105356bea4"/>
-                            <menuItem title="Find" id="09fab768-e9c9-483e-a4e8-3163e8b68f69">
-                                <menu key="submenu" title="Find" id="4b573b78-8bc1-40f3-895f-28f78b38ea87">
+                            <menuItem title="Delete" id="a132d55a-a00f-42dc-9d87-1b425f455cbb"/>
+                            <menuItem title="Undo" keyEquivalent="z" id="8f775482-ad43-4c65-b8fd-808f5d171efe"/>
+                            <menuItem title="Find" id="0f6506ff-8746-44a4-a54b-9b5ec454e43c">
+                                <menu key="submenu" title="Find" id="90789eff-d041-4e15-a714-1e4a07dfb379">
                                     <items>
-                                        <menuItem title="Find Panel..." keyEquivalent="f" id="7ab6cd05-d855-4c93-a812-681592529fd8"/>
-                                        <menuItem title="Find Next" keyEquivalent="g" id="a548fa12-3c46-46f6-95ee-3960e2357109"/>
-                                        <menuItem title="Find Previous" keyEquivalent="d" id="c58c079f-62a4-4857-bec2-b078658f4409"/>
-                                        <menuItem title="Enter Selection" keyEquivalent="e" id="52cafec8-7460-406d-9c3c-36d84621c5eb"/>
-                                        <menuItem title="Jump To Selection" keyEquivalent="j" id="809639da-7b07-49a6-82fa-dedb0928c718"/>
+                                        <menuItem title="Find Panel..." keyEquivalent="f" id="421143d6-e31e-4523-b986-d5f0a3725c18"/>
+                                        <menuItem title="Find Next" keyEquivalent="g" id="4cc63545-234e-4d5f-8a15-1d6914efe535"/>
+                                        <menuItem title="Find Previous" keyEquivalent="d" id="bc28f8fa-ff3a-4e35-be24-5432a1278c1e"/>
+                                        <menuItem title="Enter Selection" keyEquivalent="e" id="85f85bcc-acff-49a6-a78a-0accd0c85d10"/>
+                                        <menuItem title="Jump To Selection" keyEquivalent="j" id="559aeda3-38d5-4341-a1da-ae91a22a0366"/>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Spelling..." id="7546e1fa-09cd-48d3-9de8-869565cc286a"/>
-                            <menuItem title="Check Spelling" keyEquivalent=";" id="fb57647e-944a-4054-842a-37c418708b2a"/>
-                            <menuItem title="Select All" keyEquivalent="a" id="f8921ab3-0ea1-457e-9fa0-4d4023397df5"/>
+                            <menuItem title="Spelling..." id="6a7fcb7e-8545-451e-a031-58abbce29b49"/>
+                            <menuItem title="Check Spelling" keyEquivalent=";" id="fe0cce1e-5ca6-42a8-9ff5-1938e559735d"/>
+                            <menuItem title="Select All" keyEquivalent="a" id="94379281-eea4-407b-b1b2-198aed2bda7a"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Find" id="b0d3332b-0c38-4f33-bcb4-e785e3255b9b">
-                    <menu key="submenu" title="Find" id="29632819-1d6d-4276-bc61-7fa3ae4d26c2">
+                <menuItem title="Find" id="ea00f23f-5c95-4317-aec6-9a80e7eb47c7">
+                    <menu key="submenu" title="Find" id="f8565b80-0faa-4750-b80b-b38400f2eb0c">
                         <items>
-                            <menuItem title="Find Panel..." keyEquivalent="f" id="7c1d2acd-9abc-44fc-875c-14ccaa8e7f02"/>
-                            <menuItem title="Find Next" keyEquivalent="g" id="c1ee94ba-31bb-4084-8080-2411fd151dc5"/>
-                            <menuItem title="Find Previous" keyEquivalent="d" id="b916fadc-cc1d-4aeb-a60a-1e8e4ccf3239"/>
-                            <menuItem title="Enter Selection" keyEquivalent="e" id="4abec61d-7ee0-40d7-bb53-9bd6a0f233b3"/>
-                            <menuItem title="Jump to Selection" keyEquivalent="j" id="623e7a11-75bd-4932-8770-660cc2ae8717"/>
+                            <menuItem title="Find Panel..." keyEquivalent="f" id="c36708bc-c7f9-48d8-aa8a-b137b22d7fbc"/>
+                            <menuItem title="Find Next" keyEquivalent="g" id="8bc16883-873b-44f9-82af-4aa55cd97feb"/>
+                            <menuItem title="Find Previous" keyEquivalent="d" id="2eca8a64-3449-4fa9-b179-ae65d60b003c"/>
+                            <menuItem title="Enter Selection" keyEquivalent="e" id="296779c2-502f-45ea-a4c3-5971adc7384d"/>
+                            <menuItem title="Jump to Selection" keyEquivalent="j" id="68f66e58-0f0a-4aff-bc2f-f572067c1a3a"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Links" id="4405dc35-8a1b-483f-85ba-824308888f3d">
-                    <menu key="submenu" title="Links" id="9401e94c-dbe2-465b-af57-f10af91a6b57">
+                <menuItem title="Links" id="e54575e3-f52f-4013-9310-47d3b2de3089">
+                    <menu key="submenu" title="Links" id="e781cea9-7774-42f4-856c-c8555bf0f0cb">
                         <items>
-                            <menuItem title="Mark all " keyEquivalent="A" id="4c48e47d-8e78-49e8-b7b4-35a2f34dce1d">
+                            <menuItem title="Mark all " keyEquivalent="A" id="3c0ec65f-c75d-4b5c-9113-cf37bfd7e166">
                                 <connections>
-                                    <action selector="markAll:" target="9081e9c2-9f89-4f81-958d-da47b2cde288" id="6f640432-e5a6-4b3f-a68a-44a2b6d8cc8e"/>
+                                    <action selector="markAll:" target="de45e53f-6372-4308-9d9b-afc4e06e1ceb" id="51bf4c08-e050-40a4-b8b6-52863090ff54"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Mark selection " keyEquivalent="M" id="389d3a57-5d25-48e3-b117-80a4d9df0ffd">
+                            <menuItem title="Mark selection " keyEquivalent="M" id="47cc3dea-0170-4109-9899-de1d8f3939cc">
                                 <connections>
-                                    <action selector="markSelected:" target="9081e9c2-9f89-4f81-958d-da47b2cde288" id="19c1d729-d88f-45b0-839b-189fc085497c"/>
+                                    <action selector="markSelected:" target="de45e53f-6372-4308-9d9b-afc4e06e1ceb" id="5e9500c6-92de-4908-b400-a8359ccdd5c9"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to marked" keyEquivalent="L" id="05ac955c-2ab8-447d-b6f3-4b64f3b51254">
+                            <menuItem title="Link to marked" keyEquivalent="L" id="83bcb6f2-cbcf-46b3-a733-b9a3750e9cb7">
                                 <connections>
-                                    <action selector="linkToMark:" target="9081e9c2-9f89-4f81-958d-da47b2cde288" id="dd1d5e13-3774-48c3-98ab-7e078f64a759"/>
+                                    <action selector="linkToMark:" target="de45e53f-6372-4308-9d9b-afc4e06e1ceb" id="46ec371b-889f-4de8-a2ab-5ab4f52f6bdf"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to file..." id="07851de2-dd30-493c-8b96-12b52db4c44d">
+                            <menuItem title="Link to file..." id="d2c6245d-c6f9-4401-8d14-18a899dca5c1">
                                 <connections>
-                                    <action selector="linkToFile:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="9571246f-0372-408a-9f92-722c65430e2f"/>
+                                    <action selector="linkToFile:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="c6ecbf2a-f1a9-486b-957c-bbb464e5b1e2"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to New" keyEquivalent="N" id="502de43d-1a3c-4805-870a-4944829e1137">
+                            <menuItem title="Link to New" keyEquivalent="N" id="d1e91575-b9f2-412f-962b-8e14d26fbc15">
                                 <connections>
-                                    <action selector="linkToNew:" target="089a30bb-9369-4562-94e4-c0a053af4c8c" id="ba15da8c-4005-4180-80cf-4c487e10f30f"/>
+                                    <action selector="linkToNew:" target="dc03fae8-a424-466b-b235-fed05048ebcd" id="493dc649-7124-412b-a0df-fe698695d800"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Follow link" keyEquivalent="j" id="9276a2ee-2cbc-4c77-a5ed-a7b11edca128">
+                            <menuItem title="Follow link" keyEquivalent="j" id="38a5ba59-a23e-4c75-8e66-d37292a05d6d">
                                 <connections>
-                                    <action selector="followLink:" target="9081e9c2-9f89-4f81-958d-da47b2cde288" id="3aa44c4e-40ca-480d-ab8e-ff6cd3cc9b10"/>
+                                    <action selector="followLink:" target="de45e53f-6372-4308-9d9b-afc4e06e1ceb" id="4ab36e71-58cd-48cd-89bb-2d2bf1c673e8"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Unlink" keyEquivalent="Z" id="7647e07a-4b74-4eb3-bf3f-a38b4aef93c9">
+                            <menuItem title="Unlink" keyEquivalent="Z" id="61b63d1d-5840-41b9-b7de-1271f8ecd0f0">
                                 <connections>
-                                    <action selector="unlink:" target="9081e9c2-9f89-4f81-958d-da47b2cde288" id="4686f609-8e66-41f7-ae5b-c618aefd6d96"/>
+                                    <action selector="unlink:" target="de45e53f-6372-4308-9d9b-afc4e06e1ceb" id="e6a86f13-1788-4707-9be4-d7589baafaf2"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Help" id="56fc1e49-160d-486d-91a8-2b49c63ee395"/>
+                            <menuItem title="Help" id="fc92c2d8-fc06-4995-a06b-e9de837fcfd0"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Style" id="b1ebc76e-9b3a-437d-ab99-1112490d609f">
-                    <menu key="submenu" title="Style" id="2b9e1d93-2158-4377-af77-713bfc72091a">
+                <menuItem title="Style" id="8409dc37-5de1-4fab-b486-faf3e8db1ed5">
+                    <menu key="submenu" title="Style" id="ed606251-8b8f-43c2-bb59-f90e1d53105c">
                         <items>
-                            <menuItem title="Copy style" keyEquivalent="1" id="7e5b87bd-d328-4426-ac17-6de2fa782da4">
+                            <menuItem title="Copy style" keyEquivalent="1" id="50f1110b-c595-489a-814c-14a7020efbea">
                                 <connections>
-                                    <action selector="PickButton:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="a140fce3-8fa1-4a95-a5d4-e6ccc6fea66f"/>
+                                    <action selector="PickButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="47c6b308-94f1-455b-a83a-5f6d3e29146f"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Apply style" keyEquivalent="2" id="c6949e67-8400-4973-bf7b-c078de32ee3d">
+                            <menuItem title="Apply style" keyEquivalent="2" id="c3a5cae0-7687-4d6e-a271-59676a490d2e">
                                 <connections>
-                                    <action selector="ApplyButton:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="9e8d084a-54fb-4b98-845d-9e7e0f9b5df2"/>
+                                    <action selector="ApplyButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="6e22373c-95f2-48a7-a8b0-a464867b07af"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Glossary" id="a31e54ef-7d7e-41df-87a2-21f3d703226a">
+                            <menuItem title="Glossary" id="7863b088-205e-4a51-be99-f0e612017c35">
                                 <connections>
-                                    <action selector="glossaryButton:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="5a6a8925-d5cc-4c47-a034-f66a34b35400"/>
+                                    <action selector="glossaryButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="7d7a20b4-14ee-4c26-8997-3e0bafd6eb8c"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="List" id="b3693c97-8504-4288-980f-1462416cdae0">
+                            <menuItem title="List" id="06376781-099f-4d38-b724-29cea23791f5">
                                 <connections>
-                                    <action selector="listButton:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="0fd7c507-7495-4daa-8b07-c34a255b06a4"/>
+                                    <action selector="listButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="b9e46c0b-54e1-4b4e-baaf-cae8e45c97bf"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Example" id="1f843551-5bb6-4606-be61-cb9683ea663f">
+                            <menuItem title="Example" id="14df9e6f-5a6f-4c65-a315-869e27298267">
                                 <connections>
-                                    <action selector="exampleButton:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="a3d35bb6-aef9-4b73-9b2e-8623cf1221d4"/>
+                                    <action selector="exampleButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="c45a1294-6771-417e-9f2b-b1455d1aa594"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Address" id="1e31f0b3-eb38-49b9-857f-15db513193fc">
+                            <menuItem title="Address" id="c00bfaa6-e80b-4f57-a9f5-23ba356d280b">
                                 <connections>
-                                    <action selector="addressButton:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="e207dd28-bbd3-4d25-a296-e53ee7db26c4"/>
+                                    <action selector="addressButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="764cb9ae-c541-4223-8cb1-7f6ca7f5635d"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Normal" id="6a3bcb6e-686b-4534-a28f-a959a8ddde8c">
+                            <menuItem title="Normal" id="7f6d14dc-f441-4e4d-a146-e5a99abe2dc6">
                                 <connections>
-                                    <action selector="normalButton:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="098a6467-d55a-45fa-878f-016873d472af"/>
+                                    <action selector="normalButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="ddfdb764-8876-4d44-9eee-63611249b51f"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Heading 1" keyEquivalent="!" id="baf913e4-670f-448b-a619-2e1458b8411a">
+                            <menuItem title="Heading 1" keyEquivalent="!" id="b31c6c7e-70a4-47bf-b104-5672334fe598">
                                 <connections>
-                                    <action selector="heading1Button:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="3f31d0a9-4921-4093-8d79-3cf41dcd89a5"/>
+                                    <action selector="heading1Button:" target="a855b299-932a-4b41-a454-60c18554ea55" id="bc744c61-6a1f-4e02-a3d6-be6c3bdda6bd"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Heading 2" keyEquivalent="@" id="3dc966cd-5f68-4a86-ae94-c0fb2b4d4f43">
+                            <menuItem title="Heading 2" keyEquivalent="@" id="cc9d3f59-6ff1-4795-b79b-ae4829473841">
                                 <connections>
-                                    <action selector="heading2Button:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="b1588296-67ac-4bd9-b6e4-f867d2d26016"/>
+                                    <action selector="heading2Button:" target="a855b299-932a-4b41-a454-60c18554ea55" id="4a4cca42-740d-47b3-9c9a-5393bd8554bd"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Heading 3" keyEquivalent="#" id="3b0b4aec-a06f-4acd-843f-ff118e651b1e">
+                            <menuItem title="Heading 3" keyEquivalent="#" id="5eca3aa3-1a12-45b6-b54e-616762d94b5a">
                                 <connections>
-                                    <action selector="heading3Button:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="daef4769-a161-4ab1-84e2-69c2c734ce9e"/>
+                                    <action selector="heading3Button:" target="a855b299-932a-4b41-a454-60c18554ea55" id="56ada356-a335-4b02-ab05-fda98ff1c4ab"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Heading 4" keyEquivalent="$" id="3494471e-a6b2-44fe-bf44-3b3e429a0cc2">
+                            <menuItem title="Heading 4" keyEquivalent="$" id="fda1ed8d-006e-48bc-90b2-2cfeb0775dbc">
                                 <connections>
-                                    <action selector="heading4Button:" target="ed2cca31-496c-4a1d-9c82-52e130e97f8e" id="538aaa30-69c0-4d2c-9f31-412d0bfda537"/>
+                                    <action selector="heading4Button:" target="a855b299-932a-4b41-a454-60c18554ea55" id="3ad83e37-0851-4d80-969f-93dea294d257"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Panel..." id="9431a94a-2f01-47b1-b4e3-a8a2f76b52b4"/>
+                            <menuItem title="Panel..." id="5ac124eb-42af-44a0-b7f7-c17d0341bf57"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Windows" id="d098bde4-09ef-44f9-a0b2-1d0939b9f405">
-                    <menu key="submenu" title="Windows" id="41e3f8cb-185f-4186-8133-ef771c072da7">
+                <menuItem title="Windows" id="eb52a29b-7af3-439e-a13f-772e86847721">
+                    <menu key="submenu" title="Windows" id="77a91518-218c-4e09-b6d4-3242f61e3aab">
                         <items>
-                            <menuItem title="Arrange in Front" id="942b6b73-17a1-47a4-97c1-098e7f529bde"/>
-                            <menuItem title="Miniaturize Window" keyEquivalent="m" id="3b4f6a07-6092-4bef-a32d-5c17cd49648c"/>
-                            <menuItem title="Close Window" keyEquivalent="w" id="ae3cd77e-bc97-447a-9c86-4ac9088c78e0"/>
+                            <menuItem title="Arrange in Front" id="f0a9b359-19fb-41b0-bad6-9058d97c61a7"/>
+                            <menuItem title="Miniaturize Window" keyEquivalent="m" id="79264595-f33b-4b93-8dd7-060967d37c8f"/>
+                            <menuItem title="Close Window" keyEquivalent="w" id="13f114ed-54dc-41b9-8c91-afd8c0c8cf26"/>
                         </items>
                     </menu>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="200" y="121"/>
         </menu>
-        <window title="Accessories" animationBehavior="default" id="d8181e5f-213d-4868-aac6-478add1ccf24">
+        <window title="Accessories" animationBehavior="default" id="4d4567b6-04fa-42a2-be95-b075954d2527">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="153" y="590" width="235" height="166"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="4d8ce071-7c00-45b7-bf7b-93aaa0e44d45">
+            <view key="contentView" id="003dd145-ee4b-4113-b436-8e2b05d9e58f">
                 <rect key="frame" x="0.0" y="0.0" width="235" height="166"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0b14e7c5-9660-4dda-8209-85e764c73496">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="051cd1cf-060c-443e-9f2a-1d4ad51bf583">
                         <rect key="frame" x="12" y="86" width="202" height="71"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="f2831a88-cc41-4be1-9aef-8ceb1a9f9594">
+                        <view key="contentView" id="91bf37db-0514-4179-a703-000004a409e3">
                             <rect key="frame" x="4" y="5" width="194" height="51"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4b0be80-42d1-41ec-95a0-984c8ba920ea">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="75a5d938-cbab-4ba8-8100-94a3bb92e511">
                         <rect key="frame" x="8" y="15" width="213" height="68"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="04ec0520-7e4e-4052-aa3e-e9f5bf0a95e1">
+                        <view key="contentView" id="6c02a44b-3ffa-4ee4-9322-676bcbf4f5d2">
                             <rect key="frame" x="4" y="5" width="205" height="48"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-263" y="-241"/>
         </window>
-        <window title="Using the navigation Commands" animationBehavior="default" id="d15a9ab2-c824-403e-aebe-bdd5711999c4">
+        <window title="Using the navigation Commands" animationBehavior="default" id="f46db1f8-498d-4663-beca-ac98ecebc8de">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="286" y="5" width="376" height="264"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="8789436d-ce0d-485f-ae5c-4c0dee6d30d2">
+            <view key="contentView" id="b92ee662-5b8c-4108-81a0-e2f1dbf1fd71">
                 <rect key="frame" x="0.0" y="0.0" width="376" height="264"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
             </view>
+            <point key="canvasLocation" x="-262" y="-241"/>
         </window>
-        <customObject id="ed2cca31-496c-4a1d-9c82-52e130e97f8e" customClass="StyleToy"/>
-        <customObject id="c23a1798-2453-4273-b16a-9147c69363a6" customClass="NewsAccess">
+        <customObject id="a855b299-932a-4b41-a454-60c18554ea55" customClass="StyleToy"/>
+        <customObject id="bc9f992b-2901-48f5-bc69-046651a6f694" customClass="NewsAccess">
             <connections>
-                <outlet property="manager" destination="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="8a16327a-76dd-49a6-a13b-d1c82e6e4e09"/>
+                <outlet property="manager" destination="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="34140983-3a5b-4ea3-bb6e-06e6fd69dec6"/>
             </connections>
         </customObject>
-        <window title="Making a new Document" animationBehavior="default" id="dd6cc7fe-7e5a-4ea7-83bb-5ad8c163093f">
+        <window title="Making a new Document" animationBehavior="default" id="2501c615-5fa0-41fc-a61a-9221c24c372c">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="296" y="422" width="376" height="227"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="61ba68d8-e2be-4ecf-aa74-1dad84c3e5e6">
+            <view key="contentView" id="dae74b9a-261a-482e-9387-1e24eed78dab">
                 <rect key="frame" x="0.0" y="0.0" width="376" height="227"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d64714fa-40ba-4a1e-86df-45dddc727206">
+                        <rect key="frame" x="93" y="13" width="81" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Making links" id="KZe-wG-hOW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                    </button>
+                </subviews>
             </view>
         </window>
-        <window title="Info" animationBehavior="default" id="10eb1329-8558-47d9-92e0-bd1e23829e4c">
+        <window title="Info" animationBehavior="default" id="d91ae4cd-a4d5-4490-bcb7-47eb7cb44807">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="337" y="339" width="472" height="448"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="d3679cba-f938-48cb-8944-9849d91d4330">
+            <view key="contentView" id="8338cde1-c83d-46d1-bb28-0076a5cbd28d">
                 <rect key="frame" x="0.0" y="0.0" width="472" height="448"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49789934-b71d-4d61-a614-e1d1a995753d">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39f07cad-8bf9-41bb-910c-31086464892c">
                         <rect key="frame" x="2" y="344" width="470" height="2"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="9ba5facd-5c7f-46e0-b58c-f8c895bf4172">
+                        <view key="contentView" id="c65bd757-e36d-4760-bcfb-7f6ccd35084f">
                             <rect key="frame" x="4" y="-4" width="462" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
@@ -410,113 +419,363 @@
                 </subviews>
             </view>
         </window>
-        <window title="Style editor" animationBehavior="default" id="f62ee726-5cac-428e-ba63-b5db48f1c163">
+        <window title="Style editor" animationBehavior="default" id="b9ed51c7-1808-4dd5-8a2c-eb47f6cd9002">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="2" y="1" width="342" height="406"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="091ef248-d572-4e0f-aac7-851a440c99b4">
+            <view key="contentView" id="bcb5057a-e2f8-41bd-91ec-bf024116a055">
                 <rect key="frame" x="0.0" y="0.0" width="342" height="406"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5abc62de-1216-43ff-8ef5-60d3344f5af6">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e531e840-c879-44fc-bb45-4688defa0476">
+                        <rect key="frame" x="4" y="293" width="166" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Apply style to selection" id="rrE-dt-1Va">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="ApplyButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="f114c10a-538e-418b-a38c-7a313c019ddb"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="238876d1-3499-4cb6-92b4-1a6a79d353d1">
+                        <rect key="frame" x="4" y="228" width="168" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Find unstyled text" id="GaW-Nx-lKz">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="FindUnstyledButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="3ede3cae-04a3-4240-a17c-28f16f91ef4d"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5928ad67-3077-42f6-abe7-43f286ec3919">
+                        <rect key="frame" x="4" y="262" width="167" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Apply style to all similar text" id="g6V-RA-NTe">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="ApplyToSimilar:" target="a855b299-932a-4b41-a454-60c18554ea55" id="ae363607-bcdd-4a55-b184-59b9239f8552"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2698078f-f82a-459c-a19b-d37d2b960c62">
+                        <rect key="frame" x="120" y="342" width="105" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="style of selection" id="uq9-Kf-P4d">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="PickButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="a64eea22-7591-4cb8-809f-72390b8815d6"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0020f2df-f124-4f30-95ee-f39c5ddd9467">
+                        <rect key="frame" x="232" y="342" width="56" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="&gt;&gt;" id="mpF-ZC-j1w">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="NextButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="50294dd2-2b50-4206-b51d-9634013fcb56"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7b316eb-0a19-4516-bdda-1017c308a3ac">
+                        <rect key="frame" x="56" y="342" width="56" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="&lt;&lt;" id="BLg-oy-pNT">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="PreviousButton:" target="a855b299-932a-4b41-a454-60c18554ea55" id="43552526-ad50-48b9-8039-45f3f33e87e6"/>
+                        </connections>
+                    </button>
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbffdc1f-69fb-4c16-a0c1-7b38f579ad79">
                         <rect key="frame" x="208" y="242" width="104" height="80"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="e50c7481-8758-42c9-a68c-c6d7c2421292">
+                        <view key="contentView" id="b57ba3c9-ccca-4af8-95bd-59c99ddc78c9">
                             <rect key="frame" x="4" y="5" width="96" height="60"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2e35e8e8-97ee-4e4e-b64c-25280fce055c">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c44d38b3-096e-4055-a928-f37b5e9f936f">
+                        <rect key="frame" x="226" y="281" width="72" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Open" id="D4o-z1-3bY">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="open:" target="a855b299-932a-4b41-a454-60c18554ea55" id="be1eba86-f049-40dd-9d3b-6b3207a705c4"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="64e4e900-5b0a-42e7-8396-e7a7310fa047">
+                        <rect key="frame" x="226" y="252" width="72" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Save as..." id="wea-is-6e4">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="saveAs:" target="a855b299-932a-4b41-a454-60c18554ea55" id="7eee2cfe-0389-40c6-9de9-637d7bdb43e9"/>
+                        </connections>
+                    </button>
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10afebea-f656-48a9-9686-d99ac5569b75">
                         <rect key="frame" x="1" y="14" width="324" height="209"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="32460a28-c757-4a67-ae5c-9348949a1284">
+                        <view key="contentView" id="96f92ad9-fead-4716-8b52-82f76a382793">
                             <rect key="frame" x="4" y="5" width="316" height="189"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96db9094-5929-4bea-9250-355bb72d1358">
+                                    <rect key="frame" x="232" y="60" width="72" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <buttonCell key="cell" type="bevel" title="Set" id="r8h-LQ-XR0">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    </buttonCell>
+                                </button>
+                            </subviews>
                         </view>
                     </box>
                 </subviews>
             </view>
         </window>
-        <window title="Navigation" animationBehavior="default" id="db2dd47f-228c-4d29-9ba9-d50cdf7c5f74">
+        <window title="Navigation" animationBehavior="default" id="4e0f7448-c55a-466d-ae83-0f81842c029a">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="76" y="183" width="206" height="85"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="0d8056cd-a164-4d24-a291-7a376bb03b4f">
+            <view key="contentView" id="6c4c8d1d-79a9-4ee6-a21c-d3a46158725e">
                 <rect key="frame" x="0.0" y="0.0" width="206" height="85"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cb8eead5-d251-4fb6-9218-51f4b203b074">
+                        <rect key="frame" x="6" y="41" width="71" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="&lt; Previous" id="n0X-oj-TQf">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="previous:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="c43443e1-96ee-4556-8d88-6df4bb419c3b"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2e127f70-03fb-4e78-a3e8-99f51123ab79">
+                        <rect key="frame" x="9" y="10" width="56" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Home" id="K94-5i-uRm">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="goHome:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="42514685-186b-4f90-a44d-0fffbe760f71"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f952b321-8322-4dcc-a531-81b7ea79e188">
+                        <rect key="frame" x="82" y="41" width="57" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Back up" id="BL6-l8-eoF">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="back:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="22cde97e-742c-405e-af08-0aa213dc1060"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49b19a45-6f7e-4c98-bc38-19a0883064ae">
+                        <rect key="frame" x="144" y="41" width="56" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Next &gt;" id="r89-ux-AVb">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="next:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="dc1007d4-4047-4651-ab1e-7a942c29debd"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdaf623f-80c5-41b0-a12a-4ccbaff9810e">
+                        <rect key="frame" x="152" y="8" width="48" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Help" id="PWt-WF-dX9">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                    </button>
+                </subviews>
             </view>
+            <point key="canvasLocation" x="-262" y="35"/>
         </window>
-        <window title="Other document" animationBehavior="default" id="da383691-c25c-4acd-8408-dd6a263932b5">
+        <window title="Other document" animationBehavior="default" id="66123561-3b4e-454a-a078-d67f4d5b0116">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="579" y="571" width="473" height="129"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="add6ae35-aa5f-4dea-90ee-18f88275ad38">
+            <view key="contentView" id="40c6bb09-9a6a-4f66-9dfe-3fee1022ad90">
                 <rect key="frame" x="0.0" y="0.0" width="473" height="129"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3927fc73-cd39-44a1-83cd-4f04a1fed75c">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4c76bad9-20c3-4985-bb99-f71e8f3c6448">
                         <rect key="frame" x="108" y="8" width="167" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="1a5fd18f-c4ad-4718-9b60-5cbe19e18c4c">
+                        <view key="contentView" id="207289de-8538-4137-8126-9070c98f298b">
                             <rect key="frame" x="4" y="5" width="159" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4734ed44-2adb-438e-8bb5-de4371cabe40">
+                        <rect key="frame" x="366" y="21" width="96" height="36"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Open" id="7Ea-8r-I3C">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="open:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="8ca2da33-4c85-4b2c-b1e0-2f6c70e00386"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65317df4-f1da-4e34-b68a-003a84c0524b">
+                        <rect key="frame" x="130" y="20" width="135" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Open showing source" id="Fgp-ZH-vsg">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openSGML:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="e6a7f065-1b75-460d-8074-8975083fd7c0"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49e33cd0-52c5-4659-9047-740e0e29688f">
+                        <rect key="frame" x="3" y="102" width="102" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Link selection to" id="Uh6-le-HF5">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="linkToString:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="fe782b50-279e-4f28-a224-0cb56d9fc63e"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>
-        <customObject id="3fac2c07-00e3-49f3-a117-e67a4f64d668" customClass="WWWPageLayout">
+        <customObject id="9d1be587-1853-423f-a45a-c3d0c12fc87a" customClass="WWWPageLayout">
             <connections>
-                <outlet property="accessoryView" destination="f4b0be80-42d1-41ec-95a0-984c8ba920ea" id="b3fba8dc-c3dc-4ec5-b2d0-af71af715b8d"/>
+                <outlet property="accessoryView" destination="75a5d938-cbab-4ba8-8100-94a3bb92e511" id="d794ea17-088d-4ad7-9779-3890513f82b4"/>
             </connections>
         </customObject>
-        <window title="Making links" animationBehavior="default" id="d2de470f-c9f5-457d-96a6-9086d8cdd9db">
+        <window title="Making links" animationBehavior="default" id="eae3c25d-352a-4948-bb32-771e8e4988bb">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="330" y="339" width="376" height="282"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="8734927f-1af7-446f-af36-4d36554a3f63">
+            <view key="contentView" id="801a47ad-c596-493e-8872-e4279879965d">
                 <rect key="frame" x="0.0" y="0.0" width="376" height="282"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="db0a288d-5d5a-4dbd-8af0-e5a626363f92">
+                        <rect key="frame" x="88" y="9" width="148" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Making a new document" id="VFJ-mw-WrT">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                    </button>
+                </subviews>
             </view>
         </window>
-        <window title="Document Inspector" animationBehavior="default" id="d199841a-13b7-423f-958c-f196a0e1c9c0">
+        <window title="Document Inspector" animationBehavior="default" id="efef251d-eb39-44a2-9f68-c64f021597b7">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="579" y="362" width="473" height="339"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="e3e83bd0-7d2b-4d1d-8b5d-b47a4e1543d3">
+            <view key="contentView" id="8c8da807-5c39-4f9d-a0a0-0096313ffcf8">
                 <rect key="frame" x="0.0" y="0.0" width="473" height="339"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="180d4350-aedb-4926-8eca-be15b9eee885">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39e390f6-3b2a-46af-af9f-12188615453e">
+                        <rect key="frame" x="383" y="252" width="82" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Set" id="9RQ-FU-JLj">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setTitle:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="76ea5e9b-8916-4eb3-98ff-64e6f26a45ee"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b23ba72e-78a5-4d5d-8532-15863af11c85">
+                        <rect key="frame" x="270" y="174" width="192" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Link selection to other document" id="wY0-Ug-fY5">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="linkToString:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="974307fc-0e2d-41b1-b5d9-31df571e1b93"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d2f2ba61-98e6-4dfa-bd66-f04e245ba523">
+                        <rect key="frame" x="370" y="30" width="96" height="36"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Open" id="Hh2-eh-Mms">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="open:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="6fc57b2b-0c0d-4656-a877-580bccbcc992"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af14e527-873d-4e97-bb58-1e61f322663b">
+                        <rect key="frame" x="6" y="101" width="41" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Copy" id="1WR-is-CYl">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="copyAddress:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="e1623a55-0680-435d-87d4-b72c9612a1fc"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ca06401b-0185-465f-afba-3c8ea7a8982c">
+                        <rect key="frame" x="63" y="174" width="125" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Inspect selected link" id="FnR-Gc-wId">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="inspectLink:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="e26b8678-c51a-4878-b5ea-a6792b2e71e0"/>
+                        </connections>
+                    </button>
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcc42285-51da-4cd4-85fc-3c59353f64db">
                         <rect key="frame" x="60" y="11" width="167" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="413905bc-e4b4-4d3c-9c0d-eb0e2cde25d3">
+                        <view key="contentView" id="3a3c297e-7263-452d-b4f0-cd522f79e9cf">
                             <rect key="frame" x="4" y="5" width="159" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="530d9f07-6c50-4318-a4ff-e43d339f013b">
+                        <rect key="frame" x="76" y="23" width="135" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Open showing source" id="4q2-Br-NN3">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openSGML:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="b4b66762-eceb-49fd-82d7-9c9a8fae9638"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>
-        <window title="Index Search" animationBehavior="default" id="b7a73542-a2be-41a5-813f-7b4fdbafe3f3">
+        <window title="Index Search" animationBehavior="default" id="469deb39-6744-4e20-a2fe-415bee7147f7">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="579" y="724" width="473" height="80"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="c7d72656-f8b3-41cf-8b05-c60cd22a94a5">
+            <view key="contentView" id="8a23c41d-b453-4724-941d-27aea0980e51">
                 <rect key="frame" x="0.0" y="0.0" width="473" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ee943e7-ac85-43f1-955b-3d111c1ff2e0">
+                        <rect key="frame" x="357" y="6" width="107" height="33"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="bevel" title="Search" id="mzB-sO-qkM">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="search:" target="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="e57c6a64-2108-4f8a-a37d-1b601212ded1"/>
+                        </connections>
+                    </button>
+                </subviews>
             </view>
         </window>
-        <customObject id="9081e9c2-9f89-4f81-958d-da47b2cde288" customClass="TextToy"/>
-        <customObject id="d8c375aa-dc01-496a-8a0a-4391e059b903" customClass="TcpAccess">
+        <customObject id="de45e53f-6372-4308-9d9b-afc4e06e1ceb" customClass="TextToy"/>
+        <customObject id="f56c81e3-ee2f-414a-b1e8-3ecd7bceb0f5" customClass="TcpAccess">
             <connections>
-                <outlet property="manager" destination="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="8214e19c-a5fa-450f-8e2c-aab1335bc37d"/>
+                <outlet property="manager" destination="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="ffdc4ba3-5de9-4cc3-b7da-01ec5d42dd16"/>
             </connections>
         </customObject>
-        <customObject id="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" customClass="HyperManager"/>
-        <customObject id="089a30bb-9369-4562-94e4-c0a053af4c8c" customClass="FileAccess">
+        <customObject id="94b4b055-eac3-4290-8a35-2d9f4ea4308b" customClass="HyperManager"/>
+        <customObject id="dc03fae8-a424-466b-b235-fed05048ebcd" customClass="FileAccess">
             <connections>
-                <outlet property="manager" destination="c3eb6dfe-d6d9-4cc0-b730-d8f575bfe45b" id="27e973e3-a79c-4eac-ba33-44508a6abb5c"/>
+                <outlet property="manager" destination="94b4b055-eac3-4290-8a35-2d9f4ea4308b" id="1489a7cd-bdcf-400f-bb01-a935549cab34"/>
             </connections>
         </customObject>
     </objects>
