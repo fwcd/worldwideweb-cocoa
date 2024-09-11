@@ -119,10 +119,10 @@ PRIVATE FileAccess *fileAccess = nil;
 
             HT = [anAnchor node];
             if ([HT isIndex]) {
-                [[keywords window] makeKeyAndOrderFront:self];
+                [[self.keywords window] makeKeyAndOrderFront:self];
             } else {
-                [[keywords window] close];
-                //		[[keywords window] orderOut:self];    @@ bug?
+                [[self.keywords window] close];
+                //		[[self.keywords window] orderOut:self];    @@ bug?
             }
 
             return status;
@@ -178,7 +178,7 @@ PRIVATE FileAccess *fileAccess = nil;
     if ((p = strchr(addr, '?')) != 0)
         *p = 0; /* Chop off existing search string */
     strcat(addr, "?");
-    strcpy(keys, [keywords stringValueAt:0]);
+    strcpy(keys, [self.keywords stringValueAt:0]);
     q = HTStrip(keys); /* Strip leading and trailing */
     for (p = q; *p; p++)
         if (WHITE(*p)) {
@@ -397,7 +397,7 @@ PRIVATE FileAccess *fileAccess = nil;
 
 - setTitle:sender {
     NSWindow *thisWindow = [NSApp mainWindow];
-    [thisWindow setTitle:[titleString stringValueAt:0]];
+    [thisWindow setTitle:[self.titleString stringValueAt:0]];
     [thisWindow setDocumentEdited:YES];
     return self;
 }
@@ -409,22 +409,22 @@ PRIVATE FileAccess *fileAccess = nil;
     Anchor *source = [THIS_TEXT selectedLink];
     Anchor *destination;
     if (!source) {
-        [openString setStringValue:"(No anchor selected in main document.)" at:0];
+        [self.openString setStringValue:"(No anchor selected in main document.)" at:0];
         return nil;
     }
     {
         char *source_address = [source fullAddress];
-        [addressString setStringValue:source_address];
+        [self.addressString setStringValue:source_address];
         free(source_address);
     }
 
     destination = [source destination];
     if (destination) {
         char *destination_address = [destination fullAddress];
-        [openString setStringValue:destination_address at:0];
+        [self.openString setStringValue:destination_address at:0];
         free(destination_address);
     } else {
-        [openString setStringValue:"Anchor not linked." at:0];
+        [self.openString setStringValue:@"Anchor not linked." at:0];
     }
 
     return self;
@@ -433,7 +433,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //	Copy address of document
 //	------------------------
 - copyAddress:sender {
-    [openString setStringValue:[[THIS_TEXT nodeAnchor] address] at:0];
+    [self.openString setStringValue:[[THIS_TEXT nodeAnchor] address] at:0];
     return self;
 }
 
@@ -453,13 +453,13 @@ PRIVATE FileAccess *fileAccess = nil;
 - hyperTextDidBecomeMain:sender {
 
     if ([sender isIndex]) {
-        [[keywords window] makeKeyAndOrderFront:self];
+        [[self.keywords window] makeKeyAndOrderFront:self];
     } else {
-        [[keywords window] close];
+        [[self.keywords window] close];
         //        [[keywords window] orderOut:self];	bug?
     }
-    [titleString setStringValue:[[sender window] title] at:0];
-    [addressString setStringValue:[[sender nodeAnchor] address]];
+    [self.titleString setStringValue:[[sender window] title] at:0];
+    [self.addressString setStringValue:[[sender nodeAnchor] address]];
     //  [openString setStringValue: [[sender nodeAnchor] address] at:0];
     return self;
 }
@@ -471,10 +471,10 @@ PRIVATE FileAccess *fileAccess = nil;
 //	we ensure that the text is selected.
 
 - windowDidBecomeKey:sender {
-    if (sender == [openString window])
-        [openString selectTextAt:0]; // Preselect the text
-    else if (sender == [keywords window])
-        [keywords selectTextAt:0]; // Preselect the text
+    if (sender == [self.openString window])
+        [self.openString selectTextAt:0]; // Preselect the text
+    else if (sender == [self.keywords window])
+        [self.keywords selectTextAt:0]; // Preselect the text
 
     return self;
 }
