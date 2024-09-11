@@ -10,16 +10,17 @@
 
 #import <AppKit/AppKit.h>
 
-@interface WWWPageLayout : NSPageLayout {
-    id leftMargin;
-    id rightMargin;
-    id topMargin;
-    id bottomMargin;
-}
+@interface WWWPageLayout : NSPageLayout
+
+@property CGFloat leftMargin;
+@property CGFloat rightMargin;
+@property CGFloat topMargin;
+@property CGFloat bottomMargin;
+
 
 /* Methods overridden from superclass */
 
-- readPrintInfo;
-- writePrintInfo;
+- (void)readPrintInfo;
+- (void)writePrintInfo;
 
 @end

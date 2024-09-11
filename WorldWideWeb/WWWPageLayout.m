@@ -23,86 +23,42 @@
  * This can be used as an example of how to override Application Kit panels.
  */
 
-- readPrintInfo
+- (void)readPrintInfo
 /*
  * Sets the margin fields from the Application-wide PrintInfo.
  */
 {
-    id pi;
-    float conversion, dummy;
     CGFloat left, right, top, bottom;
 
     [super readPrintInfo];
-    pi = [NSPrintInfo sharedPrintInfo];
-    [self convertOldFactor:&conversion newFactor:&dummy];
+    NSPrintInfo *pi = [NSPrintInfo sharedPrintInfo];
+    double conversion = [pi scalingFactor];
     left = [pi leftMargin];
     right = [pi rightMargin];
     top = [pi topMargin];
     bottom = [pi bottomMargin];
-    [leftMargin setFloatValue:left * conversion];
-    [rightMargin setFloatValue:right * conversion];
-    [topMargin setFloatValue:top * conversion];
-    [bottomMargin setFloatValue:bottom * conversion];
-
-    return self;
+    self.leftMargin = left * conversion;
+    self.rightMargin = right * conversion;
+    self.topMargin = top * conversion;
+    self.bottomMargin = bottom * conversion;
 }
 
-- writePrintInfo
+- (void)writePrintInfo
 /*
  * Sets the margin values in the Application-wide PrintInfo from
  * the margin fields in the panel.
  */
 {
-    id pi;
-    float conversion, dummy;
-
     [super writePrintInfo];
-    pi = [NSPrintInfo sharedPrintInfo];
-    [self convertOldFactor:&conversion newFactor:&dummy];
+    NSPrintInfo *pi = [NSPrintInfo sharedPrintInfo];
+    double conversion = [pi scalingFactor];
     if (conversion) {
-        [pi setLeftMargin:[leftMargin floatValue] / conversion];
-        [pi setRightMargin:[rightMargin floatValue] / conversion];
-        [pi setTopMargin:[topMargin floatValue] / conversion];
-        [pi setBottomMargin:[bottomMargin floatValue] / conversion];
+        [pi setLeftMargin:self.leftMargin / conversion];
+        [pi setRightMargin:self.rightMargin / conversion];
+        [pi setTopMargin:self.topMargin / conversion];
+        [pi setBottomMargin:self.bottomMargin / conversion];
     }
     [[NSUserDefaults standardUserDefaults] setValue:[pi paperName] forKey:@"PaperType"]; /* Save it */
-    return self;
-}
-
-/* NIB outlet setting methods */
-
-- setTopBotForm:anObject {
-    [anObject setTarget:ok];
-    [anObject setAction:@selector(performClick:)];
-    [anObject setNextText:width];
-    return self;
-}
-
-- setSideForm:anObject {
-    [scale setNextText:anObject];
-    [anObject setTarget:ok];
-    [anObject setAction:@selector(performClick:)];
-    return self;
-}
-
-- setLeftMargin:anObject {
-    leftMargin = anObject;
-    return self;
-}
-
-- setRightMargin:anObject {
-    rightMargin = anObject;
-    return self;
-}
-
-- setTopMargin:anObject {
-    topMargin = anObject;
-    return self;
-}
-
-- setBottomMargin:anObject {
-    bottomMargin = anObject;
-    return self;
 }
 
 @end
