@@ -1132,7 +1132,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
 #define LINE_WRAP 64 /* Start thinking about line wrap here */
 
 static int SGML_gen_newlines; /* Number of newlines pending during SGML generation */
-static int SGML_gen_errors;       /* Number of unrcognizable runs */
+static int SGML_gen_errors;   /* Number of unrcognizable runs */
 static SGML_style *currentSGML;
 static const char *saveName; /* pointer to name node is being saved under */
 static char *prefix;         /* Pointer to prefix string to be junked */

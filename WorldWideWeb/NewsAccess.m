@@ -16,8 +16,8 @@
 #import "Anchor.h"
 #import "HTParse.h"
 #import "HTStyle.h"
-#import <ctype.h>
 #import <AppKit/AppKit.h>
+#import <ctype.h>
 
 extern HTStyleSheet *styleSheet;
 

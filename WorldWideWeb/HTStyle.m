@@ -66,9 +66,8 @@ HTStyle *HTStyleRead(HTStyle *style, NXStream *stream) {
             style->paragraph = malloc(sizeof(*(style->paragraph)));
         }
         p = style->paragraph;
-        NXScanf(stream, "%f%f%f%f%hd%f%f%hd", &p->indent1st, &p->indent2nd,
-                &p->lineHt, &p->descentLine, &p->alignment, &style->spaceBefore,
-                &style->spaceAfter, &p->numTabs);
+        NXScanf(stream, "%f%f%f%f%hd%f%f%hd", &p->indent1st, &p->indent2nd, &p->lineHt, &p->descentLine, &p->alignment,
+                &style->spaceBefore, &style->spaceAfter, &p->numTabs);
         for (int tab = 0; tab < p->numTabs; tab++) {
             NXScanf(stream, "%hd%f", &p->tabs[tab].kind, &p->tabs[tab].x);
         }
@@ -92,12 +91,12 @@ HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
     int tab;
     NXTextStyle *p = style->paragraph;
     NXPrintf(stream, "%s %i %s %f %i\n", style->SGMLTag, style->SGMLType,
-             style->font ? [[style->font fontName] cStringUsingEncoding:NSUTF8StringEncoding] : NONE_STRING, style->fontSize, p != 0);
+             style->font ? [[style->font fontName] cStringUsingEncoding:NSUTF8StringEncoding] : NONE_STRING,
+             style->fontSize, p != 0);
 
     if (p) {
-        NXPrintf(stream, "\t%f %f %f %f %i %f %f\t%i\n", p->indent1st, p->indent2nd,
-                 p->lineHt, p->descentLine, p->alignment, style->spaceBefore, style->spaceAfter,
-                 p->numTabs);
+        NXPrintf(stream, "\t%f %f %f %f %i %f %f\t%i\n", p->indent1st, p->indent2nd, p->lineHt, p->descentLine,
+                 p->alignment, style->spaceBefore, style->spaceAfter, p->numTabs);
 
         for (tab = 0; tab < p->numTabs; tab++)
             NXPrintf(stream, "\t%i %f\n", p->tabs[tab].kind, p->tabs[tab].x);
@@ -111,12 +110,12 @@ HTStyle *HTStyleDump(HTStyle *style) {
     int tab;
     NXTextStyle *p = style->paragraph;
     printf("Style %i `%s' SGML:%s, type=%i. Font %s %.1f point.\n", style, style->name, style->SGMLTag, style->SGMLType,
-           [[style->font fontName] cStringUsingEncoding:NSUTF8StringEncoding], style -> fontSize);
+           [[style->font fontName] cStringUsingEncoding:NSUTF8StringEncoding], style->fontSize);
     if (p) {
         printf("\tIndents: first=%.0f others=%.0f, Height=%.1f Desc=%.1f\n"
                "\tAlign=%i, %i tabs. (%.0f before, %.0f after)\n",
-               p->indent1st, p->indent2nd, p->lineHt, p->descentLine, p->alignment,
-               p->numTabs, style->spaceBefore, style->spaceAfter);
+               p->indent1st, p->indent2nd, p->lineHt, p->descentLine, p->alignment, p->numTabs, style->spaceBefore,
+               style->spaceAfter);
 
         for (tab = 0; tab < p->numTabs; tab++) {
             printf("\t\tTab kind=%i at %.0f\n", p->tabs[tab].kind, p->tabs[tab].x);

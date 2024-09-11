@@ -86,12 +86,11 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     if (style->paragraph) {
         char tabstring[255];
         int i;
-        [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD]
-            setFloatValue:style->paragraph->indent1st];
+        [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] setFloatValue:style->paragraph->indent1st];
         [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] setFloatValue:style->paragraph->indent2nd];
         tabstring[0] = 0;
-        for(i = 0; i < style->paragraph->numTabs; i++) {
-            sprintf(tabstring+strlen(tabstring), "%.0f ", style->paragraph->tabs[i].x);
+        for (i = 0; i < style->paragraph->numTabs; i++) {
+            sprintf(tabstring + strlen(tabstring), "%.0f ", style->paragraph->tabs[i].x);
         }
         [(NSFormCell *)[TabForm cellAtIndex:0] setStringValue:[NSString stringWithCString:tabstring
                                                                                  encoding:NSUTF8StringEncoding]];

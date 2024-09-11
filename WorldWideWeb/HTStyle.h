@@ -30,8 +30,8 @@ typedef struct _HTStyle {
     char *SGMLTag;         /* Tag name to start */
     SGML_tagtype SGMLType; /* How to end it */
 
-    NSFont *font;                       /* The character representation */
-    HTCoord fontSize;                   /* The size of font, not independent */
+    NSFont *font;           /* The character representation */
+    HTCoord fontSize;       /* The size of font, not independent */
     NXTextStyle *paragraph; /* Null means not defined */
 #ifdef V1
     float textColor; /* Colour of text */

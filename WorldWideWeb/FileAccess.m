@@ -55,7 +55,10 @@ extern char *appDirectory; /* Pointer to directory for application */
     } else if (format == WWW_RICHTEXT)
         [HT writeRTFDToFile:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding] atomically:YES];
     else if (format == WWW_PLAINTEXT || format == WWW_SOURCE)
-        [[HT string] writeToFile:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        [[HT string] writeToFile:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding]
+                      atomically:YES
+                        encoding:NSUTF8StringEncoding
+                           error:nil];
     else
         fprintf(stderr, "HT/File: Unknown format!\n");
 

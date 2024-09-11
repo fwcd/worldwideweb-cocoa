@@ -17,7 +17,6 @@
 @property CGFloat topMargin;
 @property CGFloat bottomMargin;
 
-
 /* Methods overridden from superclass */
 
 - (void)readPrintInfo;
