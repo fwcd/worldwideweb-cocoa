@@ -26,6 +26,7 @@
 #import "NXShims.h"
 #import "WWW.h"
 #import <AppKit/AppKit.h>
+#import <malloc/malloc.h>
 
 @implementation HyperText
 
@@ -78,9 +79,10 @@ static float page_width() {
         printf("New node, server is %i\n", aServer);
 
     nextAnchorNumber = 0;
-    protection = 0;                                        // Can do anything
-    format = WWW_HTML;                                     // By default
-    [self setMonoFont:NO];                                 // By default
+    protection = 0;    // Can do anything
+    format = WWW_HTML; // By default
+    // TODO: Should we set a custom font?
+    // [self setMonoFont:NO];                                 // By default
     theRuns->chunk.growby = 16 * sizeof(theRuns->runs[0]); //  efficiency
 
     server = (HyperAccess *)aServer;
@@ -123,10 +125,11 @@ static float page_width() {
     NXTextBlock *block = firstTextBlock;
 
     printf("Hypertext %i, selected(%i,%i)", self, sp0.cp, spN.cp);
-    if (delegate)
+    if (self.delegate)
         printf(", has delegate");
     printf(".\n");
 
+    NSRect frame = self.frame;
     printf("    Frame is at (%f, %f, size is (%f, %f)\n", frame.origin.x, frame.origin.y, frame.size.width,
            frame.size.height);
 
@@ -181,15 +184,18 @@ static float page_width() {
     NSSize size;
     BOOL scroll_X, scroll_Y; // Do we need scrollers?
 
-    NSScrollView *scrollview = [window contentView]; // Pick up id of ScrollView
-    float paperWidth = page_width();                 // Get page layout width
+    NSScrollView *scrollview = [self.window contentView]; // Pick up id of ScrollView
+    float paperWidth = page_width();                      // Get page layout width
 
-    [window disableFlushWindow]; // Prevent flashes
+    [self.window disableFlushWindow]; // Prevent flashes
 
     [self setVerticallyResizable:YES]; // Can change size automatically
     [self setHorizontallyResizable:tFlags.monoFont];
     [self calcLine];  // Wrap text to current text size
     [self sizeToFit]; // Reduce size if possible.
+
+    CGFloat maxX = self.maxSize.width;
+    CGFloat maxY = self.maxSize.height;
 
     if (maxY > MAX_HEIGHT) {
         scroll_Y = YES;
@@ -244,7 +250,7 @@ static float page_width() {
 
 #ifdef OLD_METHOD
         NSRect oldframe;
-        oldframe = window.frame;
+        oldframe = self.window.frame;
         [window sizeWindow:scroll_frame.size.width:scroll_frame.size.height];
         [window moveTopLeftTo:oldframe.origin.x:oldframe.origin.y + oldframe.size.height];
 #else
@@ -252,12 +258,11 @@ static float page_width() {
         scroll_frame.origin.x = 150 + (slotNumber % 10) * 30 + ((slotNumber / 10) % 3) * 40;
         scroll_frame.origin.y =
             185 + NICE_HEIGHT - scroll_frame.size.height - (slotNumber % 10) * 20 - ((slotNumber / 10) % 3) * 3;
-        [NSWindow getFrameRect:&newFrame
-                forContentRect:&scroll_frame
-                         style:NX_TITLEDSTYLE]; // Doesn't allow space for resize bar
+        newFrame = [NSWindow frameRectForContentRect:scroll_frame
+                                           styleMask:NSWindowStyleMaskTitled]; // Doesn't allow space for resize bar
         newFrame.origin.y = newFrame.origin.y - 9.0;
         newFrame.size.height = newFrame.size.height + 9.0; // For resize bar
-        [window placeWindow:&newFrame];
+        [self.window setFrame:newFrame display:true];
 #endif
     }
 
@@ -270,9 +275,9 @@ static float page_width() {
         [self renewRuns:NULL text:NULL frame:&frm tag:0];
     }
 #endif
-    [window reenableFlushWindow];
-    [self calcLine];  /* Prevent messy screen */
-    [window display]; /* Ought to clean it up */
+    [self.window enableFlushWindow];
+    [self calcLine];       /* Prevent messy screen */
+    [self.window display]; /* Ought to clean it up */
     return self;
 
 } /* adjustWindow */
@@ -309,27 +314,26 @@ static float page_width() {
     //	Build a window around the text in order to display it.
 
 #define NX_ALLBUTTONS 7 // Fudge -- the followin methos is obsolete in 3.0:
-    window = [[NSWindow alloc] initWithContentRect:&scroll_frame
-                                             style:NSWindowStyleMaskTitled
-                                           backing:NSBackingStoreBuffered
-                                             defer:NO]; // display now
-    [window setDelegate:self];                          // Get closure warning
-    [window makeKeyAndOrderFront:self];                 // Make it visible
-    [window setBackgroundGray:1.0];                     // White seems to be necessary.
+    NSWindow *window = [[NSWindow alloc] initWithContentRect:scroll_frame
+                                                       style:NSWindowStyleMaskTitled
+                                                     backing:NSBackingStoreBuffered
+                                                       defer:NO]; // display now
+    [window setDelegate:self];                                    // Get closure warning
+    [window makeKeyAndOrderFront:self];                           // Make it visible
+    [window setBackgroundColor:[NSColor whiteColor]];             // White seems to be necessary.
 
-    scrollview = [NSScrollView newFrame:&scroll_frame];
+    scrollview = [[NSScrollView alloc] initWithFrame:scroll_frame];
     [scrollview setHasVerticalScroller:YES];
-    [scrollview setHasHorizontalScroller:NO];  // Guess.
-    [[window setContentView:scrollview] free]; // Free old view, size new one.
+    [scrollview setHasHorizontalScroller:NO]; // Guess.
+    [window setContentView:scrollview];
 
     [scrollview setDocumentView:self];
-    [self setOpaque:YES];              // Suggested in the book
     [self setVerticallyResizable:YES]; // Changes size automatically
     [self setHorizontallyResizable:NO];
-    [self setMinSize:&min_size];               // Stop it shrinking to nought
-    [self setMaxSize:&max_size];               // Stop it being chopped when editing
-    [self notifyAncestorWhenFrameChanged:YES]; // Tell scrollview See QA 555
-    [window display];                          // Maybe we will see it now
+    [self setMinSize:min_size];                    // Stop it shrinking to nought
+    [self setMaxSize:max_size];                    // Stop it being chopped when editing
+    [self setPostsFrameChangedNotifications:true]; // Tell scrollview See QA 555
+    [window display];                              // Maybe we will see it now
     return self;
 }
 
