@@ -258,12 +258,21 @@ class XIBConverter:
         dest_obj = group.values[1]
         selector = group.values[2].decode()
 
-        if (src_xib_node := self.object_to_xib_node.get(src_obj)) and (dest_xib_node := self.object_to_xib_node.get(dest_obj)):
-            print(f'Connecting {src_xib_node} to {selector} on {dest_xib_node} (action)')
-            src_xib_node.connect_action(
-                selector=selector,
-                target=dest_xib_node,
-            )
+        # Not sure why this can happen, but apparently it can
+        if dest_obj is None:
+            return
+
+        if src_xib_node := self.object_to_xib_node.get(src_obj):
+            if dest_xib_node := self.object_to_xib_node.get(dest_obj):
+                print(f'Connecting {src_xib_node} to {selector} on {dest_xib_node} (action)')
+                src_xib_node.connect_action(
+                    selector=selector,
+                    target=dest_xib_node,
+                )
+            else:
+                print(f'Warning: Could not connect action due to untranslated destination object ({src_obj.clazz.name.decode()} and {dest_obj.clazz.name.decode()})')
+        else:
+            print(f'Warning: Could not connect action due to untranslated source object ({src_obj.clazz.name.decode()} and {dest_obj.clazz.name.decode()})')
 
     def traverse_outlet_connector(self, obj: typedstream.GenericArchivedObject):
         '''Traverses the given NIB outlet connector and adds it to the XIB.'''
@@ -275,12 +284,17 @@ class XIBConverter:
         dest_obj = group.values[1]
         property = group.values[2].decode()
 
-        if (src_xib_node := self.object_to_xib_node.get(src_obj)) and (dest_xib_node := self.object_to_xib_node.get(dest_obj)):
-            print(f"Connecting {src_xib_node}'s {property} to {dest_xib_node} (outlet)")
-            src_xib_node.connect_outlet(
-                property=property,
-                destination=dest_xib_node,
-            )
+        if src_xib_node := self.object_to_xib_node.get(src_obj):
+            if dest_xib_node := self.object_to_xib_node.get(dest_obj):
+                print(f"Connecting {src_xib_node}'s {property} to {dest_xib_node} (outlet)")
+                src_xib_node.connect_outlet(
+                    property=property,
+                    destination=dest_xib_node,
+                )
+            else:
+                print(f'Warning: Could not connect outlet due to untranslated destination object ({src_obj.clazz.name.decode()} and {dest_obj.clazz.name.decode()})')
+        else:
+            print(f'Warning: Could not connect outlet due to untranslated source object ({src_obj.clazz.name.decode()} and {dest_obj.clazz.name.decode()})')
 
     def traverse_window(self, obj: typedstream.GenericArchivedObject):
         '''Traverses the given NIB window and adds it to the XIB.'''

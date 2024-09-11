@@ -1,451 +1,411 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version='1.0' encoding='utf-8'?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="NO" customObjectInstantiationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690" />
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0" />
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="2908560e-444f-42d5-8166-91fbf67b9b67" id="f9953787-3e4f-4003-8623-fe1b82684e25"/>
+                <outlet id="fe4141a5-581e-4752-8b84-7ac00cbd9306" property="delegate" destination="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
             </connections>
         </customObject>
-        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="3d350ec6-edf2-4a4d-8433-2e62690e25d8" customClass="NSFontManager"/>
-        <menu systemMenu="main" id="af05cde8-e7ee-428e-afb5-5e53fab3d750">
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder" />
+        <customObject id="-3" userLabel="Application" customClass="NSObject" />
+        <customObject id="cd1b3a58-753a-4495-81cf-e4018577495d" customClass="NSFontManager" />
+        <menu id="1e3f2058-e3b6-4335-be01-5c88af43dae0" systemMenu="main">
+            <point key="canvasLocation" x="200" y="121" />
             <items>
-                <menuItem title="WorldWideWeb" id="fe8dd023-d3ea-4be8-9907-8b7fcd66c7d3">
-                    <menu key="submenu" title="WorldWideWeb" systemMenu="apple" id="d310550d-b9cf-48ac-9d91-14e071f1dcd2">
+                <menuItem id="46470500-a1f0-430f-af78-8a549f146dc0" title="WorldWideWeb">
+                    <menu id="fb39d47b-ee38-4f5f-8efb-f517a6563ffe" key="submenu" title="WorldWideWeb" systemMenu="apple">
                         <items>
-                            <menuItem title="About WorldWideWeb" id="1f9d48c6-caab-4ab2-acf0-d865a97421d0"/>
-                            <menuItem isSeparatorItem="YES" id="295c644b-1044-4c12-a4ba-1470ee07cc10"/>
-                            <menuItem title="Print..." keyEquivalent="p" id="b156864a-e17d-4bc0-b1da-10669ebd7164">
+                            <menuItem id="019836fb-7798-4c95-93d5-4b7074204246" title="About WorldWideWeb" />
+                            <menuItem id="e70d9e5d-926a-45f8-aa6c-155b86aea0fb" isSeparatorItem="YES" />
+                            <menuItem id="cc962fce-5919-4142-a455-bf36bf76c0ce" title="Print..." keyEquivalent="p">
                                 <connections>
-                                    <action selector="print:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="da63e726-c206-487e-a16f-abaeb0842694"/>
+                                    <action id="f705ee16-ed87-4a92-8029-d5418cd51e04" selector="print:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Page layout..." id="e1c3eced-ce4d-49f0-8a66-419c0394f84f">
+                            <menuItem id="b35d3a9e-acb2-4c03-aaa0-b63d7c05bd44" title="Page layout...">
                                 <connections>
-                                    <action selector="runPagelayout:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="67ce8887-a7d3-4c4d-83fb-3ee0ba7b4961"/>
+                                    <action id="7597c259-7393-445d-b974-6af1cea4780c" selector="runPagelayout:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Services" id="55cdc16a-1c21-4e9a-b41a-5d5474647aaa">
-                                <menu key="submenu" title="Services" id="8eea4637-8ad8-4ab2-81a9-1babf0c45afc"/>
+                            <menuItem id="2ff51fa2-b2d7-418e-abaa-e2781b5df731" title="Services">
+                                <menu id="c9f9ac99-c051-472d-8e3b-eb5eb6da145e" key="submenu" title="Services" />
                             </menuItem>
-                            <menuItem title="Hide" keyEquivalent="h" id="7da5bbe6-986a-471a-b963-cb534dbbed72">
+                            <menuItem id="0d359e18-0938-4948-81d9-da45cd7f9f80" title="Hide" keyEquivalent="h">
                                 <connections>
-                                    <action selector="hide:" target="-2" id="148f5c00-f329-4cf9-9a1f-dfd88d1916f4"/>
+                                    <action id="b672374f-7a9f-4794-ab55-658cf5e99df0" selector="hide:" target="-2" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Quit" keyEquivalent="q" id="2a696fb9-f431-4181-b990-ed1a7b9e4727">
+                            <menuItem id="a6e0b3d3-cb77-4143-9470-7d5e6acd35da" title="Quit" keyEquivalent="q">
                                 <connections>
-                                    <action selector="terminate:" target="-2" id="e4295f44-a583-47de-95e3-94d555b0ca6a"/>
+                                    <action id="a1528f8c-158d-476b-8741-9f5dc7a20b40" selector="terminate:" target="-2" />
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Info" id="078bd73f-53d9-4ec0-8542-81943e345249">
-                    <menu key="submenu" title="Info" id="b5d7f88a-7691-45f1-8865-21f514f6dcbd">
+                <menuItem id="0c6363bf-0b3f-4766-b504-9986604ef4ea" title="Info">
+                    <menu id="fb1d72e2-6175-46bc-96d2-3c3747ecf10f" key="submenu" title="Info">
                         <items>
-                            <menuItem title="Panel..." id="7dbc7c40-2bd9-442d-80b9-1c27950c4e9a"/>
-                            <menuItem title="Help..." id="ffc57f5b-9321-4eaf-8748-58f8277eb30e">
+                            <menuItem id="e82e6975-538e-4141-87de-b0b66646a2e5" title="Panel..." />
+                            <menuItem id="9ef37325-f1e2-4346-9ca6-aa11d19d1791" title="Help...">
                                 <connections>
-                                    <action selector="help:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="509e9fd0-0192-4deb-8f9c-300cc8b55112"/>
+                                    <action id="af5fdeb5-e1aa-47fa-a584-ad95810b9695" selector="help:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Navigate" id="ada63c59-809e-4a7a-bddb-789e7c336025">
-                    <menu key="submenu" title="Navigate" id="f62c1029-a1c7-4736-8f18-2ea2f4716826">
+                <menuItem id="627946a4-0d6c-43a1-9a8d-852084012a9b" title="Navigate">
+                    <menu id="e4b58894-5d3f-492c-b056-8ee56408210c" key="submenu" title="Navigate">
                         <items>
-                            <menuItem title="Back" keyEquivalent="^" id="cd1de7f6-ecda-42ac-878b-6544504ca086">
+                            <menuItem id="83cbd65f-cf47-473b-95f8-9ff2e00b24cc" title="Back" keyEquivalent="^">
                                 <connections>
-                                    <action selector="back:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="345ab289-c642-4521-af0b-ca510b71f9a0"/>
+                                    <action id="eabd6684-8933-4fc7-b09b-2faf7482359f" selector="back:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Next" keyEquivalent="&gt;" id="55b8fdaf-f1c3-43a6-afeb-dbb4996713ea">
+                            <menuItem id="5e4d5b0a-8d5e-4a17-b3ee-adf936d88c2b" title="Next" keyEquivalent="&gt;">
                                 <connections>
-                                    <action selector="next:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="8008faae-115e-4f96-a0e8-d1a184ea12ce"/>
+                                    <action id="14359d3b-3b45-4e49-a89d-c6b5da12ec88" selector="next:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Previous" keyEquivalent="&lt;" id="c53ca026-fc55-494e-a322-9d5e6e41be8b">
+                            <menuItem id="9c5629fd-d339-4fc0-9e5d-88ef2d491fd0" title="Previous" keyEquivalent="&lt;">
                                 <connections>
-                                    <action selector="previous:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="6cc5fa4e-bb99-4d42-be10-c56f2b20b5ef"/>
+                                    <action id="c4145e04-6547-4b22-bdc5-bd7340bb76c7" selector="previous:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Home" keyEquivalent="H" id="352d10a1-8082-415d-a044-01e40cc753f4">
+                            <menuItem id="890665e2-f494-4aef-a73f-3f9958bb803d" title="Home" keyEquivalent="H">
                                 <connections>
-                                    <action selector="goHome:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="b2de264a-684b-4e5f-a444-e0cc48dc5070"/>
+                                    <action id="201c5811-b08d-419f-8b8d-5d40c3a3d8cb" selector="goHome:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Panel..." id="49f5875a-45ce-4061-8934-7099d965e08f"/>
+                            <menuItem id="fbcc3118-3e12-4ffc-95e1-141978d1ca34" title="Panel..." />
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Document" id="4c4182ae-e94f-40e5-a392-548036ce6163">
-                    <menu key="submenu" title="Document" id="7dcee286-4dc2-4027-ae16-f60f553d77b7">
+                <menuItem id="b468f900-b30f-4dda-8c70-2551d7c4f8e0" title="Document">
+                    <menu id="fcee2086-0946-4c8e-bd36-8db38a1d6c6f" key="submenu" title="Document">
                         <items>
-                            <menuItem title="Open file..." keyEquivalent="o" id="aaf90332-1097-47cf-a691-a42ebe0a34a2">
+                            <menuItem id="1e06d1c2-da33-49eb-96d7-f3e5c6766d0f" title="Open file..." keyEquivalent="o">
                                 <connections>
-                                    <action selector="open:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="0d9d503e-2db7-4239-bfc9-816515e39ad8"/>
+                                    <action id="707ba71f-216d-45c8-b9cf-1aeea26d59e8" selector="open:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open given document address" keyEquivalent="O" id="ec439607-8b71-43f3-8f4f-9f98048e2dc6"/>
-                            <menuItem title="New file..." keyEquivalent="n" id="210ce14b-8441-41ff-bf47-d857b7f7c04c">
+                            <menuItem id="51c867f4-739a-4d22-81f2-916f2f250a79" title="Open given document address" keyEquivalent="O" />
+                            <menuItem id="a4d18008-0690-4dc4-b6ca-80186f1bfef3" title="New file..." keyEquivalent="n">
                                 <connections>
-                                    <action selector="makeNew:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="0c210c4a-18b2-482a-98b1-47d2fc16bec5"/>
+                                    <action id="725ec52d-65f6-4a2c-92e3-a53258b48eac" selector="makeNew:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save" keyEquivalent="s" id="e3836b5c-2fe4-4987-bcb7-0b39fd39ca9d">
+                            <menuItem id="50931c01-e3ca-47b4-ac3f-b78057c8673c" title="Save" keyEquivalent="s">
                                 <connections>
-                                    <action selector="save:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="997fa43b-e5de-4e6e-900d-8e1f1c5ffb17"/>
+                                    <action id="7029b0ca-812c-4870-b38e-311feaeb8c21" selector="save:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save all edited windows" keyEquivalent="S" id="055fc2ea-ef6b-473f-b260-f9f19fe65091">
+                            <menuItem id="f0817b32-4148-4e42-a7f6-0802b9d40e29" title="Save all edited windows" keyEquivalent="S">
                                 <connections>
-                                    <action selector="saveAll:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="dd86ef64-2498-49cd-bbc3-f13d6e0fe1dc"/>
+                                    <action id="8cb9bd88-5878-49c3-88a8-54ff57666ed3" selector="saveAll:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save a copy in" id="485e0636-caba-4037-9cf1-e92a1480f475">
-                                <menu key="submenu" title="Save a copy in" id="b5e3c678-1eb5-495b-bab6-58879349258b">
+                            <menuItem id="ed45e0d7-c3ea-4b70-8c49-56f9c79c10b6" title="Save a copy in">
+                                <menu id="c4787f4f-06ef-4ee6-87db-d7e2b98f8e6b" key="submenu" title="Save a copy in">
                                     <items>
-                                        <menuItem title="HyperText Markup Language..." id="9b50dcab-94e4-42df-a4b6-da263dd2db4b">
+                                        <menuItem id="3d4b40ac-4dc3-46d0-83b8-70644753058b" title="HyperText Markup Language...">
                                             <connections>
-                                                <action selector="saveAs:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="1744ee68-5a3c-4dc8-a5d0-b5703e2b1b76"/>
+                                                <action id="68222cd3-d137-414e-b7df-27a4b72039d5" selector="saveAs:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Rich Text Format ..." id="aab15aa2-6855-433b-850e-4805f854a9ac">
+                                        <menuItem id="43d98a27-0d9a-43ce-b3e2-5ec582681ae2" title="Rich Text Format ...">
                                             <connections>
-                                                <action selector="saveAsRichText:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="c1911085-a2c1-4542-a31d-5dac8b009fe4"/>
+                                                <action id="c9c2ac03-7c0a-4c0c-8f45-2f14ee591240" selector="saveAsRichText:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Plain Text..." id="1050b3ce-3c0f-4fd4-a03e-441f81cdd001">
+                                        <menuItem id="42324efc-9bbc-4ff7-a7e5-bb00b176ea49" title="Plain Text...">
                                             <connections>
-                                                <action selector="saveAsPlainText:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="4f3c031d-557d-46d0-ab7c-117b08dbb282"/>
+                                                <action id="6a5d20e8-3f02-4cf8-aacb-9f1a4d61444b" selector="saveAsPlainText:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="PostScript..." id="add821c0-c2b6-4c6d-860f-4cd601d1578f">
+                                        <menuItem id="e2d9a5ee-b679-4fc1-a5a4-44d7246c8015" title="PostScript...">
                                             <connections>
-                                                <action selector="print:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="5d5ef1ba-3885-4e94-bfe7-d9762c475a71"/>
+                                                <action id="c5def43b-6270-4620-a072-3d26ce18346d" selector="print:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                             </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Inspect ..." keyEquivalent="3" id="194dbeb9-6c7c-421f-8bdd-5380fdb2a482"/>
-                            <menuItem title="(Diagnostics)" id="f139442c-d4a7-46ec-830d-8d13259d6432">
-                                <menu key="submenu" title="(Diagnostics)" id="95f8acfe-b0f0-4db6-9b09-aeb7068b91df">
+                            <menuItem id="488065a7-29fc-42b0-8ee1-e9a048bb5224" title="Inspect ..." keyEquivalent="3" />
+                            <menuItem id="64f7595d-bb24-4c04-a70b-190788f4853c" title="(Diagnostics)">
+                                <menu id="5189103b-dcdc-4659-90bf-f04a2e7e1d18" key="submenu" title="(Diagnostics)">
                                     <items>
-                                        <menuItem title="Panel" id="e51cb351-9a75-4138-9ad2-d3a93a675018"/>
-                                        <menuItem title="Open HTML file showing SGML source" id="5eebc840-a0f8-4194-b86b-9cf4c8ddc20a">
+                                        <menuItem id="d497bef5-23f4-4ff8-85a8-d85a42dd061e" title="Panel" />
+                                        <menuItem id="17a9b3e9-fe7e-4159-b8c5-7a1dd5b3e61c" title="Open HTML file showing SGML source">
                                             <connections>
-                                                <action selector="openSGML:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="bf3d91e7-af77-4fb3-be89-a12c70f57c06"/>
+                                                <action id="dddd45a7-88a8-47b5-a966-4bc005f9361c" selector="openSGML:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open HTML file showing RTF" id="c36f27ac-5268-4d1d-a5b1-9812b69d522f">
+                                        <menuItem id="9f399edd-7c0d-4ef8-a8cb-63b9ec253048" title="Open HTML file showing RTF">
                                             <connections>
-                                                <action selector="openRTF:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="5f61c425-fef0-4963-bf60-159fac6957b1"/>
+                                                <action id="03349c16-e485-4588-a8e7-fe9340527102" selector="openRTF:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Dump text format to standard out" keyEquivalent="?" id="7a0483ac-0fa3-4503-86bc-5dc5bc2956dd">
+                                        <menuItem id="f7f2963a-1bcc-4ff2-9470-2a2043cefe10" title="Dump text format to standard out" keyEquivalent="?">
                                             <connections>
-                                                <action selector="dump:" target="7f6430bb-25d2-402b-ab5f-2c25c108ac7b" id="9ee8ddf4-cf00-428d-bda0-bfd305b017fe"/>
+                                                <action id="bea28351-2a15-453c-80ed-7774df3653cb" selector="dump:" target="50fec8ea-f9ba-4071-a630-4e613e1351e0" />
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Turn console trace on" keyEquivalent="+" id="3832353e-f771-4358-95da-4e811c5463dc">
+                                        <menuItem id="30070d90-1e0f-44eb-be56-97b136b2606e" title="Turn console trace on" keyEquivalent="+">
                                             <connections>
-                                                <action selector="traceOn:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="f99e9c82-43c6-4969-a5f7-72e603fb57d4"/>
+                                                <action id="8ff592b3-2627-4ace-9d2a-fcfb5f1c550a" selector="traceOn:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Turn console trace off" keyEquivalent="-" id="34cb7d92-1467-469b-9f5f-f5827941d73d">
+                                        <menuItem id="8a59f7cd-32b8-4adc-aa05-c301c0af469b" title="Turn console trace off" keyEquivalent="-">
                                             <connections>
-                                                <action selector="traceOff:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="56e81c46-c984-4f10-83a2-c18a0d89bdc9"/>
+                                                <action id="05673941-fdf9-4e6d-9415-5a6906bfba49" selector="traceOff:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Item" id="1a357dbf-1bd0-42ed-9927-df792669801a"/>
+                                        <menuItem id="1653a4e2-65a0-4872-acb7-5de8d529a00d" title="Item" />
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Miniaturize" id="f2156a22-aeb7-4995-87f8-d1db8f03ce96"/>
-                            <menuItem title="Open master template document" id="23022a41-caf3-4fac-9e61-c33e54e66aac">
+                            <menuItem id="c096baff-93b3-45cf-952f-f31bf58437ae" title="Miniaturize" />
+                            <menuItem id="220d071d-5f92-4427-8ed1-663dcb5daad1" title="Open master template document">
                                 <connections>
-                                    <action selector="goToBlank:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="6d0daf6c-c1ae-4352-a3ef-673c122c1617"/>
+                                    <action id="15cb3d5f-0b06-497d-af91-9a0aea4a353c" selector="goToBlank:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Close all other windows" keyEquivalent="W" id="6351aaa4-7631-46d8-a1ae-3aa9c9752ec3">
+                            <menuItem id="217be77e-f560-429c-924a-fe7a158ba50c" title="Close all other windows" keyEquivalent="W">
                                 <connections>
-                                    <action selector="closeOthers:" target="2908560e-444f-42d5-8166-91fbf67b9b67" id="f8ba8898-0523-4331-87b7-84b46545ee7b"/>
+                                    <action id="af4837d8-fd65-4a99-9854-e5d8bfb90d60" selector="closeOthers:" target="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Close" keyEquivalent="w" id="59858051-8bd5-4de0-991b-88f4d2155d42"/>
+                            <menuItem id="50746864-9897-417e-906a-e6706e185ce3" title="Close" keyEquivalent="w" />
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Edit" id="83229fb4-5bde-4e3c-9986-29543b7d4d99">
-                    <menu key="submenu" title="Edit" id="c5438132-2b04-4b8d-8515-ebc8dee90af6">
+                <menuItem id="50b7ec61-e196-4c71-9ecb-40bfe511c55e" title="Edit">
+                    <menu id="458473a8-5f3b-497d-8457-28571f5a3833" key="submenu" title="Edit">
                         <items>
-                            <menuItem title="Cut" keyEquivalent="x" id="4b9b4728-ad8e-4514-ad03-8834275af05a"/>
-                            <menuItem title="Copy" keyEquivalent="c" id="7d78d26b-5bcd-4308-9928-19024d2618b9"/>
-                            <menuItem title="Paste" keyEquivalent="v" id="7533e62c-6e08-4b58-a55d-eecce71b3ee5"/>
-                            <menuItem title="Paste As" id="a07a8ee0-2cc1-40c1-ad76-c3d7b2004101">
-                                <menu key="submenu" title="Paste As" id="e9775c81-332f-436a-b786-f9924714c7f0"/>
+                            <menuItem id="5b6e26fc-6f78-4bed-b1cf-731023abf504" title="Cut" keyEquivalent="x" />
+                            <menuItem id="21379cfc-5932-4afa-bc1d-a11eec2a825e" title="Copy" keyEquivalent="c" />
+                            <menuItem id="b65733a8-31f9-4fc7-b394-5995e3da7603" title="Paste" keyEquivalent="v" />
+                            <menuItem id="b6f3b31d-a210-4041-8426-9fa7b30cefe8" title="Paste As">
+                                <menu id="d91d78be-0ea9-4d1d-8990-218f7498875b" key="submenu" title="Paste As" />
                             </menuItem>
-                            <menuItem title="Delete" id="6dde3d43-adee-4e47-8742-36ddb963cf98"/>
-                            <menuItem title="Undo" keyEquivalent="z" id="8145a0dc-c556-4753-ad08-d2391b944691"/>
-                            <menuItem title="Find" id="532f5d35-22f6-4862-a433-2f68061bded2">
-                                <menu key="submenu" title="Find" id="e3212bbe-8580-4bc0-bee8-ff6bab1e694e">
+                            <menuItem id="de50f9d7-30d8-41d1-8821-07e20fa48131" title="Delete" />
+                            <menuItem id="e09a815b-ece0-4eb0-9fd7-63af9177fa39" title="Undo" keyEquivalent="z" />
+                            <menuItem id="ac8d20b4-c1aa-4af5-8423-f9ce147fa946" title="Find">
+                                <menu id="dc7e569e-3102-4b78-b21e-8eac729d3d68" key="submenu" title="Find">
                                     <items>
-                                        <menuItem title="Find Panel..." keyEquivalent="f" id="d7e7e867-f8d2-4d85-abe8-350273d06c86"/>
-                                        <menuItem title="Find Next" keyEquivalent="g" id="fd835bed-be70-4ce1-bee6-ed7c40c32b9f"/>
-                                        <menuItem title="Find Previous" keyEquivalent="d" id="bea495ab-b9e4-422b-a439-9050609f4d91"/>
-                                        <menuItem title="Enter Selection" keyEquivalent="e" id="0ba99588-c0a8-4ee6-aba3-b3ab353370dd"/>
-                                        <menuItem title="Jump To Selection" keyEquivalent="j" id="0840a5b0-527a-428a-8ef7-efaec699a612"/>
+                                        <menuItem id="7225b956-539a-4225-a83f-2fd68cc9b24f" title="Find Panel..." keyEquivalent="f" />
+                                        <menuItem id="d4ae9f0c-649e-47a9-85f8-19fd5d015ac9" title="Find Next" keyEquivalent="g" />
+                                        <menuItem id="beaef399-324e-4b63-8641-d06c1d8d0b22" title="Find Previous" keyEquivalent="d" />
+                                        <menuItem id="280eccde-0f07-42a0-bd9e-51325db6313a" title="Enter Selection" keyEquivalent="e" />
+                                        <menuItem id="64e13506-450b-4d9d-86bf-8eba9f94e32c" title="Jump To Selection" keyEquivalent="j" />
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Spelling..." id="5ef08250-567b-4a2a-a8a7-4b91999d86ac"/>
-                            <menuItem title="Check Spelling" keyEquivalent=";" id="94f959e7-28a5-4fa8-b90e-127fad922bab"/>
-                            <menuItem title="Select All" keyEquivalent="a" id="c75f4303-216d-420c-b88e-b0d4949b4b3c"/>
+                            <menuItem id="090ad7b2-e93f-4e10-b9a7-961a5adac334" title="Spelling..." />
+                            <menuItem id="460ed459-ef27-413c-b5f6-fea2baca2e0d" title="Check Spelling" keyEquivalent=";" />
+                            <menuItem id="1de5707c-f678-4dbf-a017-0af586c412bd" title="Select All" keyEquivalent="a" />
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Find" id="870ea3a6-5761-494f-9a70-06a35f2aafe4">
-                    <menu key="submenu" title="Find" id="1fa9c1a1-7c06-42a2-8912-d73e5f282a05">
+                <menuItem id="8fe6c264-d831-4eac-a64c-021e4494b61e" title="Find">
+                    <menu id="27d1fe62-fe73-4041-9cf3-b56648919822" key="submenu" title="Find">
                         <items>
-                            <menuItem title="Find Panel..." keyEquivalent="f" id="b17177c3-6a47-4016-81c0-fc1a8fba047e"/>
-                            <menuItem title="Find Next" keyEquivalent="g" id="5e326289-2788-41f2-97e4-620b7f852181"/>
-                            <menuItem title="Find Previous" keyEquivalent="d" id="efdf2c2e-21a2-421e-b6ae-35f7af48b487"/>
-                            <menuItem title="Enter Selection" keyEquivalent="e" id="ec98a834-59de-41ad-9bbc-621d01a0d2b5"/>
-                            <menuItem title="Jump to Selection" keyEquivalent="j" id="72438465-bbae-4c23-8d07-3631ac03326f"/>
+                            <menuItem id="9786eebf-9d92-4d96-9929-7f088c3443f5" title="Find Panel..." keyEquivalent="f" />
+                            <menuItem id="02772a0f-aa01-4d79-b0ea-0c597e98dfed" title="Find Next" keyEquivalent="g" />
+                            <menuItem id="51146196-a5f3-49bf-927c-826b21fc0bda" title="Find Previous" keyEquivalent="d" />
+                            <menuItem id="1fb94ded-032b-4220-8e93-a00aa7e7ce37" title="Enter Selection" keyEquivalent="e" />
+                            <menuItem id="2f4cd8f5-dc19-41b1-b612-2678ee18c9f2" title="Jump to Selection" keyEquivalent="j" />
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Links" id="c996ca21-df87-4aa8-b671-1627cc619e39">
-                    <menu key="submenu" title="Links" id="a5e4c482-f30d-403e-8e7f-c1caeb45b747">
+                <menuItem id="0402a678-f579-4210-be38-5402a05eab4c" title="Links">
+                    <menu id="60924285-de20-45cc-a2e8-3744d17d7122" key="submenu" title="Links">
                         <items>
-                            <menuItem title="Mark all " keyEquivalent="A" id="8bfaaf61-4623-4c4a-9539-794d638a2c8b">
+                            <menuItem id="f8edb802-75e4-4996-87dc-31847606398d" title="Mark all " keyEquivalent="A">
                                 <connections>
-                                    <action selector="markAll:" target="7f6430bb-25d2-402b-ab5f-2c25c108ac7b" id="940b9e94-4a3d-4f89-835f-86ad93b469a2"/>
+                                    <action id="0e788e54-2d22-48f8-a876-b903a8eca661" selector="markAll:" target="50fec8ea-f9ba-4071-a630-4e613e1351e0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Mark selection " keyEquivalent="M" id="fdcdc536-bb33-42bf-b354-de3831e85374">
+                            <menuItem id="df13f60e-2a13-4113-95ff-c953537cceb8" title="Mark selection " keyEquivalent="M">
                                 <connections>
-                                    <action selector="markSelected:" target="7f6430bb-25d2-402b-ab5f-2c25c108ac7b" id="34319c67-c512-4436-b9a6-86d9cca75759"/>
+                                    <action id="2307f5e5-c2e5-413c-9d56-62d651bfb8e4" selector="markSelected:" target="50fec8ea-f9ba-4071-a630-4e613e1351e0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to marked" keyEquivalent="L" id="af5389f6-927b-434a-918a-3a1734253d67">
+                            <menuItem id="b6ef24d6-0338-4929-9ddd-028262f7cf22" title="Link to marked" keyEquivalent="L">
                                 <connections>
-                                    <action selector="linkToMark:" target="7f6430bb-25d2-402b-ab5f-2c25c108ac7b" id="0de2f2dd-a6f6-46ee-bb28-44f855aa3d08"/>
+                                    <action id="03f0b633-cbaf-4aed-8212-048403a48f3e" selector="linkToMark:" target="50fec8ea-f9ba-4071-a630-4e613e1351e0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to file..." id="86aa8f35-e4bd-4eba-9f54-9bb157ecf278">
+                            <menuItem id="a3b2f92b-0fcc-4b45-b5d3-6a55d95b1b66" title="Link to file...">
                                 <connections>
-                                    <action selector="linkToFile:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="416b8eab-ae58-488b-ae23-a4c83e2f20a0"/>
+                                    <action id="f9efc9c2-5e78-42ac-961f-71fb1e33c293" selector="linkToFile:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to New" keyEquivalent="N" id="d8198108-d928-4a49-a13e-ad93c09e3a34">
+                            <menuItem id="3ece21b4-1027-40fe-8195-7e93f5e232e6" title="Link to New" keyEquivalent="N">
                                 <connections>
-                                    <action selector="linkToNew:" target="34d42929-ab36-4ae5-890e-16cbe875ad0a" id="c6bd4700-ad92-4fde-87bb-10608ad0c9bc"/>
+                                    <action id="39d9186d-3b5b-4a84-87ff-c32ffbc57166" selector="linkToNew:" target="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Follow link" keyEquivalent="j" id="d2941657-3273-4dd3-9d89-ef4fad6d0c41">
+                            <menuItem id="6f9d898a-c014-4771-9c84-af42399839d7" title="Follow link" keyEquivalent="j">
                                 <connections>
-                                    <action selector="followLink:" target="7f6430bb-25d2-402b-ab5f-2c25c108ac7b" id="8a2f1dcd-b5c8-4a53-8d30-2debc3d1ae75"/>
+                                    <action id="acee94cc-49ff-48d0-9d63-1d80c399c0a6" selector="followLink:" target="50fec8ea-f9ba-4071-a630-4e613e1351e0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Unlink" keyEquivalent="Z" id="1a6a343d-5c86-4d3c-88d0-8c14695afee4">
+                            <menuItem id="76915b9d-c64a-4b7b-942c-26c0233fc9c1" title="Unlink" keyEquivalent="Z">
                                 <connections>
-                                    <action selector="unlink:" target="7f6430bb-25d2-402b-ab5f-2c25c108ac7b" id="bd14b296-9ce5-4a88-9727-5b0c69ade4f3"/>
+                                    <action id="5b639941-5dde-44ec-b070-fe02a3f6179a" selector="unlink:" target="50fec8ea-f9ba-4071-a630-4e613e1351e0" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Help" id="aceeb799-b61c-4f79-8d4d-b91faecbfaef"/>
+                            <menuItem id="ec6c9f32-6a80-4d48-a30f-e61dbb6e57ce" title="Help" />
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Style" id="130109d0-f934-4447-8519-1cf2c042fe17">
-                    <menu key="submenu" title="Style" id="c26a8b53-711c-4f63-8b0a-2ab7d4fd51e9">
+                <menuItem id="e06167c5-15a6-45b0-bf38-eb87660fbcb5" title="Style">
+                    <menu id="4b5eca4d-d61a-4003-94b6-6a2d30bb56bf" key="submenu" title="Style">
                         <items>
-                            <menuItem title="Copy style" keyEquivalent="1" id="47d42ea8-84a1-48bb-8f9f-9008f3df9b40">
+                            <menuItem id="7c782e1d-c31b-4464-a2d5-93f33693b56f" title="Copy style" keyEquivalent="1">
                                 <connections>
-                                    <action selector="PickButton:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="a026e1e0-a58d-4a49-8c8e-3916049ccf9a"/>
+                                    <action id="623a4f79-8ef8-4df7-9b22-2ebb4df7df60" selector="PickButton:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Apply style" keyEquivalent="2" id="411bc30b-6bea-431b-8b2b-1b2b45493407">
+                            <menuItem id="bf3a0ccd-55a2-4a09-aaeb-e49469652a97" title="Apply style" keyEquivalent="2">
                                 <connections>
-                                    <action selector="ApplyButton:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="0a9e5a90-f8a1-4bbf-847d-6c40b13ec60f"/>
+                                    <action id="312f9e0c-daa5-481d-971e-bf71ea5340a3" selector="ApplyButton:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Glossary" id="bbeb27d4-1ef3-4357-9e7e-dd0452e582a7">
+                            <menuItem id="325da7c4-7d12-4e6d-beba-7197348b86ca" title="Glossary">
                                 <connections>
-                                    <action selector="glossaryButton:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="c203cd11-ba57-4ea2-8173-94133c821ff2"/>
+                                    <action id="74bc1da3-a3fd-4867-97f7-47c1b0d2ac86" selector="glossaryButton:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="List" id="bfe1335b-85a9-4c7b-af9a-596df74c2eda">
+                            <menuItem id="6f2adb0b-1e8f-4d98-91f4-f072bdfb074b" title="List">
                                 <connections>
-                                    <action selector="listButton:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="2c774cbd-eb95-49cb-8d05-4369df712a18"/>
+                                    <action id="e703c1f9-1ed2-4975-8e92-8decc404411e" selector="listButton:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Example" id="38ffe6b6-b9db-4a57-b592-fa456c69550b">
+                            <menuItem id="2bd29b6a-6ba3-45c3-b3c5-d6090945a3e7" title="Example">
                                 <connections>
-                                    <action selector="exampleButton:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="dd100590-a341-4cba-9352-1819cac82a5a"/>
+                                    <action id="1c9763a0-0210-4fe2-bfa5-b0fb48644ef3" selector="exampleButton:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Address" id="8889ffb8-6a34-478a-82e5-38ecad71c1f7">
+                            <menuItem id="227a721a-db58-4d5b-9f7b-f65e9dd6fa2b" title="Address">
                                 <connections>
-                                    <action selector="addressButton:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="c8cdfb35-89e8-47ea-b449-9413e5dbfcfe"/>
+                                    <action id="70412374-1c05-44fc-8d0b-2a46d0d932b8" selector="addressButton:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Normal" id="2baf383d-7ecf-4c58-956b-8eb8998ee6ae">
+                            <menuItem id="2f073b6c-9a22-4985-ad3c-599e87d07cc0" title="Normal">
                                 <connections>
-                                    <action selector="normalButton:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="74e51ec4-7e11-4a14-b876-25adff97a4a9"/>
+                                    <action id="89b296c1-7b57-4fc3-9147-5fb8d3e5236c" selector="normalButton:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Heading 1" keyEquivalent="!" id="6a026524-70a9-4fd1-993e-4fe83583fb98">
+                            <menuItem id="7fd9fc07-a2af-45ee-bac1-56f6eae42a10" title="Heading 1" keyEquivalent="!">
                                 <connections>
-                                    <action selector="heading1Button:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="9892979f-e385-4d48-a8aa-48ff145f8239"/>
+                                    <action id="bf428ad4-3617-40f3-9ed7-0e4cb56ba483" selector="heading1Button:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Heading 2" keyEquivalent="@" id="ae31c60c-d521-4e0f-a73f-15f64f05b87b">
+                            <menuItem id="b9596d02-adc7-43cd-bcc4-5e2155cea81e" title="Heading 2" keyEquivalent="@">
                                 <connections>
-                                    <action selector="heading2Button:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="be2d83db-5bc5-4c1e-bc3b-6c9e3c1a7bb9"/>
+                                    <action id="a20352a3-3338-4aec-8225-689b69d30f76" selector="heading2Button:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Heading 3" keyEquivalent="#" id="faa04a65-1014-49a8-aac7-483fd98b1a9f">
+                            <menuItem id="a9817f44-32fc-46c9-ac89-d0fa055f5407" title="Heading 3" keyEquivalent="#">
                                 <connections>
-                                    <action selector="heading3Button:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="1ac1ea4d-ec26-429f-9204-0fbfb4e5fda2"/>
+                                    <action id="6cec0419-3aa5-40c5-bc8c-8b0d93598548" selector="heading3Button:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Heading 4" keyEquivalent="$" id="6c405363-94c0-48f7-8b7b-d0a38bd4a927">
+                            <menuItem id="62c638ab-9195-473b-a15b-06552ccc5298" title="Heading 4" keyEquivalent="$">
                                 <connections>
-                                    <action selector="heading4Button:" target="e7ef7284-cee7-4e34-a592-cc3a69a90010" id="08dc3621-52fb-414e-8f0e-ff8d378f85fd"/>
+                                    <action id="c14d3dc7-cd9f-42ea-945c-38f7aeeee276" selector="heading4Button:" target="afd2f546-5038-42fb-9693-3cf44afd9343" />
                                 </connections>
                             </menuItem>
-                            <menuItem title="Panel..." id="805e76f7-8e81-451e-aff7-546a4b17c08b"/>
+                            <menuItem id="6250e9d5-12d4-4b0f-bbcb-ec53625a3285" title="Panel..." />
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Windows" id="6a791ab6-34c2-4b08-a23d-a64376e3faa7">
-                    <menu key="submenu" title="Windows" id="8b08e5fe-db32-4a6b-bbeb-4628b869d26d">
+                <menuItem id="84d2bf4c-e950-467d-ba45-61c1df41bd6f" title="Windows">
+                    <menu id="86a213a3-6eef-41f1-a44d-78c22dd1a3cf" key="submenu" title="Windows">
                         <items>
-                            <menuItem title="Arrange in Front" id="9b26b513-3760-4bbc-b847-34746bb1ce75"/>
-                            <menuItem title="Miniaturize Window" keyEquivalent="m" id="79223f32-8f5f-44bc-ae62-8721c8f17af2"/>
-                            <menuItem title="Close Window" keyEquivalent="w" id="d8b0c89f-6460-4d13-9517-638bbb5030a8"/>
+                            <menuItem id="92afe0ed-e370-4edf-bf03-02eba0825e61" title="Arrange in Front" />
+                            <menuItem id="03816795-f1cb-4ce0-aa76-8ba92b15cdfe" title="Miniaturize Window" keyEquivalent="m" />
+                            <menuItem id="a965c199-b3a7-461c-b233-54f249d87f20" title="Close Window" keyEquivalent="w" />
                         </items>
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="200" y="121"/>
         </menu>
-        <window title="Accessories" animationBehavior="default" id="d69bb4f0-f9cd-4923-8ef7-83bbdd831955">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="153" y="590" width="235" height="166"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="34d5279c-1a72-4c4e-a397-bb7b9a1b22b7">
-                <rect key="frame" x="0.0" y="0.0" width="235" height="166"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="a8dbbb28-ab4b-4179-906b-4b41b0102fc2" title="Accessories">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="153.0" y="590.0" width="235.0" height="166.0" />
+            <view id="522d46d5-63ca-4829-82e7-b9e095070fde" key="contentView" />
         </window>
-        <window title="Using the navigation Commands" animationBehavior="default" id="2d375902-e1f2-437a-9d36-d44b1fb6c2b7">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="286" y="5" width="376" height="264"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="b8f20db3-792e-481c-a6da-472b7afaabe2">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="264"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="a8aad934-4665-40ed-bb74-d5725cab8841" title="Using the navigation Commands">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="286.0" y="5.0" width="376.0" height="264.0" />
+            <view id="66ecc478-3600-423f-967a-876d7b694cb7" key="contentView" />
         </window>
-        <customObject id="e7ef7284-cee7-4e34-a592-cc3a69a90010" customClass="StyleToy"/>
-        <customObject id="8c50f053-5786-4ae9-a176-8ead39f85cba" customClass="NewsAccess">
+        <customObject id="afd2f546-5038-42fb-9693-3cf44afd9343" customClass="StyleToy" />
+        <customObject id="98cee5cc-ee8e-44b4-aa93-70af3407d6c3" customClass="NewsAccess">
             <connections>
-                <outlet property="manager" destination="2908560e-444f-42d5-8166-91fbf67b9b67" id="6a52f8e1-1fba-415a-ad89-9b1bcab75d02"/>
+                <outlet id="b75bed69-2161-4709-93c9-03d769de946a" property="manager" destination="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
             </connections>
         </customObject>
-        <window title="Making a new Document" animationBehavior="default" id="7c7add42-e4a8-4281-8cca-9f0f6b0e095d">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="296" y="422" width="376" height="227"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="ac5cc7da-2df0-4b90-acb9-f99e355281b6">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="227"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="3985601b-dc09-4882-9617-3fa43e79497a" title="Making a new Document">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="296.0" y="422.0" width="376.0" height="227.0" />
+            <view id="c7dbbd09-9983-40ce-9574-2f6395efba53" key="contentView" />
         </window>
-        <window title="Info" animationBehavior="default" id="034d91c2-f9a2-4949-9598-4bafc377058b">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="337" y="339" width="472" height="448"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="b860ed55-0cf6-49ad-a0f7-47f6a5c8e657">
-                <rect key="frame" x="0.0" y="0.0" width="472" height="448"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="3a564b96-e091-4f76-93d5-98b8cf5273fe" title="Info">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="337.0" y="339.0" width="472.0" height="448.0" />
+            <view id="6b318205-adac-4c8c-9033-27d215a31991" key="contentView" />
         </window>
-        <window title="Style editor" animationBehavior="default" id="99065078-d422-4ba1-a005-b3f17d354110">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="2" y="1" width="342" height="406"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="8f0744c7-eb01-47c2-ab16-9e8bb90b4ac1">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="406"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="16ac87ee-d277-44d3-887d-f6a65fec6693" title="Style editor">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="2.0" y="1.0" width="342.0" height="406.0" />
+            <view id="6f0a93ae-9a43-4b49-aa40-5513b5319626" key="contentView" />
         </window>
-        <window title="Navigation" animationBehavior="default" id="380f9eec-95bc-4ec4-ab89-c36dd8194788">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="76" y="183" width="206" height="85"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="c2a1b0f7-8310-45ec-9e89-c8d619d892d8">
-                <rect key="frame" x="0.0" y="0.0" width="206" height="85"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="ed57b041-191e-4533-8595-0837e40aa330" title="Navigation">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="76.0" y="183.0" width="206.0" height="85.0" />
+            <view id="c41b81fc-28d8-40c7-8c28-ab98ee309a41" key="contentView" />
         </window>
-        <window title="Other document" animationBehavior="default" id="39966ac4-c15c-467f-9ce6-ec1b16217de2">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="579" y="571" width="473" height="129"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="dc58cb9d-d800-44cd-b46c-e5e9e39c7adf">
-                <rect key="frame" x="0.0" y="0.0" width="473" height="129"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="55e669ac-94e3-4040-89b0-a30c7b89ae42" title="Other document">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="579.0" y="571.0" width="473.0" height="129.0" />
+            <view id="6e702c3c-0a4c-47d4-a8e5-5e0c4ca92ada" key="contentView" />
         </window>
-        <customObject id="759a66a2-f119-469e-a45b-af45af7ef9bb" customClass="WWWPageLayout"/>
-        <window title="Making links" animationBehavior="default" id="f7456f37-79bf-44f3-8d21-4af07c29cd50">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="330" y="339" width="376" height="282"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="f236837d-b692-421f-a1a4-e996c20c64fa">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="282"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <customObject id="c833dbe8-4631-4bd5-abe8-9b905735b80e" customClass="WWWPageLayout" />
+        <window id="d8154ad7-d9f6-4c0c-b94c-cf260aa14c31" title="Making links">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="330.0" y="339.0" width="376.0" height="282.0" />
+            <view id="8eb19522-1350-41d4-a4f3-20712941edb2" key="contentView" />
         </window>
-        <window title="Document Inspector" animationBehavior="default" id="445cf858-e30c-40f2-96de-56fc6fbaf80f">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="579" y="362" width="473" height="339"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="1deff6f5-b872-47d7-a03f-f119b9b6a07d">
-                <rect key="frame" x="0.0" y="0.0" width="473" height="339"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="bf491b6e-a098-478f-af93-4a10e0733b92" title="Document Inspector">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="579.0" y="362.0" width="473.0" height="339.0" />
+            <view id="f6f09539-75f4-4ef1-9d28-49c62dc445a5" key="contentView" />
         </window>
-        <window title="Index Search" animationBehavior="default" id="7c7ba474-643e-49c6-b266-d80e9c3594e8">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="579" y="724" width="473" height="80"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="50ba9623-e27b-418e-8855-e11750a0844d">
-                <rect key="frame" x="0.0" y="0.0" width="473" height="80"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-            </view>
+        <window id="4870e2ef-ffef-482a-8c0f-faf8d0723210" title="Index Search">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" />
+            <rect key="contentRect" x="579.0" y="724.0" width="473.0" height="80.0" />
+            <view id="c2715e13-1623-4693-8d66-49c7449066c2" key="contentView" />
         </window>
-        <customObject id="7f6430bb-25d2-402b-ab5f-2c25c108ac7b" customClass="TextToy"/>
-        <customObject id="ec0388d2-00ee-4c45-85a0-2ff9feaf5c71" customClass="TcpAccess">
+        <customObject id="50fec8ea-f9ba-4071-a630-4e613e1351e0" customClass="TextToy" />
+        <customObject id="26a936b4-9982-472c-bd2b-8aca61fd44a0" customClass="TcpAccess">
             <connections>
-                <outlet property="manager" destination="2908560e-444f-42d5-8166-91fbf67b9b67" id="22dde492-d276-45b8-a1f9-ee8f2b464c43"/>
+                <outlet id="a40cd761-fdf2-4157-8080-a9059546e6ab" property="manager" destination="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
             </connections>
         </customObject>
-        <customObject id="2908560e-444f-42d5-8166-91fbf67b9b67" customClass="HyperManager"/>
-        <customObject id="34d42929-ab36-4ae5-890e-16cbe875ad0a" customClass="FileAccess">
+        <customObject id="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" customClass="HyperManager" />
+        <customObject id="13cdc437-3b3d-4784-9a32-85c0bd3a8a17" customClass="FileAccess">
             <connections>
-                <outlet property="manager" destination="2908560e-444f-42d5-8166-91fbf67b9b67" id="b5e08893-b0e4-4007-ac43-bd3bcb89bfd8"/>
+                <outlet id="b749bed6-dfc3-4398-847f-13375124e09f" property="manager" destination="a85e9b73-780f-4fac-b4dd-aa028fcc2ba0" />
             </connections>
         </customObject>
     </objects>
