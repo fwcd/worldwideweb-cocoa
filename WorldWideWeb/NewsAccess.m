@@ -783,14 +783,14 @@ void read_group(const char *groupName, int first_required, int last_required) {
     HT = [[HyperText alloc] initWithAnchor:anAnchor Server:self];
 
     [HT setupWindow];
-    [HT selectText:self]; /* Replace everything with what's to come */
+    [HT selectAll:self]; /* Replace everything with what's to come */
 
     //	Now, let's get a stream setup up from the NewsHost:
 
     for (retries = 0; retries < 2; retries++) {
 
         if (s < 0) {
-            [[HT window] setTitle:"Connecting to NewsHost ..."]; /* Tell user  */
+            [[HT window] setTitle:@"Connecting to NewsHost ..."]; /* Tell user  */
             s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
             status = connect(s, (struct sockaddr *)&soc_address, sizeof(soc_address));
             if (status < 0) {
@@ -804,7 +804,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
                 [alert setInformativeText:[NSString stringWithFormat:@"Could not access newshost %s.", NewsHost]];
                 [alert runModal];
                 sprintf(message, "\nCould not access %s.\n\n (Check default WorldWideWeb NewsHost ?)\n", NewsHost);
-                [HT setText:message];
+                [HT setString:[NSString stringWithUTF8String:message]];
                 return HT;
             } else {
                 if (TRACE)
@@ -816,14 +816,14 @@ void read_group(const char *groupName, int first_required, int last_required) {
                     [alert setInformativeText:[NSString stringWithFormat:@"Could not retrieve information:\n   %s.",
                                                                          response_text]];
                     [alert runModal];
-                    [[HT window] setTitle:"News host response"];
-                    [HT setText:response_text];
+                    [[HT window] setTitle:@"News host response"];
+                    [HT setString:[NSString stringWithUTF8String:response_text]];
                     return HT;
                 }
             }
         } /* If needed opening */
 
-        [[HT window] setTitle:arg]; /* Tell user something's happening */
+        [[HT window] setTitle:[NSString stringWithUTF8String:arg]]; /* Tell user something's happening */
         status = response(command);
         if (status < 0)
             break;
@@ -832,7 +832,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
             [alert setMessageText:@"News access"];
             [alert setInformativeText:[NSString stringWithUTF8String:response_text]];
             [alert runModal];
-            [HT setText:response_text];
+            [HT setString:[NSString stringWithUTF8String:response_text]];
             close(s);
             s = -1;
             // return HT; -- no:the message might be "Timeout-disconnected" left over
