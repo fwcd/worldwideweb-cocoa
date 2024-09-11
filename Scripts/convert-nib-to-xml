@@ -101,7 +101,7 @@ def convert_root(obj: typedstream.GenericArchivedObject, options: Options):
 def main():
     parser = argparse.ArgumentParser(description='Converts a legacy NeXTStep NIB to XML.')
     parser.add_argument('-o', '--output', required=True, type=Path, help='The path to the output XML.')
-    parser.add_argument('--convert-class-names', action=argparse.BooleanOptionalAction, default=True, help="Convert class names to Cocoa's NS prefix.")
+    parser.add_argument('--convert-class-names', action='store_true', help="Convert class names to Cocoa's NS prefix.")
     parser.add_argument('input', type=Path, help='The path to the input NIB.')
 
     args = parser.parse_args()
