@@ -5,14 +5,16 @@
 # the tool cannot handle many of the newer versions of the NIB file format
 # and is expressly built to handle the reverse engineered WorldWideWeb.nib
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from uuid import uuid4
-from typing import Any, Iterable, Optional, Self
+from typing import Any, Optional, Self
 
 import argparse
 import typedstream
 import xml.etree.ElementTree as ET
+
+next_object_id = 0
 
 class XIBNode:
     def __init__(self, element: ET.Element, id: Optional[str]=None, custom_class: Optional[str]=None):
@@ -30,7 +32,11 @@ class XIBNode:
         assert len(class_or_tag_name) > 0
         is_custom = class_or_tag_name[0].isupper()
 
-        id = id or str(uuid4())
+        if not id:
+            global next_object_id
+            id = str(next_object_id)
+            next_object_id += 1
+
         child = ET.Element('customObject' if is_custom else class_or_tag_name, attrib={
             'id': id,
             **kwargs,
