@@ -37,10 +37,10 @@
     right = [pi rightMargin];
     top = [pi topMargin];
     bottom = [pi bottomMargin];
-    self.leftMargin = left * conversion;
-    self.rightMargin = right * conversion;
-    self.topMargin = top * conversion;
-    self.bottomMargin = bottom * conversion;
+    [self.leftMargin setDoubleValue:left * conversion];
+    [self.rightMargin setDoubleValue:right * conversion];
+    [self.topMargin setDoubleValue:top * conversion];
+    [self.bottomMargin setDoubleValue:bottom * conversion];
 }
 
 - (void)writePrintInfo
@@ -53,10 +53,10 @@
     NSPrintInfo *pi = [NSPrintInfo sharedPrintInfo];
     double conversion = [pi scalingFactor];
     if (conversion) {
-        [pi setLeftMargin:self.leftMargin / conversion];
-        [pi setRightMargin:self.rightMargin / conversion];
-        [pi setTopMargin:self.topMargin / conversion];
-        [pi setBottomMargin:self.bottomMargin / conversion];
+        [pi setLeftMargin:[self.leftMargin doubleValue] / conversion];
+        [pi setRightMargin:[self.rightMargin doubleValue] / conversion];
+        [pi setTopMargin:[self.topMargin doubleValue] / conversion];
+        [pi setBottomMargin:[self.bottomMargin doubleValue] / conversion];
     }
     [[NSUserDefaults standardUserDefaults] setValue:[pi paperName] forKey:@"PaperType"]; /* Save it */
 }

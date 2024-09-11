@@ -12,10 +12,10 @@
 
 @interface WWWPageLayout : NSPageLayout
 
-@property CGFloat leftMargin;
-@property CGFloat rightMargin;
-@property CGFloat topMargin;
-@property CGFloat bottomMargin;
+@property(nonatomic) IBOutlet NSFormCell *leftMargin;
+@property(nonatomic) IBOutlet NSFormCell *rightMargin;
+@property(nonatomic) IBOutlet NSFormCell *topMargin;
+@property(nonatomic) IBOutlet NSFormCell *bottomMargin;
 
 @property(nonatomic) IBOutlet NSBox *accessoryView;
 @property(nonatomic) IBOutlet NSForm *sideForm;
