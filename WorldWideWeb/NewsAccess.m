@@ -784,7 +784,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
 
     //	Make a hypertext object with an anchor list.
 
-    HT = [HyperText newAnchor:anAnchor Server:self];
+    HT = [[HyperText alloc] initWithAnchor:anAnchor Server:self];
 
     [HT setupWindow];
     [HT selectText:self]; /* Replace everything with what's to come */

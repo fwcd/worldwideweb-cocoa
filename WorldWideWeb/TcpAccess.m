@@ -41,7 +41,7 @@
 
     //	Make a hypertext object with an anchor list.
 
-    HT = [HyperText newAnchor:anAnchor Server:self];
+    HT = [[HyperText alloc] initWithAnchor:anAnchor Server:self];
 
     [HT setupWindow];
     [[HT window] setTitle:"Connecting..."]; /* Tell user something's happening */

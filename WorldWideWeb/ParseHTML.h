@@ -737,7 +737,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                     Anchor *a = [Anchor new];
                     HyperText *SN;
                     [a setAddress:[nodeAnchor address]];
-                    SN = [HyperText newAnchor:a Server:server];
+                    SN = [[HyperText alloc] initWithAnchor:a Server:server];
                     [alsoStore addObject:SN];
                     SN->storeWith = self;
                     [SN readSGML:sgmlStream diagnostic:diagnostic];
