@@ -59,7 +59,7 @@ extern HTStyleSheet *styleSheet;
 
 //	Module-wide variables
 
-static const char *NewsHost;
+static NSString *NewsHost;
 static struct sockaddr_in soc_address;      /* Binary network address */
 static int s;                               /* Socket for conn. to NewsHost */
 static char response_text[LINE_LENGTH + 1]; /* Last response from NewsHost */
@@ -110,15 +110,16 @@ PRIVATE char next_char(void) {
 
     /*   Get name of Host
 */
-    if ((NewsHost = NXGetDefaultValue("WorldWideWeb", "NewsHost")) == 0)
-        if ((NewsHost = NXGetDefaultValue("News", "NewsHost")) == 0)
-            NewsHost = "cernvax.cern.ch";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ((NewsHost = [defaults stringForKey:@"NewsHost"]) == nil)
+        NewsHost = @"cernvax.cern.ch";
 
-    if (*NewsHost >= '0' && *NewsHost <= '9') {             /* Numeric node address: */
-        sin->sin_addr.s_addr = inet_addr((char *)NewsHost); /* See arpa/inet.h */
+    unichar firstChar = [NewsHost characterAtIndex:0];
+    if (firstChar >= '0' && firstChar <= '9') {                  /* Numeric node address: */
+        sin->sin_addr.s_addr = inet_addr([NewsHost UTF8String]); /* See arpa/inet.h */
 
-    } else {                                     /* Alphanumeric node name: */
-        phost = gethostbyname((char *)NewsHost); /* See netdb.h */
+    } else {                                          /* Alphanumeric node name: */
+        phost = gethostbyname([NewsHost UTF8String]); /* See netdb.h */
         if (!phost) {
             NSAlert *alert = [[NSAlert alloc] init];
             [alert setInformativeText:[NSString stringWithFormat:@"Can't find internet node name `%s'.", NewsHost]];
@@ -858,7 +859,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
 
     } /* Retry loop */
 
-    [HT setText:"Sorry, could not load requested news.\n"];
+    [HT setString:@"Sorry, could not load requested news.\n"];
 
     /*    NXRunAlertPanel(NULL, "Sorry, could not load `%s'.",
 	    	NULL,NULL,NULL, arg);	No -- message earlier wil have covered it */
