@@ -357,7 +357,7 @@
                                 <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10">
                                     <rect key="frame" x="0.0" y="16" width="110" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <textFieldCell key="cell" title="Save file as:" id="co2-QR-9rY"/>
+                                    <textFieldCell key="cell" title="Save file as:" id="Gw1-0J-2Uj"/>
                                 </textField>
                             </subviews>
                         </view>
@@ -372,7 +372,7 @@
                     </box>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="210" y="305"/>
+            <point key="canvasLocation" x="141" y="-46"/>
         </window>
         <window title="Using the navigation Commands" animationBehavior="default" id="13">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -385,7 +385,7 @@
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15">
                         <rect key="frame" x="13" y="16" width="347" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="rT5-FQ-czM">
+                        <textFieldCell key="cell" id="aTL-bl-reT">
                             <string key="title">The navigation buttons allow you to navigate through the Hypertext web as a tree. The "Backup" button takes you back the way you came,  to the text which you selected to get to where you are. You can use it repeatedly to retrace your steps back to the first link you followed.
 
 Using the "Next" button is like using "BackUp" and then selecting the next refernece after the one you took. For example, if you selected one of a list of references, then using "Next" will take you to the next of those.
@@ -397,6 +397,7 @@ The "Home" button reselects the original page which you get when you started the
                     </textField>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="386" y="-46"/>
         </window>
         <customObject id="16" customClass="StyleToy"/>
         <customObject id="17" customClass="NewsAccess">
@@ -415,7 +416,7 @@ The "Home" button reselects the original page which you get when you started the
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20">
                         <rect key="frame" x="23" y="51" width="325" height="165"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="J2y-jK-0Bb">
+                        <textFieldCell key="cell" id="GXZ-bR-UvT">
                             <string key="title">You can just create a new hypertext document with Command/n, but it's better to make a reference to it and link that reference to it as you make it, using Command/N. This ensures that you can always find the document again. 
 
  Go to your personal notebook, for instance, and add some text describing the new thing you are going to create. Then select that text and use "Link to New" .  Later on, you can add and delete links so that your new node is linked to other things to which it is relevant.</string>
@@ -424,17 +425,18 @@ The "Home" button reselects the original page which you get when you started the
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21">
                         <rect key="frame" x="93" y="13" width="81" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Making links" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="KOj-MQ-fgx">
+                        <buttonCell key="cell" type="square" title="Making links" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="1wG-yd-Ncm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                     </button>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22">
                         <rect key="frame" x="30" y="20" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="See also:" id="Psr-SP-8Qd"/>
+                        <textFieldCell key="cell" title="See also:" id="wa3-rm-54o"/>
                     </textField>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="505" y="-46"/>
         </window>
         <window title="Info" animationBehavior="default" id="23">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -447,12 +449,12 @@ The "Home" button reselects the original page which you get when you started the
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="25">
                         <rect key="frame" x="122" y="415" width="236" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="HyperMedia Browser/Editor" id="0NK-V5-ZJf"/>
+                        <textFieldCell key="cell" title="HyperMedia Browser/Editor" id="elA-le-TBp"/>
                     </textField>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26">
                         <rect key="frame" x="379" y="410" width="93" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="iJb-4N-UJP">
+                        <textFieldCell key="cell" id="GIN-bD-wWj">
                             <string key="title"> Version 0.15
 Beta only</string>
                         </textFieldCell>
@@ -460,36 +462,37 @@ Beta only</string>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27">
                         <rect key="frame" x="332" y="349" width="133" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="by Tim Berners-Lee" id="4pP-Hq-dqJ"/>
+                        <textFieldCell key="cell" title="by Tim Berners-Lee" id="BZv-6e-9rb"/>
                     </textField>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28">
                         <rect key="frame" x="10" y="328" width="432" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Copyright 1990,91, CERN.   Distribution restricted: ask for terms.  TEST VERSION ONLY" id="Qrc-3X-7Ad"/>
+                        <textFieldCell key="cell" title="Copyright 1990,91, CERN.   Distribution restricted: ask for terms.  TEST VERSION ONLY" id="GHI-rd-YDn"/>
                     </textField>
                     <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29">
-                        <rect key="frame" x="2" y="344" width="470" height="2"/>
+                        <rect key="frame" x="2" y="343" width="470" height="4"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <view key="contentView" id="30">
-                            <rect key="frame" x="4" y="-4" width="462" height="0.0"/>
+                            <rect key="frame" x="4" y="-3" width="462" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="31">
                         <rect key="frame" x="121" y="367" width="208" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="An excercise in global information availability" id="hAa-If-0Vr"/>
+                        <textFieldCell key="cell" title="An excercise in global information availability" id="1fq-uv-pN7"/>
                     </textField>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32">
                         <rect key="frame" x="5" y="281" width="463" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="DTF-ek-8dS">
+                        <textFieldCell key="cell" id="yMk-Og-ZzO">
                             <string key="title">HyperText:   Text which is not constrained to be linear.
 HyperMedia: Information which is not constrained linear... or to be text.</string>
                         </textFieldCell>
                     </textField>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="140" y="-473"/>
         </window>
         <window title="Style editor" animationBehavior="default" id="33">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -502,7 +505,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35">
                         <rect key="frame" x="4" y="293" width="166" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Apply style to selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="SVa-gT-O9e">
+                        <buttonCell key="cell" type="square" title="Apply style to selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="QHW-f9-1IG">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -512,7 +515,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
                         <rect key="frame" x="4" y="228" width="168" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Find unstyled text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="PbX-fB-gjg">
+                        <buttonCell key="cell" type="square" title="Find unstyled text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Be4-YE-UAj">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -522,7 +525,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37">
                         <rect key="frame" x="4" y="262" width="167" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Apply style to all similar text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="SyL-SN-k5F">
+                        <buttonCell key="cell" type="square" title="Apply style to all similar text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="mKI-FT-KIK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -532,7 +535,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38">
                         <rect key="frame" x="120" y="342" width="105" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="style of selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="bTk-k8-DNT">
+                        <buttonCell key="cell" type="square" title="style of selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="H9V-ea-6zr">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -542,7 +545,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39">
                         <rect key="frame" x="232" y="342" width="56" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&gt;&gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="kBd-LL-Xac">
+                        <buttonCell key="cell" type="square" title="&gt;&gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="kNK-zt-sAN">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -552,7 +555,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40">
                         <rect key="frame" x="56" y="342" width="56" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&lt;&lt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="P9d-EG-Wvz">
+                        <buttonCell key="cell" type="square" title="&lt;&lt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="wPq-Zf-TuK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -570,7 +573,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="43">
                         <rect key="frame" x="226" y="281" width="72" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="d4e-mh-vjM">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="7mu-6y-Si0">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -580,7 +583,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44">
                         <rect key="frame" x="226" y="252" width="72" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Save as..." bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="yJs-Cj-QDh">
+                        <buttonCell key="cell" type="square" title="Save as..." bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="IHS-YX-TPJ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -597,7 +600,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
                                     <rect key="frame" x="232" y="60" width="72" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="cfv-47-2uC">
+                                    <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="5R0-H5-wOq">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     </buttonCell>
                                 </button>
@@ -606,6 +609,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     </box>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="488" y="-46"/>
         </window>
         <window title="Navigation" animationBehavior="default" id="48">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -618,7 +622,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50">
                         <rect key="frame" x="6" y="41" width="71" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&lt; Previous" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="jSK-3s-SEF">
+                        <buttonCell key="cell" type="square" title="&lt; Previous" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="LCn-BG-ICy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -628,7 +632,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51">
                         <rect key="frame" x="9" y="10" width="56" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Home" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="FRw-nC-wr5">
+                        <buttonCell key="cell" type="square" title="Home" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="2MY-X0-5qW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -638,7 +642,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52">
                         <rect key="frame" x="82" y="41" width="57" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Back up" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="bXW-3I-rdj">
+                        <buttonCell key="cell" type="square" title="Back up" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Xad-Zs-ruw">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -648,7 +652,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="53">
                         <rect key="frame" x="144" y="41" width="56" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Next &gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="KvN-zZ-fEf">
+                        <buttonCell key="cell" type="square" title="Next &gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="rod-Ww-PVs">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -658,12 +662,13 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54">
                         <rect key="frame" x="152" y="8" width="48" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Help" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="L1E-Ww-uor">
+                        <buttonCell key="cell" type="square" title="Help" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="bwW-1g-bga">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="140" y="-384"/>
         </window>
         <window title="Other document" animationBehavior="default" id="55">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -684,7 +689,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="59">
                         <rect key="frame" x="366" y="21" width="96" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="oeo-Gp-UgU">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="FwV-Ql-sap">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -694,7 +699,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60">
                         <rect key="frame" x="130" y="20" width="135" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="vOq-CK-VVS">
+                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="fwM-Wi-GKp">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -704,7 +709,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61">
                         <rect key="frame" x="3" y="102" width="102" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Link selection to" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Qwc-r1-Brf">
+                        <buttonCell key="cell" type="square" title="Link selection to" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="D5B-HT-Pry">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -730,7 +735,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65">
                         <rect key="frame" x="16" y="27" width="343" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="W5Y-A6-54t">
+                        <textFieldCell key="cell" id="EMt-dh-6W6">
                             <string key="title">If you want to link one peice of text to another, whether they are in the same hypertext document or not, you follow the same procedure.
 
 First, mark the thing which the link will lead to. You can mark a whole document with "Mark All", or you can mark just a selection with "Mark Selection".
@@ -744,17 +749,18 @@ From then on, whenever you double click on the linked text, you will jump across
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66">
                         <rect key="frame" x="26" y="14" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="See also:" id="HvW-x9-OYd"/>
+                        <textFieldCell key="cell" title="See also:" id="UNg-kQ-p8c"/>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67">
                         <rect key="frame" x="88" y="9" width="148" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Making a new document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Ytp-ES-9vG">
+                        <buttonCell key="cell" type="square" title="Making a new document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Olf-mb-khx">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="140" y="-482"/>
         </window>
         <window title="Document Inspector" animationBehavior="default" id="68">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -767,7 +773,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="70">
                         <rect key="frame" x="383" y="252" width="82" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="HK3-UD-uDQ">
+                        <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Mai-DP-Qz6">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -777,22 +783,22 @@ From then on, whenever you double click on the linked text, you will jump across
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71">
                         <rect key="frame" x="63" y="202" width="400" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="1pH-90-g5m"/>
+                        <textFieldCell key="cell" id="gFE-JR-EIo"/>
                     </textField>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="72">
                         <rect key="frame" x="5" y="216" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Address:" id="at1-FI-zcr"/>
+                        <textFieldCell key="cell" title="Address:" id="hhu-yd-ZmA"/>
                     </textField>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73">
                         <rect key="frame" x="55" y="132" width="144" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Other document" id="XZb-Q2-lMr"/>
+                        <textFieldCell key="cell" title="Other document" id="BH2-IQ-z9T"/>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74">
                         <rect key="frame" x="270" y="174" width="192" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Link selection to other document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="3jR-Nx-RCe">
+                        <buttonCell key="cell" type="square" title="Link selection to other document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="HXD-5N-Ocg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -802,12 +808,12 @@ From then on, whenever you double click on the linked text, you will jump across
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="75">
                         <rect key="frame" x="1" y="161" width="471" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="______________________________________________" id="RID-64-8YE"/>
+                        <textFieldCell key="cell" title="______________________________________________" id="nIg-j0-Zhd"/>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="76">
                         <rect key="frame" x="370" y="30" width="96" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="ZPg-T3-lFI">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="EJa-Mb-qwK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -817,7 +823,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77">
                         <rect key="frame" x="6" y="101" width="41" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Copy" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="xjn-ee-vKs">
+                        <buttonCell key="cell" type="square" title="Copy" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="xLX-5H-rD1">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -827,7 +833,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78">
                         <rect key="frame" x="63" y="174" width="125" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Inspect selected link" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="fvY-yW-FYr">
+                        <buttonCell key="cell" type="square" title="Inspect selected link" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="mYq-kr-QI2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -845,7 +851,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="81">
                         <rect key="frame" x="76" y="23" width="135" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="6nX-Si-0dt">
+                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="y6r-p7-UdT">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -854,6 +860,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="141" y="-511"/>
         </window>
         <window title="Index Search" animationBehavior="default" id="82">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -866,7 +873,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="84">
                         <rect key="frame" x="357" y="6" width="107" height="33"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Search" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="dTE-Bl-Ige">
+                        <buttonCell key="cell" type="square" title="Search" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="LHj-Mf-s69">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         </buttonCell>
                         <connections>
@@ -875,6 +882,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="141" y="-289"/>
         </window>
         <customObject id="85" customClass="TextToy"/>
         <customObject id="86" customClass="TcpAccess">

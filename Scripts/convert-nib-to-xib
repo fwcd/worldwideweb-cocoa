@@ -439,8 +439,8 @@ class XIBConverter:
         print(f'Adding window {title}')
 
         xib_window = self.xib.objects.add_object('window', title=title)
-        # TODO: Should/can we add a canvas location?
-        # window.add('point', key='canvasLocation', x='200', y='400')
+        # TODO: Should we add a canvas location?
+        # xib_window.add('point', key='canvasLocation', x=rect['x'], y=rect['y'])
         xib_window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
         xib_window.add('rect', key='contentRect', **rect)
 
