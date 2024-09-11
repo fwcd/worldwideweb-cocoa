@@ -47,7 +47,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 - display_style {
     if (style->name)
         [(NSFormCell *)[self.NameForm cellAtIndex:0] setStringValue:[NSString stringWithCString:style->name
-                                                                                  encoding:NSUTF8StringEncoding]];
+                                                                                       encoding:NSUTF8StringEncoding]];
     else
         [(NSFormCell *)[self.NameForm cellAtIndex:0] setStringValue:@""];
 
@@ -72,7 +72,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
             sprintf(tabstring + strlen(tabstring), "%.0f ", tab.location);
         }
         [(NSFormCell *)[self.TabForm cellAtIndex:0] setStringValue:[NSString stringWithCString:tabstring
-                                                                                 encoding:NSUTF8StringEncoding]];
+                                                                                      encoding:NSUTF8StringEncoding]];
     }
     return self;
 }
@@ -110,7 +110,8 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
     if (!style->paragraph)
         style->paragraph = [[NSMutableParagraphStyle alloc] init];
-    style->paragraph.firstLineHeadIndent = [(NSFormCell *)[self.ParameterForm cellAtIndex:FIRST_INDENT_FIELD] floatValue];
+    style->paragraph.firstLineHeadIndent =
+        [(NSFormCell *)[self.ParameterForm cellAtIndex:FIRST_INDENT_FIELD] floatValue];
     style->paragraph.headIndent = [(NSFormCell *)[self.ParameterForm cellAtIndex:SECOND_INDENT_FIELD] floatValue];
 
     return self;

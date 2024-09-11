@@ -118,50 +118,50 @@ static float page_width() {
 //	then it lists the attributes of the current run.
 //
 - dump:sender {
-// TODO: Fix implementation
-//    int pos;     /* Start of run being scanned */
-//    int sob = 0; /* Start of text block being scanned */
-//    NSArray<NSTextStorage *> *r = self.textStorage.attributeRuns;
-//    NXTextBlock *block = firstTextBlock;
-//
-//    printf("Hypertext %i, selected(%i,%i)", self, sp0.cp, spN.cp);
-//    if (self.delegate)
-//        printf(", has delegate");
-//    printf(".\n");
-//
-//    NSRect frame = self.frame;
-//    printf("    Frame is at (%f, %f, size is (%f, %f)\n", frame.origin.x, frame.origin.y, frame.size.width,
-//           frame.size.height);
-//
-//    printf("    Text blocks and runs up to character %i:\n", sp0.cp);
-//    for (pos = 0; pos <= sp0.cp; pos = pos + ((r++)->chars)) {
-//        while (sob <= pos) {
-//            printf("%5i: Block of %i/%i characters at 0x%x starts `%10.10s'\n", sob, block->chars,
-//                   malloc_size(block->text), block->text, block->text);
-//            sob = sob + block->chars;
-//            block = block->next;
-//        }
-//        printf("%5i: %3i of fnt=%i p=%i gy=%3.2f RGB=%i i=%i fl=%x\n", pos, r->chars, (int)r->font, r->paraStyle,
-//               r->textGray, r->textRGBColor, (int)(r->info), *(int *)&(r->rFlags));
-//    }
-//    r--; /* Point to run for start of selection */
-//
-//    printf("\n    Current run:\n\tFont name:\t%s\n", [r->font fontName]);
-//    {
-//        NSParagraphStyle *p = (NSParagraphStyle *)r->paraStyle;
-//        if (!p) {
-//            printf("\tNo paragraph style!\n");
-//        } else {
-//            int tab;
-//            printf("\tParagraph style %i\n", p);
-//            printf("\tIndents: first=%f, left=%f\n", p.firstLineHeadIndent, p.headIndent);
-//            printf("\tAlignment type=%i, %i tabs:\n", p.alignment, p.tabStops.count);
-//            for (tab = 0; tab < p.tabStops.count; tab++) {
-//                printf("\t    Tab kind=%i at %f\n", p.tabStops[tab].tabStopType, p.tabStops[tab].location);
-//            }
-//        }
-//    }
-//    printf("\n");
+    // TODO: Fix implementation
+    //    int pos;     /* Start of run being scanned */
+    //    int sob = 0; /* Start of text block being scanned */
+    //    NSArray<NSTextStorage *> *r = self.textStorage.attributeRuns;
+    //    NXTextBlock *block = firstTextBlock;
+    //
+    //    printf("Hypertext %i, selected(%i,%i)", self, sp0.cp, spN.cp);
+    //    if (self.delegate)
+    //        printf(", has delegate");
+    //    printf(".\n");
+    //
+    //    NSRect frame = self.frame;
+    //    printf("    Frame is at (%f, %f, size is (%f, %f)\n", frame.origin.x, frame.origin.y, frame.size.width,
+    //           frame.size.height);
+    //
+    //    printf("    Text blocks and runs up to character %i:\n", sp0.cp);
+    //    for (pos = 0; pos <= sp0.cp; pos = pos + ((r++)->chars)) {
+    //        while (sob <= pos) {
+    //            printf("%5i: Block of %i/%i characters at 0x%x starts `%10.10s'\n", sob, block->chars,
+    //                   malloc_size(block->text), block->text, block->text);
+    //            sob = sob + block->chars;
+    //            block = block->next;
+    //        }
+    //        printf("%5i: %3i of fnt=%i p=%i gy=%3.2f RGB=%i i=%i fl=%x\n", pos, r->chars, (int)r->font, r->paraStyle,
+    //               r->textGray, r->textRGBColor, (int)(r->info), *(int *)&(r->rFlags));
+    //    }
+    //    r--; /* Point to run for start of selection */
+    //
+    //    printf("\n    Current run:\n\tFont name:\t%s\n", [r->font fontName]);
+    //    {
+    //        NSParagraphStyle *p = (NSParagraphStyle *)r->paraStyle;
+    //        if (!p) {
+    //            printf("\tNo paragraph style!\n");
+    //        } else {
+    //            int tab;
+    //            printf("\tParagraph style %i\n", p);
+    //            printf("\tIndents: first=%f, left=%f\n", p.firstLineHeadIndent, p.headIndent);
+    //            printf("\tAlignment type=%i, %i tabs:\n", p.alignment, p.tabStops.count);
+    //            for (tab = 0; tab < p.tabStops.count; tab++) {
+    //                printf("\t    Tab kind=%i at %f\n", p.tabStops[tab].tabStopType, p.tabStops[tab].location);
+    //            }
+    //        }
+    //    }
+    //    printf("\n");
     return self;
 }
 
@@ -509,7 +509,7 @@ static float page_width() {
 
 - selectedLink {
 
-    int sor;          /* Start of run */
+    int sor;                  /* Start of run */
     NSTextStorage *r, *s, *e; /* Scan, Start and end runs */
     Anchor *a;
     int startPos, endPos;
@@ -795,10 +795,10 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) {
     int new_used;                         /* New number of bytes in runs	*/
     BOOL need_run_before, need_run_after; /* Sometimes we don't need them	*/
     int run_before_start, run_after_end;  /* Start of run_before etc 	*/
-    NSTextStorage *s, *e;                         /* Start and end run 		*/
-    NSTextStorage *p;                             /* Pointer to run being read	*/
-    NSTextStorage *w;                             /* Pointer to run being written	*/
-    NSTextStorage *r;                             /* Pointer to end of runs	*/
+    NSTextStorage *s, *e;                 /* Start and end run 		*/
+    NSTextStorage *p;                     /* Pointer to run being read	*/
+    NSTextStorage *w;                     /* Pointer to run being written	*/
+    NSTextStorage *r;                     /* Pointer to end of runs	*/
 
     if (start == end) {
         apply(style, &typingRun); /* Will this work? */
@@ -1140,7 +1140,7 @@ unsigned char next_input_block() {
 static NXTextBlock *write_block;     /* Pointer to block being filled */
 static unsigned char *write_pointer; /* Pointer to next characetr to be written */
 static unsigned char *write_limit;   /* Pointer to the end of the allocated area*/
-static NSTextStorage *lastRun;               /* Pointer to the run being appended to */
+static NSTextStorage *lastRun;       /* Pointer to the run being appended to */
 static int original_length;          /* of text */
 
 #define OUTPUT(c)                                                                                                      \

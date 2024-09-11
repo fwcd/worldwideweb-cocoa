@@ -67,9 +67,8 @@ HTStyle *HTStyleRead(HTStyle *style, NXStream *stream) {
         float firstLineHeadIndent, headIndent, lineHt, lineSpacing;
         short alignment;
         short tabCount = 0;
-        NXScanf(stream, "%f%f%f%f%hd%f%f%hd", &firstLineHeadIndent, &headIndent,
-                &lineHt, &lineSpacing, &alignment, &style->spaceBefore,
-                &style->spaceAfter, &tabCount);
+        NXScanf(stream, "%f%f%f%f%hd%f%f%hd", &firstLineHeadIndent, &headIndent, &lineHt, &lineSpacing, &alignment,
+                &style->spaceBefore, &style->spaceAfter, &tabCount);
         style->paragraph.firstLineHeadIndent = firstLineHeadIndent;
         style->paragraph.headIndent = headIndent;
         style->paragraph.minimumLineHeight = lineHt;
@@ -108,9 +107,8 @@ HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
     if (p) {
         short alignment = p.alignment;
         short tabCount = p.tabStops.count;
-        NXPrintf(stream, "\t%f %f %f %f %i %f %f\t%i\n", p.firstLineHeadIndent, p.headIndent,
-                 p.minimumLineHeight, p.lineSpacing, alignment, style->spaceBefore, style->spaceAfter,
-                 tabCount);
+        NXPrintf(stream, "\t%f %f %f %f %i %f %f\t%i\n", p.firstLineHeadIndent, p.headIndent, p.minimumLineHeight,
+                 p.lineSpacing, alignment, style->spaceBefore, style->spaceAfter, tabCount);
 
         for (tab = 0; tab < p.tabStops.count; tab++) {
             int tabKind = p.tabStops[tab].tabStopType;
@@ -132,7 +130,8 @@ HTStyle *HTStyleDump(HTStyle *style) {
         short tabStopCount = p.tabStops.count;
         printf("\tIndents: first=%.0f others=%.0f, Height=%.1f Desc=%.1f\n"
                "\tAlign=%i, %i tabs. (%.0f before, %.0f after)\n",
-               p.firstLineHeadIndent, p.headIndent, p.minimumLineHeight, p.lineSpacing, alignment, tabStopCount, style->spaceBefore, style->spaceAfter);
+               p.firstLineHeadIndent, p.headIndent, p.minimumLineHeight, p.lineSpacing, alignment, tabStopCount,
+               style->spaceBefore, style->spaceAfter);
 
         for (tab = 0; tab < p.tabStops.count; tab++) {
             int tabKind = p.tabStops[tab].tabStopType;
@@ -183,7 +182,10 @@ HTStyle *HTStyleForRun(HTStyleSheet *self, NSTextStorage *run) {
     HTStyle *best = 0;
     int bestMatch = 0;
     NSRange range = NSMakeRange(0, run.length);
-    NSParagraphStyle *rp = [run attribute:NSParagraphStyleAttributeName atIndex:0 longestEffectiveRange:NULL inRange:range];
+    NSParagraphStyle *rp = [run attribute:NSParagraphStyleAttributeName
+                                  atIndex:0
+                    longestEffectiveRange:NULL
+                                  inRange:range];
     NSFont *font = [run attribute:NSFontAttributeName atIndex:0 longestEffectiveRange:NULL inRange:range];
     for (scan = self->styles; scan; scan = scan->next)
         if (scan->paragraph == rp)
