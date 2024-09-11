@@ -407,6 +407,19 @@ class XIBConverter:
         self.object_to_xib_node[obj] = xib_button
 
         self.traverse_button_cell(cell, xib_button)
+
+    def traverse_text(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
+        '''Traverses the given NIB text and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'Text', obj.clazz.name
+
+        frame = self.convert_rect(obj.contents[2])
+
+        # TODO: Contents
+
+        xib_text = xib_parent.add_object('text', **kwargs)
+        xib_text.add('rect', key='frame', **frame)
+        self.object_to_xib_node[obj] = xib_text
     
     def traverse_text_field_cell(self, obj: typedstream.GenericArchivedObject, xib_text_field: XIBNode):
         '''Traverses the given NIB text field cell and adds it to the XIB.'''
@@ -532,6 +545,8 @@ class XIBConverter:
                 self.traverse_box(obj, xib_parent, **kwargs)
             case 'Button':
                 self.traverse_button(obj, xib_parent, **kwargs)
+            case 'Text':
+                self.traverse_text(obj, xib_parent, **kwargs)
             case 'TextField':
                 self.traverse_text_field(obj, xib_parent, **kwargs)
             case 'Form':
