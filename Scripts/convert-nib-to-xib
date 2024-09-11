@@ -414,12 +414,21 @@ class XIBConverter:
         assert obj.clazz.name == b'Text', obj.clazz.name
 
         frame = self.convert_rect(obj.contents[2])
+        raw_contents = obj.contents[15].values[0]
+        
+        assert isinstance(raw_contents, typedstream.archiving.Array)
 
-        # TODO: Contents
+        contents = raw_contents.elements.decode()
 
-        xib_text = xib_parent.add_object('text', **kwargs)
-        xib_text.add('rect', key='frame', **frame)
-        self.object_to_xib_node[obj] = xib_text
+        xib_text_view = xib_parent.add_object('textView', **kwargs)
+        xib_text_view.add('rect', key='frame', **frame)
+        self.object_to_xib_node[obj] = xib_text_view
+
+        # TODO: Translate these (apparently RTF) contents to a proper attributed string
+        xib_string = xib_text_view.add('attributedString', key='textStorage')
+        xib_fragment = xib_string.add('fragment')
+        xib_fragment_string = xib_fragment.add('mutableString', key='content')
+        xib_fragment_string.element.text = contents
     
     def traverse_text_field_cell(self, obj: typedstream.GenericArchivedObject, xib_text_field: XIBNode):
         '''Traverses the given NIB text field cell and adds it to the XIB.'''
