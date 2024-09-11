@@ -262,7 +262,7 @@ HTStyleSheet *HTStyleSheetFree(HTStyleSheet *self) {
 **	as existing styles, they replace the old ones without changing the ids.
 */
 
-HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NSStream *stream) {
+HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NSInputStream *stream) {
     int numStyles;
     int i;
     HTStyle *style;
@@ -290,7 +290,7 @@ HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NSStream *stream) {
 **	Writes a style sheet to a stream.
 */
 
-HTStyleSheet *HTStyleSheetWrite(HTStyleSheet *self, NSStream *stream) {
+HTStyleSheet *HTStyleSheetWrite(HTStyleSheet *self, NSOutputStream *stream) {
     int numStyles = 0;
     HTStyle *style;
 

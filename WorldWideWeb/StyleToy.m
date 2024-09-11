@@ -144,7 +144,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 //	old ones which are not redefined.
 
 - open:sender {
-    NSStream *s;                              //	The file stream
+    NSInputStream *s;                              //	The file stream
     NSString *filename;                     //	The name of the file
     NSArray<NSString *> * typelist = @[@"style"]; //	Extension must be ".style."
 
@@ -160,7 +160,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     }
 
     filename = [open_panel filename];
-    s = NXMapFile(filename, NX_READONLY);
+    s = [[NSInputStream alloc] initWithFileAtPath:filename];
     if (!s) {
         if (TRACE)
             printf("Styles: Can't open file %s\n", filename);
@@ -168,11 +168,11 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     }
     if (!styleSheet)
         styleSheet = HTStyleSheetNew();
-    StrAllocCopy(styleSheet->name, filename);
+    StrAllocCopy(styleSheet->name, [filename cStringUsingEncoding:NSUTF8StringEncoding]);
     if (TRACE)
         printf("Stylesheet: New one called %s.\n", styleSheet->name);
     (void)HTStyleSheetRead(styleSheet, s);
-    NXCloseMemory(s, NX_FREEBUFFER);
+    [s close];
     style = styleSheet->styles;
     [self display_style];
     return self;
