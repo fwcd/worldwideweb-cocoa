@@ -71,6 +71,11 @@ def convert_value(value: Any, state: State) -> ET.Element:
         for item in value.elements:
             element.append(convert_value(item, state=state))
         return element
+    elif isinstance(value, typedstream.archiving.Array):
+        element = ET.Element('array')
+        for item in value.elements:
+            element.append(convert_value(item, state=state))
+        return element
     else:
         return ET.Element('unknown', attrib={'name': str(type(value))})
 
