@@ -496,7 +496,7 @@ NSString *existing_filename() {
 //	This accesses the default page of text for the user or, failing that,
 //	for the system.
 //
-- (void)goHome:sender {
+- (IBAction)goHome:sender {
     [self openMy:"default.html" diagnostic:0];
 }
 

@@ -19,5 +19,5 @@
 - (IBAction)linkToNew:sender;
 - (IBAction)linkToFile:sender;
 - (Anchor *)openMy:(const char *)filename diagnostic:(int)diagnostic;
-- (void)goHome:sender;
+- (IBAction)goHome:sender;
 @end
