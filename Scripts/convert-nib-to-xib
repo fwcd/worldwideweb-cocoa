@@ -15,9 +15,10 @@ import typedstream
 import xml.etree.ElementTree as ET
 
 class XIBNode:
-    def __init__(self, element: ET.Element, id: Optional[str]=None):
+    def __init__(self, element: ET.Element, id: Optional[str]=None, custom_class: Optional[str]=None):
         self.element = element
         self.id = id
+        self.custom_class = custom_class
 
         self._connections: Optional[Self] = None
         self._items: Optional[Self] = None
@@ -36,7 +37,7 @@ class XIBNode:
         })
         self.element.append(child)
 
-        return XIBNode(child, id)
+        return XIBNode(child, id=id, custom_class=class_or_tag_name if is_custom else None)
     
     def add(self, tag_name: str, **kwargs) -> Self:
         '''Adds a custom node under this node.'''
@@ -57,6 +58,9 @@ class XIBNode:
 
         assert self.element.tag == 'menuItem', 'Can only add a submenu to a menu item'
         return self.add_object('menu', key='submenu', title=self.element.attrib['title'], **kwargs)
+    
+    def __str__(self):
+        return self.custom_class or self.element.tag
 
     @property
     def connections(self) -> Self:
@@ -171,7 +175,7 @@ class XIBConverter:
         self.xib = XIB()
 
         self.visited_objects: set[typedstream.GenericArchivedObject] = set()
-        self.custom_object_to_xib_node: dict[typedstream.GenericArchivedObject] = {}
+        self.object_to_xib_node: dict[typedstream.GenericArchivedObject, XIBNode] = {}
     
     def convert_menu_cell(self, cell: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int):
         '''Traverses the given NIB menu cell and adds it to the given XIB menu.'''
@@ -200,6 +204,8 @@ class XIBConverter:
             xib_item = self.xib.app_menu.add_menu_item(title=title, **xib_properties)
         else:
             xib_item = xib_menu.add_menu_item(title=title, **xib_properties)
+        
+        self.object_to_xib_node[cell] = xib_item
 
         if has_submenu:
             xib_submenu = xib_item.add_submenu()
@@ -211,6 +217,9 @@ class XIBConverter:
         '''Traverses the given NIB menu and adds its cells to the given XIB menu.'''
 
         assert menu.clazz.name == b'MenuTemplate', menu.clazz.name
+
+        # TODO: Should we do `self.object_to_xib_node[cell] = menu` here?
+        # We probably don't need this since there don't seem to be any control connectors.
 
         # Parse basic metadata
         title = menu.contents[2].values[0].decode()
@@ -239,15 +248,34 @@ class XIBConverter:
     def traverse_custom_object(self, obj: typedstream.GenericArchivedObject):
         '''Traverses the given NIB custom object and adds it to the XIB.'''
 
+        assert obj.clazz.name == b'CustomObject', obj.clazz.name
+
         custom_class = obj.contents[0].values[0].decode()
         match custom_class:
             case 'Application':
-                self.custom_object_to_xib_node[obj] = self.xib.files_owner
+                self.object_to_xib_node[obj] = self.xib.files_owner
             case 'FontManager':
-                self.custom_object_to_xib_node[obj] = self.xib.font_manager
+                self.object_to_xib_node[obj] = self.xib.font_manager
             case _:
                 print(f'Adding custom object {custom_class}')
-                self.custom_object_to_xib_node[obj] = self.xib.objects.add_object(custom_class)
+                self.object_to_xib_node[obj] = self.xib.objects.add_object(custom_class)
+
+    def traverse_control_connector(self, obj: typedstream.GenericArchivedObject):
+        '''Traverses the given NIB control connector and adds it to the XIB.'''
+
+        assert obj.clazz.name == b'IBControlConnector', obj.clazz.name
+
+        group = obj.contents[0]
+        src_obj = group.values[0]
+        dest_obj = group.values[1]
+        selector = group.values[2].decode()
+
+        if (src_xib_node := self.object_to_xib_node.get(src_obj)) and (dest_xib_node := self.object_to_xib_node.get(dest_obj)):
+            print(f'Connecting {src_xib_node} to {selector} on {dest_xib_node}')
+            src_xib_node.connect_action(
+                selector=selector,
+                target=dest_xib_node,
+            )
 
     def traverse_group(self, group: typedstream.TypedGroup):
         '''Recursively traverses the given NIB group.'''
@@ -256,19 +284,36 @@ class XIBConverter:
             self.traverse_main_menu(group.values[0])
         else:
             for value in group.values:
-                if isinstance(value, typedstream.GenericArchivedObject) and value not in self.visited_objects:
-                    self.traverse_object(value)
+                self.traverse_value(value)
 
     def traverse_object(self, obj: typedstream.GenericArchivedObject):
         '''Recursively traverses the given NIB object.'''
 
         self.visited_objects.add(obj)
 
-        if obj.clazz.name == b'CustomObject':
-            self.traverse_custom_object(obj)
+        match obj.clazz.name.decode():
+            case 'CustomObject':
+                self.traverse_custom_object(obj)
+            case 'IBControlConnector':
+                # NOTE: We rely on these connectors being listed after 
+                self.traverse_control_connector(obj)
 
         for group in obj.contents:
             self.traverse_group(group)
+
+    def traverse_list(self, list: typedstream.types.nextstep.List):
+        '''Recursively traverses the given NIB list.'''
+
+        for element in list.elements:
+            self.traverse_value(element)
+
+    def traverse_value(self, value: Any):
+        '''Recursively traverses the given NIB value.'''
+
+        if isinstance(value, typedstream.GenericArchivedObject) and value not in self.visited_objects:
+            self.traverse_object(value)
+        elif isinstance(value, typedstream.types.nextstep.List):
+            self.traverse_list(value)
 
 def convert_root(obj: typedstream.GenericArchivedObject, options: Options) -> XIB:
     converter = XIBConverter(options)
