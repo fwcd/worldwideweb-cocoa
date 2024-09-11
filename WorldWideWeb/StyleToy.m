@@ -145,8 +145,8 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
 - open:sender {
     NSStream *s;                              //	The file stream
-    const char *filename;                     //	The name of the file
-    char *typelist[2] = {"style", (char *)0}; //	Extension must be ".style."
+    NSString *filename;                     //	The name of the file
+    NSArray<NSString *> * typelist = @[@"style"]; //	Extension must be ".style."
 
     if (!open_panel) {
         open_panel = [NSOpenPanel new];
