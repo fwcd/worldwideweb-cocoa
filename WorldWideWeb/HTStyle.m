@@ -291,7 +291,7 @@ HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NXStream *stream) {
 **	Writes a style sheet to a stream.
 */
 
-HTStyleSheet *HTStyleSheetWrite(HTStyleSheet *self, NSOutputStream *stream) {
+HTStyleSheet *HTStyleSheetWrite(HTStyleSheet *self, NXStream *stream) {
     int numStyles = 0;
     HTStyle *style;
 
