@@ -83,7 +83,6 @@ static float page_width() {
     format = WWW_HTML; // By default
     // TODO: Should we set a custom font?
     // [self setMonoFont:NO];                                 // By default
-    theRuns->chunk.growby = 16 * sizeof(theRuns->runs[0]); //  efficiency
 
     server = (HyperAccess *)aServer;
     [self setDelegate:aServer]; /* For changes */
