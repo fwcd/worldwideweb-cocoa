@@ -11,6 +11,8 @@
 #import "HTStyle.h"
 #import "HTUtils.h"
 
+#define NX_BLACK 0
+
 /*	Create a new style
 */
 HTStyle *HTStyleNew() {
