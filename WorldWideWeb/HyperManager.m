@@ -17,7 +17,7 @@
 
 @implementation HyperManager
 
-#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] docView]
+#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] documentView]
 
 extern char *WWW_nameOfFile(const char *name); /* In file access */
 
@@ -339,9 +339,9 @@ PRIVATE FileAccess *fileAccess = nil;
     for (i = 0; i < n; i++) {
         NSWindow *w = [windows objectAtIndex:i];
         if (cv = [w contentView])
-            if ([cv respondsTo:@selector(docView)])
+            if ([cv respondsTo:@selector(documentView)])
                 if ([w isDocEdited]) {
-                    HyperText *HT = [[w contentView] docView];
+                    HyperText *HT = [[w contentView] documentView];
                     if ([(HyperAccess *)[HT server] saveNode:HT])
                         [w setDocumentEdited:NO];
                 }
@@ -366,7 +366,7 @@ PRIVATE FileAccess *fileAccess = nil;
             NSWindow *w = [windows objectAtIndex:i];
             if (w != thisWindow)
                 if (cv = [w contentView])
-                    if ([cv respondsTo:@selector(docView)]) {
+                    if ([cv respondsTo:@selector(documentView)]) {
                         if (![w isDocEdited]) {
                             if (TRACE)
                                 printf(" Closing window %p\n", w);

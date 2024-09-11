@@ -21,7 +21,7 @@
 #import <sys/stat.h> // For fstat()
 #import <sys/types.h>
 
-#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] docView]
+#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] documentView]
 
 @implementation FileAccess : HyperAccess
 

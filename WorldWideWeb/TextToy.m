@@ -13,7 +13,7 @@
 
 @implementation TextToy
 
-#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] docView]
+#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] documentView]
 
 Anchor *Mark; /* A marked Anchor */
 
@@ -67,7 +67,7 @@ Anchor *Mark; /* A marked Anchor */
 //	appropriate
 
 - windowDidBecomeMain:window {
-    HyperText *HT = [[window contentView] docView];
+    HyperText *HT = [[window contentView] documentView];
     if (!HT)
         return self;
 

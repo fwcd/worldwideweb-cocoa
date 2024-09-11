@@ -323,7 +323,7 @@ static float page_width() {
     [scrollview setHasHorizontalScroller:NO];  // Guess.
     [[window setContentView:scrollview] free]; // Free old view, size new one.
 
-    [scrollview setDocView:self];
+    [scrollview setDocumentView:self];
     [self setOpaque:YES];              // Suggested in the book
     [self setVerticallyResizable:YES]; // Changes size automatically
     [self setHorizontallyResizable:NO];
