@@ -17,7 +17,7 @@
 #import "HTParse.h"
 #import "HTStyle.h"
 #import <ctype.h>
-#import <defaults/defaults.h>
+#import <AppKit/AppKit.h>
 
 extern HTStyleSheet *styleSheet;
 
@@ -48,16 +48,12 @@ extern HTStyleSheet *styleSheet;
 #include <sys/socket.h>
 #include <sys/time.h> /* independent */
 #include <sys/types.h>
-extern char *malloc();
-extern void free();
-extern char *strncpy();
 #endif
 
 #import "HTUtils.h"    /* Coding convention macros */
 #include <arpa/inet.h> /* Must be after netinet/in.h */
 #include <netdb.h>
 #include <netinet/in.h>
-#import <streams/streams.h>
 
 @implementation NewsAccess
 
