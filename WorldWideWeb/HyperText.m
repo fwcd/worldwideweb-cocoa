@@ -416,7 +416,7 @@ static float page_width() {
     [self applyStyle:style];
     if (TRACE)
         printf("HyperText: New dest anchor %i from %i to %i.\n", a, sp0.cp, spN.cp);
-    [delegate textDidChange:self];
+    [self.delegate textDidChange:self];
     return a;
 }
 
@@ -1093,7 +1093,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) {
 //	Change configuration as window becomes key window
 //
 - windowDidBecomeMain:sender {
-    return [delegate hyperTextDidBecomeMain:self];
+    return [self.delegate hyperTextDidBecomeMain:self];
 }
 
 /*				FORMAT CONVERSION FROM SGML
