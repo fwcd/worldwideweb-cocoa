@@ -315,7 +315,7 @@ static float page_width() {
 
 #define NX_ALLBUTTONS 7 // Fudge -- the followin methos is obsolete in 3.0:
     NSWindow *window = [[NSWindow alloc] initWithContentRect:scroll_frame
-                                                       style:NSWindowStyleMaskTitled
+                                                   styleMask:NSWindowStyleMaskTitled
                                                      backing:NSBackingStoreBuffered
                                                        defer:NO]; // display now
     [window setDelegate:self];                                    // Get closure warning
@@ -362,7 +362,7 @@ static float page_width() {
 
     sprintf(s, "%c%i", ANCHOR_ID_PREFIX, nextAnchorNumber++);
     a = [[Anchor alloc] initWithParent:nodeAnchor tag:s];
-    [delegate textDidChange:self];
+    [self.delegate textDidChange:self];
     return a;
 }
 
