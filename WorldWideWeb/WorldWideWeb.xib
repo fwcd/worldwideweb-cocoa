@@ -725,7 +725,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     </box>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="140" y="-544"/>
+            <point key="canvasLocation" x="528" y="-511"/>
         </window>
         <window title="Navigation" animationBehavior="default" id="57">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
