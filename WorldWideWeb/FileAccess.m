@@ -45,24 +45,23 @@ extern char *appDirectory; /* Pointer to directory for application */
 - save:(HyperText *)HT inFile:(const char *)filename format:(int)format {
     NXStream *s; //	The file stream
 
-    s = NXOpenFile(filename, NX_WRITEONLY);
-
     if (format == WWW_HTML) {
         char *saveName = WWW_nameOfFile(filename); //	The WWW address
+        s = NXOpenFile(filename, NX_WRITEONLY);
         [HT writeSGML:s relativeTo:saveName];
+        NXFlush(s); /* Try to get over missing end */
+        NXClose(s);
         free(saveName);
     } else if (format == WWW_RICHTEXT)
-        [HT writeRichText:s];
+        [HT writeRTFDToFile:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding] atomically:YES];
     else if (format == WWW_PLAINTEXT || format == WWW_SOURCE)
-        [HT writeText:s];
+        [[HT string] writeToFile:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding] atomically:YES encoding:NSUTF8StringEncoding error:nil];
     else
         fprintf(stderr, "HT/File: Unknown format!\n");
 
     if (TRACE)
         printf("HT file: file `%s' in format %i.\n", filename, format);
 
-    NXFlush(s); /* Try to get over missing end */
-    NXClose(s);
     return self;
 }
 
