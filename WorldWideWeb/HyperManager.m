@@ -354,7 +354,7 @@ PRIVATE FileAccess *fileAccess = nil;
 
 - closeOthers:sender {
     NSWindow *thisWindow = [NSApp mainWindow];
-    NSArray *windows = [[NSApp windows] copy];
+    NSArray *windows = [NSApp windows];
 
     {
         int i;
@@ -372,7 +372,6 @@ PRIVATE FileAccess *fileAccess = nil;
                         }
                     }
         }
-        [windows free]; /* Free off copy of list */
         return self;
     }
 }
