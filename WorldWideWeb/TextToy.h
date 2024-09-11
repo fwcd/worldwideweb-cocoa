@@ -25,13 +25,13 @@
 
 /*	Link handling:
 */
-- linkToMark:sender;
-- linkToNew:sender;
-- unlink:sender;
-- markSelected:sender;
-- markAll:sender;
-- followLink:sender;
-- dump:sender;
+- (IBAction)linkToMark:sender;
+- (IBAction)linkToNew:sender;
+- (IBAction)unlink:sender;
+- (IBAction)markSelected:sender;
+- (IBAction)markAll:sender;
+- (IBAction)followLink:sender;
+- (IBAction)dump:sender;
 
 //	Access manager function:
 

@@ -28,32 +28,30 @@ Anchor *Mark; /* A marked Anchor */
 
 /*	Set up the start and end of a link
 */
-- linkToMark:sender {
-    return [THIS_TEXT linkSelTo:Mark];
+- (IBAction)linkToMark:sender {
+    [THIS_TEXT linkSelTo:Mark];
 }
 
-- linkToNew:sender {
-    return nil;
+- (IBAction)linkToNew:sender {
 }
 
-- unlink:sender;
-{ return [THIS_TEXT unlinkSelection]; }
-
-- markSelected:sender {
-    Mark = [THIS_TEXT referenceSelected];
-    return Mark;
-}
-- markAll:sender {
-    Mark = [THIS_TEXT referenceAll];
-    return Mark;
+- (IBAction)unlink:sender {
+    [THIS_TEXT unlinkSelection];
 }
 
-- followLink:sender {
-    return [THIS_TEXT followLink]; // never mind whether there is a link
+- (IBAction)markSelected:sender {
+    [THIS_TEXT referenceSelected];
+}
+- (IBAction)markAll:sender {
+    [THIS_TEXT referenceAll];
 }
 
-- dump:sender {
-    return [THIS_TEXT dump:sender];
+- (IBAction)followLink:sender {
+    [THIS_TEXT followLink]; // never mind whether there is a link
+}
+
+- (IBAction)dump:sender {
+    [THIS_TEXT dump:sender];
 }
 
 //		Window Delegate Functions
