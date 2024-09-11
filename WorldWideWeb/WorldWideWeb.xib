@@ -337,7 +337,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="200" y="121"/>
+            <point key="canvasLocation" x="171" y="248"/>
         </menu>
         <window title="Accessories" animationBehavior="default" id="6">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -424,6 +424,7 @@ The "Home" button reselects the original page which you get when you started the
                     </textField>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="-365" y="-491"/>
         </window>
         <customObject id="18" customClass="StyleToy">
             <connections>
@@ -784,7 +785,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="140" y="-384"/>
+            <point key="canvasLocation" x="-248" y="-228"/>
         </window>
         <window title="Other document" animationBehavior="default" id="64">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -847,6 +848,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="5" y="-805"/>
         </window>
         <customObject id="72" customClass="WWWPageLayout">
             <connections>
@@ -891,6 +893,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="-130" y="-1128"/>
         </window>
         <window title="Document Inspector" animationBehavior="default" id="78">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -1016,6 +1019,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="-266" y="-1556"/>
         </window>
         <window title="Index Search" animationBehavior="default" id="94">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -1050,6 +1054,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="-402" y="-1883"/>
         </window>
         <customObject id="98" customClass="TextToy"/>
         <customObject id="99" customClass="TcpAccess">
