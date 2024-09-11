@@ -180,9 +180,6 @@ class XIB:
 
         self.tree.write(path, encoding='utf-8', xml_declaration=True)
 
-# TODO: Reverse-engineer the parameters of some common classes (e.g. View)
-# TODO: Use a better order for "expanding" referenced objects (e.g. breadth-first)
-
 @dataclass
 class Options:
     pass
