@@ -25,18 +25,22 @@ typedef struct _NXTextBlock {
     unsigned char *text; /* The text */
 } NXTextBlock;
 
+typedef float NXCoord;
+
 /* Describes tabstop. */
 typedef struct _NXTabStop {
     short kind; /* Only NX_LEFTTAB implemented */
-    CGFloat x;  /* x coordinate for stop */
+    NXCoord x;  /* x coordinate for stop */
 } NXTabStop;
+
+// TODO: Add functions for converting to/from NSParagraphStyle
 
 /* Describes text layout and tab stops. */
 typedef struct _NXTextStyle {
-    CGFloat indent1st; /* How far first line in paragraph is */  /* indented */
-    CGFloat indent2nd; /* How far second and subsequent lines */ /* are indented */
-    CGFloat lineHt;                                              /* Line height */
-    CGFloat descentLine;                                         /* Distance from baseline to bottom of line */
+    NXCoord indent1st; /* How far first line in paragraph is */  /* indented */
+    NXCoord indent2nd; /* How far second and subsequent lines */ /* are indented */
+    NXCoord lineHt;                                              /* Line height */
+    NXCoord descentLine;                                         /* Distance from baseline to bottom of line */
     short alignment;                                             /* Text alignment */
     short numTabs;                                               /* Number of tab stops */
     NXTabStop *tabs;                                             /* Array of tab stops */

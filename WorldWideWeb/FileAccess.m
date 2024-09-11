@@ -28,11 +28,6 @@
 #define LENGTH 256
 extern char *appDirectory; /* Pointer to directory for application */
 
-//	Initialize this class
-//
-+ initialize {
-}
-
 //	Overlay method returning the name of the access.
 
 - (const char *)name {

@@ -79,7 +79,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     else
         [(NSFormCell *)[ParameterForm cellAtIndex:SGMLTAG_FIELD] setStringValue:@""];
 
-    [(NSFormCell *)[ParameterForm cellAtIndex:FONT_NAME_FIELD] setStringValue:[style->font name]];
+    [(NSFormCell *)[ParameterForm cellAtIndex:FONT_NAME_FIELD] setStringValue:[style->font fontName]];
 
     [(NSFormCell *)[ParameterForm cellAtIndex:FONT_SIZE_FIELD] setFloatValue:style->fontSize];
 
@@ -87,11 +87,11 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
         char tabstring[255];
         int i;
         [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD]
-            setFloatValue:style->paragraph.firstLineHeadIndent];
-        [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] setFloatValue:style->paragraph.headIndent];
+            setFloatValue:style->paragraph->indent1st];
+        [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] setFloatValue:style->paragraph->indent2nd];
         tabstring[0] = 0;
-        for (NSTextTab *tab in style->paragraph.tabStops) {
-            sprintf(tabstring + strlen(tabstring), "%.0f ", tab.location);
+        for(i = 0; i < style->paragraph->numTabs; i++) {
+            sprintf(tabstring+strlen(tabstring), "%.0f ", style->paragraph->tabs[i].x);
         }
         [(NSFormCell *)[TabForm cellAtIndex:0] setStringValue:[NSString stringWithCString:tabstring
                                                                                  encoding:NSUTF8StringEncoding]];
@@ -131,9 +131,9 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     name = 0;
 
     if (!style->paragraph)
-        style->paragraph = [[NSMutableParagraphStyle alloc] init];
-    style->paragraph.firstLineHeadIndent = [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] floatValue];
-    style->paragraph.headIndent = [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] floatValue];
+        style->paragraph = malloc(sizeof(*(style->paragraph)));
+    style->paragraph->indent1st = [(NSFormCell *)[ParameterForm cellAtIndex:FIRST_INDENT_FIELD] floatValue];
+    style->paragraph->indent2nd = [(NSFormCell *)[ParameterForm cellAtIndex:SECOND_INDENT_FIELD] floatValue];
 
     return self;
 }

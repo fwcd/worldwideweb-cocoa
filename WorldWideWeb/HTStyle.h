@@ -22,7 +22,7 @@ typedef enum _SGML_tagtype {
     LINE    /* Style holds until end of line (ugh!)	*/
 } SGML_tagtype;
 
-typedef CGFloat HTCoord;
+typedef NXCoord HTCoord;
 
 typedef struct _HTStyle {
     struct _HTStyle *next; /* Link for putting into stylesheet */
@@ -32,14 +32,14 @@ typedef struct _HTStyle {
 
     NSFont *font;                       /* The character representation */
     HTCoord fontSize;                   /* The size of font, not independent */
-    NSMutableParagraphStyle *paragraph; /* Null means not defined */
+    NXTextStyle *paragraph; /* Null means not defined */
 #ifdef V1
     float textColor; /* Colour of text */
 #else
     float textGray;   /* Gray level of text */
     int textRGBColor; /* Colour levels of text */
 #endif
-    HTCoord spaceBefore; /* Omissions from NSParagraphStyle */
+    HTCoord spaceBefore; /* Omissions from NXTextStyle */
     HTCoord spaceAfter;
     void *anchor; /* Anchor id if any, else zero */
 } HTStyle;
@@ -62,7 +62,7 @@ typedef struct _HTStyleSheet {
 extern HTStyleSheet *HTStyleSheetNew();
 extern HTStyleSheet *HTStyleSheetFree(HTStyleSheet *self);
 extern HTStyle *HTStyleNamed(HTStyleSheet *self, const char *name);
-extern HTStyle *HTStyleForParagraph(HTStyleSheet *self, NSParagraphStyle *paraStyle);
+extern HTStyle *HTStyleForParagraph(HTStyleSheet *self, NXTextStyle *paraStyle);
 extern HTStyle *HTStyleForRun(HTStyleSheet *self, NXRun *run);
 extern HTStyleSheet *HTStyleSheetAddStyle(HTStyleSheet *self, HTStyle *style);
 extern HTStyleSheet *HTStyleSheetRemoveStyle(HTStyleSheet *self, HTStyle *style);

@@ -146,16 +146,16 @@ static float page_width() {
 
     printf("\n    Current run:\n\tFont name:\t%s\n", [r->font name]);
     {
-        NSParagraphStyle *p = (NSParagraphStyle *)r->paraStyle;
+        NXTextStyle *p = (NXTextStyle *)r->paraStyle;
         if (!p) {
             printf("\tNo paragraph style!\n");
         } else {
             int tab;
             printf("\tParagraph style %i\n", p);
-            printf("\tIndents: first=%f, left=%f\n", p.firstLineHeadIndent, p.headIndent);
-            printf("\tAlignment type=%i, %i tabs:\n", p.alignment, p.tabStops.count);
-            for (tab = 0; tab < p.tabStops.count; tab++) {
-                printf("\t    Tab kind=%i at %f\n", p.tabStops[tab].kind, p.tabStops[tab].x);
+            printf("\tIndents: first=%f, left=%f\n", p->indent1st, p->indent2nd);
+            printf("\tAlignment type=%i, %i tabs:\n", p->alignment, p->numTabs);
+            for (tab = 0; tab < p->numTabs; tab++) {
+                printf("\t    Tab kind=%i at %f\n", p->tabs[tab].kind, p->tabs[tab].x);
             }
         }
     }
@@ -1407,7 +1407,7 @@ void loadPlainText() {
 #ifdef TRY1
 {
     id result;
-    NSParagraphStyle *typingPara = typingRun.paraStyle;
+    NXTextStyle *typingPara = typingRun.paraStyle;
     int originalLength = textLength;
     int originalStart = sp0.cp;
     int originalEnd = spN.cp;

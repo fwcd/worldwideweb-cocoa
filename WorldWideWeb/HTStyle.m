@@ -57,24 +57,20 @@ HTStyle *HTStyleFree(HTStyle *self) {
 HTStyle *HTStyleRead(HTStyle *style, NXStream *stream) {
     char myTag[STYLE_NAME_LENGTH];
     char fontName[STYLE_NAME_LENGTH];
-    NSMutableParagraphStyle *p;
+    NXTextStyle *p;
     int gotpara; /* flag: have we got a paragraph definition? */
 
     NXScanf(stream, "%s%i%s%f%i", myTag, &style->SGMLType, fontName, &style->fontSize, &gotpara);
     if (gotpara) {
         if (!style->paragraph) {
-            style->paragraph = [[NSMutableParagraphStyle alloc] init];
+            style->paragraph = malloc(sizeof(*(style->paragraph)));
         }
         p = style->paragraph;
-        int tabCount = 0;
-        NXScanf(stream, "%f%f%f%f%hd%f%f%hd", &p.firstLineHeadIndent, &p.headIndent,
-                &p.lineHt /* FIXME: Non-existent */, &p.lineSpacing, &p.alignment, &style->spaceBefore,
-                &style->spaceAfter, &tabCount);
-        for (int tab = 0; tab < tabCount; tab++) {
-            NSTextTabType type;
-            CGFloat location;
-            NXScanf(stream, "%hd%f", &type, &location);
-            [p addTabStop:[[NSTextTab alloc] initWithType:type location:location]];
+        NXScanf(stream, "%f%f%f%f%hd%f%f%hd", &p->indent1st, &p->indent2nd,
+                &p->lineHt, &p->descentLine, &p->alignment, &style->spaceBefore,
+                &style->spaceAfter, &p->numTabs);
+        for (int tab = 0; tab < p->numTabs; tab++) {
+            NXScanf(stream, "%hd%f", &p->tabs[tab].kind, &p->tabs[tab].x);
         }
     } else { /* No paragraph */
         if (style->paragraph) {
@@ -94,17 +90,17 @@ HTStyle *HTStyleRead(HTStyle *style, NXStream *stream) {
 */
 HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
     int tab;
-    NSParagraphStyle *p = style->paragraph;
+    NXTextStyle *p = style->paragraph;
     NXPrintf(stream, "%s %i %s %f %i\n", style->SGMLTag, style->SGMLType,
-             style->font ? [style->font name] : NONE_STRING, style->fontSize, p != 0);
+             style->font ? [[style->font fontName] cStringUsingEncoding:NSUTF8StringEncoding] : NONE_STRING, style->fontSize, p != 0);
 
     if (p) {
-        NXPrintf(stream, "\t%f %f %f %f %i %f %f\t%i\n", p.firstLineHeadIndent, p.headIndent,
-                 p.lineHt /* FIXME: Non-existent */, p.lineSpacing, p.alignment, style->spaceBefore, style->spaceAfter,
-                 p.tabStops.count);
+        NXPrintf(stream, "\t%f %f %f %f %i %f %f\t%i\n", p->indent1st, p->indent2nd,
+                 p->lineHt, p->descentLine, p->alignment, style->spaceBefore, style->spaceAfter,
+                 p->numTabs);
 
-        for (tab = 0; tab < p.tabStops.count; tab++)
-            NXPrintf(stream, "\t%i %f\n", p.tabStops[tab].kind, p.tabStops[tab].x);
+        for (tab = 0; tab < p->numTabs; tab++)
+            NXPrintf(stream, "\t%i %f\n", p->tabs[tab].kind, p->tabs[tab].x);
     }
     return style;
 }
@@ -113,17 +109,17 @@ HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
 */
 HTStyle *HTStyleDump(HTStyle *style) {
     int tab;
-    NSParagraphStyle *p = style->paragraph;
+    NXTextStyle *p = style->paragraph;
     printf("Style %i `%s' SGML:%s, type=%i. Font %s %.1f point.\n", style, style->name, style->SGMLTag, style->SGMLType,
-           [style->font name], style -> fontSize);
+           [[style->font fontName] cStringUsingEncoding:NSUTF8StringEncoding], style -> fontSize);
     if (p) {
         printf("\tIndents: first=%.0f others=%.0f, Height=%.1f Desc=%.1f\n"
                "\tAlign=%i, %i tabs. (%.0f before, %.0f after)\n",
-               p.firstLineHeadIndent, p.headIndent, p.lineHt /* FIXME: Non-existent */, p.lineSpacing, p.alignment,
-               p.tabStops.count, style->spaceBefore, style->spaceAfter);
+               p->indent1st, p->indent2nd, p->lineHt, p->descentLine, p->alignment,
+               p->numTabs, style->spaceBefore, style->spaceAfter);
 
-        for (tab = 0; tab < p.tabStops.count; tab++) {
-            printf("\t\tTab kind=%i at %.0f\n", p.tabStops[tab].kind, p.tabStops[tab].x);
+        for (tab = 0; tab < p->numTabs; tab++) {
+            printf("\t\tTab kind=%i at %.0f\n", p->tabs[tab].kind, p->tabs[tab].x);
         }
         printf("\n");
     } /* if paragraph */
@@ -146,7 +142,7 @@ HTStyle *HTStyleNamed(HTStyleSheet *self, const char *name) {
     return 0;
 }
 
-HTStyle *HTStyleForParagraph(HTStyleSheet *self, NSParagraphStyle *para) {
+HTStyle *HTStyleForParagraph(HTStyleSheet *self, NXTextStyle *para) {
     HTStyle *scan;
     for (scan = self->styles; scan; scan = scan->next)
         if (scan->paragraph == para)
@@ -169,24 +165,24 @@ HTStyle *HTStyleForRun(HTStyleSheet *self, NXRun *run) {
     HTStyle *scan;
     HTStyle *best = 0;
     int bestMatch = 0;
-    NSParagraphStyle *rp = run->paraStyle;
+    NXTextStyle *rp = run->paraStyle;
     for (scan = self->styles; scan; scan = scan->next)
         if (scan->paragraph == run->paraStyle)
             return scan; /* Exact */
 
     for (scan = self->styles; scan; scan = scan->next) {
-        NSParagraphStyle *sp = scan->paragraph;
+        NXTextStyle *sp = scan->paragraph;
         if (sp) {
             int match = 0;
-            if (sp.firstLineHeadIndent == rp.firstLineHeadIndent)
+            if (sp->indent1st == rp->indent1st)
                 match = match + 1;
-            if (sp.headIndent == rp.headIndent)
+            if (sp->indent2nd == rp->indent2nd)
                 match = match + 2;
-            if (sp.lineHt /* FIXME: Non-existent */ == rp.lineHt /* FIXME: Non-existent */)
+            if (sp->lineHt == rp->lineHt)
                 match = match + 1;
-            if (sp.tabStops.count == rp.tabStops.count)
+            if (sp->numTabs == rp->numTabs)
                 match = match + 1;
-            if (sp.alignment == rp.alignment)
+            if (sp->alignment == rp->alignment)
                 match = match + 3;
             if (scan->font == run->font)
                 match = match + 10;
