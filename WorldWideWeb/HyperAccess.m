@@ -16,32 +16,6 @@
 
 @implementation HyperAccess
 
-//	Methods used by the Interface Builder code to connect up the application:
-- setTitleString:anObject {
-    titleString = anObject;
-    return self;
-}
-
-- setAddressString:anObject {
-    addressString = anObject;
-    return self;
-}
-
-- setOpenString:anObject {
-    openString = anObject;
-    return self;
-}
-
-- setKeywords:anObject {
-    keywords = anObject;
-    return self;
-}
-
-- setContentSearch:anObject {
-    contentSearch = anObject;
-    return self;
-}
-
 - setManager:anObject;
 {
     manager = anObject;

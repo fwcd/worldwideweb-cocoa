@@ -244,11 +244,10 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 
 //	This removes the anchor from the structure entirely, and frees it.
 //
-- delete {
+- (void)delete {
     if (DestAnchor)
         [self unlink];                                      // Remove outgoing link
     [Sources makeObjectsPerformSelector:@selector(unlink)]; // Remove incomming links
-    return [self free];
 }
 
 //	Set the region represented by the anchor
