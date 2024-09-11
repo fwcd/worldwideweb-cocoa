@@ -432,7 +432,7 @@ class XIBConverter:
 
         assert obj.clazz.name == b'WindowTemplate', obj.clazz.name
 
-        rect = obj.contents[0]
+        rect = self.convert_rect(obj.contents[0])
         title = obj.contents[1].values[4].decode()
         view = obj.contents[1].values[7]
 
@@ -442,13 +442,7 @@ class XIBConverter:
         # TODO: Should/can we add a canvas location?
         # window.add('point', key='canvasLocation', x='200', y='400')
         xib_window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
-        xib_window.add('rect',
-            key='contentRect',
-            x=str(rect.values[0]),
-            y=str(rect.values[1]),
-            width=str(rect.values[2]),
-            height=str(rect.values[3]),
-        )
+        xib_window.add('rect', key='contentRect', **rect)
 
         self.traverse_view(view, xib_window, key='contentView')
 
