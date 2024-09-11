@@ -7,6 +7,7 @@
 
 #pragma once
 
+#import <stdio.h>
 #import <AppKit/AppKit.h>
 
 /// These are largely just copied from Next Manual
@@ -73,3 +74,8 @@ typedef struct _NXRunArray {
     NXChunk chunk;
     NXRun runs[1];
 } NXRunArray;
+
+typedef FILE NXStream;
+
+#define NXScanf fscanf
+#define NXPrintf fprintf

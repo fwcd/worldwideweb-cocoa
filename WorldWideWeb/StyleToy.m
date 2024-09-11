@@ -3,6 +3,7 @@
 */
 
 #import "StyleToy.h"
+#import "NXShims.h"
 #import "HTParse.h"
 #import "HTStyle.h"
 #import "HTUtils.h"
@@ -190,7 +191,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 //	$(HOME)/WWW directory.
 
 - loadDefaultStyleSheet {
-    NSStream *stream;
+    NXStream *stream;
 
     if (!styleSheet)
         styleSheet = HTStyleSheetNew();
@@ -231,7 +232,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 //	--------------------------
 
 - saveAs:sender {
-    NSStream *s; //	The file stream
+    NXStream *s; //	The file stream
     char *slash;
     int status;
     char *suggestion = 0; //	The name of the file to suggest

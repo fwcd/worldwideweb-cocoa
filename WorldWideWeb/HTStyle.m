@@ -10,6 +10,7 @@
 */
 #import "HTStyle.h"
 #import "HTUtils.h"
+#import "NXShims.h"
 
 #define NX_BLACK 0
 
@@ -53,7 +54,7 @@ HTStyle *HTStyleFree(HTStyle *self) {
 */
 #define NONE_STRING "(None)"
 
-HTStyle *HTStyleRead(HTStyle *style, NSStream *stream) {
+HTStyle *HTStyleRead(HTStyle *style, NXStream *stream) {
     char myTag[STYLE_NAME_LENGTH];
     char fontName[STYLE_NAME_LENGTH];
     NSMutableParagraphStyle *p;
@@ -91,7 +92,7 @@ HTStyle *HTStyleRead(HTStyle *style, NSStream *stream) {
 
 /*	Write a style to a stream in a compatible way
 */
-HTStyle *HTStyleWrite(HTStyle *style, NSStream *stream) {
+HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
     int tab;
     NSParagraphStyle *p = style->paragraph;
     NXPrintf(stream, "%s %i %s %f %i\n", style->SGMLTag, style->SGMLType,

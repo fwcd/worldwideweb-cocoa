@@ -5,6 +5,7 @@
 
 #import "Anchor.h"
 #import "HTStyle.h"
+#import "NXShims.h"
 #import <AppKit/AppKit.h>
 
 /*	Bit fields describing the capabilities of a node:
@@ -17,7 +18,7 @@
 #define HT_LINK_FROM_PART 32
 #define HT_DO_ANYTHING 63
 
-extern void write_rtf_header(NSStream *rtfStream);
+extern void write_rtf_header(NXStream *rtfStream);
 
 @interface HyperText : NSTextView {
     id server;            //	Responsible for maintaining this node
@@ -35,10 +36,10 @@ extern void write_rtf_header(NSStream *rtfStream);
 
 - initWithAnchor:(Anchor *)anAnchor Server:(id)server;
 
-- readSGML:(NSStream *)sgmlStream diagnostic:(int)diagnostic;
-- writeSGML:(NSStream *)sgmlStream relativeTo:(const char *)aName;
+- readSGML:(NXStream *)sgmlStream diagnostic:(int)diagnostic;
+- writeSGML:(NXStream *)sgmlStream relativeTo:(const char *)aName;
 
-- readText:(NSStream *)stream; //	Overrides Text's method.
+- readText:(NXStream *)stream; //	Overrides Text's method.
 - server;
 - (BOOL)isIndex;
 - setupWindow;
@@ -83,8 +84,8 @@ extern void write_rtf_header(NSStream *rtfStream);
 
 //	Override methods of superclasses:
 
-- readText:(NSStream *)stream;     // Also set format variable.
-- readRichText:(NSStream *)stream; // Also set format variable.
+- readText:(NXStream *)stream;     // Also set format variable.
+- readRichText:(NXStream *)stream; // Also set format variable.
 - mouseDown:(NSEvent *)theEvent;   // Double click become hyperjump
 - keyDown:(NSEvent *)theEvent;     //
 - paste:sender;                    //

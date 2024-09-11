@@ -13,6 +13,7 @@
 #import "HTParse.h"
 #import "HTTCP.h" // TCP utilities, like getting host name
 #import "HTUtils.h"
+#import "NXShims.h"
 #import "WWW.h" // For WWW_ constants etc
 #import <AppKit/AppKit.h>
 #import <libc.h> // For getgroups()
@@ -233,7 +234,7 @@ const char *ask_name(HyperText *hint, int format) {
 - loadAnchor:(Anchor *)anAnchor Diagnostic:(int)diagnostic {
     const char *addr = [anAnchor address];
 
-    NSStream *s;          //	The file stream
+    NXStream *s;          //	The file stream
     HyperText *HT;        //	The new node
     char *filename;       //	The name of the file
     char *newname = 0;    //	The simplified name

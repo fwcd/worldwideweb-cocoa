@@ -10,6 +10,7 @@
 #pragma once
 
 #import "HTStyle.h"
+#import "NXShims.h"
 
 extern HTStyleSheet *styleSheet;
 
@@ -385,7 +386,7 @@ static int parse_example(SGML_style *style, char *terminator) {
 **	that switch to get out of the next outer one, and so on.
 */
 #ifdef NeXT
-- readSGML:(NSStream *)stream
+- readSGML:(NXStream *)stream
     diagnostic:(int)diagnostic
 #else
 int readSGML(HyperText *self, FILE *stream, int diagnostic)
@@ -1304,7 +1305,7 @@ void change_run(NXRun *last, NXRun *r) {
 
 /*	This is the body of the SGML output method.
 */
-- writeSGML:(NSStream *)stream relativeTo:(const char *)aName {
+- writeSGML:(NXStream *)stream relativeTo:(const char *)aName {
     NXRun *r = theRuns->runs;
     int sor; /* Character position of start of run */
     NXRun dummy;

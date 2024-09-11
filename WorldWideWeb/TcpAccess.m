@@ -11,6 +11,7 @@
 #import "Anchor.h"
 #import "HTTP.h"
 #import "HTUtils.h"
+#import "NXShims.h"
 
 /*	Module parameters:
 **	-----------------
@@ -32,7 +33,7 @@
 
 - accessName:(const char *)arg anchor:(Anchor *)anAnchor diagnostic:(int)diagnostic {
     HyperText *HT;        // the new hypertext
-    NSStream *sgmlStream; // Input stream for marked up hypertext
+    NXStream *sgmlStream; // Input stream for marked up hypertext
     int s;                // Socket number for returned data
 
     /* Get node name:

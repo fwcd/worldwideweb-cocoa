@@ -1031,7 +1031,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
 //	This method overrides the method of Text, so as to force a plain text
 //	hypertext to be monofont and fixed width.  Also, the window is updated.
 //
-- readText:(NSStream *)stream {
+- readText:(NXStream *)stream {
     //    [self setMonoFont:YES];		Seems to leave it in a strange state
     [self setHorizontallyResizable:YES];
     [self setNoWrap];
@@ -1056,7 +1056,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
 //	This method overrides the method of Text, so as to force a plain text
 //	hypertext to be monofont and fixed width.  Also, the window is updated.
 //
-- readRichText:(NSStream *)stream {
+- readRichText:(NXStream *)stream {
     id status = [super readRichText:stream];
     [self adjustWindow];
     format = WWW_RICHTEXT; // Remember
@@ -1099,7 +1099,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
 
 /*	Globals for using many subroutines within a method
 */
-static NSStream *sgmlStream;
+static NXStream *sgmlStream;
 static HyperText *HT; /* Pointer to self for C */
 
 //	Inputting from the text object:
