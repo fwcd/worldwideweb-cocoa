@@ -19,7 +19,6 @@
 
 /* Methods overridden from superclass */
 
-- pickedUnits:sender;
 - readPrintInfo;
 - writePrintInfo;
 

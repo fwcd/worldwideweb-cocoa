@@ -23,23 +23,6 @@
  * This can be used as an example of how to override Application Kit panels.
  */
 
-- pickedUnits:sender
-/*
- * Called when the user selects different units (e.g. cm or inches).
- * Must update the margin fields.
- */
-{
-    float old, new;
-
-    [self convertOldFactor:&old newFactor:&new];
-    [leftMargin setFloatValue:new *[leftMargin floatValue] / old];
-    [rightMargin setFloatValue:new *[rightMargin floatValue] / old];
-    [topMargin setFloatValue:new *[topMargin floatValue] / old];
-    [bottomMargin setFloatValue:new *[bottomMargin floatValue] / old];
-    
-    return self;
-}
-
 - readPrintInfo
 /*
  * Sets the margin fields from the Application-wide PrintInfo.
