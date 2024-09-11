@@ -528,12 +528,12 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <clipView key="contentView" id="36">
                             <rect key="frame" x="1" y="1" width="416" height="229"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView verticallyResizable="NO" id="37">
-                                    <rect key="frame" x="0.0" y="0.0" width="395" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="229" width="395" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <size key="minSize" width="395" height="0.0"/>
+                                    <size key="minSize" width="416" height="229"/>
                                     <size key="maxSize" width="418" height="231"/>
                                     <attributedString key="textStorage">
                                         <fragment>

@@ -17,6 +17,10 @@
 @property CGFloat topMargin;
 @property CGFloat bottomMargin;
 
+@property(nonatomic) IBOutlet NSBox *accessoryView;
+@property(nonatomic) IBOutlet NSForm *sideForm;
+@property(nonatomic) IBOutlet NSForm *topBotForm;
+
 /* Methods overridden from superclass */
 
 - (void)readPrintInfo;
