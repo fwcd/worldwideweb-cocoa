@@ -318,10 +318,6 @@ class XIBConverter:
             height=str(rect.values[3]),
         )
         window.add_object('view', key='contentView')
-        
-        # TODO: What about outlets? Can we parse them from control connectors or similar?
-        # window.connect_outlet('delegate', app_delegate)
-        # app_delegate.connect_outlet('window', window)
 
     def traverse_group(self, group: typedstream.TypedGroup):
         '''Recursively traverses the given NIB group.'''
