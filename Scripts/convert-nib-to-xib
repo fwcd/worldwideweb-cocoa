@@ -25,6 +25,8 @@ class XIBNode:
         self._connections: Optional[Self] = None
         self._items: Optional[Self] = None
         self._subviews: Optional[Self] = None
+        self._cells: Optional[Self] = None
+        self._column: Optional[Self] = None
 
     def add_object(self, class_or_tag_name: str, id: Optional[str]=None, **kwargs) -> Self:
         '''Adds an object under this node.'''
@@ -91,6 +93,20 @@ class XIBNode:
             self._subviews = XIBNode(ET.Element('subviews'))
             self.element.append(self._subviews.element)
         return self._subviews
+
+    @property
+    def cells(self) -> Self:
+        if self._cells is None:
+            self._cells = XIBNode(ET.Element('cells'))
+            self.element.append(self._cells.element)
+        return self._cells
+
+    @property
+    def column(self) -> Self:
+        if self._column is None:
+            self._column = XIBNode(ET.Element('column'))
+            self.element.append(self._column.element)
+        return self._column
 
     def connect_outlet(self, property: str, destination: str | Self):
         '''Adds an outlet to the given destination.'''
@@ -414,6 +430,42 @@ class XIBConverter:
 
         self.traverse_text_field_cell(cell, xib_text_field)
 
+    def traverse_form_cell(self, obj: typedstream.GenericArchivedObject, xib_cells: XIBNode):
+        '''Traverses the given NIB form cell and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'FormCell', obj.clazz.name
+
+        width = obj.contents[3].values[0] # TODO: Is this actually a width? Should we use it?
+        cell = obj.contents[3].values[1]
+
+        assert isinstance(cell, typedstream.GenericArchivedObject), type(cell)
+        assert cell.clazz.name == b'Cell', cell.clazz.name
+
+        title = cell.contents[0].values[0].decode()
+
+        xib_cell = xib_cells.add('formCell', title=title)
+        # TODO: This currently doesn't work, since it causes Nones in connectors
+        # (so probably something to debug there)
+        # self.object_to_xib_node[obj] = xib_cell
+
+    def traverse_form(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode):
+        '''Traverses the given NIB form and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'Form', obj.clazz.name
+
+        frame = self.convert_rect(obj.contents[2])
+        cells = obj.contents[12].values[0]
+
+        xib_form = xib_parent.add_object('form')
+        xib_form.add('rect', key='frame', **frame)
+        self.object_to_xib_node[obj] = xib_form
+
+        if cells is not None:
+            assert isinstance(cells, typedstream.types.nextstep.List)
+            for cell in cells.elements:
+                assert isinstance(cell, typedstream.GenericArchivedObject), type(cell)
+                self.traverse_form_cell(cell, xib_form.cells.column)
+
     def traverse_any_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         match obj.clazz.name.decode():
             case 'View':
@@ -424,6 +476,8 @@ class XIBConverter:
                 self.traverse_button(obj, xib_parent, **kwargs)
             case 'TextField':
                 self.traverse_text_field(obj, xib_parent, **kwargs)
+            case 'Form':
+                self.traverse_form(obj, xib_parent, **kwargs)
             case class_name:
                 print(f'Warning: Skipping unrecognized view class name {class_name}')
 
