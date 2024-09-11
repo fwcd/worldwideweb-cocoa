@@ -48,11 +48,9 @@ extern char *appDirectory; /* Pointer to directory for application */
 //
 
 - save:(HyperText *)HT inFile:(const char *)filename format:(int)format {
-    NSOutputStream *s; //	The file stream
+    NXStream *s; //	The file stream
 
-    s = [[NSOutputStream alloc] initToFileAtPath:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding]
-                                          append:NO];
-    [s open];
+    s = NXOpenFile(filename, NX_WRITEONLY);
 
     if (format == WWW_HTML) {
         char *saveName = WWW_nameOfFile(filename); //	The WWW address
@@ -68,7 +66,8 @@ extern char *appDirectory; /* Pointer to directory for application */
     if (TRACE)
         printf("HT file: file `%s' in format %i.\n", filename, format);
 
-    [s close];
+    NXFlush(s);            /* Try to get over missing end */
+    NXClose(s);
     return self;
 }
 
@@ -256,7 +255,7 @@ const char *ask_name(HyperText *hint, int format) {
             printf("Anchor %p already has a node\n", anAnchor);
 
     } else {
-        s = NXMapFile(filename, NX_READONLY); // Map file into memory
+        s = NXOpenFile(filename, NX_READONLY); // Open file
 
         if (!s) {
             if (TRACE)
@@ -330,11 +329,9 @@ const char *ask_name(HyperText *hint, int format) {
 
         if (TRACE)
             printf("Closing file stream\n");
+        NXClose(s);
         if (file_number >= 0) {
-            NXClose(s);
             HTFTP_close_file(file_number);
-        } else {
-            NXCloseMemory(s, NX_FREEBUFFER);
         }
 
     } /* If anAnchor not loaded before */

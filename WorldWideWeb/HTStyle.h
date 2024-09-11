@@ -66,7 +66,7 @@ extern HTStyle *HTStyleForParagraph(HTStyleSheet *self, NSParagraphStyle *paraSt
 extern HTStyle *HTStyleForRun(HTStyleSheet *self, NXRun *run);
 extern HTStyleSheet *HTStyleSheetAddStyle(HTStyleSheet *self, HTStyle *style);
 extern HTStyleSheet *HTStyleSheetRemoveStyle(HTStyleSheet *self, HTStyle *style);
-extern HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NSInputStream *stream);
-extern HTStyleSheet *HTStyleSheetWrite(HTStyleSheet *self, NSOutputStream *stream);
+extern HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NXStream *stream);
+extern HTStyleSheet *HTStyleSheetWrite(HTStyleSheet *self, NXStream *stream);
 
 #define CLEAR_POINTER ((void *)-1) /* Pointer value means "clear me" */

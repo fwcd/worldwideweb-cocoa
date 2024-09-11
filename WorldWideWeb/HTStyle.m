@@ -263,7 +263,7 @@ HTStyleSheet *HTStyleSheetFree(HTStyleSheet *self) {
 **	as existing styles, they replace the old ones without changing the ids.
 */
 
-HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NSInputStream *stream) {
+HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NXStream *stream) {
     int numStyles;
     int i;
     HTStyle *style;

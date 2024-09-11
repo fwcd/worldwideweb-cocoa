@@ -145,7 +145,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 //	old ones which are not redefined.
 
 - open:sender {
-    NSInputStream *s;                              //	The file stream
+    NXStream *s;                              //	The file stream
     NSString *filename;                     //	The name of the file
     NSArray<NSString *> * typelist = @[@"style"]; //	Extension must be ".style."
 
@@ -161,19 +161,21 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     }
 
     filename = [open_panel filename];
-    s = [[NSInputStream alloc] initWithFileAtPath:filename];
+    
+    if (!styleSheet)
+        styleSheet = HTStyleSheetNew();
+    StrAllocCopy(styleSheet->name, [filename cStringUsingEncoding:NSUTF8StringEncoding]);
+    
+    s = NXOpenFile(styleSheet->name, NX_READONLY);
     if (!s) {
         if (TRACE)
             printf("Styles: Can't open file %s\n", filename);
         return nil;
     }
-    if (!styleSheet)
-        styleSheet = HTStyleSheetNew();
-    StrAllocCopy(styleSheet->name, [filename cStringUsingEncoding:NSUTF8StringEncoding]);
     if (TRACE)
         printf("Stylesheet: New one called %s.\n", styleSheet->name);
     (void)HTStyleSheetRead(styleSheet, s);
-    [s close];
+    NXClose(s);
     style = styleSheet->styles;
     [self display_style];
     return self;
@@ -204,7 +206,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
         strcpy(name, getenv("HOME"));
         strcat(name, "/WWW/default.style");
         StrAllocCopy(styleSheet->name, name);
-        stream = NXMapFile(name, NX_READONLY);
+        stream = NXOpenFile(name, NX_READONLY);
     } else
         stream = 0;
 
@@ -214,14 +216,14 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
         strcat(name, "default.style");
         if (TRACE)
             printf("Couldn't open $(HOME)/WWW/default.style\n");
-        stream = NXMapFile(name, NX_READONLY);
+        stream = NXOpenFile(name, NX_READONLY);
         if (!stream)
             printf("Couldn't open %s, errno=%i\n", name, errno);
     }
 
     if (stream) {
         (void)HTStyleSheetRead(styleSheet, stream);
-        NXCloseMemory(stream, NX_FREEBUFFER);
+        NXClose(stream);
         style = styleSheet->styles;
         [self display_style];
     }
@@ -259,18 +261,18 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     }
 
     filename = [save_panel filename];
-    s = NXMapFile(filename, NX_WRITEONLY);
+    StrAllocCopy(styleSheet->name, filename);
+    s = NXOpenFile(styleSheet->name, NX_WRITEONLY);
     if (!s) {
         if (TRACE)
             printf("Styles: Can't open file %s for write\n", filename);
         return nil;
     }
-    StrAllocCopy(styleSheet->name, filename);
     if (TRACE)
         printf("StylestyleSheet: Saving as `%s'.\n", styleSheet->name);
     (void)HTStyleSheetWrite(styleSheet, s);
     NXSaveToFile(s, styleSheet->name);
-    NXCloseMemory(s, NX_FREEBUFFER);
+    NXClose(s);
     style = styleSheet->styles;
     [self display_style];
     return self;

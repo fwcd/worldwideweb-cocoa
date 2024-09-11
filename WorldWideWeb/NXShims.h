@@ -79,3 +79,9 @@ typedef FILE NXStream;
 
 #define NXScanf fscanf
 #define NXPrintf fprintf
+#define NXOpenFile fopen
+#define NXFlush fflush
+#define NXClose fclose
+
+#define NX_READONLY "r"
+#define NX_WRITEONLY "w"
