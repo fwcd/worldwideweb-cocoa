@@ -181,7 +181,15 @@ class XIBConverter:
         title = cell.contents[0].values[0].decode()
         submenu = cell.contents[1].values[0]
 
-        xib_item = xib_menu.add_menu_item(title=title)
+        xib_properties = {}
+
+        shortcut_info = cell.contents[4]
+        if len(shortcut_info.values) == 4 and isinstance(shortcut_info.values[3], int):
+            key_equivalent = shortcut_info.values[3] >> 8
+            if key_equivalent > 0:
+                xib_properties['keyEquivalent'] = chr(key_equivalent)
+
+        xib_item = xib_menu.add_menu_item(title=title, **xib_properties)
 
         if isinstance(submenu, typedstream.GenericArchivedObject) and submenu.clazz.name == b'MenuTemplate':
             xib_submenu = xib_item.add_submenu()
