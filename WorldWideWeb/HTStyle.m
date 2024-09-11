@@ -40,8 +40,6 @@ HTStyle *HTStyleFree(HTStyle *self) {
         free(self->name);
     if (self->SGMLTag)
         free(self->SGMLTag);
-    if (self->paragraph)
-        free(self->paragraph);
     free(self);
     return 0;
 }
@@ -66,13 +64,21 @@ HTStyle *HTStyleRead(HTStyle *style, NXStream *stream) {
             style->paragraph = [[NSMutableParagraphStyle alloc] init];
         }
         p = style->paragraph;
-        int tabCount = 0;
-        NXScanf(stream, "%f%f%f%f%hd%f%f%hd", &p.firstLineHeadIndent, &p.headIndent,
-                &p.lineHt /* FIXME: Non-existent */, &p.lineSpacing, &p.alignment, &style->spaceBefore,
+        float firstLineHeadIndent, headIndent, lineHt, lineSpacing;
+        short alignment;
+        short tabCount = 0;
+        NXScanf(stream, "%f%f%f%f%hd%f%f%hd", &firstLineHeadIndent, &headIndent,
+                &lineHt, &lineSpacing, &alignment, &style->spaceBefore,
                 &style->spaceAfter, &tabCount);
-        for (int tab = 0; tab < tabCount; tab++) {
-            NSTextTabType type;
-            CGFloat location;
+        style->paragraph.firstLineHeadIndent = firstLineHeadIndent;
+        style->paragraph.headIndent = headIndent;
+        style->paragraph.minimumLineHeight = lineHt;
+        style->paragraph.maximumLineHeight = lineHt;
+        style->paragraph.lineSpacing = lineSpacing;
+        style->paragraph.alignment = alignment;
+        for (short tab = 0; tab < tabCount; tab++) {
+            short type;
+            float location;
             NXScanf(stream, "%hd%f", &type, &location);
             [p addTabStop:[[NSTextTab alloc] initWithType:type location:location]];
         }
@@ -100,12 +106,16 @@ HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
              style->fontSize, p != 0);
 
     if (p) {
+        short alignment = p.alignment;
+        short tabCount = p.tabStops.count;
         NXPrintf(stream, "\t%f %f %f %f %i %f %f\t%i\n", p.firstLineHeadIndent, p.headIndent,
-                 p.lineHt /* FIXME: Non-existent */, p.lineSpacing, p.alignment, style->spaceBefore, style->spaceAfter,
-                 p.tabStops.count);
+                 p.minimumLineHeight, p.lineSpacing, alignment, style->spaceBefore, style->spaceAfter,
+                 tabCount);
 
-        for (tab = 0; tab < p.tabStops.count; tab++)
-            NXPrintf(stream, "\t%i %f\n", p.tabStops[tab].kind, p.tabStops[tab].x);
+        for (tab = 0; tab < p.tabStops.count; tab++) {
+            int tabKind = p.tabStops[tab].tabStopType;
+            NXPrintf(stream, "\t%i %f\n", tabKind, p.tabStops[tab].location);
+        }
     }
     return style;
 }
@@ -118,13 +128,15 @@ HTStyle *HTStyleDump(HTStyle *style) {
     printf("Style %i `%s' SGML:%s, type=%i. Font %s %.1f point.\n", style, style->name, style->SGMLTag, style->SGMLType,
            [[style->font fontName] cStringUsingEncoding:NSUTF8StringEncoding], style->fontSize);
     if (p) {
+        short alignment = p.alignment;
+        short tabStopCount = p.tabStops.count;
         printf("\tIndents: first=%.0f others=%.0f, Height=%.1f Desc=%.1f\n"
                "\tAlign=%i, %i tabs. (%.0f before, %.0f after)\n",
-               p.firstLineHeadIndent, p.headIndent, p.lineHt /* FIXME: Non-existent */, p.lineSpacing, p.alignment,
-               p.tabStops.count, style->spaceBefore, style->spaceAfter);
+               p.firstLineHeadIndent, p.headIndent, p.minimumLineHeight, p.lineSpacing, alignment, tabStopCount, style->spaceBefore, style->spaceAfter);
 
         for (tab = 0; tab < p.tabStops.count; tab++) {
-            printf("\t\tTab kind=%i at %.0f\n", p.tabStops[tab].kind, p.tabStops[tab].x);
+            int tabKind = p.tabStops[tab].tabStopType;
+            printf("\t\tTab kind=%i at %.0f\n", tabKind, p.tabStops[tab].location);
         }
         printf("\n");
     } /* if paragraph */
@@ -183,7 +195,7 @@ HTStyle *HTStyleForRun(HTStyleSheet *self, NXRun *run) {
                 match = match + 1;
             if (sp.headIndent == rp.headIndent)
                 match = match + 2;
-            if (sp.lineHt /* FIXME: Non-existent */ == rp.lineHt /* FIXME: Non-existent */)
+            if (sp.minimumLineHeight == rp.minimumLineHeight)
                 match = match + 1;
             if (sp.tabStops.count == rp.tabStops.count)
                 match = match + 1;

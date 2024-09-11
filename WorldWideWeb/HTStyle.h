@@ -22,7 +22,7 @@ typedef enum _SGML_tagtype {
     LINE    /* Style holds until end of line (ugh!)	*/
 } SGML_tagtype;
 
-typedef CGFloat HTCoord;
+typedef float HTCoord;
 
 typedef struct _HTStyle {
     struct _HTStyle *next; /* Link for putting into stylesheet */
