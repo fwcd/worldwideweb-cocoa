@@ -111,13 +111,13 @@ class XIB:
         self.objects = self.add_node('objects')
 
         # Add default objects
-        files_owner = self.objects.add_object('NSApplication', id='-2', userLabel="File's Owner")
-        first_responder = self.objects.add_object('FirstResponder', id='-1', userLabel='First Responder')
+        self.files_owner = self.objects.add_object('NSApplication', id='-2', userLabel="File's Owner")
+        self.first_responder = self.objects.add_object('FirstResponder', id='-1', userLabel='First Responder')
         self.objects.add_object('NSObject', id='-3', userLabel='Application')
-        self.objects.add_object('NSFontManager')
+        self.font_manager = self.objects.add_object('NSFontManager')
 
         app_delegate = self.objects.add_object('AppDelegate')
-        files_owner.connect_outlet('delegate', app_delegate)
+        self.files_owner.connect_outlet('delegate', app_delegate)
 
         # Add main menu
         # TODO: Add other standard menu items, see Reference/MainMenu.xib
@@ -169,7 +169,9 @@ class XIBConverter:
     def __init__(self, options: Options):
         self.options = options
         self.xib = XIB()
+
         self.visited_objects: set[typedstream.GenericArchivedObject] = set()
+        self.custom_object_to_xib_node: dict[typedstream.GenericArchivedObject] = {}
     
     def convert_menu_cell(self, cell: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int):
         '''Traverses the given NIB menu cell and adds it to the given XIB menu.'''
@@ -238,11 +240,14 @@ class XIBConverter:
         '''Traverses the given NIB custom object and adds it to the XIB.'''
 
         custom_class = obj.contents[0].values[0].decode()
-        # TODO: We could translate these too, we'd just have to add the NS prefix and replace the XIB's own File's Owner etc. 
-        # Alternatively, we should try to map these references to the pregenerated File's Owner from the XIB
-        if custom_class not in {'Application', 'FontManager'}:
-            print(f'Adding custom object {custom_class}')
-            self.xib.objects.add_object(custom_class)
+        match custom_class:
+            case 'Application':
+                self.custom_object_to_xib_node[obj] = self.xib.files_owner
+            case 'FontManager':
+                self.custom_object_to_xib_node[obj] = self.xib.font_manager
+            case _:
+                print(f'Adding custom object {custom_class}')
+                self.custom_object_to_xib_node[obj] = self.xib.objects.add_object(custom_class)
 
     def traverse_group(self, group: typedstream.TypedGroup):
         '''Recursively traverses the given NIB group.'''
