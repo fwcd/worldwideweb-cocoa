@@ -78,7 +78,7 @@ extern char *appDirectory; /* Pointer to directory for application */
 //	returns		0 if no file selected
 //			pointer to static string with filename if ok
 //
-const char *ask_name(HyperText *hint, int format) {
+NSString *ask_name(HyperText *hint, int format) {
     char *suggestion;
     char *slash;
     int status;
@@ -105,11 +105,14 @@ const char *ask_name(HyperText *hint, int format) {
     slash = strrchr(suggestion, '/'); //	Point to last slash
     if (slash) {
         *slash++ = 0; /* Separate directory and filename */
-        status = [save_panel runModalForDirectory:suggestion file:slash];
+        status = [save_panel runModalForDirectory:[NSString stringWithCString:suggestion encoding:NSUTF8StringEncoding]
+                                             file:[NSString stringWithCString:slash encoding:NSUTF8StringEncoding]];
     } else {
         if (TRACE)
             printf("No slash in directory!!\n");
-        status = [save_panel runModalForDirectory:@"." file:suggestion];
+        status = [save_panel runModalForDirectory:@"."
+                                             file:[NSString stringWithCString:suggestion
+                                                                     encoding:NSUTF8StringEncoding]];
     }
     free(suggestion);
 
@@ -128,7 +131,7 @@ const char *ask_name(HyperText *hint, int format) {
 //	hint	is a node to be used for a suggested name.
 //
 - saveIn:(int)format like:(HyperText *)hint {
-    const char *filename; //	The name of the file selected
+    NSString *filename; //	The name of the file selected
     HyperText *HT;
 
     HT = THIS_TEXT;
@@ -139,7 +142,7 @@ const char *ask_name(HyperText *hint, int format) {
     if (!filename)
         return nil; //	Save clancelled.
 
-    return [self save:HT inFile:filename format:format];
+    return [self save:HT inFile:[filename cStringUsingEncoding:NSUTF8StringEncoding] format:format];
 }
 
 //	Save as an HTML file	using save panel
@@ -290,7 +293,8 @@ const char *ask_name(HyperText *hint, int format) {
 
             HT = [[HyperText alloc] initWithAnchor:anAnchor Server:self];
             [HT setupWindow];
-            [[HT window] setTitle:filename]; // Show something's happening
+            [[HT window] setTitle:[NSString stringWithCString:filename
+                                                     encoding:NSUTF8StringEncoding]]; // Show something's happening
 
             if (file_number < 0)
                 [HT setEditable:HTEditable(filename)]; // This is editable?
@@ -357,12 +361,11 @@ const char *ask_name(HyperText *hint, int format) {
 //	-----------------------------------
 //
 
-const char *existing_filename() {
+NSString *existing_filename() {
     HyperText *HT; //	The new node
     char *suggestion = 0;
     char *slash;
     int status;
-    char *typelist = 0; //	Any extension.
     static NSOpenPanel *openPanel = 0;
 
     //	Get The Filename from the User
@@ -378,17 +381,19 @@ const char *existing_filename() {
         slash = strrchr(suggestion, '/'); //	Point to last slash
         if (slash) {
             *slash++ = 0; /* Separate directory and filename */
-            status = [openPanel runModalForDirectory:suggestion file:@"" types:&typelist];
+            status = [openPanel runModalForDirectory:[NSString stringWithCString:suggestion
+                                                                        encoding:NSUTF8StringEncoding]
+                                                file:@""];
             // (was: file:slash but this is silly as that is already open.)
         } else {
             if (TRACE)
                 printf("No slash in directory!!\n");
-            status = [openPanel runModalForDirectory:@"." file:@"" types:&typelist];
+            status = [openPanel runModalForDirectory:@"." file:@""];
             // (was: file:suggestion but this is silly as above)
         }
         free(suggestion);
     } else {
-        status = [openPanel runModalForTypes:&typelist];
+        status = [openPanel runModal];
     }
 
     if (!status) {
@@ -403,9 +408,9 @@ const char *existing_filename() {
 //	--------------------
 
 - linkToFile:sender {
-    const char *filename = existing_filename(); // Ask for filename
+    NSString *filename = existing_filename(); // Ask for filename
     if (filename) {
-        char *node_address = WWW_nameOfFile(filename);
+        char *node_address = WWW_nameOfFile([filename cStringUsingEncoding:NSUTF8StringEncoding]);
         Anchor *a = [[Anchor alloc] initWithAddress:node_address];
         free(node_address);
 
@@ -423,7 +428,7 @@ const char *existing_filename() {
 
 - openDiagnostic:(int)diagnostic {
 
-    const char *filename = existing_filename();
+    NSString *filename = existing_filename();
 
     if (!filename) {
         if (TRACE)
@@ -431,7 +436,7 @@ const char *existing_filename() {
         return nil;
     }
 
-    return [self openFile:filename diagnostic:diagnostic];
+    return [self openFile:[filename cStringUsingEncoding:NSUTF8StringEncoding] diagnostic:diagnostic];
 }
 
 //	Load a personal or system-wide version of a file
@@ -506,7 +511,7 @@ const char *existing_filename() {
     HyperText *hint = THIS_TEXT; //	The old hypertext
     char *node_address;          //	of the new hypertext
     Anchor *a;                   //	The new anchor
-    const char *filename;        //	The name of the file selected
+    NSString *filename;          //	The name of the file selected
     HyperText *HT;               //	The new hypertext
 
     if (!hint)
@@ -525,7 +530,7 @@ const char *existing_filename() {
     if (!filename)
         return nil; //	Save cancelled.
 
-    node_address = WWW_nameOfFile(filename);
+    node_address = WWW_nameOfFile([filename cStringUsingEncoding:NSUTF8StringEncoding]);
     [a setAddress:node_address]; // 	Adopt new address as node name
 
     /*	Make a default title for the document from the file name:
@@ -564,7 +569,7 @@ const char *existing_filename() {
 
     free(node_address);
 
-    status = [self save:HT inFile:filename format:WWW_HTML];
+    status = [self save:HT inFile:[filename cStringUsingEncoding:NSUTF8StringEncoding] format:WWW_HTML];
     if (!status)
         return nil; //	Save failed!
 

@@ -69,7 +69,7 @@ extern void write_rtf_header(NXStream *rtfStream);
 //	Anchor handling:
 
 //- anchors;				// Set of anchors
-- nodeAnchor;                  // Single anchor representing this node
+- (Anchor *)nodeAnchor;        // Single anchor representing this node
 - selectedLink;                // Return selected anchor if any
 - followLink;                  // (If selected)
 - unlinkSelection;             // Remove anchor info from selection

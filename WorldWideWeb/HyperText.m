@@ -338,7 +338,7 @@ static float page_width() {
 - server {
     return server;
 }
-- nodeAnchor {
+- (Anchor *)nodeAnchor {
     return nodeAnchor;
 }
 - (BOOL)isIndex {
