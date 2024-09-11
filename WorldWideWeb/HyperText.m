@@ -209,10 +209,12 @@ static float page_width() {
 
     if (isMonoFont) {
         scroll_X = [self isEditable] || (maxX > MAX_WIDTH);
-        [self setNoWrap];
+        // FIXME: Disable wrapping
+        // [self setNoWrap];
     } else {
         scroll_X = NO;
-        [self setCharWrap:NO]; // Word wrap please
+        // FIXME: Enable wrapping
+        // [self setCharWrap:NO]; // Word wrap please
     }
     if (maxX > MAX_WIDTH) {
         size.width = MAX_WIDTH;
@@ -227,7 +229,7 @@ static float page_width() {
     //	it to fit.
 
     if (!scroll_X) {
-        [self sizeTo:size.width:maxY];
+        [self setFrameSize:NSMakeSize(size.width, maxY)];
         // TODO: Do we need this?
         // [self calcLine];
         [self sizeToFit]; // Algorithm found by trial and error.
