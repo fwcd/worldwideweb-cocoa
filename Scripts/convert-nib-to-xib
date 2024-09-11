@@ -262,10 +262,27 @@ class XIBConverter:
         selector = group.values[2].decode()
 
         if (src_xib_node := self.object_to_xib_node.get(src_obj)) and (dest_xib_node := self.object_to_xib_node.get(dest_obj)):
-            print(f'Connecting {src_xib_node} to {selector} on {dest_xib_node}')
+            print(f'Connecting {src_xib_node} to {selector} on {dest_xib_node} (action)')
             src_xib_node.connect_action(
                 selector=selector,
                 target=dest_xib_node,
+            )
+
+    def traverse_outlet_connector(self, obj: typedstream.GenericArchivedObject):
+        '''Traverses the given NIB outlet connector and adds it to the XIB.'''
+
+        assert obj.clazz.name == b'IBOutletConnector', obj.clazz.name
+
+        group = obj.contents[0]
+        src_obj = group.values[0]
+        dest_obj = group.values[1]
+        property = group.values[2].decode()
+
+        if (src_xib_node := self.object_to_xib_node.get(src_obj)) and (dest_xib_node := self.object_to_xib_node.get(dest_obj)):
+            print(f"Connecting {src_xib_node}'s {property} to {dest_xib_node} (outlet)")
+            src_xib_node.connect_outlet(
+                property=property,
+                destination=dest_xib_node,
             )
 
     def traverse_window(self, obj: typedstream.GenericArchivedObject):
@@ -312,9 +329,11 @@ class XIBConverter:
         match obj.clazz.name.decode():
             case 'CustomObject':
                 self.traverse_custom_object(obj)
+            # NOTE: We rely on these connectors being listed after the relevant objects
             case 'IBControlConnector':
-                # NOTE: We rely on these connectors being listed after the relevant objects
                 self.traverse_control_connector(obj)
+            case 'IBOutletConnector':
+                self.traverse_outlet_connector(obj)
             case 'WindowTemplate':
                 self.traverse_window(obj)
 
