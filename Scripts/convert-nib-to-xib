@@ -334,6 +334,12 @@ class XIBConverter:
             'height': str(group.values[3]),
         }
     
+    def convert_size(self, group: typedstream.TypedGroup) -> dict[str, str]:
+        return {
+            'width': str(group.values[0]),
+            'height': str(group.values[1]),
+        }
+    
     # TODO: Abstract over more commonalities between the different view types
 
     def traverse_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
@@ -455,9 +461,11 @@ class XIBConverter:
 
         frame = self.convert_rect(obj.contents[2])
         cells = obj.contents[12].values[0]
+        cell_size = self.convert_size(obj.contents[13])
 
         xib_form = xib_parent.add_object('form')
         xib_form.add('rect', key='frame', **frame)
+        xib_form.add('size', key='cellSize', **cell_size)
         self.object_to_xib_node[obj] = xib_form
 
         if cells is not None:
