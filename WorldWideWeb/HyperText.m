@@ -95,10 +95,9 @@ static float page_width() {
 
 //	Free the hypertext.
 
-- free {
+- (void)dealloc {
     slot[slotNumber] = 0;     //	Allow slot to be reused
     [nodeAnchor setNode:nil]; // 	Invalidate the node
-    return [super free];
 }
 
 //	Read and set format

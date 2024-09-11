@@ -200,7 +200,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //
 //		Free an anchor
 //		--------------
-- free {
+- (void)dealloc {
     if (Address)
         free(Address);
     if (parent)
@@ -210,7 +210,6 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
     [Sources makeObjectsPerformSelector:@selector(unload)];
     if (!parent)
         [orphans removeObject:self];
-    return [super free];
 }
 
 //	Get list of sources
