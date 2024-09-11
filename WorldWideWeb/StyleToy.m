@@ -169,7 +169,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 //	style sheet name, so that any changes will be saved in the user's
 //	$(HOME)/WWW directory.
 
-- loadDefaultStyleSheet {
+- (void)loadDefaultStyleSheet {
     NXStream *stream;
 
     if (!styleSheet)
@@ -204,13 +204,12 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
         style = styleSheet->styles;
         [self display_style];
     }
-    return self;
 }
 
 //	Save style sheet to a file
 //	--------------------------
 
-- saveAs:sender {
+- (IBAction)saveAs:sender {
     NXStream *s; //	The file stream
     NSString *slash;
     int status;
@@ -233,7 +232,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     if (!status) {
         if (TRACE)
             printf("No file selected.\n");
-        return nil;
+        return;
     }
 
     filename = [save_panel filename];
@@ -242,7 +241,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     if (!s) {
         if (TRACE)
             printf("Styles: Can't open file %s for write\n", filename);
-        return nil;
+        return;
     }
     if (TRACE)
         printf("StylestyleSheet: Saving as `%s'.\n", styleSheet->name);
@@ -250,13 +249,12 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     NXClose(s);
     style = styleSheet->styles;
     [self display_style];
-    return self;
 }
 
 //	Move to next style
 //	------------------
 
-- NextButton:sender {
+- (IBAction)NextButton:sender {
     if (styleSheet->styles)
         if (styleSheet->styles->next)
             if (style->next) {
@@ -265,20 +263,17 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
                 style = styleSheet->styles;
             }
     [self display_style];
-    return self;
 }
 
-- FindUnstyledButton:sender {
+- (IBAction)FindUnstyledButton:sender {
     [THIS_TEXT selectUnstyled:styleSheet];
-    return self;
 }
 
 //	Apply current style to selection
 //	--------------------------------
 
-- ApplyButton:sender {
+- (IBAction)ApplyButton:sender {
     [THIS_TEXT applyStyle:style];
-    return self;
 }
 
 - applyStyleNamed:(const char *)name {
@@ -288,44 +283,44 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     return [THIS_TEXT applyStyle:thisStyle];
 }
 
-- heading1Button:sender {
-    return [self applyStyleNamed:"Heading1"];
+- (IBAction)heading1Button:sender {
+    [self applyStyleNamed:"Heading1"];
 }
-- heading2Button:sender {
-    return [self applyStyleNamed:"Heading2"];
+- (IBAction)heading2Button:sender {
+    [self applyStyleNamed:"Heading2"];
 }
-- heading3Button:sender {
-    return [self applyStyleNamed:"Heading3"];
+- (IBAction)heading3Button:sender {
+    [self applyStyleNamed:"Heading3"];
 }
-- heading4Button:sender {
-    return [self applyStyleNamed:"Heading4"];
+- (IBAction)heading4Button:sender {
+    [self applyStyleNamed:"Heading4"];
 }
-- heading5Button:sender {
-    return [self applyStyleNamed:"Heading5"];
+- (IBAction)heading5Button:sender {
+    [self applyStyleNamed:"Heading5"];
 }
-- heading6Button:sender {
-    return [self applyStyleNamed:"Heading6"];
+- (IBAction)heading6Button:sender {
+    [self applyStyleNamed:"Heading6"];
 }
-- normalButton:sender {
-    return [self applyStyleNamed:"Normal"];
+- (IBAction)normalButton:sender {
+    [self applyStyleNamed:"Normal"];
 }
-- addressButton:sender {
-    return [self applyStyleNamed:"Address"];
+- (IBAction)addressButton:sender {
+    [self applyStyleNamed:"Address"];
 }
-- exampleButton:sender {
-    return [self applyStyleNamed:"Example"];
+- (IBAction)exampleButton:sender {
+    [self applyStyleNamed:"Example"];
 }
-- listButton:sender {
-    return [self applyStyleNamed:"List"];
+- (IBAction)listButton:sender {
+    [self applyStyleNamed:"List"];
 }
-- glossaryButton:sender {
-    return [self applyStyleNamed:"Glossary"];
+- (IBAction)glossaryButton:sender {
+    [self applyStyleNamed:"Glossary"];
 }
 
 //	Move to previous style
 //	----------------------
 
-- PreviousButton:sender {
+- (IBAction)PreviousButton:sender {
     HTStyle *scan;
     for (scan = styleSheet->styles; scan; scan = scan->next) {
         if ((scan->next == style) || (scan->next == 0)) {
@@ -334,26 +329,23 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
         }
     }
     [self display_style];
-    return self;
 }
 
-- SetButton:sender {
+- (IBAction)SetButton:sender {
     [self load_style];
     [THIS_TEXT updateStyle:style];
-    return self;
 }
 
-- PickButton:sender {
+- (IBAction)PickButton:sender {
     HTStyle *st = [THIS_TEXT selectionStyle:styleSheet];
     if (st) {
         style = st;
         [self display_style];
     }
-    return self;
 }
 
-- ApplyToSimilar:sender {
-    return [THIS_TEXT applyToSimilar:style];
+- (IBAction)ApplyToSimilar:sender {
+    [THIS_TEXT applyToSimilar:style];
 }
 
 @end

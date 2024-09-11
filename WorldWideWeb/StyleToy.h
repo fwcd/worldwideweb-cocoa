@@ -13,25 +13,25 @@
 
 - init;
 
-- loadDefaultStyleSheet;
-- NextButton:sender;
-- FindUnstyledButton:sender;
-- ApplyButton:sender;
-- heading1Button:sender;
-- heading2Button:sender;
-- heading3Button:sender;
-- heading4Button:sender;
-- heading5Button:sender;
-- heading6Button:sender;
-- normalButton:sender;
-- addressButton:sender;
-- exampleButton:sender;
-- listButton:sender;
-- glossaryButton:sender;
-- PreviousButton:sender;
-- SetButton:sender;
-- PickButton:sender;
-- ApplyToSimilar:sender;
-- open:sender;
-- saveAs:sender;
+- (void)loadDefaultStyleSheet;
+- (IBAction)NextButton:sender;
+- (IBAction)FindUnstyledButton:sender;
+- (IBAction)ApplyButton:sender;
+- (IBAction)heading1Button:sender;
+- (IBAction)heading2Button:sender;
+- (IBAction)heading3Button:sender;
+- (IBAction)heading4Button:sender;
+- (IBAction)heading5Button:sender;
+- (IBAction)heading6Button:sender;
+- (IBAction)normalButton:sender;
+- (IBAction)addressButton:sender;
+- (IBAction)exampleButton:sender;
+- (IBAction)listButton:sender;
+- (IBAction)glossaryButton:sender;
+- (IBAction)PreviousButton:sender;
+- (IBAction)SetButton:sender;
+- (IBAction)PickButton:sender;
+- (IBAction)ApplyToSimilar:sender;
+- (IBAction)open:sender;
+- (IBAction)saveAs:sender;
 @end
