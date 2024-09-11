@@ -232,8 +232,7 @@ class XIBConverter:
 
         assert menu.clazz.name == b'MenuTemplate', menu.clazz.name
 
-        # TODO: Should we do `self.object_to_xib_node[cell] = menu` here?
-        # We probably don't need this since there don't seem to be any control connectors.
+        self.object_to_xib_node[menu] = xib_menu
 
         # Parse basic metadata
         title = menu.contents[2].values[0].decode()
