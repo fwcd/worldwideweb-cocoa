@@ -8,6 +8,4 @@
 @interface TcpAccess : HyperAccess {
 }
 
-@property(nonatomic) IBOutlet HyperManager *manager;
-
 @end

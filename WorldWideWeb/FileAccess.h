@@ -9,8 +9,6 @@
 @interface FileAccess : HyperAccess {
 }
 
-@property(nonatomic) IBOutlet HyperManager *manager;
-
 + initialize;
 
 - (IBAction)saveAs:sender;

@@ -16,17 +16,10 @@
 
 @implementation HyperAccess
 
-- setManager:anObject;
+- (void)setManager:anObject;
 {
-    manager = anObject;
-    [(HyperManager *)manager registerAccess:self];
-    return self;
-}
-
-//	Methods to return the values of instance variables
-
-- manager {
-    return manager;
+    _manager = anObject;
+    [(HyperManager *)_manager registerAccess:self];
 }
 
 //	Return the name of this access method
@@ -114,6 +107,6 @@
 //	These delegate methods are special to HyperText:
 
 - hyperTextDidBecomeMain:sender {
-    return [manager hyperTextDidBecomeMain:sender]; /* Pass the buck */
+    return [self.manager hyperTextDidBecomeMain:sender]; /* Pass the buck */
 }
 @end

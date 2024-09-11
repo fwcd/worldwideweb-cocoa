@@ -10,21 +10,20 @@
 #import "HyperText.h"
 #import <Foundation/Foundation.h>
 
-@interface HyperAccess : NSObject {
-    id manager; // The object which manages different access mechanisms.
-}
+@interface HyperAccess : NSObject
 
 //	Target variables for interface builder hookups:
 
+@property(nonatomic) IBOutlet id manager; // The object which manages different access mechanisms.
 @property(nonatomic) id contentSearch;
 @property(nonatomic) IBOutlet NSForm *openString;
 @property(nonatomic) IBOutlet NSForm *titleString;
 @property(nonatomic) IBOutlet NSForm *keywords;
 @property(nonatomic) IBOutlet NSTextField *addressString;
 
-//  Interface builder initialisation methods:
+//  Overridden setter
 
-- setManager:anObject;
+- (void)setManager:anObject;
 
 //	Action methods for buttons etc:
 
