@@ -190,7 +190,7 @@ static float page_width() {
     [self.window disableFlushWindow]; // Prevent flashes
 
     [self setVerticallyResizable:YES]; // Can change size automatically
-    bool isMonoFont = NO; // TODO: Figure this out
+    bool isMonoFont = NO;              // TODO: Figure this out
     [self setHorizontallyResizable:isMonoFont];
     // TODO: Do we need this?
     // [self calcLine];  // Wrap text to current text size
