@@ -36,8 +36,8 @@
     [rightMargin setFloatValue:new *[rightMargin floatValue] / old];
     [topMargin setFloatValue:new *[topMargin floatValue] / old];
     [bottomMargin setFloatValue:new *[bottomMargin floatValue] / old];
-
-    return [super pickedUnits:sender];
+    
+    return self;
 }
 
 - readPrintInfo
