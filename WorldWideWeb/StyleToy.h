@@ -4,19 +4,16 @@
 #import <AppKit/AppKit.h>
 
 @interface StyleToy : NSObject {
-    NSForm *TabForm;
-    NSForm *ParameterForm;
-    NSWindow *StylePanel;
-    NSForm *NameForm;
 }
+
+@property(nonatomic) NSWindow *StylePanel;
+@property(nonatomic) IBOutlet NSForm *TabForm;
+@property(nonatomic) IBOutlet NSForm *ParameterForm;
+@property(nonatomic) IBOutlet NSForm *NameForm;
 
 - init;
 
 - loadDefaultStyleSheet;
-- setTabForm:(NSForm *)anObject;
-- setParameterForm:(NSForm *)anObject;
-- setStylePanel:(NSWindow *)anObject;
-- setNameForm:(NSForm *)anObject;
 - NextButton:sender;
 - FindUnstyledButton:sender;
 - ApplyButton:sender;
