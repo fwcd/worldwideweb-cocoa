@@ -82,8 +82,7 @@
         [pi setTopMargin:[topMargin floatValue] / conversion];
         [pi setBottomMargin:[bottomMargin floatValue] / conversion];
     }
-    if (*[pi paperType])
-        NXWriteDefault("WorldWideWeb", "PaperType", [pi paperType]); /* Save it */
+    [[NSUserDefaults standardUserDefaults] setValue:[pi paperName] forKey:@"PaperType"]; /* Save it */
     return self;
 }
 
