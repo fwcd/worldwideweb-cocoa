@@ -43,6 +43,7 @@ typedef struct _HTStyle {
     HTCoord spaceBefore; /* Omissions from NSParagraphStyle */
     HTCoord spaceAfter;
     Anchor *anchor; /* Anchor id if any, else zero */
+    bool clearAnchor;
 } HTStyle;
 
 /*	Style functions:
@@ -69,5 +70,3 @@ extern HTStyleSheet *HTStyleSheetAddStyle(HTStyleSheet *self, HTStyle *style);
 extern HTStyleSheet *HTStyleSheetRemoveStyle(HTStyleSheet *self, HTStyle *style);
 extern HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NXStream *stream);
 extern HTStyleSheet *HTStyleSheetWrite(HTStyleSheet *self, NXStream *stream);
-
-#define CLEAR_POINTER ((void *)-1) /* Pointer value means "clear me" */

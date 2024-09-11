@@ -190,8 +190,10 @@ static float page_width() {
     [self.window disableFlushWindow]; // Prevent flashes
 
     [self setVerticallyResizable:YES]; // Can change size automatically
-    [self setHorizontallyResizable:tFlags.monoFont];
-    [self calcLine];  // Wrap text to current text size
+    bool isMonoFont = NO; // TODO: Figure this out
+    [self setHorizontallyResizable:isMonoFont];
+    // TODO: Do we need this?
+    // [self calcLine];  // Wrap text to current text size
     [self sizeToFit]; // Reduce size if possible.
 
     CGFloat maxX = self.maxSize.width;
@@ -205,7 +207,7 @@ static float page_width() {
         size.height = maxY < MIN_HEIGHT ? MIN_HEIGHT : maxY;
     }
 
-    if (tFlags.monoFont) {
+    if (isMonoFont) {
         scroll_X = [self isEditable] || (maxX > MAX_WIDTH);
         [self setNoWrap];
     } else {
@@ -226,7 +228,8 @@ static float page_width() {
 
     if (!scroll_X) {
         [self sizeTo:size.width:maxY];
-        [self calcLine];
+        // TODO: Do we need this?
+        // [self calcLine];
         [self sizeToFit]; // Algorithm found by trial and error.
     }
 
@@ -251,8 +254,8 @@ static float page_width() {
 #ifdef OLD_METHOD
         NSRect oldframe;
         oldframe = self.window.frame;
-        [window sizeWindow:scroll_frame.size.width:scroll_frame.size.height];
-        [window moveTopLeftTo:oldframe.origin.x:oldframe.origin.y + oldframe.size.height];
+        [self.window sizeWindow:scroll_frame.size.width:scroll_frame.size.height];
+        [self.window moveTopLeftTo:oldframe.origin.x:oldframe.origin.y + oldframe.size.height];
 #else
         NSRect newFrame;
         scroll_frame.origin.x = 150 + (slotNumber % 10) * 30 + ((slotNumber / 10) % 3) * 40;
@@ -276,7 +279,8 @@ static float page_width() {
     }
 #endif
     [self.window enableFlushWindow];
-    [self calcLine];       /* Prevent messy screen */
+    // TODO: Do we need this?
+    // [self calcLine];       /* Prevent messy screen */
     [self.window display]; /* Ought to clean it up */
     return self;
 
@@ -408,6 +412,7 @@ static float page_width() {
 
     a = [self anchor];
     style->anchor = a;
+    style->clearAnchor = NO;
     [self applyStyle:style];
     if (TRACE)
         printf("HyperText: New dest anchor %i from %i to %i.\n", a, sp0.cp, spN.cp);
@@ -426,7 +431,7 @@ static float page_width() {
         return nil; /* Anchor must exist */
 
     if ([self isEditable])
-        [window setDocumentEdited:YES];
+        [self.window setDocumentEdited:YES];
     else
         return nil;
 
@@ -441,6 +446,7 @@ static float page_width() {
             printf("HyperText: Existing source anchor %i selected.\n", a);
     }
     style->anchor = a;
+    style->clearAnchor = NO;
     [a linkTo:anAnchor];     // Link it up
     [self applyStyle:style]; // Will highlight it because linked
     free(style);
@@ -458,11 +464,12 @@ static float page_width() {
     HTStyle *style = HTStyleNew();
 
     if ([self isEditable])
-        [window setDocumentEdited:YES];
+        [self.window setDocumentEdited:YES];
     else
         return nil;
 
-    style->anchor = CLEAR_POINTER;
+    style->anchor = nil;
+    style->clearAnchor = YES;
     [self applyStyle:style];
     free(style);
     return self;
@@ -600,8 +607,8 @@ static void apply(HTStyle *style, NSTextStorage *r) {
     if (style->paragraph) {
         r->paraStyle = style->paragraph;
     }
-    if (style->anchor) {
-        r->info = (style->anchor == CLEAR_POINTER) ? 0 : (style->anchor);
+    if (style->anchor || style->clearAnchor) {
+        r->info = style->anchor;
     }
 
     if (style->textGray >= 0)
@@ -1349,6 +1356,7 @@ void loadPlainText() {
     Anchor *a = *name ? [[Anchor alloc] initWithParent:nodeAnchor tag:name] : [self anchor];
 
     style->anchor = a;
+    style->clearAnchor = NO;
     [(Anchor *)style->anchor isLastChild]; /* Put in correct order */
     if (*reference) {                      /* Link only if href */
         parsed_address = HTParse(reference, [nodeAnchor address], PARSE_ALL);
@@ -1363,7 +1371,8 @@ void loadPlainText() {
 - appendEndAnchor // End it
 {
     HTStyle *style = HTStyleNew();
-    style->anchor = CLEAR_POINTER;
+    style->anchor = nil;
+    style->clearAnchor = YES;
     SET_STYLE(style); /* End anchor here */
     free(style);
     return self;

@@ -806,6 +806,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
 
                 style->anchor =
                     *anchor_name ? [[Anchor alloc] initWithParent:nodeAnchor tag:anchor_name] : [self anchor];
+                style->clearAnchor = NO;
 
                 /* If next anchor number not specified, ensure it is safe */
 
