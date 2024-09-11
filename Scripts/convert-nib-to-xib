@@ -177,7 +177,7 @@ class XIBConverter:
         self.visited_objects: set[typedstream.GenericArchivedObject] = set()
         self.object_to_xib_node: dict[typedstream.GenericArchivedObject, XIBNode] = {}
     
-    def convert_menu_cell(self, cell: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int):
+    def traverse_menu_cell(self, cell: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int):
         '''Traverses the given NIB menu cell and adds it to the given XIB menu.'''
 
         assert cell.clazz.name == b'MenuCell', cell.clazz.name
@@ -209,11 +209,11 @@ class XIBConverter:
 
         if has_submenu:
             xib_submenu = xib_item.add_submenu()
-            self.convert_menu(submenu, xib_submenu, level=level)
+            self.traverse_menu(submenu, xib_submenu, level=level)
         else:
             print(f"{'  ' * level}{title}")
 
-    def convert_menu(self, menu: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int=0):
+    def traverse_menu(self, menu: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int=0):
         '''Traverses the given NIB menu and adds its cells to the given XIB menu.'''
 
         assert menu.clazz.name == b'MenuTemplate', menu.clazz.name
@@ -238,12 +238,12 @@ class XIBConverter:
         # Convert the menu cells to XIB items
         for cell in matrix_list.elements:
             assert isinstance(cell, typedstream.GenericArchivedObject)
-            self.convert_menu_cell(cell, xib_menu, level=level + 1)
+            self.traverse_menu_cell(cell, xib_menu, level=level + 1)
 
     def traverse_main_menu(self, menu: typedstream.GenericArchivedObject):
         '''Traverses the given NIB main menu and adds its cells to the XIB main menu.'''
 
-        self.convert_menu(menu, self.xib.main_menu)
+        self.traverse_menu(menu, self.xib.main_menu)
 
     def traverse_custom_object(self, obj: typedstream.GenericArchivedObject):
         '''Traverses the given NIB custom object and adds it to the XIB.'''
