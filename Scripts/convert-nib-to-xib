@@ -22,6 +22,7 @@ class XIBNode:
 
         self._connections: Optional[Self] = None
         self._items: Optional[Self] = None
+        self._subviews: Optional[Self] = None
 
     def add_object(self, class_or_tag_name: str, id: Optional[str]=None, **kwargs) -> Self:
         '''Adds an object under this node.'''
@@ -77,6 +78,13 @@ class XIBNode:
             self._items = XIBNode(ET.Element('items'))
             self.element.append(self._items.element)
         return self._items
+
+    @property
+    def subviews(self) -> Self:
+        if self._subviews is None:
+            self._subviews = XIBNode(ET.Element('subviews'))
+            self.element.append(self._subviews.element)
+        return self._subviews
 
     def connect_outlet(self, property: str, destination: str | Self):
         '''Adds an outlet to the given destination.'''
@@ -296,6 +304,63 @@ class XIBConverter:
         else:
             print(f'Warning: Could not connect outlet due to untranslated source object ({src_obj.clazz.name.decode()} and {dest_obj.clazz.name.decode()})')
 
+    def traverse_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
+        '''Traverses the given NIB view and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'View', obj.clazz.name
+
+        frame = obj.contents[2]
+        children = obj.contents[6].values[0]
+
+        xib_view = xib_parent.add_object('view', **kwargs)
+        xib_view.add('rect',
+            key='frame',
+            x=str(frame.values[0]),
+            y=str(frame.values[1]),
+            width=str(frame.values[2]),
+            height=str(frame.values[3]),
+        )
+
+        self.object_to_xib_node[obj] = xib_view
+
+        if children is not None:
+            assert isinstance(children, typedstream.types.nextstep.List)
+            for child in children.elements:
+                assert isinstance(child, typedstream.GenericArchivedObject), type(child)
+                self.traverse_any_view(child, xib_view.subviews)
+
+    def traverse_box(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode):
+        '''Traverses the given NIB box and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'Box', obj.clazz.name
+
+        frame = obj.contents[2]
+        children = obj.contents[6].values[0]
+
+        xib_box = xib_parent.add_object('box')
+        xib_box.add('rect',
+            key='frame',
+            x=str(frame.values[0]),
+            y=str(frame.values[1]),
+            width=str(frame.values[2]),
+            height=str(frame.values[3]),
+        )
+
+        self.object_to_xib_node[obj] = xib_box
+
+        assert isinstance(children, typedstream.types.nextstep.List)
+        content_view = children.elements[0]
+        self.traverse_view(content_view, xib_box, key='contentView')
+
+    def traverse_any_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
+        match obj.clazz.name.decode():
+            case 'View':
+                self.traverse_view(obj, xib_parent, **kwargs)
+            case 'Box':
+                self.traverse_box(obj, xib_parent, **kwargs)
+            case class_name:
+                print(f'Warning: Skipping unrecognized view class name {class_name}')
+
     def traverse_window(self, obj: typedstream.GenericArchivedObject):
         '''Traverses the given NIB window and adds it to the XIB.'''
 
@@ -303,21 +368,23 @@ class XIBConverter:
 
         rect = obj.contents[0]
         title = obj.contents[1].values[4].decode()
+        view = obj.contents[1].values[7]
 
         print(f'Adding window {title}')
 
-        window = self.xib.objects.add_object('window', title=title)
+        xib_window = self.xib.objects.add_object('window', title=title)
         # TODO: Should/can we add a canvas location?
         # window.add('point', key='canvasLocation', x='200', y='400')
-        window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
-        window.add('rect',
+        xib_window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
+        xib_window.add('rect',
             key='contentRect',
             x=str(rect.values[0]),
             y=str(rect.values[1]),
             width=str(rect.values[2]),
             height=str(rect.values[3]),
         )
-        window.add_object('view', key='contentView')
+
+        self.traverse_view(view, xib_window, key='contentView')
 
     def traverse_group(self, group: typedstream.TypedGroup):
         '''Recursively traverses the given NIB group.'''
