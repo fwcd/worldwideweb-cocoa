@@ -28,14 +28,14 @@
 
 //	Action methods for buttons etc:
 
-- search:sender;
-- searchRTF:sender;
-- searchSGML:sender;
+- (IBAction)search:sender;
+- (IBAction)searchRTF:sender;
+- (IBAction)searchSGML:sender;
 
-- open:sender;
-- openRTF:sender;
-- openSGML:sender;
-- saveNode:(HyperText *)aText;
+- (IBAction)open:sender;
+- (IBAction)openRTF:sender;
+- (IBAction)openSGML:sender;
+- (id)saveNode:(HyperText *)aText;
 
 //	Calls form other code:
 

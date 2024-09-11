@@ -506,7 +506,7 @@ NSString *existing_filename() {
 // On exit,
 //	Returns	If successful, the anchor of the node loaded or found.
 //		If failed, nil.
-- makeNew:sender {
+- (Anchor *)makeNewNode:sender {
     id status;
     HyperText *hint = THIS_TEXT; //	The old hypertext
     char *node_address;          //	of the new hypertext
@@ -578,6 +578,10 @@ NSString *existing_filename() {
     return a;
 }
 
+- (IBAction)makeNew:(id)sender {
+    [self makeNewNode:sender];
+}
+
 //	Make a new blank node named like the current node and link to it
 //	----------------------------------------------------------------
 //
@@ -587,7 +591,7 @@ NSString *existing_filename() {
     if (![HT isEditable])
         return nil; /* Won't be able to link to it */
 
-    a = [self makeNew:sender]; /* Make the new node */
+    a = [self makeNewNode:sender]; /* Make the new node */
     if (!a)
         return nil;
 

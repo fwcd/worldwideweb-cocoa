@@ -4,17 +4,22 @@
 #pragma once
 
 #import "HyperAccess.h"
+#import "HyperManager.h"
 
 @interface FileAccess : HyperAccess {
 }
+
+@property(nonatomic) IBOutlet HyperManager *manager;
+
 + initialize;
 
-- saveAs:sender;
-- saveAsRichText:sender;
-- saveAsPlainText:sender;
-- makeNew:sender;
-- linkToNew:sender;
-- linkToFile:sender;
+- (IBAction)saveAs:sender;
+- (IBAction)saveAsRichText:sender;
+- (IBAction)saveAsPlainText:sender;
+- (Anchor *)makeNewNode:sender;
+- (IBAction)makeNew:sender;
+- (IBAction)linkToNew:sender;
+- (IBAction)linkToFile:sender;
 - openMy:(const char *)filename diagnostic:(int)diagnostic;
 - goHome:sender;
 @end

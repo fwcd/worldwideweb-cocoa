@@ -3,8 +3,11 @@
 #pragma once
 
 #import "HyperAccess.h"
+#import "HyperManager.h"
 
 @interface TcpAccess : HyperAccess {
 }
+
+@property(nonatomic) IBOutlet HyperManager *manager;
 
 @end

@@ -39,8 +39,7 @@
 
 //	These are all dummies, because only subclasses of this class actually work.
 
-- search:sender {
-    return nil;
+- (IBAction)search:sender {
 }
 
 - searchRTF:sender {
@@ -53,16 +52,13 @@
 
 //	Direct open buttons:
 
-- open:sender {
-    return nil;
+- (IBAction)open:sender {
 }
 
-- openRTF:sender {
-    return nil;
+- (IBAction)openRTF:sender {
 }
 
-- openSGML:sender {
-    return nil;
+- (IBAction)openSGML:sender {
 }
 - accessName:(const char *)name Diagnostic:(int)level {
     return nil; /* can't do that. */

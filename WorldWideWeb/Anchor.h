@@ -36,9 +36,9 @@
 - initWithAddress:(const char *)address;
 - initWithParent:(Anchor *)anAnchor tag:(const char *)tag;
 
-+ back;
-+ next;
-+ previous;
++ (void)back;
++ (void)next;
++ (void)previous;
 
 - (void)setNode:(id)node;
 - (const char *)address;

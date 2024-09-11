@@ -148,9 +148,9 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //
 //		Go back in history
 //		------------------
-+ back {
++ (void)back {
     id lastObject = [HTHistory lastObject];
-    return [lastObject select]; // nil if no history
+    [lastObject select]; // nil if no history
 }
 
 //		Go to next logical step
@@ -176,11 +176,11 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
     return self;
 }
 
-+ next {
-    return [self moveBy:+1];
++ (void)next {
+    [self moveBy:+1];
 }
-+ previous {
-    return [self moveBy:-1];
++ (void)previous {
+    [self moveBy:-1];
 }
 
 //		Reorder the children

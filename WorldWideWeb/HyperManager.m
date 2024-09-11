@@ -36,13 +36,11 @@ PRIVATE FileAccess *fileAccess = nil;
     return self;
 }
 
-- traceOn:sender {
+- (IBAction)traceOn:sender {
     WWW_TraceFlag = 1;
-    return self;
 }
-- traceOff:sender {
+- (IBAction)traceOff:sender {
     WWW_TraceFlag = 0;
-    return self;
 }
 
 - manager {
@@ -202,14 +200,14 @@ PRIVATE FileAccess *fileAccess = nil;
 //	These navigate around the web as though it were a tree, from the point of
 //	view of the user's browsing order.
 
-- back:sender {
-    return [Anchor back];
+- (IBAction)back:sender {
+    [Anchor back];
 }
-- next:sender {
-    return [Anchor next];
+- (IBAction)next:sender {
+    [Anchor next];
 }
-- previous:sender {
-    return [Anchor previous];
+- (IBAction)previous:sender {
+    [Anchor previous];
 }
 
 //	@@ Note: the following 2 methods are duplicated (virtually) in FileAccess.m
@@ -221,24 +219,24 @@ PRIVATE FileAccess *fileAccess = nil;
 //	This accesses the default page of text for the user or, failing that,
 //	for the system.
 //
-- goHome:sender {
-    return [fileAccess openMy:"default.html" diagnostic:0];
+- (IBAction)goHome:sender {
+    [fileAccess openMy:"default.html" diagnostic:0];
 }
 
 //	Load Help information
 //	---------------------
 //
 //
-- help:sender {
-    return [fileAccess openMy:"help.html" diagnostic:0];
+- (IBAction)help:sender {
+    [fileAccess openMy:"help.html" diagnostic:0];
 }
 
 //	Go to the Blank Page
 //	--------------------
 //
 //
-- goToBlank:sender {
-    return [fileAccess openMy:"blank.html" diagnostic:0];
+- (IBAction)goToBlank:sender {
+    [fileAccess openMy:"blank.html" diagnostic:0];
 }
 
 //				Application Delegate Methods
@@ -247,7 +245,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //	On Initialisation, Load Initial File
 //	------------------------------------
 
-- appDidInit:sender {
+- (void)appDidInit:sender {
     if (TRACE)
         printf("HyperManager: appDidInit\n");
 
@@ -256,7 +254,7 @@ PRIVATE FileAccess *fileAccess = nil;
     //    if (TRACE) printf("WWW: Run from %s\n", appDirectory);
 
     [Anchor setManager:self];
-    return [self goHome:self];
+    [self goHome:self];
 }
 
 //	Accept that we can open files from the workspace
@@ -287,34 +285,34 @@ PRIVATE FileAccess *fileAccess = nil;
 
 //		Actions:
 //		-------
-- search:sender {
-    return [self searchDiagnostic:0];
+- (IBAction)search:sender {
+    [self searchDiagnostic:0];
 }
 
-- searchRTF:sender {
-    return [self searchDiagnostic:1];
+- (IBAction)searchRTF:sender {
+    [self searchDiagnostic:1];
 }
 
-- searchSGML:sender {
-    return [self searchDiagnostic:2];
+- (IBAction)searchSGML:sender {
+    [self searchDiagnostic:2];
 }
 
 //	Direct open buttons:
 
-- open:sender {
-    return [self accessName:[openString stringValueAt:0] Diagnostic:0];
+- (IBAction)open:sender {
+    [self accessName:[[[self.openString cellAtIndex:0] stringValue] UTF8String] Diagnostic:0];
 }
 
-- linkToString:sender {
-    return [THIS_TEXT linkSelTo:[[Anchor alloc] initWithAddress:[openString stringValueAt:0]]];
+- (IBAction)linkToString:sender {
+    [THIS_TEXT linkSelTo:[[Anchor alloc] initWithAddress:[[[self.openString cellAtIndex:0] stringValue] UTF8String]]];
 }
 
-- openRTF:sender {
-    return [self accessName:[openString stringValueAt:0] Diagnostic:1];
+- (IBAction)openRTF:sender {
+    [self accessName:[[[self.openString cellAtIndex:0] stringValue] UTF8String] Diagnostic:1];
 }
 
-- openSGML:sender {
-    return [self accessName:[openString stringValueAt:0] Diagnostic:2];
+- (IBAction)openSGML:sender {
+    [self accessName:[[[self.openString cellAtIndex:0] stringValue] UTF8String] Diagnostic:2];
 }
 
 //	Save a hypertext back to its original server
