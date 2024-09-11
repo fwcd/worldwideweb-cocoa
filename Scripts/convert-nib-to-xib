@@ -304,23 +304,24 @@ class XIBConverter:
         else:
             print(f'Warning: Could not connect outlet due to untranslated source object ({src_obj.clazz.name.decode()} and {dest_obj.clazz.name.decode()})')
 
+    def convert_frame(self, group: typedstream.TypedGroup) -> dict[str, str]:
+        return {
+            'x': str(group.values[0]),
+            'y': str(group.values[1]),
+            'width': str(group.values[2]),
+            'height': str(group.values[3]),
+        }
+
     def traverse_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         '''Traverses the given NIB view and adds it to the XIB.'''
         
         assert obj.clazz.name == b'View', obj.clazz.name
 
-        frame = obj.contents[2]
+        frame = self.convert_frame(obj.contents[2])
         children = obj.contents[6].values[0]
 
         xib_view = xib_parent.add_object('view', **kwargs)
-        xib_view.add('rect',
-            key='frame',
-            x=str(frame.values[0]),
-            y=str(frame.values[1]),
-            width=str(frame.values[2]),
-            height=str(frame.values[3]),
-        )
-
+        xib_view.add('rect', key='frame', **frame)
         self.object_to_xib_node[obj] = xib_view
 
         if children is not None:
@@ -334,18 +335,11 @@ class XIBConverter:
         
         assert obj.clazz.name == b'Box', obj.clazz.name
 
-        frame = obj.contents[2]
+        frame = self.convert_frame(obj.contents[2])
         children = obj.contents[6].values[0]
 
         xib_box = xib_parent.add_object('box')
-        xib_box.add('rect',
-            key='frame',
-            x=str(frame.values[0]),
-            y=str(frame.values[1]),
-            width=str(frame.values[2]),
-            height=str(frame.values[3]),
-        )
-
+        xib_box.add('rect', key='frame', **frame)
         self.object_to_xib_node[obj] = xib_box
 
         assert isinstance(children, typedstream.types.nextstep.List)
