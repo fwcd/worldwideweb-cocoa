@@ -7,8 +7,8 @@
 
 #pragma once
 
-#import <stdio.h>
 #import <AppKit/AppKit.h>
+#import <stdio.h>
 
 /// These are largely just copied from Next Manual
 /// http://www.bitsavers.org/pdf/next/Release_1_Dec90/NEXTstep_Reference_Volume_1_Dec90.pdf

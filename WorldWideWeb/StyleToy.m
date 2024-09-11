@@ -3,10 +3,10 @@
 */
 
 #import "StyleToy.h"
-#import "NXShims.h"
 #import "HTParse.h"
 #import "HTStyle.h"
 #import "HTUtils.h"
+#import "NXShims.h"
 
 #import "HyperText.h"
 #define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] documentView]
@@ -145,9 +145,9 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 //	old ones which are not redefined.
 
 - open:sender {
-    NXStream *s;                              //	The file stream
-    NSString *filename;                     //	The name of the file
-    NSArray<NSString *> * typelist = @[@"style"]; //	Extension must be ".style."
+    NXStream *s;                                   //	The file stream
+    NSString *filename;                            //	The name of the file
+    NSArray<NSString *> *typelist = @[ @"style" ]; //	Extension must be ".style."
 
     if (!open_panel) {
         open_panel = [NSOpenPanel new];
@@ -161,11 +161,11 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     }
 
     filename = [open_panel filename];
-    
+
     if (!styleSheet)
         styleSheet = HTStyleSheetNew();
     StrAllocCopy(styleSheet->name, [filename cStringUsingEncoding:NSUTF8StringEncoding]);
-    
+
     s = NXOpenFile(styleSheet->name, NX_READONLY);
     if (!s) {
         if (TRACE)
@@ -238,7 +238,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     NSString *slash;
     int status;
     NSString *suggestion = 0; //	The name of the file to suggest
-    NSString *filename; //	The name chosen
+    NSString *filename;       //	The name chosen
 
     if (!save_panel) {
         save_panel = [NSSavePanel new]; //	Keep between invocations

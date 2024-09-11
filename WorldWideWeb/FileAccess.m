@@ -66,7 +66,7 @@ extern char *appDirectory; /* Pointer to directory for application */
     if (TRACE)
         printf("HT file: file `%s' in format %i.\n", filename, format);
 
-    NXFlush(s);            /* Try to get over missing end */
+    NXFlush(s); /* Try to get over missing end */
     NXClose(s);
     return self;
 }

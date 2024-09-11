@@ -45,7 +45,7 @@
 
     [HT setupWindow];
     [[HT window] setTitle:@"Connecting..."]; /* Tell user something's happening */
-    [HT setEditable:NO];                    /* This is read-only data */
+    [HT setEditable:NO];                     /* This is read-only data */
 
     //	Now, let's get a stream setup up from the server for the sgml data:
 

@@ -804,7 +804,8 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                 reference[reference_length] = 0;     /* Terminate it */
                 anchor_name[anchor_name_length] = 0; /* Terminate it */
 
-                style->anchor = *anchor_name ? [[Anchor alloc] initWithParent:nodeAnchor tag:anchor_name] : [self anchor];
+                style->anchor =
+                    *anchor_name ? [[Anchor alloc] initWithParent:nodeAnchor tag:anchor_name] : [self anchor];
 
                 /* If next anchor number not specified, ensure it is safe */
 
