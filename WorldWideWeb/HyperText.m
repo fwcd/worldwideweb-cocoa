@@ -1070,7 +1070,7 @@ BOOL run_match(NXRun *r1, NXRun *r2) {
 //
 - windowWillClose:sender {
     int choice;
-    if (![window isDocEdited])
+    if (![window isDocumentEdited])
         return self;
     choice = NXRunAlertPanel("Close", "Save changes to `%s'?", "Yes", "No", "Don't close", [window title]);
     if (choice == NX_ALERTALTERNATE)

@@ -340,7 +340,7 @@ PRIVATE FileAccess *fileAccess = nil;
         NSWindow *w = [windows objectAtIndex:i];
         if (cv = [w contentView])
             if ([cv respondsTo:@selector(documentView)])
-                if ([w isDocEdited]) {
+                if ([w isDocumentEdited]) {
                     HyperText *HT = [[w contentView] documentView];
                     if ([(HyperAccess *)[HT server] saveNode:HT])
                         [w setDocumentEdited:NO];
@@ -367,7 +367,7 @@ PRIVATE FileAccess *fileAccess = nil;
             if (w != thisWindow)
                 if (cv = [w contentView])
                     if ([cv respondsTo:@selector(documentView)]) {
-                        if (![w isDocEdited]) {
+                        if (![w isDocumentEdited]) {
                             if (TRACE)
                                 printf(" Closing window %p\n", w);
                             [w performClose:self];
