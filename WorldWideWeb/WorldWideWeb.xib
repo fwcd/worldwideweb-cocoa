@@ -382,7 +382,7 @@
                             <rect key="frame" x="4" y="5" width="194" height="51"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10">
+                                <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10">
                                     <rect key="frame" x="0.0" y="17" width="110" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <textFieldCell key="cell" title="Save file as:" id="8HM-Sk-eQD">
@@ -439,7 +439,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="376" height="264"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21">
                         <rect key="frame" x="13" y="16" width="347" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" id="gSZ-dL-raO">
@@ -478,7 +478,7 @@ The "Home" button reselects the original page which you get when you started the
                 <rect key="frame" x="0.0" y="0.0" width="376" height="227"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26">
                         <rect key="frame" x="23" y="51" width="325" height="165"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" id="S9h-mP-mhF">
@@ -498,7 +498,7 @@ The "Home" button reselects the original page which you get when you started the
                             <action selector="makeKeyAndOrderFront:" target="85" id="219"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28">
                         <rect key="frame" x="30" y="20" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="See also:" id="F1b-zj-4wZ">
@@ -517,14 +517,14 @@ The "Home" button reselects the original page which you get when you started the
                 <rect key="frame" x="0.0" y="0.0" width="472" height="448"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="31">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="31">
                         <rect key="frame" x="122" y="415" width="236" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="HyperMedia Browser/Editor" id="pgT-L0-NiQ">
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32">
                         <rect key="frame" x="379" y="410" width="93" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" id="KrT-a5-js4">
@@ -533,14 +533,14 @@ Beta only</string>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33">
                         <rect key="frame" x="332" y="349" width="133" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="by Tim Berners-Lee" id="WO3-dG-Rwi">
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34">
                         <rect key="frame" x="10" y="328" width="432" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="Copyright 1990,91, CERN.   Distribution restricted: ask for terms.  TEST VERSION ONLY" id="Cyl-Hm-w8n">
@@ -555,14 +555,14 @@ Beta only</string>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37">
                         <rect key="frame" x="121" y="367" width="208" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="An excercise in global information availability" id="aT7-8Z-aub">
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38">
                         <rect key="frame" x="5" y="281" width="463" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" id="Q5C-q2-r4V">
@@ -579,7 +579,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView verticallyResizable="NO" id="41">
-                                    <rect key="frame" x="0.0" y="0.0" width="395" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="229" width="395" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="395" height="0.0"/>
@@ -925,7 +925,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                 <rect key="frame" x="0.0" y="0.0" width="376" height="282"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="87">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="87">
                         <rect key="frame" x="16" y="27" width="343" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" id="fz7-uK-a5G">
@@ -940,7 +940,7 @@ From then on, whenever you double click on the linked text, you will jump across
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="88">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="88">
                         <rect key="frame" x="26" y="14" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="See also:" id="fWX-e5-XVl">
@@ -992,14 +992,14 @@ From then on, whenever you double click on the linked text, you will jump across
                             <action selector="setTitle:" target="115" id="298"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95">
                         <rect key="frame" x="63" y="202" width="400" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" id="5so-bg-dFD">
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96">
                         <rect key="frame" x="5" y="216" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="Address:" id="neQ-M1-ALN">
@@ -1019,7 +1019,7 @@ From then on, whenever you double click on the linked text, you will jump across
                             <action selector="performClick:" target="102" id="303"/>
                         </connections>
                     </form>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99">
                         <rect key="frame" x="55" y="132" width="144" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="Other document" id="5WV-EA-VnK">
@@ -1036,7 +1036,7 @@ From then on, whenever you double click on the linked text, you will jump across
                             <action selector="linkToString:" target="115" id="304"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
+                    <textField horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
                         <rect key="frame" x="1" y="161" width="471" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" title="______________________________________________" id="cba-Wp-IIO">

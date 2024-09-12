@@ -178,7 +178,7 @@ PRIVATE FileAccess *fileAccess = nil;
     if ((p = strchr(addr, '?')) != 0)
         *p = 0; /* Chop off existing search string */
     strcat(addr, "?");
-    strcpy(keys, [self.keywords stringValueAt:0]);
+    strcpy(keys, [[[self.keywords cellAtIndex:0] stringValue] UTF8String]);
     q = HTStrip(keys); /* Strip leading and trailing */
     for (p = q; *p; p++)
         if (WHITE(*p)) {
@@ -396,7 +396,7 @@ PRIVATE FileAccess *fileAccess = nil;
 
 - setTitle:sender {
     NSWindow *thisWindow = [NSApp mainWindow];
-    [thisWindow setTitle:[self.titleString stringValueAt:0]];
+    [thisWindow setTitle:[[self.titleString cellAtIndex:0] stringValue]];
     [thisWindow setDocumentEdited:YES];
     return self;
 }
@@ -404,36 +404,33 @@ PRIVATE FileAccess *fileAccess = nil;
 //	Inspect Link
 //	------------
 
-- inspectLink:sender {
+- (IBAction)inspectLink:sender {
     Anchor *source = [THIS_TEXT selectedLink];
     Anchor *destination;
     if (!source) {
-        [self.openString setStringValue:"(No anchor selected in main document.)" at:0];
-        return nil;
+        [[self.openString cellAtIndex:0] setStringValue:@"(No anchor selected in main document.)"];
+        return;
     }
     {
         char *source_address = [source fullAddress];
-        [self.addressString setStringValue:source_address];
+        [self.addressString setStringValue:[NSString stringWithUTF8String:source_address]];
         free(source_address);
     }
 
     destination = [source destination];
     if (destination) {
         char *destination_address = [destination fullAddress];
-        [self.openString setStringValue:destination_address at:0];
+        [[self.openString cellAtIndex:0] setStringValue:[NSString stringWithUTF8String:destination_address]];
         free(destination_address);
     } else {
-        [self.openString setStringValue:@"Anchor not linked." at:0];
+        [[self.openString cellAtIndex:0] setStringValue:@"Anchor not linked."];
     }
-
-    return self;
 }
 
 //	Copy address of document
 //	------------------------
-- copyAddress:sender {
-    [self.openString setStringValue:[[THIS_TEXT nodeAnchor] address] at:0];
-    return self;
+- (IBAction)copyAddress:sender {
+    [[self.openString cellAtIndex:0] setStringValue:[NSString stringWithUTF8String:[[THIS_TEXT nodeAnchor] address]]];
 }
 
 //		HyperText delegate methods
@@ -457,8 +454,8 @@ PRIVATE FileAccess *fileAccess = nil;
         [[self.keywords window] close];
         //        [[keywords window] orderOut:self];	bug?
     }
-    [self.titleString setStringValue:[[sender window] title] at:0];
-    [self.addressString setStringValue:[[sender nodeAnchor] address]];
+    [[self.titleString cellAtIndex:0] setStringValue:[[sender window] title]];
+    [self.addressString setStringValue:[NSString stringWithUTF8String:[[sender nodeAnchor] address]]];
     //  [openString setStringValue: [[sender nodeAnchor] address] at:0];
     return self;
 }
@@ -471,9 +468,9 @@ PRIVATE FileAccess *fileAccess = nil;
 
 - windowDidBecomeKey:sender {
     if (sender == [self.openString window])
-        [self.openString selectTextAt:0]; // Preselect the text
+        [self.openString selectTextAtIndex:0]; // Preselect the text
     else if (sender == [self.keywords window])
-        [self.keywords selectTextAt:0]; // Preselect the text
+        [self.keywords selectTextAtIndex:0]; // Preselect the text
 
     return self;
 }
