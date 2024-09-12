@@ -409,7 +409,11 @@ class XIBConverter:
         if isinstance(image, typedstream.GenericArchivedObject) and image.clazz.name == b'NXImage':
             image_props = self.convert_image_name(image.contents[0].values[1].decode())
             if image_props:
-                xib_properties = {**xib_properties, **image_props, 'imagePosition': 'right'}
+                xib_properties = {
+                    **xib_properties,
+                    **image_props,
+                    'imagePosition': 'right',
+                }
 
         # TODO: Figure out a cleaner looking button style that preserves the intended look and feel
         xib_cell = xib_button.add('buttonCell',
@@ -500,7 +504,12 @@ class XIBConverter:
 
         title = cell.contents[0].values[0].decode()
 
-        xib_cell = xib_cells.add_object('formCell', title=title)
+        xib_cell = xib_cells.add_object('formCell',
+            title=title,
+            selectable='YES',
+            editable='YES',
+            borderStyle='border',
+        )
         self.object_to_xib_node[obj] = xib_cell
 
     def traverse_form(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
