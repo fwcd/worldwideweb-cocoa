@@ -197,6 +197,8 @@ class XIBConverter:
         self.options = options
         self.xib = XIB()
 
+        self.current_canvas_location_y = 200
+
         self.visited_objects: set[typedstream.GenericArchivedObject] = set()
         self.object_to_xib_node: dict[typedstream.GenericArchivedObject, XIBNode] = {}
         self.registered_images: set[str] = set()
@@ -633,9 +635,14 @@ class XIBConverter:
 
         print(f'Adding window {title}')
 
+        # Lay out windows vertically in Interface Builder canvas
+        self.current_canvas_location_y += float(rect['height']) / 2 + 100
+        canvas_location_y = self.current_canvas_location_y
+        # TODO: We should really support non-string keys in XIBNode and remove these float->string conversions
+        self.current_canvas_location_y += float(rect['height']) / 2
+
         xib_window = self.xib.objects.add_object('window', title=title)
-        # TODO: Should we add a canvas location?
-        # xib_window.add('point', key='canvasLocation', x=rect['x'], y=rect['y'])
+        xib_window.add('point', key='canvasLocation', x='20.0', y=str(canvas_location_y))
         xib_window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
         xib_window.add('rect', key='contentRect', **rect)
         self.object_to_xib_node[obj] = xib_window
