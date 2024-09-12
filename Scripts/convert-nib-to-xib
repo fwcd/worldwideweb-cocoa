@@ -27,6 +27,7 @@ class XIBNode:
         self._subviews: Optional[Self] = None
         self._cells: Optional[Self] = None
         self._column: Optional[Self] = None
+        self._attributes: Optional[Self] = None
 
     def add_object(self, class_or_tag_name: str, id: Optional[str]=None, **kwargs) -> Self:
         '''Adds an object under this node.'''
@@ -107,6 +108,13 @@ class XIBNode:
             self._column = XIBNode(ET.Element('column'))
             self.element.append(self._column.element)
         return self._column
+
+    @property
+    def attributes(self) -> Self:
+        if self._attributes is None:
+            self._attributes = XIBNode(ET.Element('attributes'))
+            self.element.append(self._attributes.element)
+        return self._attributes
 
     def connect_outlet(self, property: str, destination: str | Self):
         '''Adds an outlet to the given destination.'''
@@ -460,6 +468,13 @@ class XIBConverter:
         # TODO: Translate these (apparently RTF) contents to a proper attributed string
         xib_string = xib_text_view.add('attributedString', key='textStorage')
         xib_fragment = xib_string.add('fragment')
+        xib_fragment.attributes.add('color',
+            key='NSColor',
+            name='textColor',
+            catalog='System',
+            colorSpace='catalog',
+        )
+
         xib_fragment_string = xib_fragment.add('mutableString', key='content')
         xib_fragment_string.element.text = contents
     
