@@ -29,6 +29,19 @@ class XIBNode:
         self._column: Optional[Self] = None
         self._attributes: Optional[Self] = None
 
+    def convert_value(self, v: Any) -> str:
+        '''Converts an attribute value to XIB.'''
+
+        if isinstance(v, bool):
+            return 'YES' if v else 'NO'
+        else:
+            return str(v)
+
+    def convert_values(self, d: dict[str, Any]) -> dict[str, str]:
+        '''Converts a dict of attributes to XIB.'''
+
+        return {k: self.convert_value(v) for k, v in d.items()}
+
     def add_object(self, class_or_tag_name: str, id: Optional[str]=None, **kwargs) -> Self:
         '''Adds an object under this node.'''
 
@@ -42,7 +55,7 @@ class XIBNode:
 
         child = ET.Element('customObject' if is_custom else class_or_tag_name, attrib={
             'id': id,
-            **kwargs,
+            **self.convert_values(kwargs),
             **({'customClass': class_or_tag_name} if is_custom else {}),
         })
         self.element.append(child)
@@ -52,7 +65,7 @@ class XIBNode:
     def add(self, tag_name: str, **kwargs) -> Self:
         '''Adds a custom node under this node.'''
 
-        child = ET.Element(tag_name, attrib={**kwargs})
+        child = ET.Element(tag_name, attrib={**self.convert_values(kwargs)})
         self.element.append(child)
 
         return XIBNode(child)
@@ -161,12 +174,12 @@ class XIB:
 
         # Add main menu
         main_menu = self.objects.add_object('menu', systemMenu='main')
-        main_menu.add('point', key='canvasLocation', x='200', y='121')
+        main_menu.add('point', key='canvasLocation', x=200, y=121)
 
         app_item = main_menu.add_menu_item(title='WorldWideWeb')
         app_menu = app_item.add_submenu(systemMenu='apple')
         app_menu.add_menu_item(title='About WorldWideWeb')
-        app_menu.add_menu_item(isSeparatorItem='YES')
+        app_menu.add_menu_item(isSeparatorItem=True)
 
         self.main_menu = main_menu
         self.app_menu = app_menu
@@ -336,16 +349,16 @@ class XIBConverter:
 
     def convert_rect(self, group: typedstream.TypedGroup) -> dict[str, str]:
         return {
-            'x': str(group.values[0]),
-            'y': str(group.values[1]),
-            'width': str(group.values[2]),
-            'height': str(group.values[3]),
+            'x': group.values[0],
+            'y': group.values[1],
+            'width': group.values[2],
+            'height': group.values[3],
         }
     
     def convert_size(self, group: typedstream.TypedGroup) -> dict[str, str]:
         return {
-            'width': str(group.values[0]),
-            'height': str(group.values[1]),
+            'width': group.values[0],
+            'height': group.values[1],
         }
     
     def convert_image_name(self, nx_name: str) -> Optional[str]:
@@ -530,8 +543,8 @@ class XIBConverter:
 
         xib_cell = xib_cells.add_object('formCell',
             title=title,
-            selectable='YES',
-            editable='YES',
+            selectable=True,
+            editable=True,
             borderStyle='border',
         )
         self.object_to_xib_node[obj] = xib_cell
@@ -637,14 +650,13 @@ class XIBConverter:
         print(f'Adding window {title}')
 
         # Lay out windows vertically in Interface Builder canvas
-        self.canvas_location_y += float(rect['height']) / 2 + self.canvas_location_y_spacing
+        self.canvas_location_y += rect['height'] / 2 + self.canvas_location_y_spacing
         canvas_location_y = self.canvas_location_y
-        # TODO: We should really support non-string keys in XIBNode and remove these float->string conversions
-        self.canvas_location_y += float(rect['height']) / 2
+        self.canvas_location_y += rect['height'] / 2
 
         xib_window = self.xib.objects.add_object('window', title=title)
-        xib_window.add('point', key='canvasLocation', x='20.0', y=str(canvas_location_y))
-        xib_window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
+        xib_window.add('point', key='canvasLocation', x=20.0, y=canvas_location_y)
+        xib_window.add('windowStyleMask', key='styleMask', titled=True, closable=True, miniaturizable=True, resizable=True)
         xib_window.add('rect', key='contentRect', **rect)
         self.object_to_xib_node[obj] = xib_window
 
