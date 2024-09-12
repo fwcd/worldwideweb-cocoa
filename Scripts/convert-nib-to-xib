@@ -638,6 +638,7 @@ class XIBConverter:
         # xib_window.add('point', key='canvasLocation', x=rect['x'], y=rect['y'])
         xib_window.add('windowStyleMask', key='styleMask', titled='YES', closable='YES', miniaturizable='YES', resizable='YES')
         xib_window.add('rect', key='contentRect', **rect)
+        self.object_to_xib_node[obj] = xib_window
 
         self.traverse_view(view, xib_window, key='contentView')
 
