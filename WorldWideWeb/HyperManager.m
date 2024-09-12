@@ -352,7 +352,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //	------------------------------------------
 //
 
-- closeOthers:sender {
+- (IBAction)closeOthers:sender {
     NSWindow *thisWindow = [NSApp mainWindow];
     NSArray *windows = [NSApp windows];
 
@@ -372,33 +372,35 @@ PRIVATE FileAccess *fileAccess = nil;
                         }
                     }
         }
-        return self;
     }
 }
 
 //	Print Postscript code for the main window
 //	-----------------------------------------
 
-- print:sender {
-    return [THIS_TEXT printPSCode:sender];
+- (IBAction)print:sender {
+    // TODO: Figure out how we could implement this
+    // [THIS_TEXT printPSCode:sender];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"PostScript printing is not supported!";
+    [alert addButtonWithTitle:@"Ok"];
+    [alert runModal];
 }
 
 //	Run the page layout panel
 //
-- runPagelayout:sender {
+- (IBAction)runPagelayout:sender {
     NSPageLayout *pl = [WWWPageLayout new];
     [pl runModal];
-    return self;
 }
 
 //	Set the title of the main window
 //	--------------------------------
 
-- setTitle:sender {
+- (IBAction)setTitle:sender {
     NSWindow *thisWindow = [NSApp mainWindow];
     [thisWindow setTitle:[[self.titleString cellAtIndex:0] stringValue]];
     [thisWindow setDocumentEdited:YES];
-    return self;
 }
 
 //	Inspect Link
