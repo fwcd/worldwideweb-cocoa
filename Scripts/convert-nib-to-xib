@@ -143,6 +143,7 @@ class XIB:
         self.dependencies.add('capability', name='documents saved in the Xcode 8 format', minToolsVersion='8.0')
 
         self.objects = self.add_node('objects')
+        self.resources = self.add_node('resources')
 
         # Add default objects
         self.files_owner = self.objects.add_object('NSApplication', id='-2', userLabel="File's Owner")
@@ -190,6 +191,7 @@ class XIBConverter:
 
         self.visited_objects: set[typedstream.GenericArchivedObject] = set()
         self.object_to_xib_node: dict[typedstream.GenericArchivedObject, XIBNode] = {}
+        self.registered_images: set[str] = set()
     
     def traverse_menu_cell(self, cell: typedstream.GenericArchivedObject, xib_menu: XIBNode, level: int):
         '''Traverses the given NIB menu cell and adds it to the given XIB menu.'''
@@ -335,6 +337,29 @@ class XIBConverter:
             'height': str(group.values[1]),
         }
     
+    def convert_image_name(self, nx_name: str) -> Optional[str]:
+        '''Maps the given NeXTStep image name to an SF Symbol.'''
+
+        catalog = 'system'
+
+        match nx_name:
+            case 'NXreturnSign':
+                name = 'return'
+                width = 17
+                height = 14
+            case _:
+                print(f'Warning: Image name {nx_name} could not be converted')
+                return None
+        
+        if name not in self.registered_images:
+            self.registered_images.add(name)
+            self.xib.resources.add('image', name=name, catalog=catalog, width=str(width), height=str(height))
+
+        return {
+            'image': name,
+            'catalog': catalog,
+        }
+
     # TODO: Abstract over more commonalities between the different view types
 
     def traverse_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
@@ -377,6 +402,14 @@ class XIBConverter:
         assert obj.clazz.name == b'ButtonCell', obj.clazz.name
 
         title = obj.contents[0].values[0].decode()
+        image = obj.contents[5].values[0]
+
+        xib_properties = {}
+
+        if isinstance(image, typedstream.GenericArchivedObject) and image.clazz.name == b'NXImage':
+            image_props = self.convert_image_name(image.contents[0].values[1].decode())
+            if image_props:
+                xib_properties = {**xib_properties, **image_props, 'imagePosition': 'right'}
 
         # TODO: Figure out a cleaner looking button style that preserves the intended look and feel
         xib_cell = xib_button.add('buttonCell',
@@ -386,6 +419,7 @@ class XIBConverter:
             bezelStyle='shadowlessSquare',
             borderStyle='border',
             alignment='center',
+            **xib_properties,
         )
         self.object_to_xib_node[obj] = xib_cell
 
