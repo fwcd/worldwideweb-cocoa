@@ -490,6 +490,12 @@ class XIBConverter:
             key='cell',
             title=title,
         )
+        xib_cell.add('color',
+            key='textColor',
+            name='secondaryLabelColor',
+            catalog='System',
+            colorSpace='catalog',
+        )
         self.object_to_xib_node[obj] = xib_cell
 
     def traverse_text_field(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
