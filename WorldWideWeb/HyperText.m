@@ -997,13 +997,13 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 //	Prevent closure of edited window without save
 //
 - windowWillClose:sender {
-    int choice;
-    if (![window isDocumentEdited])
+    if (![self.window isDocumentEdited])
         return self;
-    choice = NXRunAlertPanel("Close", "Save changes to `%s'?", "Yes", "No", "Don't close", [window title]);
-    if (choice == NX_ALERTALTERNATE)
+    NSInteger choice =
+        NSRunAlertPanel(@"Close", @"Save changes to `%s'?", @"Yes", @"No", @"Don't close", [self.window title]);
+    if (choice == NSAlertAlternateReturn)
         return self;
-    if (choice == NX_ALERTOTHER)
+    if (choice == NSAlertOtherReturn)
         return nil;
     return [server saveNode:self];
 }
@@ -1165,7 +1165,7 @@ void set_style(HTStyle *style) {
     }
     if (TRACE)
         NSLog(@"    Changing to style `%s' -- %s change.\n", style->name,
-               willChange(style, lastRun) ? "will" : "won't");
+              willChange(style, lastRun) ? "will" : "won't");
     if (willChange(style, lastRun)) {
         int size = (write_pointer - write_block->text);
         lastRun->chars = lastRun->chars + size - write_block->chars;
@@ -1348,7 +1348,7 @@ void loadPlainText() {
 
         if (TRACE)
             NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart,
-                   originalEnd, textLength, sp0.cp, spN.cp);
+                  originalEnd, textLength, sp0.cp, spN.cp);
 
         if (inserted > 0) {
             NSTextStorage *s;
@@ -1434,7 +1434,7 @@ void loadPlainText() {
 
             if (TRACE)
                 NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart,
-                       originalEnd, textLength, sp0.cp, spN.cp);
+                      originalEnd, textLength, sp0.cp, spN.cp);
 
             if (inserted > 0) {
                 NSTextStorage *s;
@@ -1481,7 +1481,7 @@ void loadPlainText() {
 
         if (TRACE)
             NSLog(@"Paste, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart, originalEnd,
-                   textLength, sp0.cp, spN.cp);
+                  textLength, sp0.cp, spN.cp);
 
         if (inserted > 0) {
             NSTextStorage *s, *r;
