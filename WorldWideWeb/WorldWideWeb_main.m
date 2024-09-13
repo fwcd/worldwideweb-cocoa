@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
     if (p = strrchr(appDirectory, '/'))
         p[1] = 0; /* Chop home directory after slash */
     if (TRACE)
-        printf("WWW: Run from %s\n", appDirectory);
+        NSLog(@"WWW: Run from %s\n", appDirectory);
 
     [[NSUserDefaults standardUserDefaults] registerDefaults:myDefaults];
 
