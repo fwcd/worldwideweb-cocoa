@@ -7,7 +7,7 @@ An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://
 
 ## Background
 
-This port is mainly motivated by academic curiosity, specifically learning about the implementation of the first web browser (how HTML rendering works etc.) and the history of the NeXTStep API. The goal is to eventually have a working Cocoa application that stays faithful to the original code and design while adopting modern conventions where they make sense. This is not a small goal and may even be infeasible given the complexity of the project and potential need to replace or reimplement removed APIs.
+This port is mainly motivated by academic curiosity, specifically learning about the implementation of the first web browser (how HTML rendering works etc.) and the history of the NeXTStep API. The goal is to eventually have a working Cocoa application that stays faithful to the original code and design while adopting modern conventions where they make sense[^1]. This is not a small goal and may even be infeasible given the complexity of the project and potential need to replace or reimplement removed APIs.
 
 ### The NeXTStep API vs. Cocoa/AppKit
 
@@ -25,3 +25,5 @@ More information on this can be found in [issue #1](https://github.com/fwcd/worl
 
 - https://www.w3.org/People/Berners-Lee/WorldWideWeb.html
 - https://en.wikipedia.org/wiki/WorldWideWeb
+
+[^1]: A specific example of this is the menu bar. On NeXTStep, the main menu (i.e. the root of the menu hierarchy) was displayed as a single menu, while on macOS the "main menu" is actually the menu bar. This subtility results in slightly different conventions, e.g. on macOS it would be very uncommon for the menu bar to contain a menu item that directly represents an action such as "Print" or "Quit" and not a submenu itself. We deal with this by moving the top-level actions into the application menu (i.e. "WorldWideWeb") during the conversion from NIB to XIB. More details and screenshots can be found in #1.
