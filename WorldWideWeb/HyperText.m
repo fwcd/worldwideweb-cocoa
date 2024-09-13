@@ -728,7 +728,8 @@ static NSDictionary<NSString *, id> *attributesForStyle(HTStyle *style) {
 //  ---------------------------------------------------------
 static void applyRange(HTStyle *style, NSMutableAttributedString *r, NSRange range) {
     // TODO: Should we implement this in terms of attributesForStyle?
-    
+    // TODO: Factor out apply, applyRange, attributesForStyle into HTStyle.
+
     if (style->font) {
         [r setFont:style->font inRange:range];
     }
