@@ -825,13 +825,13 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 //
 - (NSUInteger)startOfParagraph:(NSUInteger)pos {
     NSString *text = self.string;
-    
+
     for (NSUInteger i = pos; i > 0; i--) {
         if ([text characterAtIndex:(i - 1)] == '\n') {
             return i;
         }
     }
-    
+
     return 0;
 }
 
@@ -846,43 +846,20 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 //
 - (NSUInteger)endOfParagraph:(NSUInteger)pos {
     NSString *text = self.string;
-    
+
     for (NSUInteger i = pos + 1; i < text.length; i++) {
         if ([text characterAtIndex:i] == '\n') {
             return i + 1;
         }
     }
-    
+
     return text.length;
 }
 
 //	Do two runs imply the same format?
 //	----------------------------------
 
-BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) {
-    return [r1 isEqualToAttributedString:r2];
-}
-
-//	Check Consecutive runs and merge if necessary
-//	---------------------------------------------
-//
-//	If the runs match in EVERY way, they are combined into one, and
-//	all the other runs are shuffled down.
-//
-- (BOOL)mergeRun:(NSTextStorage *)run {
-    NSTextStorage *r, *last;
-    if (run_match(run, run + 1)) {
-        if (TRACE)
-            printf("HT: Merging run %i\n", run);
-        run->chars = run->chars + (run + 1)->chars;
-        last = ((NSTextStorage *)((char *)theRuns->runs + theRuns->chunk.used)) - 1;
-        for (r = run + 1; r < last; r++)
-            r[0] = r[1];
-        theRuns->chunk.used = theRuns->chunk.used - sizeof(*r);
-        return YES;
-    }
-    return NO;
-}
+BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttributedString:r2]; }
 
 //	Apply style to a given region
 //	-----------------------------
