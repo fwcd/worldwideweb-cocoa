@@ -1225,18 +1225,18 @@ void change_run(NSTextStorage *last, NSTextStorage *r) {
     }
 
     /*	Now output the textual part of the run
-**
-**	Within the prefix region (prefix!=0), we discard white space and
-**	characters matching *prefix++. Note the prefix string may contain white space.
-**
-**	The SGML_gen_newlines flag means that newlines have been found. They are
-**	not actually implemented unless some more non-white text is found, so that
-**	trailing newlines on the end of paragraphs are stripped.
-**
-**	The line wrapping is primitive in the extreme, as only text characters are
-**	counted. In practise it limits the length of any line to a reasonable amount,
-**	though this is not guarranteed.
-*/
+     **
+     **	Within the prefix region (prefix!=0), we discard white space and
+     **	characters matching *prefix++. Note the prefix string may contain white space.
+     **
+     **	The SGML_gen_newlines flag means that newlines have been found. They are
+     **	not actually implemented unless some more non-white text is found, so that
+     **	trailing newlines on the end of paragraphs are stripped.
+     **
+     **	The line wrapping is primitive in the extreme, as only text characters are
+     **	counted. In practise it limits the length of any line to a reasonable amount,
+     **	though this is not guarranteed.
+     */
     {
         while (chars_left) {
             char c = NEXT_TEXT_CHAR;
