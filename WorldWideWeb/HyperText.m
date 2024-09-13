@@ -447,6 +447,14 @@ static float page_width() {
     return [run attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
 }
 
+- (void)setParagraphStyle:(NSParagraphStyle *)paraStyle forRun:(NSTextStorage *)run {
+    // TODO: Can we be sure to always find an associated paragraph style at the first index?
+    [run removeAttribute:NSParagraphStyleAttributeName range:NSMakeRange(0, run.length)];
+    if (paraStyle != nil) {
+        [run addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, run.length)];
+    }
+}
+
 - (NSColor *)colorForRun:(NSTextStorage *)run {
     return [run attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:nil];
 }
@@ -455,6 +463,17 @@ static float page_width() {
     [run removeAttribute:NSForegroundColorAttributeName range:NSMakeRange(0, run.length)];
     if (color != nil) {
         [run addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, run.length)];
+    }
+}
+
+- (NSFont *)fontForRun:(NSTextStorage *)run {
+    return [run attribute:NSFontAttributeName atIndex:0 effectiveRange:nil];
+}
+
+- (void)setFont:(NSFont *)font forRun:(NSTextStorage *)run {
+    [run removeAttribute:NSFontAttributeName range:NSMakeRange(0, run.length)];
+    if (font != nil) {
+        [run addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, run.length)];
     }
 }
 
