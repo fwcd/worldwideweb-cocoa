@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		354F5A5B2C94960A00CBFA57 /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 354F5A5A2C94960A00CBFA57 /* NSAttributedString+Attributes.m */; };
 		3590F34F2BFC108E00E81CF2 /* WorldWideWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */; };
 		359DEE7E2C91147900FDB95E /* WorldWideWeb.json in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE7C2C91147900FDB95E /* WorldWideWeb.json */; };
 		359DEE7F2C91147900FDB95E /* WorldWideWeb.xml in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE7D2C91147900FDB95E /* WorldWideWeb.xml */; };
@@ -58,6 +59,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		354F5A592C94960A00CBFA57 /* NSAttributedString+Attributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Attributes.h"; sourceTree = "<group>"; };
+		354F5A5A2C94960A00CBFA57 /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
 		3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldWideWeb.xib; sourceTree = "<group>"; };
 		359DEE762C90CFCB00FDB95E /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		359DEE772C90CFCB00FDB95E /* Minimal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Minimal.xib; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				35DC79022BFAD6AA00432284 /* Makefile */,
 				35DC79052BFAD6AA00432284 /* Makefile.dependencies */,
 				35DC79002BFAD6AA00432284 /* Makefile.preamble */,
+				354F5A592C94960A00CBFA57 /* NSAttributedString+Attributes.h */,
+				354F5A5A2C94960A00CBFA57 /* NSAttributedString+Attributes.m */,
 				35DC79132BFAD6AA00432284 /* NewsAccess.h */,
 				35DC79182BFAD6AA00432284 /* NewsAccess.m */,
 				834673772C796EB4006F7FC0 /* NXShims.h */,
@@ -371,6 +376,7 @@
 				35DC79482BFAD6AB00432284 /* HyperText.m in Sources */,
 				35DC793C2BFAD6AB00432284 /* StyleToy.m in Sources */,
 				35DC79362BFAD6AB00432284 /* Anchor.m in Sources */,
+				354F5A5B2C94960A00CBFA57 /* NSAttributedString+Attributes.m in Sources */,
 				35DC79382BFAD6AB00432284 /* Makefile in Sources */,
 				35DC79462BFAD6AB00432284 /* HTAccess.c in Sources */,
 				35DC794A2BFAD6AB00432284 /* HTTP.c in Sources */,

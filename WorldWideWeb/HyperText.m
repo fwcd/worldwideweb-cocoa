@@ -33,6 +33,7 @@
 #import "HTStyle.h"
 #import "HTUtils.h"
 #import "HyperAccess.h"
+#import "NSAttributedString+Attributes.h"
 #import "NXShims.h"
 #import "WWW.h"
 #import <AppKit/AppKit.h>
@@ -54,9 +55,6 @@ static HyperText *slot[SLOTS];  /* Ids of HT objects taking them */
 #define MIN_WIDTH 200.0
 
 static HyperText *HT; /* Global pointer to self to allow C mixing */
-
-/// A key that we use to store anchors in attributed string runs to replace `NXRun.info`, which the NeXTStep API reserved for app-specific usage.
-static NSString *const AnchorAttributeName = @"WorldWideWeb.Anchor";
 
 + (void)initialize {
     int i;
@@ -430,52 +428,7 @@ static float page_width() {
 //  Find associated attributes for runs
 //  -----------------------------------
 
-- (Anchor *)anchorForRun:(NSTextStorage *)run {
-    // TODO: Can we be sure to always find an associated anchor (if existent) at the first index? Does attributeRuns already guaranteed that or should we document it as an invariant if not?
-    return [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
-}
 
-- (void)setAnchor:(Anchor *)anchor forRun:(NSTextStorage *)run {
-    [run removeAttribute:AnchorAttributeName range:NSMakeRange(0, run.length)];
-    if (anchor != nil) {
-        [run addAttribute:AnchorAttributeName value:anchor range:NSMakeRange(0, run.length)];
-    }
-}
-
-- (NSParagraphStyle *)paragraphStyleForRun:(NSTextStorage *)run {
-    // TODO: Can we be sure to always find an associated paragraph style at the first index?
-    return [run attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
-}
-
-- (void)setParagraphStyle:(NSParagraphStyle *)paraStyle forRun:(NSTextStorage *)run {
-    // TODO: Can we be sure to always find an associated paragraph style at the first index?
-    [run removeAttribute:NSParagraphStyleAttributeName range:NSMakeRange(0, run.length)];
-    if (paraStyle != nil) {
-        [run addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, run.length)];
-    }
-}
-
-- (NSColor *)colorForRun:(NSTextStorage *)run {
-    return [run attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:nil];
-}
-
-- (void)setColor:(NSColor *)color forRun:(NSTextStorage *)run {
-    [run removeAttribute:NSForegroundColorAttributeName range:NSMakeRange(0, run.length)];
-    if (color != nil) {
-        [run addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, run.length)];
-    }
-}
-
-- (NSFont *)fontForRun:(NSTextStorage *)run {
-    return [run attribute:NSFontAttributeName atIndex:0 effectiveRange:nil];
-}
-
-- (void)setFont:(NSFont *)font forRun:(NSTextStorage *)run {
-    [run removeAttribute:NSFontAttributeName range:NSMakeRange(0, run.length)];
-    if (font != nil) {
-        [run addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, run.length)];
-    }
-}
 
 //	Check whether an anchor has been selected
 //	-----------------------------------------
@@ -484,7 +437,7 @@ static float page_width() {
     Anchor *a;
 
     for (NSTextStorage *run in [self runsContainingSelection]) {
-        a = [self anchorForRun:run];
+        a = [run anchor];
         if (a)
             return a;
     }
@@ -603,7 +556,7 @@ static float page_width() {
 
     for (NSUInteger i = 0; i < runs.count; i++) {
         NSTextStorage *run = runs[i];
-        Anchor *runAnchor = [self anchorForRun:run];
+        Anchor *runAnchor = [run anchor];
         if (runAnchor == anchor && !foundStart) {
             startChars = chars;
         } else if (runAnchor != anchor && foundStart) {
@@ -663,7 +616,7 @@ static float page_width() {
     NSRange runRange = [self runRangeContainingSelection];
 
     for (NSTextStorage *run in [runs subarrayWithRange:runRange]) {
-        a = [self anchorForRun:run];
+        a = [run anchor];
         if (a) {
             break;
         }
@@ -679,7 +632,7 @@ static float page_width() {
 
     {
         while (runRange.location > 0) {
-            Anchor *runAnchor = [self anchorForRun:runs[runRange.location]];
+            Anchor *runAnchor = [runs[runRange.location] anchor];
             if (runAnchor == a) {
                 runRange.location--;
                 runRange.length++;
@@ -687,7 +640,7 @@ static float page_width() {
         }
 
         while (runRange.location + runRange.length < runs.count) {
-            Anchor *runAnchor = [self anchorForRun:runs[runRange.location + runRange.length]];
+            Anchor *runAnchor = [runs[runRange.location + runRange.length] anchor];
             if (runAnchor == a) {
                 runRange.length++;
             }
@@ -737,7 +690,7 @@ static float page_width() {
     NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
     for (NSUInteger i = 0; i < runs.count; i++) {
         NSTextStorage *run = runs[i];
-        NSParagraphStyle *paraStyle = [self paragraphStyleForRun:run];
+        NSParagraphStyle *paraStyle = [run paragraphStyle];
         if (!HTStyleForParagraph(sheet, paraStyle)) {
             [self setSelectedRange:NSMakeRange(chars, run.length)]; /* Select unstyled run */
             return self;
@@ -810,7 +763,7 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 - (void)updateStyle:(HTStyle *)style {
     NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
     for (NSTextStorage *run in runs) {
-        NSParagraphStyle *paraStyle = [self paragraphStyleForRun:run];
+        NSParagraphStyle *paraStyle = [run paragraphStyle];
         if (paraStyle == style->paragraph) {
             apply(style, run);
         }
@@ -827,10 +780,10 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 - disconnectAnchor:(Anchor *)anchor {
     NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
     for (NSTextStorage *run in runs) {
-        Anchor *runAnchor = [self anchorForRun:run];
+        Anchor *runAnchor = [run anchor];
         if (runAnchor == anchor) {
-            [self setAnchor:nil forRun:run];
-            [self setColor:[NSColor blackColor] forRun:run];
+            [run setAnchor:nil];
+            [run setColor:[NSColor blackColor]];
         }
     }
     [self.window display];
