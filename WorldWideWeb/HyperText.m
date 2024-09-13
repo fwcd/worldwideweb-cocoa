@@ -1011,7 +1011,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
     }
 
     [self calcLine];         /* Update line breaks */
-    return [window display]; /* Update window */
+    return [self.window display]; /* Update window */
 }
 
 //	Apply a style to the selection
@@ -1074,7 +1074,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
         }
     }
     [self calcLine];
-    [window display];
+    [self.window display];
     return self;
 }
 
