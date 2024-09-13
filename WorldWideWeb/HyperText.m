@@ -423,7 +423,7 @@ static float page_width() {
     Anchor *a;
 
     for (NSTextStorage *run in [self runsContainingSelection]) {
-        // TODO: Can we guarantee to only ever store anchors on the first character? Should we document that invariant if so?
+        // TODO: Can we guarantee to only ever store anchors on the first character? Does attributeRuns already guaranteed that or should we document it as an invariant if not?
         a = [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
         if (a)
             return a;
