@@ -30,6 +30,11 @@ NSString *const AnchorAttributeName = @"WorldWideWeb.Anchor";
     return [self attribute:NSFontAttributeName atIndex:0 effectiveRange:nil];
 }
 
+- (NSUnderlineStyle)underlineStyle {
+    NSNumber *us = [self attribute:NSUnderlineStyleAttributeName atIndex:0 effectiveRange:nil];
+    return us != nil ? [us integerValue] : NSUnderlineStyleNone;
+}
+
 @end
 
 @implementation NSMutableAttributedString (Attributes)
@@ -77,6 +82,17 @@ NSString *const AnchorAttributeName = @"WorldWideWeb.Anchor";
 
 - (void)setFont:(NSFont *_Nullable)font {
     [self setFont:font inRange:NSMakeRange(0, self.length)];
+}
+
+- (void)setUnderlineStyle:(NSUnderlineStyle)underlineStyle inRange:(NSRange)range {
+    [self removeAttribute:NSUnderlineStyleAttributeName range:range];
+    if (underlineStyle != NSUnderlineStyleNone) {
+        [self addAttribute:NSUnderlineStyleAttributeName value:@(underlineStyle) range:range];
+    }
+}
+
+- (void)setUnderlineStyle:(NSUnderlineStyle)underlineStyle {
+    [self setUnderlineStyle:underlineStyle inRange:NSMakeRange(0, self.length)];
 }
 
 @end

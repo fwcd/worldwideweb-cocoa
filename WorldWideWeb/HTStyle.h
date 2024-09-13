@@ -37,8 +37,7 @@ typedef struct _HTStyle {
 #ifdef V1
     float textColor; /* Colour of text */
 #else
-    float textGray;   /* Gray level of text */
-    int textRGBColor; /* Colour levels of text */
+    NSColor *textColor; /**Colour of text.*/
 #endif
     HTCoord spaceBefore; /* Omissions from NSParagraphStyle */
     HTCoord spaceAfter;

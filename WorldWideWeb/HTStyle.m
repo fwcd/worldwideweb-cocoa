@@ -21,8 +21,7 @@ HTStyle *HTStyleNew() {
     HTStyle *self = malloc(sizeof(*self));
     bzero(self, sizeof(*self));
     self->SGMLTag = 0;
-    self->textGray = NX_BLACK;
-    self->textRGBColor = -1; // Not used
+    self->textColor = [NSColor blackColor];
     return self;
 }
 

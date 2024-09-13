@@ -700,7 +700,7 @@ static float page_width() {
 
 //    Copy a style into an attributed string in the given range
 //    ---------------------------------------------------------
-static void apply(HTStyle *style, NSTextStorage *r, NSRange range) {
+static void applyRange(HTStyle *style, NSMutableAttributedString *r, NSRange range) {
     if (style->font) {
         [r setFont:style->font inRange:range];
     }
@@ -711,22 +711,27 @@ static void apply(HTStyle *style, NSTextStorage *r, NSRange range) {
         [r setAnchor:style->anchor inRange:range];
     }
 
-    if (style->textGray >= 0)
-        r->textGray = style->textGray;
+    if (style->textColor) {
+        [r setColor:style->textColor inRange:range];
+    }
 
-    r->rFlags.underline = NO;
-    if (r->info) {
+    [r setUnderlineStyle:NSUnderlineStyleNone inRange:range];
+    Anchor *a = [r anchor];
+    if (a) {
         //    	r->textGray = 0.166666666;		/* Slightly grey - horrid */
-        if ([(Anchor *)(r->info) destination]) {
+        if ([a destination]) {
             //	    r->textGray = NX_DKGRAY;	/* Anchor highlighting */
             r->rFlags.underline = YES;
+            [r setUnderlineStyle:NSUnderlineStyleSingle inRange:range];
         }
     }
-    r->rFlags.dummy = (r->info != 0); /* Keep track for typingRun */
-
-    if (style->textRGBColor >= 0)
-        r->textRGBColor = style->textRGBColor;
+    // TODO: Do we need this?
+    // r->rFlags.dummy = (r->info != 0); /* Keep track for typingRun */
 }
+
+//    Copy a style into an attributed string (e.g. a run)
+//    ---------------------------------------------------
+static void apply(HTStyle *style, NSMutableAttributedString *r) { applyRange(style, r, NSMakeRange(0, r.length)); }
 
 //	Check whether copying a style into a run will change it
 //	-------------------------------------------------------
@@ -834,11 +839,12 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 //	Apply style to a given region
 //	-----------------------------
 
-- applyStyle:(HTStyle *)style from:(int)start to:(int)end {
-    apply(style, r)
-
-        [self calcLine];          /* Update line breaks */
-    return [self.window display]; /* Update window */
+- (HyperText *)applyStyle:(HTStyle *)style inRange:(NSRange)range {
+    applyRange(style, self.textStorage, range);
+    // TODO: Do we need this?
+    // [self calcLine];          /* Update line breaks */
+    [self.window display]; /* Update window */
+    return self;
 }
 
 //	Apply a style to the selection
@@ -847,30 +853,28 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 //	If the style is a paragraph style, the
 //	selection is extended to encompass a number of paragraphs.
 //
-- applyStyle:(HTStyle *)style {
-    int start, end;
+- (HyperText *)applyStyle:(HTStyle *)style {
+    NSRange selection = self.selectedRange;
     if (TRACE)
-        printf("Applying style %i to (%i,%i)\n", style, sp0.cp, spN.cp);
+        NSLog(@"Applying style %p to (%lu,%lu)\n", style, selection.location, selection.length);
 
-    if (sp0.cp < 0) {                               /* No selection */
-        return [self applyStyle:style from:0 to:0]; /* Apply to typing run */
+    if (selection.length == 0) {                                  /* No selection */
+        return [self applyStyle:style inRange:NSMakeRange(0, 0)]; /* Apply to typing run */
     }
 
     if (!style)
         return nil;
 
     if ([self isEditable])
-        [window setDocumentEdited:YES];
+        [self.window setDocumentEdited:YES];
     else
         return nil;
 
-    start = sp0.cp;
-    end = spN.cp;
     if (style->paragraph) { /* Extend to an integral number of paras. */
-        start = [self startOfParagraph:start];
-        end = [self endOfParagraph:end];
+        selection.location = [self startOfParagraph:selection.location];
+        selection.length = [self endOfParagraph:selection.location + selection.length] - selection.location;
     }
-    return [self applyStyle:style from:start to:end];
+    return [self applyStyle:style inRange:selection];
 }
 
 //	Apply style to all similar text

@@ -20,6 +20,7 @@ NSString *const AnchorAttributeName;
 - (NSParagraphStyle *_Nullable)paragraphStyle;
 - (NSColor *_Nullable)color;
 - (NSFont *_Nullable)font;
+- (NSUnderlineStyle)underlineStyle;
 
 @end
 
@@ -36,6 +37,9 @@ NSString *const AnchorAttributeName;
 
 - (void)setFont:(NSFont *_Nullable)font inRange:(NSRange)range;
 - (void)setFont:(NSFont *_Nullable)font;
+
+- (void)setUnderlineStyle:(NSUnderlineStyle)underlineStyle inRange:(NSRange)range;
+- (void)setUnderlineStyle:(NSUnderlineStyle)underlineStyle;
 
 @end
 
