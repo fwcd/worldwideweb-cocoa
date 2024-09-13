@@ -420,8 +420,6 @@ static float page_width() {
 //	-----------------------------------------
 
 - (Anchor *)anchorSelected {
-    int sor;
-    NSTextStorage *r, *s, *e; /* Scan, Start and end runs */
     Anchor *a;
 
     for (NSTextStorage *run in [self runsContainingSelection]) {
