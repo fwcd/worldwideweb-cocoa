@@ -435,9 +435,27 @@ static float page_width() {
     return [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
 }
 
+- (void)setAnchor:(Anchor *)anchor forRun:(NSTextStorage *)run {
+    [run removeAttribute:AnchorAttributeName range:NSMakeRange(0, run.length)];
+    if (anchor != nil) {
+        [run addAttribute:AnchorAttributeName value:anchor range:NSMakeRange(0, run.length)];
+    }
+}
+
 - (NSParagraphStyle *)paragraphStyleForRun:(NSTextStorage *)run {
     // TODO: Can we be sure to always find an associated paragraph style at the first index?
     return [run attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+}
+
+- (NSColor *)colorForRun:(NSTextStorage *)run {
+    return [run attribute:NSForegroundColorAttributeName atIndex:0 effectiveRange:nil];
+}
+
+- (void)setColor:(NSColor *)color forRun:(NSTextStorage *)run {
+    [run removeAttribute:NSForegroundColorAttributeName range:NSMakeRange(0, run.length)];
+    if (color != nil) {
+        [run addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, run.length)];
+    }
 }
 
 //	Check whether an anchor has been selected
@@ -788,15 +806,15 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 //
 //
 - disconnectAnchor:(Anchor *)anchor {
-    NSTextStorage *r = theRuns->runs;
-    int sor;
-    for (sor = 0; sor < textLength; r++) {
-        if (r->info == (void *)anchor)
-            r->info = 0;
-        r->textGray = NX_BLACK;
-        sor = sor + r->chars;
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    for (NSTextStorage *run in runs) {
+        Anchor *runAnchor = [self anchorForRun:run];
+        if (runAnchor == anchor) {
+            [self setAnchor:nil forRun:run];
+            [self setColor:[NSColor blackColor] forRun:run];
+        }
     }
-    [window display];
+    [self.window display];
     return nil;
 }
 
