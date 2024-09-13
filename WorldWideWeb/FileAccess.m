@@ -21,7 +21,7 @@
 #import <sys/stat.h> // For fstat()
 #import <sys/types.h>
 
-#define THIS_TEXT ((HyperText *)(NSApp.mainWindow.contentView.documentView))
+#define THIS_TEXT ((HyperText *)([NSApp.mainWindow.contentView documentView]))
 
 @implementation FileAccess : HyperAccess
 
@@ -193,7 +193,7 @@ NSString *ask_name(HyperText *hint, int format) {
             p[1] = p[0]; /* Move up everything to the right of it */
         }
 
-        if (fp = fopen(filename, "r")) { /* File exists */
+        if ((fp = fopen(filename, "r"))) { /* File exists */
             fclose(fp);
             if (TRACE)
                 NSLog(@"File `%s' exists", filename);
@@ -214,7 +214,7 @@ NSString *ask_name(HyperText *hint, int format) {
 
     status = [self save:HT inFile:filename format:[HT format]];
     if (status)
-        [[HT window] setDocumentEdited:NO];
+        [HT window].documentEdited = NO;
     free(filename);
     return status;
 }
@@ -260,7 +260,7 @@ NSString *ask_name(HyperText *hint, int format) {
                 NSLog(@"Could not open file `%s', errno=%i.", filename, errno);
             file_number = HTFTP_open_file_read(newname); // Try FTP
             if (file_number >= 0) {
-                s = NXOpenFile(file_number, NX_READONLY);
+                s = fdopen(file_number, NX_READONLY);
             }
         }
 

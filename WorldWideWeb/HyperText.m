@@ -199,8 +199,8 @@ static float page_width(void) {
     NSSize size;
     BOOL scroll_X, scroll_Y; // Do we need scrollers?
 
-    NSScrollView *scrollview = [self.window contentView]; // Pick up id of ScrollView
-    float paperWidth = page_width();                      // Get page layout width
+    NSScrollView *scrollview = self.window.contentView; // Pick up id of ScrollView
+    float paperWidth = page_width();                    // Get page layout width
 
     [self.window disableFlushWindow]; // Prevent flashes
 
@@ -218,12 +218,12 @@ static float page_width(void) {
         scroll_Y = YES;
         size.height = NICE_HEIGHT;
     } else {
-        scroll_Y = [self isEditable];
+        scroll_Y = self.isEditable;
         size.height = maxY < MIN_HEIGHT ? MIN_HEIGHT : maxY;
     }
 
     if (isMonoFont) {
-        scroll_X = [self isEditable] || (maxX > MAX_WIDTH);
+        scroll_X = self.isEditable || (maxX > MAX_WIDTH);
         // FIXME: Disable wrapping
         // [self setNoWrap];
     } else {
@@ -257,8 +257,8 @@ static float page_width(void) {
                                           hasVerticalScroller:scroll_Y
                                                    borderType:NSLineBorder];
 
-    [scrollview setHasVerticalScroller:scroll_Y];
-    [scrollview setHasHorizontalScroller:scroll_X];
+    scrollview.hasVerticalScroller = scroll_Y;
+    scrollview.hasHorizontalScroller = scroll_X;
 
     //	Has the frame size changed?
 
@@ -339,22 +339,22 @@ static float page_width(void) {
                                                    styleMask:NSWindowStyleMaskTitled
                                                      backing:NSBackingStoreBuffered
                                                        defer:NO]; // display now
-    [window setDelegate:self];                                    // Get closure warning
+    window.delegate = self;                                       // Get closure warning
     [window makeKeyAndOrderFront:self];                           // Make it visible
-    [window setBackgroundColor:[NSColor whiteColor]];             // White seems to be necessary.
+    window.backgroundColor = NSColor.whiteColor;                  // White seems to be necessary.
 
     scrollview = [[NSScrollView alloc] initWithFrame:scroll_frame];
-    [scrollview setHasVerticalScroller:YES];
-    [scrollview setHasHorizontalScroller:NO]; // Guess.
-    [window setContentView:scrollview];
+    scrollview.hasVerticalScroller = YES;
+    scrollview.hasHorizontalScroller = NO; // Guess.
+    window.contentView = scrollview;
 
-    [scrollview setDocumentView:self];
-    [self setVerticallyResizable:YES]; // Changes size automatically
-    [self setHorizontallyResizable:NO];
-    [self setMinSize:min_size];                    // Stop it shrinking to nought
-    [self setMaxSize:max_size];                    // Stop it being chopped when editing
-    [self setPostsFrameChangedNotifications:true]; // Tell scrollview See QA 555
-    [window display];                              // Maybe we will see it now
+    scrollview.documentView = self;
+    self.verticallyResizable = YES; // Changes size automatically
+    self.horizontallyResizable = NO;
+    self.minSize = min_size;                   // Stop it shrinking to nought
+    self.maxSize = max_size;                   // Stop it being chopped when editing
+    self.postsFrameChangedNotifications = YES; // Tell scrollview See QA 555
+    [window display];                          // Maybe we will see it now
     return self;
 }
 
@@ -483,8 +483,8 @@ static float page_width(void) {
     if (a)
         return a; /* User asked for existing one */
 
-    if ([self isEditable])
-        [self.window setDocumentEdited:YES];
+    if (self.isEditable)
+        self.window.documentEdited = YES;
     else
         return nil;
 
@@ -511,8 +511,8 @@ static float page_width(void) {
     if (!anAnchor)
         return nil; /* Anchor must exist */
 
-    if ([self isEditable])
-        [self.window setDocumentEdited:YES];
+    if (self.isEditable)
+        self.window.documentEdited = YES;
     else
         return nil;
 
@@ -548,7 +548,7 @@ static float page_width(void) {
 - unlinkSelection {
     HTStyle *style = HTStyleNew();
 
-    if ([self isEditable])
+    if (self.isEditable)
         [self.window setDocumentEdited:YES];
     else
         return nil;
@@ -912,7 +912,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
     if (!style)
         return nil;
 
-    if ([self isEditable])
+    if (self.isEditable)
         [self.window setDocumentEdited:YES];
     else
         return nil;

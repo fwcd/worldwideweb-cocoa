@@ -21,7 +21,7 @@ HTStyle *HTStyleNew(void) {
     HTStyle *self = malloc(sizeof(*self));
     bzero(self, sizeof(*self));
     self->SGMLTag = 0;
-    self->textColor = [NSColor blackColor];
+    self->textColor = NSColor.blackColor;
     return self;
 }
 
@@ -179,8 +179,8 @@ HTStyle *HTStyleForRun(HTStyleSheet *self, NSTextStorage *run) {
     HTStyle *scan;
     HTStyle *best = 0;
     int bestMatch = 0;
-    NSParagraphStyle *rp = [run paragraphStyle];
-    NSFont *font = [run font];
+    NSParagraphStyle *rp = run.paragraphStyle;
+    NSFont *font = run.font;
     for (scan = self->styles; scan; scan = scan->next)
         if (scan->paragraph == rp)
             return scan; /* Exact */
