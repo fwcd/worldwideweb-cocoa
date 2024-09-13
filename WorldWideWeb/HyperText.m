@@ -770,16 +770,17 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 //	--------------
 //
 //
-- updateStyle:(HTStyle *)style {
-    int sor;
-    for (sor = 0; sor < textLength; r++) {
-        if (r->paraStyle == style->paragraph)
-            apply(style, r);
-        sor = sor + r->chars;
+- (void)updateStyle:(HTStyle *)style {
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    for (NSTextStorage *run in runs) {
+        NSParagraphStyle *paraStyle = [self paragraphStyleForRun:run];
+        if (paraStyle == style->paragraph) {
+            apply(style, run);
+        }
     }
-    [self calcLine];
-    [window display];
-    return nil;
+    // TODO: Do we need this?
+    // [self calcLine];
+    [self.window display];
 }
 
 //	Delete an anchor from this node, without freeing it.

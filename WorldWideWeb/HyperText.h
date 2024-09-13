@@ -53,7 +53,7 @@ extern void write_rtf_header(NXStream *rtfStream);
 - applyToSimilar:(HTStyle *)style;                          // Apply this style to the selection
 - applyStyle:(HTStyle *)style;                              // Apply this style to the selection
 - (HyperText *)selectUnstyled:(HTStyleSheet *)sheet;        // Select the first unstyled run.
-- updateStyle:(HTStyle *)style;                             // Update all text with changed style.
+- (void)updateStyle:(HTStyle *)style;                       // Update all text with changed style.
 - (HTStyle *)selectionStyle:(HTStyleSheet *)sheet;          // style if any of  selection
 - replaceSel:(const char *)aString style:(HTStyle *)aStyle; // Paste in styled text
 
