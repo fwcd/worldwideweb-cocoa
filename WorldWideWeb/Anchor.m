@@ -338,8 +338,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 
 //	Follow a link to its destination
 //	--------------------------------
-- (BOOL)follow;
-{
+- (BOOL)follow {
     if (DestAnchor)
         if ([DestAnchor select]) {
             if (TRACE)

@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include <stdbool.h>
+
 /* extern void *malloc(size_t size); */
 
 #define DEBUG /* Turn on trace output when WWW_TraceFlag set */
@@ -163,7 +165,7 @@ extern int WWW_TraceFlag;
 /* #define BAD(status)  (!GOOD(status))	 Bit 0 set if OK, otherwise clear   */
 
 #ifndef BOOLEAN_DEFINED
-typedef char BOOLEAN; /* Logical value */
+typedef bool BOOLEAN; /* Logical value */
 #ifndef CURSES
 #ifndef TRUE
 #define TRUE (BOOLEAN)1
