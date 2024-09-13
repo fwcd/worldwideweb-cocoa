@@ -394,23 +394,23 @@ static float page_width() {
     NSRange selection = self.selectedRange;
     NSArray<NSTextStorage *> *attributeRuns = self.textStorage.attributeRuns;
 
-    NSUInteger totalChars = 0;
+    NSUInteger chars = 0;
     NSUInteger startRunIndex = 0;
     BOOL foundStart = NO;
 
     for (int i = 0; i < attributeRuns.count; i++) {
         NSTextStorage *run = attributeRuns[i];
-        if (!foundStart && totalChars + run.length > selection.location) {
+        if (!foundStart && chars + run.length > selection.location) {
             // Found run containing selection start
             startRunIndex = i;
             foundStart = YES;
         }
-        if (totalChars + run.length >= selection.location + selection.length) {
+        if (chars + run.length >= selection.location + selection.length) {
             // Found run containing selection end
             NSRange runRange = NSMakeRange(startRunIndex, i);
             return [attributeRuns subarrayWithRange:runRange];
         }
-        totalChars += run.length;
+        chars += run.length;
     }
 
     return nil;
