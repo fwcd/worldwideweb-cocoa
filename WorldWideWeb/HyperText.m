@@ -1358,48 +1358,10 @@ void loadPlainText(void) {
 //	We have to use a "dummy" flag to mean "This has an anchor: be careful!"
 //	This is horrible.
 
-- (void)keyDown:(NSEvent *)theEvent
-#ifdef TRY1
-{
-    NSParagraphStyle *typingPara = typingRun.paraStyle;
-    int originalLength = textLength;
-    int originalStart = sp0.cp;
-    int originalEnd = spN.cp;
-    [super keyDown:theEvent];
-
-    {
-        int inserted = originalEnd - originalStart + textLength - originalLength;
-
-        if (TRACE)
-            NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.", originalLength, originalStart, originalEnd,
-                  textLength, sp0.cp, spN.cp);
-
-        if (inserted > 0) {
-            NSTextStorage *s;
-            int pos;
-            int start = sp0.cp - inserted;
-            for (pos = 0, s = theRuns->runs; pos + s->chars <= start; pos = pos + ((s++)->chars)) /*loop*/
-                ;
-
-            //	s points to run containing first char of insertion
-
-            if (pos != start)
-                NSLog(@"HT: Strange: inserted %i at %i, start of run=%i !!", inserted, start, pos);
-
-            if (s > theRuns->runs) {       /* ie s-1 is valid */
-                s->paraStyle = typingPara; /* Repair damage to runs */
-                /* What about freeing the old paragraph style? @@ */
-                s->info = (s - 1)->info;
-                s->rFlags.dummy = 1; /* Pass on flag */
-            }
-        }
-    }
-}
-#else
-//	The typingRun field does not seem to reliably reflect the
-//	format which would be appropriate if typing were to occur.
-//	We have to use our own.
-{
+- (void)keyDown:(NSEvent *)theEvent {
+    //	The typingRun field does not seem to reliably reflect the
+    //	format which would be appropriate if typing were to occur.
+    //	We have to use our own.
     NXRun run;
     {
         NSTextStorage *s; /* To point to run BEFORE selection */
@@ -1483,7 +1445,7 @@ void loadPlainText(void) {
         } /* block */
     }
 }
-#endif
+
 //	After paste, determine paragraph styles for pasted material:
 //	------------------------------------------------------------
 
