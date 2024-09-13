@@ -89,17 +89,15 @@
 }
 #endif
 
-- textDidChange:textObject {
+- (void)textDidChange:(NSNotification *)notification {
     if (TRACE)
         NSLog(@"HM: text Did Change.\n");
-    [[textObject window] setDocumentEdited:YES]; /* Broken cross in close button */
-    return self;
+    [[notification.object window] setDocumentEdited:YES]; /* Broken cross in close button */
 }
 
-- (BOOL)textWillChange:textObject {
+- (void)textDidBeginEditing:(NSNotification *)notification {
     if (TRACE)
         NSLog(@"HM: text Will Change -- OK\n");
-    return NO; /* Ok - you may change (sic) */
 }
 
 //	These delegate methods are special to HyperText:

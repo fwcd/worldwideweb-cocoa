@@ -11,7 +11,7 @@
 #import "HyperTextDelegate.h"
 #import <Foundation/Foundation.h>
 
-@interface HyperAccess : NSObject <HyperTextDelegate>
+@interface HyperAccess : NSObject <HyperTextDelegate, NSTextDelegate>
 
 //	Target variables for interface builder hookups:
 
@@ -46,8 +46,8 @@
 
 //	Text delegate methods:
 
-- textDidChange:textObject;
-- (BOOL)textWillChange:textObject;
+- (void)textDidChange:(NSNotification *)notification;
+- (void)textDidBeginEditing:(NSNotification *)notification;
 
 //	HyperText delegate methods:
 
