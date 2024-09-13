@@ -71,7 +71,7 @@ static HyperText *HT; /* Global pointer to self to allow C mixing */
 //
 static float page_width(void) {
     NSPrintInfo *pi = NSPrintInfo.sharedPrintInfo; // Page layout details
-    NSSize paperSize = pi.paperSize; //	In points
+    NSSize paperSize = pi.paperSize;               //	In points
 
     return paperSize.width - pi.leftMargin - pi.rightMargin;
 }
