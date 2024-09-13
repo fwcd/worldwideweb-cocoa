@@ -407,7 +407,7 @@ static float page_width() {
         }
         if (chars + run.length >= selection.location + selection.length) {
             // Found run containing selection end
-            NSRange runRange = NSMakeRange(startRunIndex, i);
+            NSRange runRange = NSMakeRange(startRunIndex, i - startRunIndex);
             return runRange;
         }
         chars += run.length;
@@ -559,7 +559,7 @@ static float page_width() {
             startChars = chars;
         } else if (runAnchor != anchor && foundStart) {
             [self.window makeKeyAndOrderFront:self];
-            NSRange range = NSMakeRange(startChars, chars);
+            NSRange range = NSMakeRange(startChars, chars - startChars);
             [self setSelectedRange:range];
             [self scrollRangeToVisible:range];
             return anchor;
