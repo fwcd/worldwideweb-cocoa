@@ -8,9 +8,10 @@
 
 #import "Anchor.h"
 #import "HyperText.h"
+#import "HyperTextDelegate.h"
 #import <Foundation/Foundation.h>
 
-@interface HyperAccess : NSObject
+@interface HyperAccess : NSObject <HyperTextDelegate>
 
 //	Target variables for interface builder hookups:
 
@@ -50,6 +51,6 @@
 
 //	HyperText delegate methods:
 
-- hyperTextDidBecomeMain:sender;
+- (void)hyperTextDidBecomeMain:(HyperText *)sender;
 
 @end

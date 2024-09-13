@@ -61,6 +61,7 @@
 /* Begin PBXFileReference section */
 		354F5A592C94960A00CBFA57 /* NSAttributedString+Attributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Attributes.h"; sourceTree = "<group>"; };
 		354F5A5A2C94960A00CBFA57 /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
+		354F5A5C2C94A55800CBFA57 /* HyperTextDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HyperTextDelegate.h; sourceTree = "<group>"; };
 		3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldWideWeb.xib; sourceTree = "<group>"; };
 		359DEE762C90CFCB00FDB95E /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		359DEE772C90CFCB00FDB95E /* Minimal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Minimal.xib; sourceTree = "<group>"; };
@@ -231,6 +232,7 @@
 				35DC78F82BFAD6AA00432284 /* HyperManager.m */,
 				35DC79082BFAD6AA00432284 /* HyperText.h */,
 				35DC791E2BFAD6AB00432284 /* HyperText.m */,
+				354F5A5C2C94A55800CBFA57 /* HyperTextDelegate.h */,
 				35DC78FD2BFAD6AA00432284 /* IB.proj */,
 				35DC790D2BFAD6AA00432284 /* icon1.tiff */,
 				35DC78EF2BFAD6AA00432284 /* icon2.tiff */,

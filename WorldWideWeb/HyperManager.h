@@ -10,9 +10,10 @@
 
 #pragma once
 
+#import <AppKit/AppKit.h>
 #import "HyperAccess.h"
 
-@interface HyperManager : HyperAccess
+@interface HyperManager : HyperAccess <NSWindowDelegate>
 
 {
     NSMutableArray *accesses;
@@ -37,6 +38,6 @@
 - (IBAction)print:sender;         //	Print the main window
 - (IBAction)runPagelayout:sender; //	Run the page layout panel for the app.
 
-- windowDidBecomeKey:sender; //	Window delegate method
+- (void)windowDidBecomeKey:(NSNotification *)sender; //	Window delegate method
 
 @end

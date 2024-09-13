@@ -20,7 +20,7 @@
 
 extern void write_rtf_header(NXStream *rtfStream);
 
-@interface HyperText : NSTextView {
+@interface HyperText : NSTextView <NSWindowDelegate> {
     id server;            //	Responsible for maintaining this node
                           //	NSMutableArray *	Anchors;	//	A list of the anchors
     Anchor *nodeAnchor;   //	An anchor representing the node
@@ -92,6 +92,7 @@ extern void write_rtf_header(NXStream *rtfStream);
 
 //	Window delegate methods:
 
-- windowDidBecomeMain:sender;
+- (void)windowDidBecomeMain:(NSNotification *)sender;
+- (void)windowWillClose:(NSNotification *)sender;
 
 @end

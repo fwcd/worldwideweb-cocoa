@@ -29,6 +29,7 @@
 //  - https://developer.apple.com/documentation/foundation/nsmutableattributedstring
 
 #import "HyperText.h"
+#import "HyperTextDelegate.h"
 #import "HTParse.h"
 #import "HTStyle.h"
 #import "HTUtils.h"
@@ -996,22 +997,22 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 
 //	Prevent closure of edited window without save
 //
-- windowWillClose:sender {
+- (void)windowWillClose:(NSNotification *)sender {
     if (![self.window isDocumentEdited])
-        return self;
+        return;
     NSInteger choice =
         NSRunAlertPanel(@"Close", @"Save changes to `%s'?", @"Yes", @"No", @"Don't close", [self.window title]);
-    if (choice == NSAlertAlternateReturn)
-        return self;
-    if (choice == NSAlertOtherReturn)
-        return nil;
-    return [server saveNode:self];
+    if (choice == NSAlertAlternateReturn || choice == NSAlertOtherReturn)
+        return;
+    [server saveNode:self];
 }
 
 //	Change configuration as window becomes key window
 //
-- windowDidBecomeMain:sender {
-    return [self.delegate hyperTextDidBecomeMain:self];
+- (void)windowDidBecomeMain:(NSNotification *)sender {
+    if ([self.delegate respondsToSelector:@selector(hyperTextDidBecomeMain:)]) {
+        [((id<HyperTextDelegate>) self.delegate) hyperTextDidBecomeMain:self];
+    }
 }
 
 /*				FORMAT CONVERSION FROM SGML

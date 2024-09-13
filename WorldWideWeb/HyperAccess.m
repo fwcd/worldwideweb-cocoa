@@ -104,7 +104,7 @@
 
 //	These delegate methods are special to HyperText:
 
-- hyperTextDidBecomeMain:sender {
-    return [self.manager hyperTextDidBecomeMain:sender]; /* Pass the buck */
+- (void)hyperTextDidBecomeMain:(HyperText *)sender {
+    [self.manager hyperTextDidBecomeMain:sender]; /* Pass the buck */
 }
 @end

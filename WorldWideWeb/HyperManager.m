@@ -455,8 +455,7 @@ PRIVATE FileAccess *fileAccess = nil;
 // and the default address in the "open using full reference" panel
 // is set to the address of the current hypertext.
 //
-- hyperTextDidBecomeMain:sender {
-
+- (void)hyperTextDidBecomeMain:(HyperText *)sender {
     if ([sender isIndex]) {
         [[self.keywords window] makeKeyAndOrderFront:self];
     } else {
@@ -466,7 +465,6 @@ PRIVATE FileAccess *fileAccess = nil;
     [[self.titleString cellAtIndex:0] setStringValue:[[sender window] title]];
     [self.addressString setStringValue:[NSString stringWithUTF8String:[[sender nodeAnchor] address]]];
     //  [openString setStringValue: [[sender nodeAnchor] address] at:0];
-    return self;
 }
 
 //	Panel delegate methods
@@ -475,12 +473,10 @@ PRIVATE FileAccess *fileAccess = nil;
 //	are the open and search panels. When they become key,
 //	we ensure that the text is selected.
 
-- windowDidBecomeKey:sender {
-    if (sender == [self.openString window])
+- (void)windowDidBecomeKey:(NSNotification *)sender {
+    if (sender.object == [self.openString window])
         [self.openString selectTextAtIndex:0]; // Preselect the text
-    else if (sender == [self.keywords window])
+    else if (sender.object == [self.keywords window])
         [self.keywords selectTextAtIndex:0]; // Preselect the text
-
-    return self;
 }
 @end
