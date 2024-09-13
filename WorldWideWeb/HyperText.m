@@ -387,8 +387,8 @@ static float page_width() {
     return a;
 }
 
-//    Find the runs containing the selection
-//    --------------------------------------
+//  Find the runs containing the selection
+//  --------------------------------------
 
 - (NSRange)runRangeContainingSelection {
     NSRange selection = self.selectedRange;
