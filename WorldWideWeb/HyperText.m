@@ -1341,10 +1341,10 @@ void loadPlainText(void) {
 // we follow a link if possible, otherwise we allow Text to select a word as usual.
 //
 - (void)mouseDown:(NSEvent *)theEvent {
-    if (theEvent->data.mouse.click != 2)
-        return [super mouseDown:theEvent];
+    if (theEvent.clickCount != 2)
+        [super mouseDown:theEvent];
     if (![self followLink])
-        return [super mouseDown:theEvent];
+        [super mouseDown:theEvent];
 }
 
 //	The following are necessary to undo damage done by the Text object
