@@ -823,22 +823,15 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 //
 //	Returns the position of the character after the newline, or 0.
 //
-- (int)startOfParagraph:(int)pos {
-    NXTextBlock *block;
-    int sob;
-    unsigned char *p;
-    for (block = firstTextBlock, sob = 0; sob + block->chars <= pos; block = block->next)
-        sob = sob + block->chars;
-    for (p = block->text + (pos - sob) - 1; p >= block->text; p--)
-        if (*p == '\n')
-            return sob + (p - block->text) + 1; /* Position of newline */
-    while (block->prior) {
-        block = block->prior;
-        sob = sob - block->chars;
-        for (p = block->text + (block->chars - 1); p >= block->text; p--)
-            if (*p == '\n')
-                return sob + (p - block->text) + 1; /* Position of newline */
+- (NSUInteger)startOfParagraph:(NSUInteger)pos {
+    NSString *text = self.string;
+    
+    for (NSUInteger i = pos; i > 0; i--) {
+        if ([text characterAtIndex:(i - 1)] == '\n') {
+            return i;
+        }
     }
+    
     return 0;
 }
 
@@ -851,37 +844,16 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 //	the concept of space after or before paragraphs, so extra paragrpah
 //	marks must be used.
 //
-- (int)endOfParagraph:(int)pos {
-    NXTextBlock *block;
-    int sob;
-    unsigned char *p;
-    BOOL found_newline = NO;
-
-    if (pos >= textLength)
-        return textLength;
-
-    for (block = firstTextBlock, sob = 0; sob + block->chars <= pos; block = block->next)
-        sob = sob + block->chars; // Find text block for pos
-
-    p = block->text + (pos - sob); // Start part way through this one
-
-    while (block) {
-        for (; p < block->text + block->chars; p++) {
-            if (found_newline) {
-                if (*p != '\n')
-                    return sob + (p - block->text); /* Position after newline */
-            } else {
-                if (*p == '\n') {
-                    found_newline = YES;
-                }
-            }
+- (NSUInteger)endOfParagraph:(NSUInteger)pos {
+    NSString *text = self.string;
+    
+    for (NSUInteger i = pos + 1; i < text.length; i++) {
+        if ([text characterAtIndex:i] == '\n') {
+            return i + 1;
         }
-        sob = sob + block->chars; /* Move to next block */
-        block = block->next;
-        if (block)
-            p = block->text;
     }
-    return textLength;
+    
+    return text.length;
 }
 
 //	Do two runs imply the same format?
