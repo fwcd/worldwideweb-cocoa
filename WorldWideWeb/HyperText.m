@@ -425,6 +425,12 @@ static float page_width() {
     }
 }
 
+- (NSTextStorage *)runContainingSelectionStart {
+    NSRange runRange = [self runRangeContainingSelection];
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    return runs[runRange.location];
+}
+
 //  Find associated attributes for runs
 //  -----------------------------------
 
@@ -698,9 +704,31 @@ static float page_width() {
     return nil;
 }
 
-//    Copy a style into an attributed string in the given range
-//    ---------------------------------------------------------
+//  Extract the attributes for a given string.
+//  -------------------------------------------------------
+static NSDictionary<NSString *, id> *attributesForStyle(HTStyle *style) {
+    NSMutableDictionary<NSString *, id> *attributes = [[NSMutableDictionary alloc] init];
+    if (style->font) {
+        attributes[NSFontAttributeName] = style->font;
+    }
+    if (style->paragraph) {
+        attributes[NSParagraphStyleAttributeName] = style->paragraph;
+    }
+    if (style->anchor || style->clearAnchor) {
+        attributes[AnchorAttributeName] = style->anchor;
+        attributes[NSUnderlineStyleAttributeName] = @(style->anchor ? NSUnderlineStyleSingle : NSUnderlineStyleNone);
+    }
+    if (style->textColor) {
+        attributes[NSForegroundColorAttributeName] = style->textColor;
+    }
+    return attributes;
+}
+
+//  Copy a style into an attributed string in the given range
+//  ---------------------------------------------------------
 static void applyRange(HTStyle *style, NSMutableAttributedString *r, NSRange range) {
+    // TODO: Should we implement this in terms of attributesForStyle?
+    
     if (style->font) {
         [r setFont:style->font inRange:range];
     }
@@ -721,7 +749,6 @@ static void applyRange(HTStyle *style, NSMutableAttributedString *r, NSRange ran
         //    	r->textGray = 0.166666666;		/* Slightly grey - horrid */
         if ([a destination]) {
             //	    r->textGray = NX_DKGRAY;	/* Anchor highlighting */
-            r->rFlags.underline = YES;
             [r setUnderlineStyle:NSUnderlineStyleSingle inRange:range];
         }
     }
@@ -729,8 +756,8 @@ static void applyRange(HTStyle *style, NSMutableAttributedString *r, NSRange ran
     // r->rFlags.dummy = (r->info != 0); /* Keep track for typingRun */
 }
 
-//    Copy a style into an attributed string (e.g. a run)
-//    ---------------------------------------------------
+//  Copy a style into an attributed string (e.g. a run)
+//  ---------------------------------------------------
 static void apply(HTStyle *style, NSMutableAttributedString *r) { applyRange(style, r, NSMakeRange(0, r.length)); }
 
 //	Check whether copying a style into a run will change it
@@ -910,13 +937,8 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 //	----------------------------------
 
 - (HTStyle *)selectionStyle:(HTStyleSheet *)sheet {
-    NSTextStorage *r = theRuns->runs;
-    int sor;
-
-    for (sor = 0; sor <= sp0.cp; sor = sor + ((r++)->chars))
-        ;                           /* Find run after */
-    r--;                            /* Run for start of selection */
-    return HTStyleForRun(sheet, r); /* for start of selection */
+    NSTextStorage *run = [self runContainingSelectionStart];
+    return HTStyleForRun(sheet, run); /* for start of selection */
 }
 
 //	Another replaceSel method, this time using styles:
@@ -925,19 +947,9 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 //	The style is as given, or where that is not defined, as the
 //	current style of the selection.
 
-- replaceSel:(const char *)aString style:(HTStyle *)aStyle {
-    NSTextStorage *r = theRuns->runs;
-    int sor;
-    NXRunArray newRuns;
-
-    for (sor = 0; sor <= sp0.cp; sor = sor + ((r++)->chars))
-        ;                                  /* Find run after */
-    r--;                                   /* Run for start of selection */
-    newRuns.runs[0] = *r;                  /* Copy it */
-    newRuns.chunk.used = sizeof(*r);       /* 1 run used */
-    apply(aStyle, newRuns.runs);           /* change it */
-    newRuns.runs->chars = strlen(aString); /* Match the size to the string */
-    return [self replaceSel:aString length:newRuns.runs->chars runs:&newRuns];
+- (void)replaceSel:(const char *)aString style:(HTStyle *)aStyle {
+    [self setSelectedTextAttributes:attributesForStyle(aStyle)];
+    [self replaceCharactersInRange:self.selectedRange withString:[NSString stringWithUTF8String:aString]];
 }
 
 //	Read in as Plain Text					readText:

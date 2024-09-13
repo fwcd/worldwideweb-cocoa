@@ -55,7 +55,7 @@ extern void write_rtf_header(NXStream *rtfStream);
 - (HyperText *)selectUnstyled:(HTStyleSheet *)sheet;        // Select the first unstyled run.
 - (void)updateStyle:(HTStyle *)style;                       // Update all text with changed style.
 - (HTStyle *)selectionStyle:(HTStyleSheet *)sheet;          // style if any of  selection
-- replaceSel:(const char *)aString style:(HTStyle *)aStyle; // Paste in styled text
+- (void)replaceSel:(const char *)aString style:(HTStyle *)aStyle; // Paste in styled text
 
 //	"Fast" Methods for external parsers:
 
