@@ -149,7 +149,7 @@ PRIVATE char next_char(void) {
 
 //	Get Styles from stylesheet
 //
-static void get_styles() {
+static void get_styles(void) {
     if (!addressStyle)
         addressStyle = HTStyleNamed(styleSheet, "Address");
     if (!textStyle)
@@ -308,7 +308,7 @@ static void write_anchors(char *text) {
 //	RFC 977 specifies that the line "folding" of RFC850 is not used, so we
 //	do not handle it here.
 
-static void read_article() {
+static void read_article(void) {
 
     char line[LINE_LENGTH + 1];
     char *references = NULL; /* Hrefs for other articles */
@@ -436,7 +436,7 @@ static void read_article() {
 //	RFC 977 specifies that the line "folding" of RFC850 is not used, so we
 //	do not handle it here.
 
-static void read_list() {
+static void read_list(void) {
 
     char line[LINE_LENGTH + 1];
     char *p;

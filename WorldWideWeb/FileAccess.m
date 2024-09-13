@@ -358,7 +358,7 @@ NSString *ask_name(HyperText *hint, int format) {
 //	-----------------------------------
 //
 
-NSString *existing_filename() {
+NSString *existing_filename(void) {
     HyperText *HT; //	The new node
     char *suggestion = 0;
     char *slash;

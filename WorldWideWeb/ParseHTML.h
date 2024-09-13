@@ -153,7 +153,7 @@ static HTStyle *Highlighting[3];
 /*	Get Styles from style sheet
 **	---------------------------
 */
-void get_styles() {
+void get_styles(void) {
     Normal.style = HTStyleNamed(styleSheet, "Normal");
     Heading[0].style = HTStyleNamed(styleSheet, "Heading1");
     Heading[1].style = HTStyleNamed(styleSheet, "Heading2");
@@ -176,7 +176,7 @@ void get_styles() {
 /*	Output the code for styles
 **	--------------------------
 */
-void output_paragraph() {
+void output_paragraph(void) {
     HTStyle *s = current_style->style;
     int newlines = ((s->spaceBefore + s->spaceAfter) / s->paragraph.lineHt /* FIXME: Non-existent */) + 1;
     int i;
@@ -197,7 +197,7 @@ void output_paragraph() {
 **	Now, we allow only the larger of the space before/space after
 **	requirements, as that is nearer what is meant.
 */
-void update_style() {
+void update_style(void) {
     HTStyle *cur = current_style->style;
     HTStyle *next = next_style->style;
 
@@ -233,7 +233,7 @@ void change_style(SGML_style *s) { next_style = s; }
 
 /*	End an SGML style
 */
-void end_style() {
+void end_style(void) {
     if (styleStack) {
         NestedStyle *N = styleStack;
         styleStack = N->next;
@@ -268,7 +268,7 @@ void start_highlighting(HTStyle *style) { /* SET_STYLE(style);  @@@ to be fixed 
 /*	End a highlighted area
 **	----------------------
 */
-void end_highlighting() { /* @@@@@@ Need set and unset style functions, traits and nesting */ }
+void end_highlighting(void) { /* @@@@@@ Need set and unset style functions, traits and nesting */ }
 
 /*	Check keyword syntax
 **	---------------------

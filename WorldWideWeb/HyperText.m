@@ -69,7 +69,7 @@ static HyperText *HT; /* Global pointer to self to allow C mixing */
 //
 //	Returned in pixels
 //
-static float page_width() {
+static float page_width(void) {
     PrintInfo *pi = [NSPrintInfo sharedPrintInfo]; // Page layout details
     CGFloat topMargin, bottomMargin, leftMargin, rightMargin;
     const NSRect *paper = [pi paperRect]; //	In points
@@ -1064,13 +1064,13 @@ static unsigned char *read_pointer; /* next character to be read */
 static unsigned char *read_limit;
 static NXTextBlock *read_block;
 
-void start_input() {
+void start_input(void) {
     read_block = HT->firstTextBlock;
     read_pointer = read_block->text; /* next character to be read */
     read_limit = read_pointer + read_block->chars;
 }
 
-unsigned char next_input_block() {
+unsigned char next_input_block(void) {
     char c = *read_pointer;
     read_block = read_block->next;
     if (!read_block)
