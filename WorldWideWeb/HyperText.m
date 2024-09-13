@@ -460,8 +460,10 @@ static float page_width() {
     style->anchor = a;
     style->clearAnchor = NO;
     [self applyStyle:style];
-    if (TRACE)
-        printf("HyperText: New dest anchor %i from %i to %i.\n", a, sp0.cp, spN.cp);
+    if (TRACE) {
+        NSRange selection = self.selectedRange;
+        NSLog(@"HyperText: New dest anchor %@ from %lu to %lu.\n", a, selection.location, selection.location + selection.length);
+    }
     [self.delegate textDidChange:self];
     return a;
 }
@@ -484,12 +486,15 @@ static float page_width() {
     a = [self anchorSelected];
     if (!a) {
         a = [self anchor];
-        if (TRACE)
-            printf("HyperText: New source anchor %i from %i to %i.\n", a, sp0.cp, spN.cp);
+        if (TRACE) {
+            NSRange selection = self.selectedRange;
+            NSLog(@"HyperText: New source anchor %@ from %lu to %lu.\n", a, selection.location, selection.location + selection.length);
+        }
     } else {
         [a select];
-        if (TRACE)
-            printf("HyperText: Existing source anchor %i selected.\n", a);
+        if (TRACE) {
+            NSLog(@"HyperText: Existing source anchor %@ selected.\n", a);
+        }
     }
     style->anchor = a;
     style->clearAnchor = NO;
