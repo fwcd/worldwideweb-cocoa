@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 
     char *p;
 
-    static NSDictionary<NSString *, id> *myDefaults = @{
+    NSDictionary<NSString *, id> *myDefaults = @{
         @"PaperType" : @"Letter", // Non-USA users will have to override
         @"LeftMargin" : @"72",    //  (72) Space for ring binding
         @"RightMargin" : @"36",   //  (72) Note printers need some margin
