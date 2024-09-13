@@ -60,7 +60,7 @@ extern char *appDirectory; /* Pointer to directory for application */
                         encoding:NSUTF8StringEncoding
                            error:nil];
     else
-        fprintf(stderr, "HT/File: Unknown format!\n");
+        NSLog(@"HT/File: Unknown format!\n");
 
     if (TRACE)
         NSLog(@"HT file: file `%s' in format %i.\n", filename, format);

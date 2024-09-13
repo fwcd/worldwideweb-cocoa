@@ -132,20 +132,27 @@ PRIVATE FileAccess *fileAccess = nil;
     //	Error: No access. Print useful error message.
 
     {
-        char got[100];
-        char *format;
-
-        format = *s ? "Invalid access prefix for `%s'\n    Can be one of %s but not `%s:'.\n"
-                    : "No access prefix specified for `%s'\n    Accesses are: %s .\n";
+        NSString *got = @"";
 
         for (i = 0; i < [accesses count]; i++) {
-            sprintf(got, "%s: ", [[accesses objectAtIndex:i] name]);
+            got = [NSString stringWithFormat:@"%@%@: ", got, [[accesses objectAtIndex:i] name]];
         }
-        printf(format, [anAnchor address], got, s);
+
+        NSString *message;
+
+        if (*s) {
+            message =
+                [NSString stringWithFormat:@"Invalid access prefix for `%s'\n    Can be one of %@ but not `%s:'.\n",
+                                           [anAnchor address], got, s];
+        } else {
+            message = [NSString stringWithFormat:@"No access prefix specified for `%s'\n    Accesses are: %@ .\n",
+                                                 [anAnchor address], got];
+        }
+
+        NSLog(@"%@", message);
 
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setInformativeText:[NSString stringWithFormat:[NSString stringWithUTF8String:format], [anAnchor address],
-                                                             got, s]];
+        [alert setInformativeText:message];
         [alert runModal];
     }
     free(s);
