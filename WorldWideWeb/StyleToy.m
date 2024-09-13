@@ -46,8 +46,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
 - display_style {
     if (style->name)
-        [(NSFormCell *)[self.NameForm cellAtIndex:0] setStringValue:[NSString stringWithCString:style->name
-                                                                                       encoding:NSUTF8StringEncoding]];
+        [(NSFormCell *)[self.NameForm cellAtIndex:0] setStringValue:[NSString stringWithUTF8String:style->name]];
     else
         [(NSFormCell *)[self.NameForm cellAtIndex:0] setStringValue:@""];
 
@@ -71,8 +70,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
         for (NSTextTab *tab in style->paragraph.tabStops) {
             sprintf(tabstring + strlen(tabstring), "%.0f ", tab.location);
         }
-        [(NSFormCell *)[self.TabForm cellAtIndex:0] setStringValue:[NSString stringWithCString:tabstring
-                                                                                      encoding:NSUTF8StringEncoding]];
+        [(NSFormCell *)[self.TabForm cellAtIndex:0] setStringValue:[NSString stringWithUTF8String:tabstring]];
     }
     return self;
 }
@@ -87,11 +85,11 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
     style->fontSize = [(NSFormCell *)[self.ParameterForm cellAtIndex:FONT_SIZE_FIELD] floatValue];
     StrAllocCopy(name,
-                 [[(NSFormCell *)[self.NameForm cellAtIndex:0] stringValue] cStringUsingEncoding:NSUTF8StringEncoding]);
+                 [[(NSFormCell *)[self.NameForm cellAtIndex:0] stringValue] UTF8String]);
     stripped = HTStrip(name);
     if (*stripped) {
         NSFont *font;
-        font = [NSFont fontWithName:[NSString stringWithCString:stripped encoding:NSUTF8StringEncoding]
+        font = [NSFont fontWithName:[NSString stringWithUTF8String:stripped]
                                size:style->fontSize];
         if (font)
             style->font = font;
@@ -100,7 +98,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     name = 0;
 
     StrAllocCopy(name, [[(NSFormCell *)[self.ParameterForm cellAtIndex:SGMLTAG_FIELD] stringValue]
-                           cStringUsingEncoding:NSUTF8StringEncoding]);
+                           UTF8String]);
     stripped = HTStrip(name);
     if (*stripped) {
         StrAllocCopy(style->SGMLTag, stripped);
@@ -143,7 +141,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
     if (!styleSheet)
         styleSheet = HTStyleSheetNew();
-    StrAllocCopy(styleSheet->name, [filename cStringUsingEncoding:NSUTF8StringEncoding]);
+    StrAllocCopy(styleSheet->name, [filename UTF8String]);
 
     s = NXOpenFile(styleSheet->name, NX_READONLY);
     if (!s) {
@@ -222,7 +220,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
         save_panel = [NSSavePanel new]; //	Keep between invocations
     }
 
-    suggestion = [NSString stringWithCString:styleSheet->name encoding:NSUTF8StringEncoding];
+    suggestion = [NSString stringWithUTF8String:styleSheet->name];
     slash = [suggestion lastPathComponent];
     if (slash) {
         suggestion = [suggestion stringByDeletingLastPathComponent];
@@ -238,7 +236,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     }
 
     filename = [save_panel filename];
-    StrAllocCopy(styleSheet->name, [filename cStringUsingEncoding:NSUTF8StringEncoding]);
+    StrAllocCopy(styleSheet->name, [filename UTF8String]);
     s = NXOpenFile(styleSheet->name, NX_WRITEONLY);
     if (!s) {
         if (TRACE)

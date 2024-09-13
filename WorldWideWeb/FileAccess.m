@@ -53,9 +53,9 @@ extern char *appDirectory; /* Pointer to directory for application */
         NXClose(s);
         free(saveName);
     } else if (format == WWW_RICHTEXT)
-        [HT writeRTFDToFile:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding] atomically:YES];
+        [HT writeRTFDToFile:[NSString stringWithUTF8String:filename] atomically:YES];
     else if (format == WWW_PLAINTEXT || format == WWW_SOURCE)
-        [[HT string] writeToFile:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding]
+        [[HT string] writeToFile:[NSString stringWithUTF8String:filename]
                       atomically:YES
                         encoding:NSUTF8StringEncoding
                            error:nil];
@@ -105,14 +105,13 @@ NSString *ask_name(HyperText *hint, int format) {
     slash = strrchr(suggestion, '/'); //	Point to last slash
     if (slash) {
         *slash++ = 0; /* Separate directory and filename */
-        status = [save_panel runModalForDirectory:[NSString stringWithCString:suggestion encoding:NSUTF8StringEncoding]
-                                             file:[NSString stringWithCString:slash encoding:NSUTF8StringEncoding]];
+        status = [save_panel runModalForDirectory:[NSString stringWithUTF8String:suggestion]
+                                             file:[NSString stringWithUTF8String:slash]];
     } else {
         if (TRACE)
             NSLog(@"No slash in directory!!\n");
         status = [save_panel runModalForDirectory:@"."
-                                             file:[NSString stringWithCString:suggestion
-                                                                     encoding:NSUTF8StringEncoding]];
+                                             file:[NSString stringWithUTF8String:suggestion]];
     }
     free(suggestion);
 
@@ -142,7 +141,7 @@ NSString *ask_name(HyperText *hint, int format) {
     if (!filename)
         return nil; //	Save clancelled.
 
-    return [self save:HT inFile:[filename cStringUsingEncoding:NSUTF8StringEncoding] format:format];
+    return [self save:HT inFile:[filename UTF8String] format:format];
 }
 
 //	Save as an HTML file	using save panel
@@ -293,8 +292,7 @@ NSString *ask_name(HyperText *hint, int format) {
 
             HT = [[HyperText alloc] initWithAnchor:anAnchor Server:self];
             [HT setupWindow];
-            [[HT window] setTitle:[NSString stringWithCString:filename
-                                                     encoding:NSUTF8StringEncoding]]; // Show something's happening
+            [[HT window] setTitle:[NSString stringWithUTF8String:filename]]; // Show something's happening
 
             if (file_number < 0)
                 [HT setEditable:HTEditable(filename)]; // This is editable?
@@ -381,8 +379,7 @@ NSString *existing_filename() {
         slash = strrchr(suggestion, '/'); //	Point to last slash
         if (slash) {
             *slash++ = 0; /* Separate directory and filename */
-            status = [openPanel runModalForDirectory:[NSString stringWithCString:suggestion
-                                                                        encoding:NSUTF8StringEncoding]
+            status = [openPanel runModalForDirectory:[NSString stringWithUTF8String:suggestion]
                                                 file:@""];
             // (was: file:slash but this is silly as that is already open.)
         } else {
@@ -410,7 +407,7 @@ NSString *existing_filename() {
 - linkToFile:sender {
     NSString *filename = existing_filename(); // Ask for filename
     if (filename) {
-        char *node_address = WWW_nameOfFile([filename cStringUsingEncoding:NSUTF8StringEncoding]);
+        char *node_address = WWW_nameOfFile([filename UTF8String]);
         Anchor *a = [[Anchor alloc] initWithAddress:node_address];
         free(node_address);
 
@@ -436,7 +433,7 @@ NSString *existing_filename() {
         return nil;
     }
 
-    return [self openFile:[filename cStringUsingEncoding:NSUTF8StringEncoding] diagnostic:diagnostic];
+    return [self openFile:[filename UTF8String] diagnostic:diagnostic];
 }
 
 //	Load a personal or system-wide version of a file
@@ -530,7 +527,7 @@ NSString *existing_filename() {
     if (!filename)
         return nil; //	Save cancelled.
 
-    node_address = WWW_nameOfFile([filename cStringUsingEncoding:NSUTF8StringEncoding]);
+    node_address = WWW_nameOfFile([filename UTF8String]);
     [a setAddress:node_address]; // 	Adopt new address as node name
 
     /*	Make a default title for the document from the file name:
@@ -569,7 +566,7 @@ NSString *existing_filename() {
 
     free(node_address);
 
-    status = [self save:HT inFile:[filename cStringUsingEncoding:NSUTF8StringEncoding] format:WWW_HTML];
+    status = [self save:HT inFile:[filename UTF8String] format:WWW_HTML];
     if (!status)
         return nil; //	Save failed!
 
