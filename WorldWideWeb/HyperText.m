@@ -1111,7 +1111,6 @@ static int original_length;          /* of text */
         *write_pointer++ = (c);                                                                                        \
         if (write_pointer == write_limit) {                                                                            \
             end_output();                                                                                              \
-            append_start_block();                                                                                      \
         }                                                                                                              \
     }
 #define OUTPUTS(string)                                                                                                \
@@ -1124,40 +1123,6 @@ static int original_length;          /* of text */
 #define FINISH_OUTPUT finish_output()
 #define LOADPLAINTEXT loadPlainText()
 #define SET_STYLE(s) set_style(s)
-
-//	Allocate a text block to accumulate text
-//
-// Bugs:
-// It might seem logical to set the "malloced" bit to 1, because the text block
-// has been allocted with malloc(). However, this crashes the program as at the
-// next edit of the text, the text object frees the block while still using it.
-// Chaos results, sometimes corrupting the stack and/or looping for ages. @@
-// We therefore set it to zero! (This might have been something else -TBL)
-//
-void append_start_block(void) {
-    NXTextBlock *previous_block = write_block; /* to previous write block */
-
-    if (TRACE)
-        NSLog(@"    Starting to append new block.");
-
-    lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
-    write_block = (NXTextBlock *)malloc(sizeof(*write_block));
-    write_block->tbFlags.malloced = 0; /* See comment above */
-    write_block->text = (unsigned char *)malloc(BLOCK_SIZE);
-    write_block->chars = 0; // For completeness: not used.
-    write_pointer = write_block->text;
-    write_limit = write_pointer + BLOCK_SIZE;
-
-    //	Add the block into the linked list after previous block:
-
-    write_block->prior = previous_block;
-    write_block->next = previous_block->next;
-    if (write_block->next)
-        write_block->next->prior = write_block;
-    else
-        HT->lastTextBlock = write_block;
-    previous_block->next = write_block;
-}
 
 // 	Start the output process altogether
 //
