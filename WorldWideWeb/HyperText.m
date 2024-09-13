@@ -1097,7 +1097,7 @@ static int original_length;          /* of text */
 // Chaos results, sometimes corrupting the stack and/or looping for ages. @@
 // We therefore set it to zero! (This might have been something else -TBL)
 //
-void append_start_block() {
+void append_start_block(void) {
     NXTextBlock *previous_block = write_block; /* to previous write block */
 
     if (TRACE)
@@ -1124,7 +1124,7 @@ void append_start_block() {
 
 // 	Start the output process altogether
 //
-void append_begin() {
+void append_begin(void) {
     if (TRACE)
         NSLog(@"Begin append to text.\n");
 
@@ -1190,7 +1190,7 @@ void set_style(HTStyle *style) {
 
 //	Transfer text to date to the Text object
 //	----------------------------------------
-void end_output() {
+void end_output(void) {
     int size = (write_pointer - write_block->text);
     if (TRACE)
         NSLog(@"    HT: Adding block of %i characters, starts: `%.20s...'\n", size, write_block->text);
@@ -1202,7 +1202,7 @@ void end_output() {
 //	Finish altogether
 //	-----------------
 
-void finish_output() {
+void finish_output(void) {
     int size = write_pointer - write_block->text;
     if (size == 0) {
         HT->lastTextBlock = write_block->prior; /* Remove empty text block */
@@ -1234,7 +1234,7 @@ void finish_output() {
 
 //	Loading plain text
 
-void loadPlainText() {
+void loadPlainText(void) {
     [HT setMonoFont:YES];
     [HT setHorizontallyResizable:YES];
     [HT setNoWrap];
