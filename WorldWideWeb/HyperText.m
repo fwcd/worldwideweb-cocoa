@@ -383,7 +383,7 @@ static float page_width() {
 
     sprintf(s, "%c%i", ANCHOR_ID_PREFIX, nextAnchorNumber++);
     a = [[Anchor alloc] initWithParent:nodeAnchor tag:s];
-    [self.delegate textDidChange:self];
+    [self.delegate textDidChange:[NSNotification notificationWithName:NSControlTextDidChangeNotification object:self]];
     return a;
 }
 
@@ -461,7 +461,7 @@ static float page_width() {
         NSLog(@"HyperText: New dest anchor %@ from %lu to %lu.\n", a, selection.location,
               selection.location + selection.length);
     }
-    [self.delegate textDidChange:self];
+    [self.delegate textDidChange:[NSNotification notificationWithName:NSControlTextDidChangeNotification object:self]];
     return a;
 }
 
