@@ -45,12 +45,14 @@ static HyperText *slot[SLOTS];  /* Ids of HT objects taking them */
 
 static HyperText *HT; /* Global pointer to self to allow C mixing */
 
+// Implementation note: The Cocoa API differs quite a bit from the NeXTStep API in terms of how text rendering and related classes are implemented. A key insight is that a lot of classes have closely analogous modern equivalents though. For example, the `Text` class is similar to `NSTextView` and text runs, as implemented with `NXRun`, resemble attributed strings in the modern API (or its subclass `NSTextStorage`). This is also why the implementation of these methods diverges a bit further from the exact original code than other parts of the codebase. Still, a key goal is to stick to the original semantics where possible.
+//
+// For more resources, check out these docs of the NeXTStep and the Cocoa API:
+// - https://www.nextop.de/NeXTstep_3.3_Developer_Documentation/GeneralRef/02_ApplicationKit/TypesAndConstants/AppKitTypes.htmld/index.html#:~:text=typedef%20struct%20_NXRun
+// - https://developer.apple.com/documentation/appkit/nstextstorage
+// - https://developer.apple.com/documentation/foundation/nsmutableattributedstring
+
 /// A key that we use to store anchors in attributed string runs to replace `NXRun.info`, which the NeXTStep API reserved for app-specific usage.
-/// 
-/// See
-/// - https://www.nextop.de/NeXTstep_3.3_Developer_Documentation/GeneralRef/02_ApplicationKit/TypesAndConstants/AppKitTypes.htmld/index.html#:~:text=typedef%20struct%20_NXRun
-/// - https://developer.apple.com/documentation/appkit/nstextstorage
-/// - https://developer.apple.com/documentation/foundation/nsmutableattributedstring
 static NSString *const AnchorAttributeName = @"WorldWideWeb.Anchor";
 
 + (void)initialize {
