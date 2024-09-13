@@ -856,7 +856,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 - (HyperText *)applyStyle:(HTStyle *)style {
     NSRange selection = self.selectedRange;
     if (TRACE)
-        NSLog(@"Applying style %p to (%lu,%lu)\n", style, selection.location, selection.length);
+        NSLog(@"Applying style %p to (%lu,%lu)\n", style, selection.location, selection.location + selection.length);
 
     if (selection.length == 0) {                                  /* No selection */
         return [self applyStyle:style inRange:NSMakeRange(0, 0)]; /* Apply to typing run */
@@ -882,29 +882,26 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 //
 //
 - applyToSimilar:(HTStyle *)style {
-    NSTextStorage *r = theRuns->runs;
-    int sor;
-    NXRun old_run;
-
-    for (sor = 0; sor <= sp0.cp; sor = sor + ((r++)->chars))
-        ;               /* Find run after */
-    old_run = *(r - 1); /* Point to run for start of selection */
+    NSRange selection = self.selectedRange;
+    NSRange selectionRunRange = [self runRangeContainingSelection];
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    NSTextStorage *oldRun = runs[selectionRunRange.location];
 
     if (TRACE)
-        printf("Applying style %i to unstyled text similar to (%i,%i)\n", style, sp0.cp, spN.cp);
+        NSLog(@"Applying style %p to unstyled text similar to (%lu,%lu)\n", style, selection.location,
+              selection.location + selection.length);
 
-    for (r = theRuns->runs; (char *)r - (char *)theRuns->runs < theRuns->chunk.used; r++) {
-        if (r->paraStyle == old_run.paraStyle) {
+    for (NSTextStorage *run in runs) {
+        // TODO: Are we okay with comparing identities of NSParagraphStyle * objects here?
+        if ([run paragraphStyle] == [oldRun paragraphStyle]) {
             if (TRACE)
-                printf("    Applying to run %i\n", r);
-            apply(style, r);
-            if (r != theRuns->runs) {
-                if ([self mergeRun:r - 1])
-                    r--; /* Do again if shuffled down */
-            }
+                NSLog(@"    Applying to run %@\n", run);
+            apply(style, run);
         }
     }
-    [self calcLine];
+
+    // TODO: Do we need this?
+    // [self calcLine];
     [self.window display];
     return self;
 }
