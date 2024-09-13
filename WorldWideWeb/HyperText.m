@@ -29,11 +29,11 @@
 //  - https://developer.apple.com/documentation/foundation/nsmutableattributedstring
 
 #import "HyperText.h"
-#import "HyperTextDelegate.h"
 #import "HTParse.h"
 #import "HTStyle.h"
 #import "HTUtils.h"
 #import "HyperAccess.h"
+#import "HyperTextDelegate.h"
 #import "NSAttributedString+Attributes.h"
 #import "NXShims.h"
 #import "WWW.h"
@@ -997,7 +997,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 
 //	Prevent closure of edited window without save
 //
-- (void)windowWillClose:(NSNotification *)sender {
+- (void)windowWillClose:(NSNotification *)notification {
     if (![self.window isDocumentEdited])
         return;
     NSInteger choice =
@@ -1009,9 +1009,9 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 
 //	Change configuration as window becomes key window
 //
-- (void)windowDidBecomeMain:(NSNotification *)sender {
+- (void)windowDidBecomeMain:(NSNotification *)notification {
     if ([self.delegate respondsToSelector:@selector(hyperTextDidBecomeMain:)]) {
-        [((id<HyperTextDelegate>) self.delegate) hyperTextDidBecomeMain:self];
+        [((id<HyperTextDelegate>)self.delegate) hyperTextDidBecomeMain:self];
     }
 }
 

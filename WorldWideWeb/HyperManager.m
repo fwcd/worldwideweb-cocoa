@@ -473,10 +473,11 @@ PRIVATE FileAccess *fileAccess = nil;
 //	are the open and search panels. When they become key,
 //	we ensure that the text is selected.
 
-- (void)windowDidBecomeKey:(NSNotification *)sender {
-    if (sender.object == [self.openString window])
+- (void)windowDidBecomeKey:(NSNotification *)notification {
+    id sender = notification.object;
+    if (sender == [self.openString window])
         [self.openString selectTextAtIndex:0]; // Preselect the text
-    else if (sender.object == [self.keywords window])
+    else if (sender == [self.keywords window])
         [self.keywords selectTextAtIndex:0]; // Preselect the text
 }
 @end
