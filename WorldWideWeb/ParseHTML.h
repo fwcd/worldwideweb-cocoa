@@ -1308,14 +1308,6 @@ void change_run(NSTextStorage *last, NSTextStorage *r) {
 /*	This is the body of the SGML output method.
 */
 - writeSGML:(NXStream *)stream relativeTo:(const char *)aName {
-    NSTextStorage *r = theRuns->runs;
-    int sor; /* Character position of start of run */
-    NXRun dummy;
-
-    dummy.paraStyle = 0;
-    dummy.info = 0;
-    dummy.chars = 0;
-
     SGML_gen_newlines = 0; /* Number of newlines read but not inserted */
     HT = self;
     saveName = aName;
@@ -1328,25 +1320,33 @@ void change_run(NSTextStorage *last, NSTextStorage *r) {
     lineLength = 0; /* Starting in column 1 */
 
     NXPrintf(stream, "<HEADER>\n");
-    NXPrintf(stream, "<TITLE>%s</TITLE>", [window title]);
+    NXPrintf(stream, "<TITLE>%s</TITLE>", [[self.window title] UTF8String]);
 
     if (nextAnchorNumber)
         NXPrintf(stream, "\n<NEXTID N=\"%i\">\n", nextAnchorNumber);
     NXPrintf(stream, "</HEADER>\n");
     NXPrintf(stream, "<BODY>");
 
-    /*	Change style tags etc
-*/
-    change_run(&dummy, r); /* Start first run */
+    NSTextStorage *dummy = [[NSTextStorage alloc] init];
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    NSUInteger chars; /* Character position of start of run */
 
-    for (sor = r++->chars; sor < textLength; sor = sor + (r++)->chars) {
+    /*	Change style tags etc */
+    change_run(dummy, runs.firstObject); /* Start first run */
+
+    for (NSUInteger i = 1; i < runs.count - 1; i++) {
+        NSTextStorage *lastRun = runs[i - 1];
+        NSTextStorage *run = runs[i];
         if (TRACE)
-            printf("%4i:  %i chars in run %3i.\n", sor, r->chars, r - theRuns->runs);
-        change_run(r - 1, r); /* Runs 2 to N */
+            printf("%4lu:  %lu chars in run %3lu.\n", chars, run.length, i);
+        change_run(lastRun, run); /* Runs 2 to N */
+        chars += run.length;
     }
-    change_run(r, &dummy); /* Close last run */
+    change_run(runs.lastObject, dummy); /* Close last run */
 
-    tFlags.changeState = 0; /* Please notify delegate if changed */
+    // TODO: Do we need this?
+    // tFlags.changeState = 0; /* Please notify delegate if changed */
+
     NXPrintf(stream, "</BODY>\n");
 
     return (SGML_gen_errors) ? nil : self;
