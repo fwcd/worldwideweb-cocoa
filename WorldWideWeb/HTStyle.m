@@ -90,8 +90,7 @@ HTStyle *HTStyleRead(HTStyle *style, NXStream *stream) {
     if (strcmp(fontName, NONE_STRING) == 0)
         style->font = 0;
     else
-        style->font = [NSFont fontWithName:[NSString stringWithUTF8String:fontName]
-                                      size:style->fontSize];
+        style->font = [NSFont fontWithName:[NSString stringWithUTF8String:fontName] size:style->fontSize];
     return 0;
 }
 
@@ -101,8 +100,7 @@ HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
     int tab;
     NSParagraphStyle *p = style->paragraph;
     NXPrintf(stream, "%s %i %s %f %i\n", style->SGMLTag, style->SGMLType,
-             style->font ? [[style->font fontName] UTF8String] : NONE_STRING,
-             style->fontSize, p != 0);
+             style->font ? [[style->font fontName] UTF8String] : NONE_STRING, style->fontSize, p != 0);
 
     if (p) {
         short alignment = p.alignment;
@@ -124,14 +122,14 @@ HTStyle *HTStyleDump(HTStyle *style) {
     int tab;
     NSParagraphStyle *p = style->paragraph;
     NSLog(@"Style %i `%s' SGML:%s, type=%i. Font %@ %.1f point.\n", style, style->name, style->SGMLTag, style->SGMLType,
-           [style->font fontName], style->fontSize);
+          [style->font fontName], style -> fontSize);
     if (p) {
         short alignment = p.alignment;
         short tabStopCount = p.tabStops.count;
         NSLog(@"\tIndents: first=%.0f others=%.0f, Height=%.1f Desc=%.1f\n"
                "\tAlign=%i, %i tabs. (%.0f before, %.0f after)\n",
-               p.firstLineHeadIndent, p.headIndent, p.minimumLineHeight, p.lineSpacing, alignment, tabStopCount,
-               style->spaceBefore, style->spaceAfter);
+              p.firstLineHeadIndent, p.headIndent, p.minimumLineHeight, p.lineSpacing, alignment, tabStopCount,
+              style->spaceBefore, style->spaceAfter);
 
         for (tab = 0; tab < p.tabStops.count; tab++) {
             int tabKind = p.tabStops[tab].tabStopType;

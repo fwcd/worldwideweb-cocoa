@@ -55,8 +55,6 @@ static HyperText *slot[SLOTS];  /* Ids of HT objects taking them */
 
 static HyperText *HT; /* Global pointer to self to allow C mixing */
 
-
-
 /// A key that we use to store anchors in attributed string runs to replace `NXRun.info`, which the NeXTStep API reserved for app-specific usage.
 static NSString *const AnchorAttributeName = @"WorldWideWeb.Anchor";
 
@@ -135,7 +133,7 @@ static float page_width() {
 //
 - dump:sender {
     // TODO: Fix the implementation by migrating to NSTextStorage (which actually is an NSAttributedString) and the `info` property to anchor attributed.
-    
+
     //    int pos;     /* Start of run being scanned */
     //    int sob = 0; /* Start of text block being scanned */
     //    NSArray<NSTextStorage *> *r = self.textStorage.attributeRuns;
@@ -414,7 +412,7 @@ static float page_width() {
         }
         totalChars += run.length;
     }
-    
+
     return nil;
 }
 
@@ -462,7 +460,8 @@ static float page_width() {
     [self applyStyle:style];
     if (TRACE) {
         NSRange selection = self.selectedRange;
-        NSLog(@"HyperText: New dest anchor %@ from %lu to %lu.\n", a, selection.location, selection.location + selection.length);
+        NSLog(@"HyperText: New dest anchor %@ from %lu to %lu.\n", a, selection.location,
+              selection.location + selection.length);
     }
     [self.delegate textDidChange:self];
     return a;
@@ -488,7 +487,8 @@ static float page_width() {
         a = [self anchor];
         if (TRACE) {
             NSRange selection = self.selectedRange;
-            NSLog(@"HyperText: New source anchor %@ from %lu to %lu.\n", a, selection.location, selection.location + selection.length);
+            NSLog(@"HyperText: New source anchor %@ from %lu to %lu.\n", a, selection.location,
+                  selection.location + selection.length);
         }
     } else {
         [a select];

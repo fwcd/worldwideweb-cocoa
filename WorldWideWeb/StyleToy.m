@@ -84,21 +84,18 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     char *stripped;
 
     style->fontSize = [(NSFormCell *)[self.ParameterForm cellAtIndex:FONT_SIZE_FIELD] floatValue];
-    StrAllocCopy(name,
-                 [[(NSFormCell *)[self.NameForm cellAtIndex:0] stringValue] UTF8String]);
+    StrAllocCopy(name, [[(NSFormCell *)[self.NameForm cellAtIndex:0] stringValue] UTF8String]);
     stripped = HTStrip(name);
     if (*stripped) {
         NSFont *font;
-        font = [NSFont fontWithName:[NSString stringWithUTF8String:stripped]
-                               size:style->fontSize];
+        font = [NSFont fontWithName:[NSString stringWithUTF8String:stripped] size:style->fontSize];
         if (font)
             style->font = font;
     }
     free(name);
     name = 0;
 
-    StrAllocCopy(name, [[(NSFormCell *)[self.ParameterForm cellAtIndex:SGMLTAG_FIELD] stringValue]
-                           UTF8String]);
+    StrAllocCopy(name, [[(NSFormCell *)[self.ParameterForm cellAtIndex:SGMLTAG_FIELD] stringValue] UTF8String]);
     stripped = HTStrip(name);
     if (*stripped) {
         StrAllocCopy(style->SGMLTag, stripped);

@@ -110,8 +110,7 @@ NSString *ask_name(HyperText *hint, int format) {
     } else {
         if (TRACE)
             NSLog(@"No slash in directory!!\n");
-        status = [save_panel runModalForDirectory:@"."
-                                             file:[NSString stringWithUTF8String:suggestion]];
+        status = [save_panel runModalForDirectory:@"." file:[NSString stringWithUTF8String:suggestion]];
     }
     free(suggestion);
 
@@ -379,8 +378,7 @@ NSString *existing_filename() {
         slash = strrchr(suggestion, '/'); //	Point to last slash
         if (slash) {
             *slash++ = 0; /* Separate directory and filename */
-            status = [openPanel runModalForDirectory:[NSString stringWithUTF8String:suggestion]
-                                                file:@""];
+            status = [openPanel runModalForDirectory:[NSString stringWithUTF8String:suggestion] file:@""];
             // (was: file:slash but this is silly as that is already open.)
         } else {
             if (TRACE)
