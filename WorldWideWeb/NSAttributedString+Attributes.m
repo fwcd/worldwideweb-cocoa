@@ -34,33 +34,49 @@ NSString *const AnchorAttributeName = @"WorldWideWeb.Anchor";
 
 @implementation NSMutableAttributedString (Attributes)
 
-- (void)setAnchor:(Anchor *_Nullable)anchor {
-    [self removeAttribute:AnchorAttributeName range:NSMakeRange(0, self.length)];
+- (void)setAnchor:(Anchor *_Nullable)anchor inRange:(NSRange)range {
+    [self removeAttribute:AnchorAttributeName range:range];
     if (anchor != nil) {
-        [self addAttribute:AnchorAttributeName value:anchor range:NSMakeRange(0, self.length)];
+        [self addAttribute:AnchorAttributeName value:anchor range:range];
+    }
+}
+
+- (void)setAnchor:(Anchor *_Nullable)anchor {
+    [self setAnchor:anchor inRange:NSMakeRange(0, self.length)];
+}
+
+- (void)setParagraphStyle:(NSParagraphStyle *_Nullable)paraStyle inRange:(NSRange)range {
+    // TODO: Can we be sure to always find an associated paragraph style at the first index?
+    [self removeAttribute:NSParagraphStyleAttributeName range:range];
+    if (paraStyle != nil) {
+        [self addAttribute:NSParagraphStyleAttributeName value:paraStyle range:range];
     }
 }
 
 - (void)setParagraphStyle:(NSParagraphStyle *_Nullable)paraStyle {
-    // TODO: Can we be sure to always find an associated paragraph style at the first index?
-    [self removeAttribute:NSParagraphStyleAttributeName range:NSMakeRange(0, self.length)];
-    if (paraStyle != nil) {
-        [self addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, self.length)];
+    [self setParagraphStyle:paraStyle inRange:NSMakeRange(0, self.length)];
+}
+
+- (void)setColor:(NSColor *_Nullable)color inRange:(NSRange)range {
+    [self removeAttribute:NSForegroundColorAttributeName range:range];
+    if (color != nil) {
+        [self addAttribute:NSForegroundColorAttributeName value:color range:range];
     }
 }
 
-- (void)setColor:(NSColor *_Nullable)color {
-    [self removeAttribute:NSForegroundColorAttributeName range:NSMakeRange(0, self.length)];
-    if (color != nil) {
-        [self addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, self.length)];
+- (void)setColor:(NSColor *)color {
+    [self setColor:color inRange:NSMakeRange(0, self.length)];
+}
+
+- (void)setFont:(NSFont *_Nullable)font inRange:(NSRange)range {
+    [self removeAttribute:NSFontAttributeName range:range];
+    if (font != nil) {
+        [self addAttribute:NSFontAttributeName value:font range:range];
     }
 }
 
 - (void)setFont:(NSFont *_Nullable)font {
-    [self removeAttribute:NSFontAttributeName range:NSMakeRange(0, self.length)];
-    if (font != nil) {
-        [self addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, self.length)];
-    }
+    [self setFont:font inRange:NSMakeRange(0, self.length)];
 }
 
 @end

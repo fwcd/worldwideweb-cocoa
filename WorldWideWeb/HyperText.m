@@ -698,17 +698,17 @@ static float page_width() {
     return nil;
 }
 
-//	Copy a style into a run
-//	-----------------------
-static void apply(HTStyle *style, NSTextStorage *r) {
+//    Copy a style into an attributed string in the given range
+//    ---------------------------------------------------------
+static void apply(HTStyle *style, NSTextStorage *r, NSRange range) {
     if (style->font) {
-        r->font = style->font;
+        [r setFont:style->font inRange:range];
     }
     if (style->paragraph) {
-        r->paraStyle = style->paragraph;
+        [r setParagraphStyle:style->paragraph inRange:range];
     }
     if (style->anchor || style->clearAnchor) {
-        r->info = style->anchor;
+        [r setAnchor:style->anchor inRange:range];
     }
 
     if (style->textGray >= 0)
@@ -833,154 +833,11 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 
 //	Apply style to a given region
 //	-----------------------------
-//
-// 	Note that one should not have two consecutive runs of the same style,
-// 	nor any zero length runs. We have a little calculation, therefore,
-// 	in order to work out how many runs will eventually be needed:
-//	this may be more or less than we started with.
-//	Remember that appling a style to a run may or may not change it.
-//
-//	PS: Actually, we notice that text insertion does leave two consecutive
-//	runs the same in the Text object, but deletion cleans up.
 
 - applyStyle:(HTStyle *)style from:(int)start to:(int)end {
-    int pos;                              /* Character position within text */
-    int increase;                         /* Number of runs to be split	*/
-    int new_used;                         /* New number of bytes in runs	*/
-    BOOL need_run_before, need_run_after; /* Sometimes we don't need them	*/
-    int run_before_start, run_after_end;  /* Start of run_before etc 	*/
-    NSTextStorage *s, *e;                 /* Start and end run 		*/
-    NSTextStorage *p;                     /* Pointer to run being read	*/
-    NSTextStorage *w;                     /* Pointer to run being written	*/
-    NSTextStorage *r;                     /* Pointer to end of runs	*/
+    apply(style, r)
 
-    if (start == end) {
-        apply(style, &typingRun); /* Will this work? */
-        if (TRACE)
-            printf("Style applied to typing run\n");
-        return nil; /* Can't operate on nothing */
-    }
-
-    //	First we determine in which runs the first and last characters to
-    //	be changed lie.
-
-    for (pos = 0, s = theRuns->runs; pos + s->chars <= start; pos = pos + ((s++)->chars)) /*loop*/
-        ;
-    /*	s points to run containing char after selection start */
-    run_before_start = pos;
-
-    for (e = s; pos + e->chars < end; pos = pos + ((e++)->chars))
-        ; /* Find end run */
-          /*	e points to run containing character before selection end */
-    run_after_end = pos + e->chars;
-
-    r = (NSTextStorage *)(((char *)(theRuns->runs)) + theRuns->chunk.used); /* The end*/
-
-    if (TRACE) {
-        printf("Runs: used=%i, elt. size=%i, %i elts, total=%i\n", theRuns->chunk.used, sizeof(*r), r - theRuns->runs,
-               (r - theRuns->runs) * sizeof(*r));
-        printf("    runs at %i, r=%i. textLength:%i, r ends at:%i\n", theRuns->runs, r, textLength, pos);
-    }
-
-    //	Move up runs as necessary in order to make room for the splitting
-    //	of the start and end runs into two.  We only do this if necessary.
-
-    if (!willChange(style, s))
-        start = run_before_start; /* No run before is needed now */
-    need_run_before = (start > run_before_start);
-
-    if (!willChange(style, e))
-        end = run_after_end; /* No run after is needed now */
-    need_run_after = (end < run_after_end);
-
-    if (TRACE)
-        printf("Run s=%i, starts at %i; changing (%i,%i); Run e=%i ends at %i\n", s - theRuns->runs, run_before_start,
-               start, end, e - theRuns->runs, run_after_end);
-
-    increase = need_run_after + need_run_before;
-    if (increase) {
-        new_used = theRuns->chunk.used + increase * sizeof(*r);
-        if (new_used > theRuns->chunk.allocated) {
-            NSTextStorage *old = theRuns->runs;
-            theRuns = (NXRunArray *)NXChunkGrow(&theRuns->chunk, new_used);
-            if (theRuns->runs != old) { /* Move pointers */
-                if (TRACE)
-                    printf("HT:Apply style: moving runs!\n");
-                e = theRuns->runs + (e - old);
-                r = theRuns->runs + (r - old);
-                s = theRuns->runs + (s - old);
-            }
-        }
-        for (p = r - 1; p >= e; p--)
-            p[increase] = p[0]; /* Move up the runs after */
-        r = r + increase;       /* Point to after them 910212*/
-        /* p = e-1 */
-
-        if (need_run_after) {
-            e = e + increase - 1; /* Point last to be changed */
-            e[0] = e[1];          /* Copy the last run */
-            e[1].chars = run_after_end - end;
-            e[0].chars = e[0].chars - e[1].chars; /* Split the run into two */
-        }
-
-        if (need_run_before) {
-            for (; p >= s; p--)
-                p[1] = p[0];                       /* Move runs up, copying 1st*/
-            s[0].chars = start - run_before_start; /* Split the run into two */
-            if (need_run_after && (s + 1 == e)) {  /* If only one middle run */
-                s[1].chars = end - start;          /* The run we need */
-            } else {
-                s[1].chars = s[1].chars - s[0].chars; /* The remainder */
-            }
-            s++; /* Move on to point to first run to be changed */
-            if (!need_run_after)
-                e++; /* First to be changed */
-        }
-        theRuns->chunk.used = new_used;
-
-    } /* end if increase */
-
-    //	We consider the bit of text which is to be styled, s thru e.
-    //	We scan through, first, applying the style, until we find two runs which
-    //	need to be merged.
-
-    p = s;
-    if (p == theRuns->runs) {
-        apply(style, p++); /* Don't merge with run -1! */
-    }
-
-    for (; p <= e; p++) {
-        apply(style, p);
-        if (run_match(p, p - 1)) {
-            break;
-        }
-    }
-
-    //	Once we have merged two runs, we have to copy the rest of them across,
-    //	merging others as necessary.
-
-    w = p - 1; /* w now points to last written run */
-    for (; p <= e; p++) {
-        apply(style, p);
-        if (run_match(p, w)) {
-            w->chars = w->chars + p->chars; /* Combine  with w */
-        } else {
-            w++;     /* or skip */
-            *w = *p; /* and keep a copy */
-        }
-    }
-
-    //	Now, is any runs were merged, we have to copy the rest of the runs down
-    //	and decrease the size of the chunk.
-
-    w++;         /* Point to next to be written */
-    if (w < p) { /* If any were moved, */
-        for (; p < r;)
-            *w++ = *p++; /* Move the following runs down */
-        theRuns->chunk.used = (char *)w - (char *)theRuns->runs;
-    }
-
-    [self calcLine];              /* Update line breaks */
+        [self calcLine];          /* Update line breaks */
     return [self.window display]; /* Update window */
 }
 

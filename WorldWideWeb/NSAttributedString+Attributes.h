@@ -26,8 +26,15 @@ NSString *const AnchorAttributeName;
 @interface NSMutableAttributedString (Attributes)
 
 - (void)setAnchor:(Anchor *_Nullable)anchor;
+- (void)setAnchor:(Anchor *_Nullable)anchor inRange:(NSRange)range;
+
 - (void)setParagraphStyle:(NSParagraphStyle *_Nullable)paraStyle;
+- (void)setParagraphStyle:(NSParagraphStyle *_Nullable)paraStyle inRange:(NSRange)range;
+
 - (void)setColor:(NSColor *_Nullable)color;
+- (void)setColor:(NSColor *_Nullable)color inRange:(NSRange)range;
+
+- (void)setFont:(NSFont *_Nullable)font inRange:(NSRange)range;
 - (void)setFont:(NSFont *_Nullable)font;
 
 @end
