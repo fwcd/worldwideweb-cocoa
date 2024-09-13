@@ -397,8 +397,10 @@ static float page_width() {
     NSTextStorage *r, *s, *e; /* Scan, Start and end runs */
     Anchor *a;
 
+    // Search runs until we hit the one containing the selection start character offset (stored in s)
     for (sor = 0, s = theRuns->runs; sor + s->chars <= sp0.cp; sor = sor + ((s++)->chars))
         ;
+    // Search runs until we hit the one containing the selection end character offset (stored in e)
     for (e = s; sor + e->chars < spN.cp; sor = sor + (e++)->chars)
         ;
     for (r = s; r <= e; r++) {
@@ -540,9 +542,11 @@ static float page_width() {
     Anchor *a;
     int startPos, endPos;
 
+    // Search runs until we hit the one containing the selection start character offset (stored in s)
     for (sor = 0, s = theRuns->runs; sor + s->chars <= sp0.cp; sor = sor + ((s++)->chars))
         ;
     startPos = sor; /* Start of s */
+    // Search runs until we hit the one containing the selection end character offset (stored in e)
     for (e = s; sor + e->chars < spN.cp; sor = sor + (e++)->chars)
         ;
     for (r = s, a = nil; r <= e; startPos = startPos + (r++)->chars) {
