@@ -398,7 +398,7 @@ static float page_width() {
     NSUInteger startRunIndex = 0;
     BOOL foundStart = NO;
 
-    for (int i = 0; i < attributeRuns.count; i++) {
+    for (NSUInteger i = 0; i < attributeRuns.count; i++) {
         NSTextStorage *run = attributeRuns[i];
         if (!foundStart && chars + run.length > selection.location) {
             // Found run containing selection start
