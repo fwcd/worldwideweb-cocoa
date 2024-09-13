@@ -428,9 +428,26 @@ static float page_width(void) {
 }
 
 - (NSTextStorage *)runContainingSelectionStart {
-    NSRange runRange = [self runRangeContainingSelection];
     NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    NSRange runRange = [self runRangeContainingSelection];
     return runs[runRange.location];
+}
+
+- (NSUInteger)indexOfRunContainingCharIndex:(NSUInteger)index {
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    NSUInteger chars = 0;
+    
+    for (NSUInteger i = 0; i < runs.count; i++) {
+        NSTextStorage *run = runs[i];
+        if (index >= chars && index < chars + run.length) {
+            return i;
+        }
+        chars += run.length;
+    }
+    
+    NSLog(@"Warning: Could not find run containing char index %lu", index);
+    
+    return runs.count - 1;
 }
 
 //  Find associated attributes for runs
@@ -1453,46 +1470,40 @@ void loadPlainText(void) {
 //	After paste, determine paragraph styles for pasted material:
 //	------------------------------------------------------------
 
-- paste:sender {
-    id result;
-    int originalLength = textLength;
-    int originalStart = sp0.cp;
-    int originalEnd = spN.cp;
-    Anchor *typingInfo;
+- (void)paste:(id)sender {
+    NSRange originalSelection = self.selectedRange;
+    NSUInteger originalLength = self.textStorage.length;
+    NSUInteger originalStart = originalSelection.location;
+    NSUInteger originalEnd = originalStart + originalSelection.length;
+    Anchor *typingAnchor;
 
-    result = [super paste:sender]; // Do the paste
+    [super paste:sender]; // Do the paste
 
     {
-        int inserted = originalEnd - originalStart + textLength - originalLength;
+        NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+        NSRange selection = self.selectedRange;
+        NSUInteger textLength = self.textStorage.length;
+        NSUInteger inserted = originalEnd - originalStart + textLength - originalLength;
 
         if (TRACE)
-            NSLog(@"Paste, size(sel) %i (%i-%i)before, %i (%i-%i)after.", originalLength, originalStart, originalEnd,
-                  textLength, sp0.cp, spN.cp);
+            NSLog(@"Paste, size(sel) %lu (%lu-%lu)before, %lu (%lu-%lu)after.", originalLength, originalStart, originalEnd,
+                  textLength, selection.location, selection.location + selection.length);
 
         if (inserted > 0) {
-            NSTextStorage *s, *r;
-            int pos;
-            int start = sp0.cp - inserted;
-            for (pos = 0, s = theRuns->runs; pos + s->chars <= start; pos = pos + ((s++)->chars)) /*loop*/
-                ;
-            //		s points to run containing first char of insertion
+            NSUInteger start = selection.location - inserted;
+            NSUInteger runIndex = [self indexOfRunContainingCharIndex:start]; // run contains first char of insertion
 
-            if (pos != sp0.cp - inserted)
-                NSLog(@"HT paste: Strange: insert@%i != run@%i !!", start, pos);
-
-            if (s > theRuns->runs)
-                typingInfo = (s - 1)->info;
+            if (runIndex > 0)
+                typingAnchor = runs[runIndex - 1].anchor;
             else
-                typingInfo = 0;
+                typingAnchor = nil;
 
-            for (r = s; pos + r->chars < sp0.cp; pos = pos + (r++)->chars) {
-                r->paraStyle = HTStyleForRun(styleSheet, r)->paragraph;
-                r->info = typingInfo;
+            for (NSTextStorage *run in [self runsContainingSelection]) {
+                run.paragraphStyle = HTStyleForRun(styleSheet, run)->paragraph;
+                run.anchor = typingAnchor;
             }
         }
     }
-
-    return result;
 }
 
 @end
