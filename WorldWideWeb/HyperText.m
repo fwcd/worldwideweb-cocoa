@@ -123,7 +123,8 @@ static float page_width() {
 //	then it lists the attributes of the current run.
 //
 - dump:sender {
-    // TODO: Fix implementation
+    // TODO: Fix the implementation by migrating to NSTextStorage (which actually is an NSAttributedString) and the `info` property to anchor attributed.
+    
     //    int pos;     /* Start of run being scanned */
     //    int sob = 0; /* Start of text block being scanned */
     //    NSArray<NSTextStorage *> *r = self.textStorage.attributeRuns;
