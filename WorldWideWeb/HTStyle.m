@@ -10,6 +10,7 @@
 */
 #import "HTStyle.h"
 #import "HTUtils.h"
+#import "NSAttributedString+Attributes.h"
 #import "NXShims.h"
 
 #define NX_BLACK 0
@@ -179,13 +180,8 @@ HTStyle *HTStyleForRun(HTStyleSheet *self, NSTextStorage *run) {
     HTStyle *scan;
     HTStyle *best = 0;
     int bestMatch = 0;
-    NSRange range = NSMakeRange(0, run.length);
-    NSParagraphStyle *rp = [run attribute:NSParagraphStyleAttributeName
-                                  atIndex:0
-                    longestEffectiveRange:NULL
-                                  inRange:range];
-    // TODO: Can we use effectiveRange instead of longestEffectiveRange (which is more efficient per the docs)? This only checks for the font at the first characters, is that sufficient for our use case?
-    NSFont *font = [run attribute:NSFontAttributeName atIndex:0 longestEffectiveRange:NULL inRange:range];
+    NSParagraphStyle *rp = [run paragraphStyle];
+    NSFont *font = [run font];
     for (scan = self->styles; scan; scan = scan->next)
         if (scan->paragraph == rp)
             return scan; /* Exact */
