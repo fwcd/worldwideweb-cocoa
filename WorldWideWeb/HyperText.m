@@ -99,9 +99,9 @@ static float page_width(void) {
     // [self setMonoFont:NO];                                 // By default
 
     server = (HyperAccess *)aServer;
-    [self setDelegate:aServer]; /* For changes */
+    self.delegate = aServer; /* For changes */
     nodeAnchor = anAnchor;
-    [nodeAnchor setNode:self];
+    nodeAnchor.node = self;
     return self;
 }
 
@@ -111,8 +111,8 @@ static float page_width(void) {
 //	Free the hypertext.
 
 - (void)dealloc {
-    slot[slotNumber] = 0;     //	Allow slot to be reused
-    [nodeAnchor setNode:nil]; // 	Invalidate the node
+    slot[slotNumber] = 0;  //	Allow slot to be reused
+    nodeAnchor.node = nil; // 	Invalidate the node
 }
 
 //	Read and set format
@@ -436,7 +436,7 @@ static float page_width(void) {
 - (NSUInteger)indexOfRunContainingCharIndex:(NSUInteger)index {
     NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
     NSUInteger chars = 0;
-    
+
     for (NSUInteger i = 0; i < runs.count; i++) {
         NSTextStorage *run = runs[i];
         if (index >= chars && index < chars + run.length) {
@@ -444,9 +444,9 @@ static float page_width(void) {
         }
         chars += run.length;
     }
-    
+
     NSLog(@"Warning: Could not find run containing char index %lu", index);
-    
+
     return runs.count - 1;
 }
 
@@ -460,7 +460,7 @@ static float page_width(void) {
     Anchor *a;
 
     for (NSTextStorage *run in [self runsContainingSelection]) {
-        a = [run anchor];
+        a = run.anchor;
         if (a)
             return a;
     }
@@ -579,7 +579,7 @@ static float page_width(void) {
 
     for (NSUInteger i = 0; i < runs.count; i++) {
         NSTextStorage *run = runs[i];
-        Anchor *runAnchor = [run anchor];
+        Anchor *runAnchor = run.anchor;
         if (runAnchor == anchor && !foundStart) {
             startChars = chars;
         } else if (runAnchor != anchor && foundStart) {
@@ -655,7 +655,7 @@ static float page_width(void) {
 
     {
         while (runRange.location > 0) {
-            Anchor *runAnchor = [runs[runRange.location] anchor];
+            Anchor *runAnchor = runs[runRange.location].anchor;
             if (runAnchor == a) {
                 runRange.location--;
                 runRange.length++;
@@ -663,7 +663,7 @@ static float page_width(void) {
         }
 
         while (runRange.location + runRange.length < runs.count) {
-            Anchor *runAnchor = [runs[runRange.location + runRange.length] anchor];
+            Anchor *runAnchor = runs[runRange.location + runRange.length].anchor;
             if (runAnchor == a) {
                 runRange.length++;
             }
@@ -830,10 +830,10 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 - disconnectAnchor:(Anchor *)anchor {
     NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
     for (NSTextStorage *run in runs) {
-        Anchor *runAnchor = [run anchor];
+        Anchor *runAnchor = run.anchor;
         if (runAnchor == anchor) {
-            [run setAnchor:nil];
-            [run setColor:[NSColor blackColor]];
+            run.anchor = nil;
+            run.color = NSColor.blackColor;
         }
     }
     [self.window display];
@@ -1377,94 +1377,94 @@ void loadPlainText(void) {
 
 - (void)keyDown:(NSEvent *)theEvent {
     [super keyDown:theEvent];
-    
+
     // TODO: Do we still need this workaround?
-    
-//    //	The typingRun field does not seem to reliably reflect the
-//    //	format which would be appropriate if typing were to occur.
-//    //	We have to use our own.
-//    NXRun run;
-//    {
-//        NSTextStorage *s; /* To point to run BEFORE selection */
-//        int pos;
-//
-//        /* 	If there is a nonzero selection, take the run containing the
-//         **	first character. If the selection is empty, take the run containing the
-//         **	character before the selection.
-//         */
-//        if (sp0.cp == spN.cp) {
-//            for (pos = 0, s = theRuns->runs; pos + s->chars < sp0.cp; /* Before */
-//                 pos = pos + ((s++)->chars))                          /*loop*/
-//                ;
-//        } else {
-//            for (pos = 0, s = theRuns->runs; pos + s->chars <= sp0.cp; /* First ch */
-//                 pos = pos + ((s++)->chars))                           /*loop*/
-//                ;
-//        }
-//
-//        /*	Check our understanding */
-//
-//        if (typingRun.paraStyle != 0) {
-//            if (typingRun.paraStyle != s->paraStyle)
-//                NSLog(@"WWW: Strange: Typing run has bad style.");
-//            if ((s->info != 0) && (typingRun.info != s->info))
-//                NSLog(@"WWW: Strange: Typing run has bad anchor info.");
-//        }
-//
-//        typingRun = *s; /* Copy run to be used for insertion */
-//        run = *s;       /* save a copy */
-//    }
-//
-//    if (!run.rFlags.dummy)
-//        return [super keyDown:theEvent]; // OK!
-//
-//    {
-//        int originalLength = textLength;
-//        int originalStart = sp0.cp;
-//        int originalEnd = spN.cp;
-//        [super keyDown:theEvent];
-//
-//        /* 	Does it really change? YES!
-//*/
-//        if (TRACE) {
-//            if (typingRun.info != run.info)
-//                NSLog(@"Typing run info was %p, now %p !!", run.info, typingRun.info);
-//            if (typingRun.paraStyle != run.paraStyle)
-//                NSLog(@"Typing run paraStyle was %p, now %p !!", run.paraStyle, typingRun.paraStyle);
-//        }
-//        /*	Patch the new run if necessary:
-//*/
-//        {
-//            int inserted = originalEnd - originalStart + textLength - originalLength;
-//
-//            if (TRACE)
-//                NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.", originalLength, originalStart,
-//                      originalEnd, textLength, sp0.cp, spN.cp);
-//
-//            if (inserted > 0) {
-//                NSTextStorage *s;
-//                int pos;
-//                int start = sp0.cp - inserted;
-//                for (pos = 0, s = theRuns->runs; pos + s->chars <= start; pos = pos + ((s++)->chars)) /*loop*/
-//                    ;
-//
-//                //	s points to run containing first char of insertion
-//
-//                if (pos != start) { /* insert in middle of run */
-//                    if (TRACE)
-//                        NSLog(@"HT: Inserted %i at %i, in run starting at=%i", inserted, start, pos);
-//
-//                } else { /* inserted stuff starts run */
-//                    if (TRACE)
-//                        NSLog(@"Patching info from %d to %d", s->info, run.info);
-//                    s->info = run.info;
-//                    s->paraStyle = run.paraStyle; /* free old one? */
-//                    s->rFlags.dummy = 1;
-//                }
-//            } /* if inserted>0 */
-//
-//        } /* block */
-//    }
+
+    //    //	The typingRun field does not seem to reliably reflect the
+    //    //	format which would be appropriate if typing were to occur.
+    //    //	We have to use our own.
+    //    NXRun run;
+    //    {
+    //        NSTextStorage *s; /* To point to run BEFORE selection */
+    //        int pos;
+    //
+    //        /* 	If there is a nonzero selection, take the run containing the
+    //         **	first character. If the selection is empty, take the run containing the
+    //         **	character before the selection.
+    //         */
+    //        if (sp0.cp == spN.cp) {
+    //            for (pos = 0, s = theRuns->runs; pos + s->chars < sp0.cp; /* Before */
+    //                 pos = pos + ((s++)->chars))                          /*loop*/
+    //                ;
+    //        } else {
+    //            for (pos = 0, s = theRuns->runs; pos + s->chars <= sp0.cp; /* First ch */
+    //                 pos = pos + ((s++)->chars))                           /*loop*/
+    //                ;
+    //        }
+    //
+    //        /*	Check our understanding */
+    //
+    //        if (typingRun.paraStyle != 0) {
+    //            if (typingRun.paraStyle != s->paraStyle)
+    //                NSLog(@"WWW: Strange: Typing run has bad style.");
+    //            if ((s->info != 0) && (typingRun.info != s->info))
+    //                NSLog(@"WWW: Strange: Typing run has bad anchor info.");
+    //        }
+    //
+    //        typingRun = *s; /* Copy run to be used for insertion */
+    //        run = *s;       /* save a copy */
+    //    }
+    //
+    //    if (!run.rFlags.dummy)
+    //        return [super keyDown:theEvent]; // OK!
+    //
+    //    {
+    //        int originalLength = textLength;
+    //        int originalStart = sp0.cp;
+    //        int originalEnd = spN.cp;
+    //        [super keyDown:theEvent];
+    //
+    //        /* 	Does it really change? YES!
+    //*/
+    //        if (TRACE) {
+    //            if (typingRun.info != run.info)
+    //                NSLog(@"Typing run info was %p, now %p !!", run.info, typingRun.info);
+    //            if (typingRun.paraStyle != run.paraStyle)
+    //                NSLog(@"Typing run paraStyle was %p, now %p !!", run.paraStyle, typingRun.paraStyle);
+    //        }
+    //        /*	Patch the new run if necessary:
+    //*/
+    //        {
+    //            int inserted = originalEnd - originalStart + textLength - originalLength;
+    //
+    //            if (TRACE)
+    //                NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.", originalLength, originalStart,
+    //                      originalEnd, textLength, sp0.cp, spN.cp);
+    //
+    //            if (inserted > 0) {
+    //                NSTextStorage *s;
+    //                int pos;
+    //                int start = sp0.cp - inserted;
+    //                for (pos = 0, s = theRuns->runs; pos + s->chars <= start; pos = pos + ((s++)->chars)) /*loop*/
+    //                    ;
+    //
+    //                //	s points to run containing first char of insertion
+    //
+    //                if (pos != start) { /* insert in middle of run */
+    //                    if (TRACE)
+    //                        NSLog(@"HT: Inserted %i at %i, in run starting at=%i", inserted, start, pos);
+    //
+    //                } else { /* inserted stuff starts run */
+    //                    if (TRACE)
+    //                        NSLog(@"Patching info from %d to %d", s->info, run.info);
+    //                    s->info = run.info;
+    //                    s->paraStyle = run.paraStyle; /* free old one? */
+    //                    s->rFlags.dummy = 1;
+    //                }
+    //            } /* if inserted>0 */
+    //
+    //        } /* block */
+    //    }
 }
 
 //	After paste, determine paragraph styles for pasted material:
@@ -1486,8 +1486,8 @@ void loadPlainText(void) {
         NSUInteger inserted = originalEnd - originalStart + textLength - originalLength;
 
         if (TRACE)
-            NSLog(@"Paste, size(sel) %lu (%lu-%lu)before, %lu (%lu-%lu)after.", originalLength, originalStart, originalEnd,
-                  textLength, selection.location, selection.location + selection.length);
+            NSLog(@"Paste, size(sel) %lu (%lu-%lu)before, %lu (%lu-%lu)after.", originalLength, originalStart,
+                  originalEnd, textLength, selection.location, selection.location + selection.length);
 
         if (inserted > 0) {
             NSUInteger start = selection.location - inserted;

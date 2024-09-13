@@ -152,7 +152,7 @@ PRIVATE FileAccess *fileAccess = nil;
         NSLog(@"%@", message);
 
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setInformativeText:message];
+        alert.informativeText = message;
         [alert runModal];
     }
     free(s);
@@ -348,7 +348,7 @@ PRIVATE FileAccess *fileAccess = nil;
                 if ([w isDocumentEdited]) {
                     HyperText *HT = [[w contentView] documentView];
                     if ([(HyperAccess *)[HT server] saveNode:HT])
-                        [w setDocumentEdited:NO];
+                        w.documentEdited = NO;
                 }
     }
 
@@ -406,8 +406,8 @@ PRIVATE FileAccess *fileAccess = nil;
 
 - (IBAction)setTitle:sender {
     NSWindow *thisWindow = [NSApp mainWindow];
-    [thisWindow setTitle:[[self.titleString cellAtIndex:0] stringValue]];
-    [thisWindow setDocumentEdited:YES];
+    thisWindow.title = [[self.titleString cellAtIndex:0] stringValue];
+    thisWindow.documentEdited = YES;
 }
 
 //	Inspect Link
