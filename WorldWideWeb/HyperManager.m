@@ -274,7 +274,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //
 - (int)appOpenFile:(const char *)filename type:(const char *)aType {
     char *name = WWW_nameOfFile(filename);
-    HyperText *HT = [self accessName:name Diagnostic:0];
+    Anchor *HT = [self accessName:name Diagnostic:0];
     free(name);
     return (HT != 0);
 }
@@ -285,7 +285,7 @@ PRIVATE FileAccess *fileAccess = nil;
 
 - (int)appOpenTempFile:(const char *)filename type:(const char *)aType {
     char *name = WWW_nameOfFile(filename); /* No host */
-    HyperText *HT = [self accessName:name Diagnostic:0];
+    Anchor *HT = [self accessName:name Diagnostic:0];
     free(name);
     return (HT != 0);
 }
@@ -324,18 +324,17 @@ PRIVATE FileAccess *fileAccess = nil;
 
 //	Save a hypertext back to its original server
 //	--------------------------------------------
-- save:sender {
+- (IBAction)save:sender {
     HyperText *HT = THIS_TEXT;
     id status = [(HyperAccess *)[HT server] saveNode:HT];
     if (status)
         [[HT window] setDocumentEdited:NO];
-    return status;
 }
 
 //	Save all hypertexts back
 //	-------------------------
 
-- saveAll:sender {
+- (IBAction)saveAll:sender {
     NSArray *windows = [NSApp windows];
     id cv;
     int i;
@@ -343,16 +342,14 @@ PRIVATE FileAccess *fileAccess = nil;
 
     for (i = 0; i < n; i++) {
         NSWindow *w = [windows objectAtIndex:i];
-        if (cv = [w contentView])
+        if ((cv = w.contentView))
             if ([cv respondsToSelector:@selector(documentView)])
                 if ([w isDocumentEdited]) {
-                    HyperText *HT = [[w contentView] documentView];
+                    HyperText *HT = [w.contentView documentView];
                     if ([(HyperAccess *)[HT server] saveNode:HT])
                         w.documentEdited = NO;
                 }
     }
-
-    return self;
 }
 
 //	Close all unedited windows except this one
@@ -370,7 +367,7 @@ PRIVATE FileAccess *fileAccess = nil;
         for (i = 0; i < n; i++) {
             NSWindow *w = [windows objectAtIndex:i];
             if (w != thisWindow)
-                if (cv = [w contentView])
+                if ((cv = [w contentView]))
                     if ([cv respondsToSelector:@selector(documentView)]) {
                         if (![w isDocumentEdited]) {
                             if (TRACE)
