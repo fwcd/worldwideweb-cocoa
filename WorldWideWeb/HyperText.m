@@ -390,7 +390,7 @@ static float page_width() {
 //    Find the runs containing the selection
 //    --------------------------------------
 
-- (NSArray<NSTextStorage *> *)runsContainingSelection {
+- (NSRange)runRangeContainingSelection {
     NSRange selection = self.selectedRange;
     NSArray<NSTextStorage *> *attributeRuns = self.textStorage.attributeRuns;
 
@@ -408,12 +408,23 @@ static float page_width() {
         if (chars + run.length >= selection.location + selection.length) {
             // Found run containing selection end
             NSRange runRange = NSMakeRange(startRunIndex, i);
-            return [attributeRuns subarrayWithRange:runRange];
+            return runRange;
         }
         chars += run.length;
     }
 
-    return nil;
+    return NSMakeRange(0, 0);
+}
+
+- (NSArray<NSTextStorage *> *)runsContainingSelection {
+    NSArray<NSTextStorage *> *attributeRuns = self.textStorage.attributeRuns;
+    NSRange runRange = [self runRangeContainingSelection];
+
+    if (runRange.location > 0 || runRange.length > 0) {
+        return [attributeRuns subarrayWithRange:runRange];
+    } else {
+        return nil;
+    }
 }
 
 //	Check whether an anchor has been selected
@@ -562,6 +573,32 @@ static float page_width() {
     return nil;
 }
 
+//    Convert a range of run indices to a character range
+//    ---------------------------------------------------
+
+- (NSRange)charRangeForRunRange:(NSRange)runRange {
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+
+    assert(runRange.location >= 0 && runRange.location < runs.count);
+    assert(runRange.location + runRange.length <= runs.count);
+
+    NSUInteger location = 0;
+
+    for (NSUInteger i = 0; i < runRange.location; i++) {
+        NSTextStorage *run = runs[i];
+        location += run.length;
+    }
+
+    NSUInteger length = 0;
+
+    for (NSUInteger j = 0; j < runRange.length; j++) {
+        NSTextStorage *run = runs[runRange.location + j];
+        length += run.length;
+    }
+
+    return NSMakeRange(location, length);
+}
+
 //
 
 //	Return selected link (if any)				selectedLink:
@@ -571,22 +608,14 @@ static float page_width() {
 //	on the list which is at least partially selected.
 //
 
-- selectedLink {
-
-    int sor;                  /* Start of run */
-    NSTextStorage *r, *s, *e; /* Scan, Start and end runs */
+- (Anchor *)selectedLink {
     Anchor *a;
-    int startPos, endPos;
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    NSRange runRange = [self runRangeContainingSelection];
 
-    // Search runs until we hit the one containing the selection start character offset (stored in s)
-    for (sor = 0, s = theRuns->runs; sor + s->chars <= sp0.cp; sor = sor + ((s++)->chars))
-        ;
-    startPos = sor; /* Start of s */
-    // Search runs until we hit the one containing the selection end character offset (stored in e)
-    for (e = s; sor + e->chars < spN.cp; sor = sor + (e++)->chars)
-        ;
-    for (r = s, a = nil; r <= e; startPos = startPos + (r++)->chars) {
-        if (a = (Anchor *)r->info) {
+    for (NSTextStorage *run in [runs subarrayWithRange:runRange]) {
+        a = [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
+        if (a) {
             break;
         }
     }
@@ -600,12 +629,24 @@ static float page_width() {
     //	Extend/reduce selection to entire anchor
 
     {
-        endPos = startPos + r->chars;
-        for (s = r; (Anchor *)((s - 1)->info) == a; s--)
-            startPos = startPos - (s - 1)->chars;
-        for (e = r; (Anchor *)((e + 1)->info) == a; e++)
-            endPos = endPos + (e + 1)->chars;
-        [self setSel:startPos:endPos];
+        while (runRange.location > 0) {
+            Anchor *runAnchor = [runs[runRange.location] attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
+            if (runAnchor == a) {
+                runRange.location--;
+                runRange.length++;
+            }
+        }
+
+        while (runRange.location + runRange.length < runs.count) {
+            Anchor *runAnchor = [runs[runRange.location + runRange.length] attribute:AnchorAttributeName
+                                                                             atIndex:0
+                                                                      effectiveRange:nil];
+            if (runAnchor == a) {
+                runRange.length++;
+            }
+        }
+
+        [self setSelectedRange:[self charRangeForRunRange:runRange]];
     }
     return a;
 }
