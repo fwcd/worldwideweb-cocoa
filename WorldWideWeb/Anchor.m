@@ -83,14 +83,14 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
         self = [kids objectAtIndex:i];
         if (equivalent(Address, tag)) {
             if (TRACE)
-                printf("Sub-anchor %p with name `%s' already exists.\n", self, tag);
+                NSLog(@"Sub-anchor %p with name `%s' already exists.\n", self, tag);
             return self;
         }
     }
 
     self = [Anchor new];
     if (TRACE)
-        printf("new Anchor %p named `%s' is child of %p\n", self, tag, anAnchor);
+        NSLog(@"new Anchor %p named `%s' is child of %p\n", self, tag, anAnchor);
     parent = anAnchor;
     [parent->children addObject:self];
     StrAllocCopy(Address, tag);
@@ -130,13 +130,13 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
             self = [orphans objectAtIndex:i];
             if (equivalent(Address, anAddress)) {
                 if (TRACE)
-                    printf("Anchor %p with address `%s' already exists.\n", self, anAddress);
+                    NSLog(@"Anchor %p with address `%s' already exists.\n", self, anAddress);
                 return self;
             }
         }
         self = [Anchor new];
         if (TRACE)
-            printf("new Anchor %p has address `%s'\n", self, anAddress);
+            NSLog(@"new Anchor %p has address `%s'\n", self, anAddress);
         StrAllocCopy(Address, anAddress);
         [orphans addObject:self];
     }
@@ -170,7 +170,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
                 [nextOne follow];
             } else {
                 if (TRACE)
-                    printf("Anchor: No such logical step\n");
+                    NSLog(@"Anchor: No such logical step\n");
             }
         }
     return self;
@@ -206,7 +206,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
     if (parent)
         [parent->children removeObject:self];
     if (TRACE)
-        printf("Anchor: free called!  Not removed from Node!!!!!!!\n");
+        NSLog(@"Anchor: free called!  Not removed from Node!!!!!!!\n");
     [Sources makeObjectsPerformSelector:@selector(unload)];
     if (!parent)
         [orphans removeObject:self];
@@ -268,12 +268,12 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
     if (!nodeAnchor->Node) { /* If the node is not loaded, */
         if (!nodeAnchor->Address) {
             if (TRACE)
-                printf("Anchor %p: node not loaded, no address!\n", nodeAnchor);
+                NSLog(@"Anchor %p: node not loaded, no address!\n", nodeAnchor);
             return nil;
         } else {
             if (![manager loadAnchor:nodeAnchor Diagnostic:diag]) {
                 if (TRACE)
-                    printf("Anchor %p: Couldn't load node `%s'!\n", nodeAnchor, nodeAnchor->Address);
+                    NSLog(@"Anchor %p: Couldn't load node `%s'!\n", nodeAnchor, nodeAnchor->Address);
                 return nil;
             }
         }
@@ -298,7 +298,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //	Set reference string
 - setAddress:(const char *)ref_string {
     if (TRACE)
-        printf("Anchor %p has address `%s'\n", self, ref_string);
+        NSLog(@"Anchor %p has address `%s'\n", self, ref_string);
     StrAllocCopy(Address, ref_string);
     return self;
 }
@@ -331,7 +331,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 - (void)linkTo:(Anchor *)destination;
 {
     if (TRACE)
-        printf("Anchor: Linking anchor %p to anchor %p\n", self, destination);
+        NSLog(@"Anchor: Linking anchor %p to anchor %p\n", self, destination);
     DestAnchor = destination;
     [destination->Sources addObject:self];
 }
@@ -343,7 +343,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
     if (DestAnchor)
         if ([DestAnchor select]) {
             if (TRACE)
-                printf("Anchor: followed link from %p to %p\n", self, DestAnchor);
+                NSLog(@"Anchor: followed link from %p to %p\n", self, DestAnchor);
             [HTHistory addObject:self];
             return YES;
         }
