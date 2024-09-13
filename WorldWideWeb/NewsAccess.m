@@ -341,7 +341,7 @@ static void read_article(void) {
             } else if (line[0] < ' ') {
                 break; /* End of Header? */
             } else if (match(line, "SUBJECT:")) {
-                [HT setTitle:line + 8];
+                HT.title = line + 8;
             } else if (match(line, "DATE:") || match(line, "FROM:") || match(line, "ORGANIZATION:")) {
                 strcat(line, "\n");
 #ifdef APPEND
@@ -686,7 +686,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
 */
                 if (art % 10 == 0) {
                     sprintf(buffer, "Reading newsgroup %s,  Article %i (of %i-%i) ...", groupName, art, first, last);
-                    [HT setTitle:buffer];
+                    HT.title = buffer;
                 }
 
             } /* If good response */
@@ -712,7 +712,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
     /*	Set window title
 */
     sprintf(buffer, "Newsgroup %s,  Articles %i-%i", groupName, first_required, last_required);
-    [HT setTitle:buffer];
+    HT.title = buffer;
 }
 
 //	Open by name					-accessName:anchor:diagnostic:
@@ -791,7 +791,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
     for (retries = 0; retries < 2; retries++) {
 
         if (s < 0) {
-            [[HT window] setTitle:@"Connecting to NewsHost ..."]; /* Tell user  */
+            HT.window.title = @"Connecting to NewsHost ..."; /* Tell user  */
             s = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
             status = connect(s, (struct sockaddr *)&soc_address, sizeof(soc_address));
             if (status < 0) {
@@ -801,11 +801,10 @@ void read_group(const char *groupName, int first_required, int last_required) {
                     NSLog(@"NewsAccess: Unable to connect to news host.");
                 /*		if (retries<=1) continue;   WHY TRY AGAIN ? 	*/
                 NSAlert *alert = [[NSAlert alloc] init];
-                [alert setInformativeText:[NSString stringWithFormat:@"Could not access newshost %@.", NewsHost]];
+                alert.informativeText = [NSString stringWithFormat:@"Could not access newshost %@.", NewsHost];
                 [alert runModal];
-                NSString *message = [NSString
+                HT.string = [NSString
                     stringWithFormat:@"\nCould not access %@.\n\n (Check default WorldWideWeb NewsHost ?)\n", NewsHost];
-                [HT setString:message];
                 return HT;
             } else {
                 if (TRACE)
@@ -817,14 +816,14 @@ void read_group(const char *groupName, int first_required, int last_required) {
                     [alert setInformativeText:[NSString stringWithFormat:@"Could not retrieve information:\n   %s.",
                                                                          response_text]];
                     [alert runModal];
-                    [[HT window] setTitle:@"News host response"];
-                    [HT setString:[NSString stringWithUTF8String:response_text]];
+                    HT.window.title = @"News host response";
+                    HT.string = [NSString stringWithUTF8String:response_text];
                     return HT;
                 }
             }
         } /* If needed opening */
 
-        [[HT window] setTitle:[NSString stringWithUTF8String:arg]]; /* Tell user something's happening */
+        HT.window.title = [NSString stringWithUTF8String:arg]; /* Tell user something's happening */
         status = response(command);
         if (status < 0)
             break;
@@ -886,7 +885,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
         HT = [self accessName:[a address] anchor:a diagnostic:diagnostic];
         if (!HT)
             return nil;
-        [[HT window] setDocumentEdited:NO];
+        [HT.window setDocumentEdited:NO];
     }
     return a;
 }

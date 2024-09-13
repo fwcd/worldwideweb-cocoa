@@ -1066,7 +1066,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                     title[title_length] = 0; /* Add a terminator */
                     if (TRACE)
                         printf("\nTitle:\t`%s'\n", title);
-                    [[self window] setTitle:title];
+                    self.window.title = title;
                     SETSTATE(S_text);
                 } else
                     SETSTATE(S_junk_tag); /* @@@ forgets < in titles! */

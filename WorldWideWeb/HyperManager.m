@@ -328,7 +328,7 @@ PRIVATE FileAccess *fileAccess = nil;
     HyperText *HT = THIS_TEXT;
     id status = [(HyperAccess *)[HT server] saveNode:HT];
     if (status)
-        [[HT window] setDocumentEdited:NO];
+        [HT.window setDocumentEdited:NO];
 }
 
 //	Save all hypertexts back

@@ -214,7 +214,7 @@ NSString *ask_name(HyperText *hint, int format) {
 
     status = [self save:HT inFile:filename format:[HT format]];
     if (status)
-        [HT window].documentEdited = NO;
+        HT.window.documentEdited = NO;
     free(filename);
     return status;
 }
@@ -268,7 +268,7 @@ NSString *ask_name(HyperText *hint, int format) {
             if (TRACE)
                 NSLog(@"Could not open `%s' with FTP either.", newname);
             NSAlert *alert = [[NSAlert alloc] init];
-            [alert setInformativeText:[NSString stringWithFormat:@"Could not open `%s'\n", newname]];
+            alert.informativeText = [NSString stringWithFormat:@"Could not open `%s'\n", newname];
             [alert runModal];
             free(filename);
             free(newname);
@@ -291,18 +291,18 @@ NSString *ask_name(HyperText *hint, int format) {
 
             HT = [[HyperText alloc] initWithAnchor:anAnchor Server:self];
             [HT setupWindow];
-            [[HT window] setTitle:[NSString stringWithUTF8String:filename]]; // Show something's happening
+            HT.window.title = [NSString stringWithUTF8String:filename]; // Show something's happening
 
             if (file_number < 0)
-                [HT setEditable:HTEditable(filename)]; // This is editable?
+                HT.editable = HTEditable(filename); // This is editable?
             else
-                [HT setEditable:NO]; // AFTP data.
+                HT.editable = NO; // AFTP data.
 
             switch (format) {
             case WWW_HTML:
                 if (diagnostic == 2) {
                     [HT readText:s];
-                    [HT setFormat:WWW_SOURCE];
+                    HT.format = WWW_SOURCE;
                 } else {
                     [HT readSGML:s diagnostic:diagnostic];
                 }
@@ -311,7 +311,7 @@ NSString *ask_name(HyperText *hint, int format) {
             case WWW_RICHTEXT:
                 if (diagnostic > 0) {
                     [HT readText:s];
-                    [HT setFormat:WWW_SOURCE];
+                    HT.format = WWW_SOURCE;
                 } else {
                     [HT readRichText:s];
                 }
@@ -556,9 +556,9 @@ NSString *existing_filename(void) {
         if (pDir) {
             char title[255];
             sprintf(title, "%s -- %s", pTitle, pDir);
-            [HT setTitle:title]; /* Default title is filename */
+            HT.title = title; /* Default title is filename */
         } else {
-            [HT setTitle:pTitle];
+            HT.title = pTitle;
         }
     }
 

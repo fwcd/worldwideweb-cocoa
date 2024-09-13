@@ -44,8 +44,8 @@
     HT = [[HyperText alloc] initWithAnchor:anAnchor Server:self];
 
     [HT setupWindow];
-    [[HT window] setTitle:@"Connecting..."]; /* Tell user something's happening */
-    [HT setEditable:NO];                     /* This is read-only data */
+    HT.window.title = @"Connecting..."; /* Tell user something's happening */
+    [HT setEditable:NO];                /* This is read-only data */
 
     //	Now, let's get a stream setup up from the server for the sgml data:
 
@@ -61,7 +61,7 @@
 
     //	Now we parse the SGML
 
-    [[HT window] setTitle:@"Loading..."]; /* Tell user something's happening */
+    HT.window.title = @"Loading..."; /* Tell user something's happening */
     [HT readSGML:sgmlStream diagnostic:diagnostic];
 
     //	Clean up now it's on the screen:

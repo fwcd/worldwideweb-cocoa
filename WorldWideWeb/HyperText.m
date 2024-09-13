@@ -989,8 +989,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
         return nil;
     }
 
-    NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    [self setString:text];
+    self.string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
     format = WWW_PLAINTEXT; // Remember
 
@@ -1130,7 +1129,7 @@ void append_begin(void) {
     if (TRACE)
         NSLog(@"Begin append to text.");
 
-    [HT setText:""]; // Delete everything there
+    HT.string = @""; // Delete everything there
     original_length = HT->textLength;
     if (TRACE)
         NSLog(@"Text now contains %i characters", original_length);
