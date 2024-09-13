@@ -7,7 +7,7 @@ An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://
 
 ## Background
 
-This port is mainly motivated by academic curiosity, specifically learning about the implementation of the first web browser (how HTML rendering works etc.) and the history of the NeXTStep API. The goal is to eventually have a working Cocoa application that stays as faithful to the original code as possible. This is not a small goal and may even be infeasible given the complexity of the project and potential need to replace or reimplement removed APIs.
+This port is mainly motivated by academic curiosity, specifically learning about the implementation of the first web browser (how HTML rendering works etc.) and the history of the NeXTStep API. The goal is to eventually have a working Cocoa application that stays faithful to the original code and design while adopting modern conventions where they make sense. This is not a small goal and may even be infeasible given the complexity of the project and potential need to replace or reimplement removed APIs.
 
 ### The NeXTStep API vs. Cocoa/AppKit
 
