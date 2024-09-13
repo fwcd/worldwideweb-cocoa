@@ -70,12 +70,10 @@ static HyperText *HT; /* Global pointer to self to allow C mixing */
 //	Returned in pixels
 //
 static float page_width(void) {
-    PrintInfo *pi = [NSPrintInfo sharedPrintInfo]; // Page layout details
-    CGFloat topMargin, bottomMargin, leftMargin, rightMargin;
-    const NSRect *paper = [pi paperRect]; //	In points
+    NSPrintInfo *pi = NSPrintInfo.sharedPrintInfo; // Page layout details
+    NSSize paperSize = pi.paperSize; //	In points
 
-    [pi getMarginLeft:&leftMargin right:&rightMargin top:&topMargin bottom:&bottomMargin]; /* In points */
-    return (paper->size.width - leftMargin - rightMargin);
+    return paperSize.width - pi.leftMargin - pi.rightMargin;
 }
 
 //			Class methods
