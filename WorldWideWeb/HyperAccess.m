@@ -71,7 +71,7 @@
                [NSString
                    stringWithFormat:@"You cannot overwrite this original document. You can use `save a copy in...'"]];
     [alert runModal];
-    printf("HyperAccess: You cannot save a hypertext document in this domain.\n");
+    NSLog(@"HyperAccess: You cannot save a hypertext document in this domain.\n");
     return nil;
 }
 
@@ -84,21 +84,21 @@
 //	Called whenever the text is changed
 - text:thatText isEmpty:flag {
     if (TRACE)
-        printf("Text %i changed, length=%i\n", thatText, [thatText textLength]);
+        NSLog(@"Text %i changed, length=%i\n", thatText, [thatText textLength]);
     return self;
 }
 #endif
 
 - textDidChange:textObject {
     if (TRACE)
-        printf("HM: text Did Change.\n");
+        NSLog(@"HM: text Did Change.\n");
     [[textObject window] setDocumentEdited:YES]; /* Broken cross in close button */
     return self;
 }
 
 - (BOOL)textWillChange:textObject {
     if (TRACE)
-        printf("HM: text Will Change -- OK\n");
+        NSLog(@"HM: text Will Change -- OK\n");
     return NO; /* Ok - you may change (sic) */
 }
 

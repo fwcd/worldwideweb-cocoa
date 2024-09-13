@@ -60,7 +60,7 @@ PRIVATE FileAccess *fileAccess = nil;
     if (!accesses)
         accesses = [NSMutableArray new];
     if (TRACE)
-        printf("HyperManager: Registering access `%s'.\n", [access name]);
+        NSLog(@"HyperManager: Registering access `%s'.\n", [access name]);
     if (0 == strcmp([access name], "file"))
         fileAccess = (FileAccess *)access; /* We need that one */
     [accesses addObject:access];
@@ -88,18 +88,18 @@ PRIVATE FileAccess *fileAccess = nil;
     if ([anAnchor node]) {
         return [[anAnchor node] nodeAnchor]; /* Already loaded and linked. */
         if (TRACE)
-            printf("HyperManger: Anchor already has a node.\n");
+            NSLog(@"HyperManger: Anchor already has a node.\n");
     }
 
     addr = [anAnchor address];
     if (!addr) {
         if (TRACE)
-            printf("HyperManger: Anchor has no address - can't load it.\n");
+            NSLog(@"HyperManger: Anchor has no address - can't load it.\n");
         return nil; /* No address? Can't load it. */
     }
 
     if (TRACE)
-        printf("HyperManager: Asked for `%s'\n", addr);
+        NSLog(@"HyperManager: Asked for `%s'\n", addr);
 
     s = HTParse(addr, "", PARSE_ACCESS);
     for (i = 0; i < [accesses count]; i++) {
@@ -108,7 +108,7 @@ PRIVATE FileAccess *fileAccess = nil;
             id status;
             HyperText *HT;
             if (TRACE)
-                printf("AccessMgr: Loading `%s' using `%s' access.\n", [anAnchor address], [access name]);
+                NSLog(@"AccessMgr: Loading `%s' using `%s' access.\n", [anAnchor address], [access name]);
             free(s);
             status = [access loadAnchor:anAnchor Diagnostic:diagnostic];
             if (!status)
@@ -247,11 +247,11 @@ PRIVATE FileAccess *fileAccess = nil;
 
 - (void)appDidInit:sender {
     if (TRACE)
-        printf("HyperManager: appDidInit\n");
+        NSLog(@"HyperManager: appDidInit\n");
 
     //    StrAllocCopy(appDirectory, NXArgv[0]);
     //    if (p = strrchr(appDirectory, '/')) p[1]=0;	/* Chop home slash */
-    //    if (TRACE) printf("WWW: Run from %s\n", appDirectory);
+    //    if (TRACE) NSLog(@"WWW: Run from %s\n", appDirectory);
 
     [Anchor setManager:self];
     [self goHome:self];
@@ -367,7 +367,7 @@ PRIVATE FileAccess *fileAccess = nil;
                     if ([cv respondsToSelector:@selector(documentView)]) {
                         if (![w isDocumentEdited]) {
                             if (TRACE)
-                                printf(" Closing window %p\n", w);
+                                NSLog(@" Closing window %p\n", w);
                             [w performClose:self];
                         }
                     }
