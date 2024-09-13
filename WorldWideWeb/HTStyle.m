@@ -186,6 +186,7 @@ HTStyle *HTStyleForRun(HTStyleSheet *self, NSTextStorage *run) {
                                   atIndex:0
                     longestEffectiveRange:NULL
                                   inRange:range];
+    // TODO: Can we use effectiveRange instead of longestEffectiveRange (which is more efficient per the docs)? This only checks for the font at the first characters, is that sufficient for our use case?
     NSFont *font = [run attribute:NSFontAttributeName atIndex:0 longestEffectiveRange:NULL inRange:range];
     for (scan = self->styles; scan; scan = scan->next)
         if (scan->paragraph == rp)
