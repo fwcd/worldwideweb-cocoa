@@ -1191,8 +1191,7 @@ void set_style(HTStyle *style) {
         return;
     }
     if (TRACE)
-        NSLog(@"    Changing to style `%s' -- %s change.", style->name,
-              willChange(style, lastRun) ? "will" : "won't");
+        NSLog(@"    Changing to style `%s' -- %s change.", style->name, willChange(style, lastRun) ? "will" : "won't");
     if (willChange(style, lastRun)) {
         int size = (write_pointer - write_block->text);
         lastRun->chars = lastRun->chars + size - write_block->chars;
@@ -1372,8 +1371,8 @@ void loadPlainText(void) {
         int inserted = originalEnd - originalStart + textLength - originalLength;
 
         if (TRACE)
-            NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.", originalLength, originalStart,
-                  originalEnd, textLength, sp0.cp, spN.cp);
+            NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.", originalLength, originalStart, originalEnd,
+                  textLength, sp0.cp, spN.cp);
 
         if (inserted > 0) {
             NSTextStorage *s;
