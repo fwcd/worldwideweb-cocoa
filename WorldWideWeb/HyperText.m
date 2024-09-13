@@ -1341,12 +1341,11 @@ void loadPlainText(void) {
 // The first click will have set the selection point.  On the second click,
 // we follow a link if possible, otherwise we allow Text to select a word as usual.
 //
-- mouseDown:(NSEvent *)theEvent {
+- (void)mouseDown:(NSEvent *)theEvent {
     if (theEvent->data.mouse.click != 2)
         return [super mouseDown:theEvent];
     if (![self followLink])
         return [super mouseDown:theEvent];
-    return self;
 }
 
 //	The following are necessary to undo damage done by the Text object
@@ -1360,15 +1359,14 @@ void loadPlainText(void) {
 //	We have to use a "dummy" flag to mean "This has an anchor: be careful!"
 //	This is horrible.
 
-- keyDown:(NSEvent *)theEvent
+- (void)keyDown:(NSEvent *)theEvent
 #ifdef TRY1
 {
-    id result;
     NSParagraphStyle *typingPara = typingRun.paraStyle;
     int originalLength = textLength;
     int originalStart = sp0.cp;
     int originalEnd = spN.cp;
-    result = [super keyDown:theEvent];
+    [super keyDown:theEvent];
 
     {
         int inserted = originalEnd - originalStart + textLength - originalLength;
@@ -1397,7 +1395,6 @@ void loadPlainText(void) {
             }
         }
     }
-    return result;
 }
 #else
 //	The typingRun field does not seem to reliably reflect the
@@ -1440,11 +1437,10 @@ void loadPlainText(void) {
         return [super keyDown:theEvent]; // OK!
 
     {
-        id result;
         int originalLength = textLength;
         int originalStart = sp0.cp;
         int originalEnd = spN.cp;
-        result = [super keyDown:theEvent];
+        [super keyDown:theEvent];
 
         /* 	Does it really change? YES!
 */
@@ -1486,7 +1482,6 @@ void loadPlainText(void) {
             } /* if inserted>0 */
 
         } /* block */
-        return result;
     }
 }
 #endif

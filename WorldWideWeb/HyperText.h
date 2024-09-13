@@ -86,8 +86,8 @@ extern void write_rtf_header(NXStream *rtfStream);
 
 - readText:(NXStream *)stream;     // Also set format variable.
 - readRichText:(NXStream *)stream; // Also set format variable.
-- mouseDown:(NSEvent *)theEvent;   // Double click become hyperjump
-- keyDown:(NSEvent *)theEvent;     //
+- (void)mouseDown:(NSEvent *)theEvent;   // Double click become hyperjump
+- (void)keyDown:(NSEvent *)theEvent;     //
 - paste:sender;                    //
 
 //	Window delegate methods:
