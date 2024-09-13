@@ -782,23 +782,19 @@ static void apply(HTStyle *style, NSMutableAttributedString *r) { applyRange(sty
 //	-------------------------------------------------------
 
 static BOOL willChange(HTStyle *style, NSTextStorage *r) {
-    if (r->font != style->font)
+    if (r.font != style->font)
         return YES;
 
-    if (style->textRGBColor >= 0)
-        if (r->textRGBColor != style->textRGBColor)
-            return YES;
-
-    if (style->textGray >= 0)
-        if (r->textGray != style->textGray)
+    if (style->textColor)
+        if (r.color != style->textColor)
             return YES;
 
     if (style->paragraph) {
-        if (r->paraStyle != style->paragraph)
+        if (r.paragraphStyle != style->paragraph)
             return YES;
     }
     if (style->anchor) {
-        if (r->info != style->anchor)
+        if (r.anchor != style->anchor)
             return YES;
     }
     return NO;
