@@ -175,12 +175,14 @@ typedef bool BOOLEAN; /* Logical value */
 #define BOOLEAN_DEFINED
 #endif
 
+#ifndef __OBJC__
 #ifndef BOOL
 #define BOOL BOOLEAN
 #endif
 #ifndef YES
 #define YES (BOOLEAN)1
 #define NO (BOOLEAN)0
+#endif
 #endif
 
 #ifndef min
