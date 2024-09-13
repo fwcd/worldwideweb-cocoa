@@ -47,7 +47,7 @@ typedef struct _HTStyle {
 
 /*	Style functions:
 */
-extern HTStyle *HTStyleNew();
+extern HTStyle *HTStyleNew(void);
 extern HTStyle *HTStyleFree(HTStyle *self);
 extern HTStyle *HTStyleRead(HTStyle *self, NXStream *stream);
 extern HTStyle *HTStyleWrite(HTStyle *self, NXStream *stream);
@@ -60,7 +60,7 @@ typedef struct _HTStyleSheet {
 
 /*	Stylesheet functions:
 */
-extern HTStyleSheet *HTStyleSheetNew();
+extern HTStyleSheet *HTStyleSheetNew(void);
 extern HTStyleSheet *HTStyleSheetFree(HTStyleSheet *self);
 extern HTStyle *HTStyleNamed(HTStyleSheet *self, const char *name);
 extern HTStyle *HTStyleForParagraph(HTStyleSheet *self, NSParagraphStyle *paraStyle);

@@ -17,7 +17,7 @@
 
 /*	Create a new style
 */
-HTStyle *HTStyleNew() {
+HTStyle *HTStyleNew(void) {
     HTStyle *self = malloc(sizeof(*self));
     bzero(self, sizeof(*self));
     self->SGMLTag = 0;
@@ -249,7 +249,7 @@ HTStyleSheet *HTStyleSheetRemoveStyle(HTStyleSheet *self, HTStyle *style) {
 /*	Create new style sheet
 */
 
-HTStyleSheet *HTStyleSheetNew() {
+HTStyleSheet *HTStyleSheetNew(void) {
     HTStyleSheet *self = malloc(sizeof(*self));
     bzero(self, sizeof(*self));
     return self;
