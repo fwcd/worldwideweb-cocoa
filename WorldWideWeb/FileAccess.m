@@ -60,10 +60,10 @@ extern char *appDirectory; /* Pointer to directory for application */
                         encoding:NSUTF8StringEncoding
                            error:nil];
     else
-        NSLog(@"HT/File: Unknown format!\n");
+        NSLog(@"HT/File: Unknown format!");
 
     if (TRACE)
-        NSLog(@"HT file: file `%s' in format %i.\n", filename, format);
+        NSLog(@"HT file: file `%s' in format %i.", filename, format);
 
     return self;
 }
@@ -109,14 +109,14 @@ NSString *ask_name(HyperText *hint, int format) {
                                              file:[NSString stringWithUTF8String:slash]];
     } else {
         if (TRACE)
-            NSLog(@"No slash in directory!!\n");
+            NSLog(@"No slash in directory!!");
         status = [save_panel runModalForDirectory:@"." file:[NSString stringWithUTF8String:suggestion]];
     }
     free(suggestion);
 
     if (!status) {
         if (TRACE)
-            NSLog(@"Save cancelled.\n");
+            NSLog(@"Save cancelled.");
         return 0;
     }
     return [save_panel filename];
@@ -196,17 +196,17 @@ NSString *ask_name(HyperText *hint, int format) {
         if (fp = fopen(filename, "r")) { /* File exists */
             fclose(fp);
             if (TRACE)
-                NSLog(@"File `%s' exists\n", filename);
+                NSLog(@"File `%s' exists", filename);
             if (remove(backup_filename)) {
                 if (TRACE)
-                    NSLog(@"Backup file `%s' removed\n", backup_filename);
+                    NSLog(@"Backup file `%s' removed", backup_filename);
             }
             if (rename(filename, backup_filename)) { /* != 0 => Failure */
                 if (TRACE)
-                    NSLog(@"Rename `%s' to `%s' FAILED!\n", filename, backup_filename);
+                    NSLog(@"Rename `%s' to `%s' FAILED!", filename, backup_filename);
             } else { /* Success */
                 if (TRACE)
-                    NSLog(@"Renamed `%s' to `%s'\n", filename, backup_filename);
+                    NSLog(@"Renamed `%s' to `%s'", filename, backup_filename);
             }
         }
         free(backup_filename);
@@ -250,14 +250,14 @@ NSString *ask_name(HyperText *hint, int format) {
 
     if ([anAnchor node]) {
         if (TRACE)
-            NSLog(@"Anchor %p already has a node\n", anAnchor);
+            NSLog(@"Anchor %p already has a node", anAnchor);
 
     } else {
         s = NXOpenFile(filename, NX_READONLY); // Open file
 
         if (!s) {
             if (TRACE)
-                NSLog(@"Could not open file `%s', errno=%i.\n", filename, errno);
+                NSLog(@"Could not open file `%s', errno=%i.", filename, errno);
             file_number = HTFTP_open_file_read(newname); // Try FTP
             if (file_number >= 0) {
                 s = NXOpenFile(file_number, NX_READONLY);
@@ -266,7 +266,7 @@ NSString *ask_name(HyperText *hint, int format) {
 
         if (!s) {
             if (TRACE)
-                NSLog(@"Could not open `%s' with FTP either.\n", newname);
+                NSLog(@"Could not open `%s' with FTP either.", newname);
             NSAlert *alert = [[NSAlert alloc] init];
             [alert setInformativeText:[NSString stringWithFormat:@"Could not open `%s'\n", newname]];
             [alert runModal];
@@ -326,7 +326,7 @@ NSString *ask_name(HyperText *hint, int format) {
         //	Clean up now it's on the screen:
 
         if (TRACE)
-            NSLog(@"Closing file stream\n");
+            NSLog(@"Closing file stream");
         NXClose(s);
         if (file_number >= 0) {
             HTFTP_close_file(file_number);
@@ -382,7 +382,7 @@ NSString *existing_filename(void) {
             // (was: file:slash but this is silly as that is already open.)
         } else {
             if (TRACE)
-                NSLog(@"No slash in directory!!\n");
+                NSLog(@"No slash in directory!!");
             status = [openPanel runModalForDirectory:@"." file:@""];
             // (was: file:suggestion but this is silly as above)
         }
@@ -393,7 +393,7 @@ NSString *existing_filename(void) {
 
     if (!status) {
         if (TRACE)
-            NSLog(@"Open cancelled\n");
+            NSLog(@"Open cancelled");
         return NULL;
     }
     return [openPanel filename];
@@ -427,7 +427,7 @@ NSString *existing_filename(void) {
 
     if (!filename) {
         if (TRACE)
-            NSLog(@"Open cancelled\n");
+            NSLog(@"Open cancelled");
         return nil;
     }
 
@@ -462,7 +462,7 @@ NSString *existing_filename(void) {
         status = stat(name, &buf); /* Does file exist? */
         if (status >= 0) {         /* If it does, load it */
             if (TRACE)
-                NSLog(@"File: stat() returned %d\n", status);
+                NSLog(@"File: stat() returned %d", status);
             a = [self openFile:name diagnostic:diagnostic];
             if (a) {
                 if ([a node])

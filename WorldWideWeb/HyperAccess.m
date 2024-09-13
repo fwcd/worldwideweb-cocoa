@@ -70,7 +70,7 @@
                [NSString
                    stringWithFormat:@"You cannot overwrite this original document. You can use `save a copy in...'"]];
     [alert runModal];
-    NSLog(@"HyperAccess: You cannot save a hypertext document in this domain.\n");
+    NSLog(@"HyperAccess: You cannot save a hypertext document in this domain.");
     return nil;
 }
 
@@ -83,20 +83,20 @@
 //	Called whenever the text is changed
 - text:thatText isEmpty:flag {
     if (TRACE)
-        NSLog(@"Text %i changed, length=%i\n", thatText, [thatText textLength]);
+        NSLog(@"Text %i changed, length=%i", thatText, [thatText textLength]);
     return self;
 }
 #endif
 
 - (void)textDidChange:(NSNotification *)notification {
     if (TRACE)
-        NSLog(@"HM: text Did Change.\n");
+        NSLog(@"HM: text Did Change.");
     [[notification.object window] setDocumentEdited:YES]; /* Broken cross in close button */
 }
 
 - (void)textDidBeginEditing:(NSNotification *)notification {
     if (TRACE)
-        NSLog(@"HM: text Will Change -- OK\n");
+        NSLog(@"HM: text Will Change -- OK");
 }
 
 //	These delegate methods are special to HyperText:

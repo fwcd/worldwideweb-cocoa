@@ -131,7 +131,7 @@ PRIVATE char next_char(void) {
     }
 
     if (TRACE)
-        NSLog(@"NewsAccess: Parsed address as port %4x, inet %d.%d.%d.%d\n", (unsigned int)ntohs(sin->sin_port),
+        NSLog(@"NewsAccess: Parsed address as port %4x, inet %d.%d.%d.%d", (unsigned int)ntohs(sin->sin_port),
               (int)*((unsigned char *)(&sin->sin_addr) + 0), (int)*((unsigned char *)(&sin->sin_addr) + 1),
               (int)*((unsigned char *)(&sin->sin_addr) + 2), (int)*((unsigned char *)(&sin->sin_addr) + 3));
 
@@ -174,7 +174,7 @@ static int response(const char *command) {
         int status = write(s, command, strlen(command));
         if (status < 0) {
             if (TRACE)
-                NSLog(@"NewsAccess: Unable to send comand. Disconnecting.\n");
+                NSLog(@"NewsAccess: Unable to send comand. Disconnecting.");
             close(s);
             s = -1;
             return status;
@@ -187,7 +187,7 @@ static int response(const char *command) {
         if (((*p++ = NEXT_CHAR) == '\n') || (p == &response_text[LINE_LENGTH])) {
             *p++ = 0; /* Terminate the string */
             if (TRACE)
-                NSLog(@"NNTP Response: %s\n", response_text);
+                NSLog(@"NNTP Response: %s", response_text);
             sscanf(response_text, "%i", &result);
             return result;
         } /* if end of line */
@@ -331,7 +331,7 @@ static void read_article(void) {
         if (((*p++ = NEXT_CHAR) == '\n') || (p == &line[LINE_LENGTH])) {
             *--p = 0; /* Terminate the string */
             if (TRACE)
-                NSLog(@"H %s\n", line);
+                NSLog(@"H %s", line);
             if (line[0] == '.') {
                 if (line[1] < ' ') { /* End of article? */
                     done = YES;
@@ -511,7 +511,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
 
     sscanf(response_text, " %i %i %i %i", &status, &count, &first, &last);
     if (TRACE)
-        NSLog(@"Newsgroup status=%i, count=%i, (%i-%i) required:(%i-%i)\n", status, count, first, last, first_required,
+        NSLog(@"Newsgroup status=%i, count=%i, (%i-%i) required:(%i-%i)", status, count, first, last, first_required,
               last_required);
     if (last == 0) {
         [HT appendText:"\nNo articles in this group.\n"];
@@ -535,7 +535,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
         first_required = last_required - CHUNK_SIZE + 1;
     }
     if (TRACE)
-        NSLog(@"    Chunk will be (%i-%i)\n", first_required, last_required);
+        NSLog(@"    Chunk will be (%i-%i)", first_required, last_required);
 
     /*	Link to earlier articles
 */
@@ -547,7 +547,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
             before = first_required - CHUNK_SIZE;
         sprintf(buffer, "%s/%i-%i", groupName, before, first_required - 1);
         if (TRACE)
-            NSLog(@"    Block before is %s\n", buffer);
+            NSLog(@"    Block before is %s", buffer);
         [HT appendBeginAnchor:"" to:buffer];
         [HT appendText:" (Earlier articles...)\n\n"];
         [HT appendEndAnchor];
@@ -641,7 +641,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
                         *--p = 0; /* Terminate  & chop LF*/
                         p = line; /* Restart at beginning */
                         if (TRACE)
-                            NSLog(@"G %s\n", line);
+                            NSLog(@"G %s", line);
                         switch (line[0]) {
 
                         case '.':
@@ -703,7 +703,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
         else
             sprintf(buffer, "news:%s/%i-%i", groupName, last_required + 1, after);
         if (TRACE)
-            NSLog(@"    Block after is %s\n", buffer);
+            NSLog(@"    Block after is %s", buffer);
         [HT appendBeginAnchor:"" to:buffer];
         [HT appendText:"\n(Later articles...)\n"];
         [HT appendEndAnchor];
@@ -730,7 +730,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
     diagnostic = diag; /* set global flag */
 
     if (TRACE)
-        NSLog(@"NewsAccess: Looking for %s\n", arg);
+        NSLog(@"NewsAccess: Looking for %s", arg);
     get_styles();
     {
         char *p1;
@@ -798,7 +798,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
                 close(s);
                 s = -1;
                 if (TRACE)
-                    NSLog(@"NewsAccess: Unable to connect to news host.\n");
+                    NSLog(@"NewsAccess: Unable to connect to news host.");
                 /*		if (retries<=1) continue;   WHY TRY AGAIN ? 	*/
                 NSAlert *alert = [[NSAlert alloc] init];
                 [alert setInformativeText:[NSString stringWithFormat:@"Could not access newshost %@.", NewsHost]];
@@ -809,7 +809,7 @@ void read_group(const char *groupName, int first_required, int last_required) {
                 return HT;
             } else {
                 if (TRACE)
-                    NSLog(@"NewsAccess: Connected to news host %@.\n", NewsHost);
+                    NSLog(@"NewsAccess: Connected to news host %@.", NewsHost);
                 if ((response(NULL) / 100) != 2) {
                     close(s);
                     s = -1;

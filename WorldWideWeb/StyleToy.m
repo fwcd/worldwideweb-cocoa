@@ -130,7 +130,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
     if (![open_panel runModalForTypes:typelist]) {
         if (TRACE)
-            NSLog(@"No file selected.\n");
+            NSLog(@"No file selected.");
         return nil;
     }
 
@@ -143,11 +143,11 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     s = NXOpenFile(styleSheet->name, NX_READONLY);
     if (!s) {
         if (TRACE)
-            NSLog(@"Styles: Can't open file %@\n", filename);
+            NSLog(@"Styles: Can't open file %@", filename);
         return nil;
     }
     if (TRACE)
-        NSLog(@"Stylesheet: New one called %s.\n", styleSheet->name);
+        NSLog(@"Stylesheet: New one called %s.", styleSheet->name);
     (void)HTStyleSheetRead(styleSheet, s);
     NXClose(s);
     style = styleSheet->styles;
@@ -189,10 +189,10 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
         strcpy(name, appDirectory);
         strcat(name, "default.style");
         if (TRACE)
-            NSLog(@"Couldn't open $(HOME)/WWW/default.style\n");
+            NSLog(@"Couldn't open $(HOME)/WWW/default.style");
         stream = NXOpenFile(name, NX_READONLY);
         if (!stream)
-            NSLog(@"Couldn't open %s, errno=%i\n", name, errno);
+            NSLog(@"Couldn't open %s, errno=%i", name, errno);
     }
 
     if (stream) {
@@ -228,7 +228,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
     if (!status) {
         if (TRACE)
-            NSLog(@"No file selected.\n");
+            NSLog(@"No file selected.");
         return;
     }
 
@@ -237,11 +237,11 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     s = NXOpenFile(styleSheet->name, NX_WRITEONLY);
     if (!s) {
         if (TRACE)
-            NSLog(@"Styles: Can't open file %@ for write\n", filename);
+            NSLog(@"Styles: Can't open file %@ for write", filename);
         return;
     }
     if (TRACE)
-        NSLog(@"StylestyleSheet: Saving as `%s'.\n", styleSheet->name);
+        NSLog(@"StylestyleSheet: Saving as `%s'.", styleSheet->name);
     (void)HTStyleSheetWrite(styleSheet, s);
     NXClose(s);
     style = styleSheet->styles;

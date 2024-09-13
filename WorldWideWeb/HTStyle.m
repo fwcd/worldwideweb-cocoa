@@ -121,19 +121,19 @@ HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
 HTStyle *HTStyleDump(HTStyle *style) {
     int tab;
     NSParagraphStyle *p = style->paragraph;
-    NSLog(@"Style %i `%s' SGML:%s, type=%i. Font %@ %.1f point.\n", style, style->name, style->SGMLTag, style->SGMLType,
+    NSLog(@"Style %i `%s' SGML:%s, type=%i. Font %@ %.1f point.", style, style->name, style->SGMLTag, style->SGMLType,
           [style->font fontName], style -> fontSize);
     if (p) {
         short alignment = p.alignment;
         short tabStopCount = p.tabStops.count;
-        NSLog(@"\tIndents: first=%.0f others=%.0f, Height=%.1f Desc=%.1f\n"
+        NSLog(@"\tIndents: first=%.0f others=%.0f, Height=%.1f Desc=%.1f"
                "\tAlign=%i, %i tabs. (%.0f before, %.0f after)\n",
               p.firstLineHeadIndent, p.headIndent, p.minimumLineHeight, p.lineSpacing, alignment, tabStopCount,
               style->spaceBefore, style->spaceAfter);
 
         for (tab = 0; tab < p.tabStops.count; tab++) {
             int tabKind = p.tabStops[tab].tabStopType;
-            NSLog(@"\t\tTab kind=%i at %.0f\n", tabKind, p.tabStops[tab].location);
+            NSLog(@"\t\tTab kind=%i at %.0f", tabKind, p.tabStops[tab].location);
         }
         NSLog(@"\n");
     } /* if paragraph */
@@ -152,7 +152,7 @@ HTStyle *HTStyleNamed(HTStyleSheet *self, const char *name) {
         if (0 == strcmp(scan->name, name))
             return scan;
     if (TRACE)
-        NSLog(@"StyleSheet: No style named `%s'\n", name);
+        NSLog(@"StyleSheet: No style named `%s'", name);
     return 0;
 }
 
@@ -208,7 +208,7 @@ HTStyle *HTStyleForRun(HTStyleSheet *self, NSTextStorage *run) {
         }
     }
     if (TRACE)
-        NSLog(@"HTStyleForRun: Best match for style is %i out of 18\n", bestMatch);
+        NSLog(@"HTStyleForRun: Best match for style is %i out of 18", bestMatch);
     return best;
 }
 
@@ -281,7 +281,7 @@ HTStyleSheet *HTStyleSheetRead(HTStyleSheet *self, NXStream *stream) {
     char styleName[80];
     NXScanf(stream, " %i ", &numStyles);
     if (TRACE)
-        NSLog(@"Stylesheet: Reading %i styles\n", numStyles);
+        NSLog(@"Stylesheet: Reading %i styles", numStyles);
     for (i = 0; i < numStyles; i++) {
         NXScanf(stream, "%s", styleName);
         style = HTStyleNamed(self, styleName);
@@ -311,7 +311,7 @@ HTStyleSheet *HTStyleSheetWrite(HTStyleSheet *self, NXStream *stream) {
     NXPrintf(stream, "%i\n", numStyles);
 
     if (TRACE)
-        NSLog(@"StyleSheet: Writing %i styles\n", numStyles);
+        NSLog(@"StyleSheet: Writing %i styles", numStyles);
     for (style = self->styles; style; style = style->next) {
         NXPrintf(stream, "%s ", style->name);
         (void)HTStyleWrite(style, stream);
