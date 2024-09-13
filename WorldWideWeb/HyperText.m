@@ -39,6 +39,7 @@
 #import "WWW.h"
 #import <AppKit/AppKit.h>
 #import <malloc/malloc.h>
+#import <stdio.h>
 
 @implementation HyperText
 
@@ -963,9 +964,23 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 - readText:(NXStream *)stream {
     //    [self setMonoFont:YES];		Seems to leave it in a strange state
     [self setHorizontallyResizable:YES];
-    [self setNoWrap];
+    // TODO: Do we need to do this?
+    // [self setNoWrap];
+    // TODO: This font probably no longer exists
     [self setFont:[NSFont fontWithName:@"Ohlfs" size:10.0]]; // @@ Should be XMP
-    [super readText:stream];
+
+    // Wrap the stream in a non-owning NSFileHandle for convenient reading
+    NSFileHandle *fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fileno(stream) closeOnDealloc:NO];
+    NSError *error = nil;
+    NSData *data = [fileHandle readDataToEndOfFileAndReturnError:&error];
+    if (error) {
+        NSLog(@"Error while reading text from stream: %@", error);
+        return nil;
+    }
+
+    NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    [self setString:text];
+
     format = WWW_PLAINTEXT; // Remember
 
 #ifdef NOPE
@@ -986,10 +1001,21 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 //	hypertext to be monofont and fixed width.  Also, the window is updated.
 //
 - readRichText:(NXStream *)stream {
-    id status = [super readRichText:stream];
+    // Wrap the stream in a non-owning NSFileHandle for convenient reading
+    NSFileHandle *fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fileno(stream) closeOnDealloc:NO];
+    NSError *error = nil;
+    NSData *data = [fileHandle readDataToEndOfFileAndReturnError:&error];
+    if (error) {
+        NSLog(@"Error while reading rich text from stream: %@", error);
+        return nil;
+    }
+
+    NSAttributedString *richText = [[NSAttributedString alloc] initWithRTF:data documentAttributes:nil];
+    [self.textStorage setAttributedString:richText];
+
     [self adjustWindow];
     format = WWW_RICHTEXT; // Remember
-    return status;
+    return self;
 }
 
 //				Window Delegate Methods
