@@ -428,8 +428,6 @@ static float page_width() {
 //  Find associated attributes for runs
 //  -----------------------------------
 
-
-
 //	Check whether an anchor has been selected
 //	-----------------------------------------
 
@@ -982,7 +980,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
         theRuns->chunk.used = (char *)w - (char *)theRuns->runs;
     }
 
-    [self calcLine];         /* Update line breaks */
+    [self calcLine];              /* Update line breaks */
     return [self.window display]; /* Update window */
 }
 

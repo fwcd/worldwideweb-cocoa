@@ -16,19 +16,19 @@ NSString *const AnchorAttributeName;
 
 @interface NSAttributedString (Attributes)
 
-- (Anchor * _Nullable)anchor;
-- (NSParagraphStyle * _Nullable)paragraphStyle;
-- (NSColor * _Nullable)color;
-- (NSFont * _Nullable)font;
+- (Anchor *_Nullable)anchor;
+- (NSParagraphStyle *_Nullable)paragraphStyle;
+- (NSColor *_Nullable)color;
+- (NSFont *_Nullable)font;
 
 @end
 
 @interface NSMutableAttributedString (Attributes)
 
-- (void)setAnchor:(Anchor * _Nullable)anchor;
-- (void)setParagraphStyle:(NSParagraphStyle * _Nullable)paraStyle;
-- (void)setColor:(NSColor * _Nullable)color;
-- (void)setFont:(NSFont * _Nullable)font;
+- (void)setAnchor:(Anchor *_Nullable)anchor;
+- (void)setParagraphStyle:(NSParagraphStyle *_Nullable)paraStyle;
+- (void)setColor:(NSColor *_Nullable)color;
+- (void)setFont:(NSFont *_Nullable)font;
 
 @end
 
