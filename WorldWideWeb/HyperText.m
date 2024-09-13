@@ -685,15 +685,17 @@ static float page_width() {
 // We have to check whether the paragraph style for each run is one
 // on the style sheet.
 //
-- selectUnstyled:(HTStyleSheet *)sheet {
-    NSTextStorage *r = theRuns->runs;
-    int sor;
-    for (sor = 0; sor < textLength; r++) {
-        if (!HTStyleForParagraph(sheet, r->paraStyle)) {
-            [self setSel:sor:sor + r->chars]; /* Select unstyled run */
+- (HyperText *)selectUnstyled:(HTStyleSheet *)sheet {
+    NSUInteger chars = 0;
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
+    for (NSUInteger i = 0; i < runs.count; i++) {
+        NSTextStorage *run = runs[i];
+        NSParagraphStyle *paraStyle = [run attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+        if (!HTStyleForParagraph(sheet, paraStyle)) {
+            [self setSelectedRange:NSMakeRange(chars, run.length)]; /* Select unstyled run */
             return self;
         }
-        sor = sor + r->chars;
+        chars += run.length;
     }
     return nil;
 }
