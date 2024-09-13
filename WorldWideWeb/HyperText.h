@@ -39,7 +39,7 @@ extern void write_rtf_header(NXStream *rtfStream);
 - readSGML:(NXStream *)sgmlStream diagnostic:(int)diagnostic;
 - writeSGML:(NXStream *)sgmlStream relativeTo:(const char *)aName;
 
-- readText:(NXStream *)stream; //	Overrides Text's method.
+- readText:(NXStream *)stream;
 - server;
 - (BOOL)isIndex;
 - setupWindow;

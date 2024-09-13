@@ -105,8 +105,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //	Note: You are not guarranteed a new anchor -- you might get an old one,
 //	like with fonts.
 
-- initWithAddress:(const char *)anAddress;
-{
+- initWithAddress:(const char *)anAddress {
     char *anc = HTParse(anAddress, "", PARSE_ANCHOR); // Anchor id specified?
 
     //	If the node is a sub-anchor, we recursively load its parent.
@@ -328,8 +327,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 //	Link this Anchor to another given one
 //	-------------------------------------
 
-- (void)linkTo:(Anchor *)destination;
-{
+- (void)linkTo:(Anchor *)destination {
     if (TRACE)
         NSLog(@"Anchor: Linking anchor %p to anchor %p\n", self, destination);
     DestAnchor = destination;

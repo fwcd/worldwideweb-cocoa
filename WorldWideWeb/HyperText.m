@@ -1467,8 +1467,7 @@ void loadPlainText(void) {
 //	After paste, determine paragraph styles for pasted material:
 //	------------------------------------------------------------
 
-- paste:sender;
-{
+- paste:sender {
     id result;
     int originalLength = textLength;
     int originalStart = sp0.cp;

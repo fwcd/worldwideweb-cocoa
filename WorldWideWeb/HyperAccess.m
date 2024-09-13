@@ -16,8 +16,7 @@
 
 @implementation HyperAccess
 
-- (void)setManager:anObject;
-{
+- (void)setManager:anObject {
     _manager = anObject;
     [(HyperManager *)_manager registerAccess:self];
 }
