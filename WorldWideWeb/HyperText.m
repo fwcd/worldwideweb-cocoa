@@ -534,24 +534,32 @@ static float page_width() {
 //	If there are any runs linked to this anchor, we select them. Otherwise,
 //	we just bring the window to the front.
 
-- selectAnchor:(Anchor *)anchor {
-    NSTextStorage *s, *e; /* run for start, run for end */
-    int start, sor;
-    NSTextStorage *limit = (NSTextStorage *)((char *)theRuns->runs + theRuns->chunk.used);
-    for (sor = 0, s = theRuns->runs; s < limit; sor = sor + (s++)->chars) {
-        if (s->info == (void *)anchor) {
-            start = sor;
+- (Anchor *)selectAnchor:(Anchor *)anchor {
+    NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
 
-            for (e = s; (e < limit) && ((e + 1)->info == (void *)anchor); sor = sor + (e++)->chars)
-                ;
-            [window makeKeyAndOrderFront:self];
-            [self setSel:start:sor + e->chars];
-            return [self scrollSelToVisible];
+    NSUInteger chars = 0;
+    NSUInteger startChars = 0;
+    BOOL foundStart = NO;
+
+    for (NSUInteger i = 0; i < runs.count; i++) {
+        NSTextStorage *run = runs[i];
+        Anchor *runAnchor = [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
+        if (runAnchor == anchor && !foundStart) {
+            startChars = chars;
+        } else if (runAnchor != anchor && foundStart) {
+            [self.window makeKeyAndOrderFront:self];
+            NSRange range = NSMakeRange(startChars, chars);
+            [self setSelectedRange:range];
+            [self scrollRangeToVisible:range];
+            return anchor;
         }
+        chars += run.length;
     }
+
     if (TRACE)
         printf("HT: Anchor has no explicitly related text.\n");
-    return [window makeKeyAndOrderFront:self];
+    [self.window makeKeyAndOrderFront:self];
+    return nil;
 }
 
 //

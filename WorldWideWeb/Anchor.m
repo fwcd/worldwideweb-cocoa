@@ -262,7 +262,7 @@ PRIVATE BOOL equivalent(const char *s, const char *t) {
 **	This will load the node is necessary, if the anchor has only a network
 **	address.
 */
-- selectDiagnostic:(int)diag {
+- (Anchor *)selectDiagnostic:(int)diag {
     Anchor *nodeAnchor = parent ? parent : self;
 
     if (!nodeAnchor->Node) { /* If the node is not loaded, */

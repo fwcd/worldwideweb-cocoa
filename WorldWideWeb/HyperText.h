@@ -75,9 +75,9 @@ extern void write_rtf_header(NXStream *rtfStream);
 - unlinkSelection;             // Remove anchor info from selection
 - (Anchor *)referenceSelected; // Generate anchor for this node
 - (Anchor *)referenceAll;
-- (Anchor *)linkSelTo:(Anchor *)anchor; // Link selected text to this anchor.
-- disconnectAnchor:(Anchor *)anchor;    // Remove reference from this node.
-- selectAnchor:(Anchor *)anchor;        // Bring to front and highlight it.
+- (Anchor *)linkSelTo:(Anchor *)anchor;    // Link selected text to this anchor.
+- disconnectAnchor:(Anchor *)anchor;       // Remove reference from this node.
+- (Anchor *)selectAnchor:(Anchor *)anchor; // Bring to front and highlight it.
 
 - setTitle:(const char *)title;
 - dump:sender; // diagnostic output

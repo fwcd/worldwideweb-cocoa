@@ -165,7 +165,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //	-----------------------
 //
 //
-- accessName:(const char *)arg Diagnostic:(int)diagnostic {
+- (Anchor *)accessName:(const char *)arg Diagnostic:(int)diagnostic {
     return [[[Anchor alloc] initWithAddress:arg] selectDiagnostic:diagnostic];
 }
 
