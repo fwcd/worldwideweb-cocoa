@@ -860,9 +860,7 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 //	----------------------------------
 
 BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) {
-    return (r1->font == r2->font) && (r1->paraStyle == r2->paraStyle) && (r1->textGray == r2->textGray) &&
-           (r1->textRGBColor == r2->textRGBColor) && (r1->superscript == r2->superscript) &&
-           (r1->subscript == r2->subscript) && (r1->info == r2->info) && (*(int *)&r1->rFlags == *(int *)&r2->rFlags);
+    return [r1 isEqualToAttributedString:r2];
 }
 
 //	Check Consecutive runs and merge if necessary
