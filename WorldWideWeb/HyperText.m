@@ -671,8 +671,8 @@ static float page_width() {
     return a; // ... but we did highlight it.
 }
 
-- setTitle:(const char *)title {
-    return [window setTitle:title];
+- (void)setTitle:(const char *)title {
+    [self.window setTitle:[NSString stringWithUTF8String:title]];
 }
 
 //				STYLE METHODS

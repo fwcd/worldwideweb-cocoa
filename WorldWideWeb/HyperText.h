@@ -79,7 +79,7 @@ extern void write_rtf_header(NXStream *rtfStream);
 - disconnectAnchor:(Anchor *)anchor;       // Remove reference from this node.
 - (Anchor *)selectAnchor:(Anchor *)anchor; // Bring to front and highlight it.
 
-- setTitle:(const char *)title;
+- (void)setTitle:(const char *)title;
 - dump:sender; // diagnostic output
 
 //	Override methods of superclasses:
