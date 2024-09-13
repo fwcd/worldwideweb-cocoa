@@ -88,7 +88,7 @@ static float page_width() {
 
     self = [self initWithFrame:aFrame];
     if (TRACE)
-        printf("New node, server is %i\n", aServer);
+        NSLog(@"New node, server is %@\n", aServer);
 
     nextAnchorNumber = 0;
     protection = 0;    // Can do anything
@@ -137,44 +137,44 @@ static float page_width() {
     //    NSArray<NSTextStorage *> *r = self.textStorage.attributeRuns;
     //    NXTextBlock *block = firstTextBlock;
     //
-    //    printf("Hypertext %i, selected(%i,%i)", self, sp0.cp, spN.cp);
+    //    NSLog(@"Hypertext %i, selected(%i,%i)", self, sp0.cp, spN.cp);
     //    if (self.delegate)
-    //        printf(", has delegate");
-    //    printf(".\n");
+    //        NSLog(@", has delegate");
+    //    NSLog(@".\n");
     //
     //    NSRect frame = self.frame;
-    //    printf("    Frame is at (%f, %f, size is (%f, %f)\n", frame.origin.x, frame.origin.y, frame.size.width,
+    //    NSLog(@"    Frame is at (%f, %f, size is (%f, %f)\n", frame.origin.x, frame.origin.y, frame.size.width,
     //           frame.size.height);
     //
-    //    printf("    Text blocks and runs up to character %i:\n", sp0.cp);
+    //    NSLog(@"    Text blocks and runs up to character %i:\n", sp0.cp);
     //    for (pos = 0; pos <= sp0.cp; pos = pos + ((r++)->chars)) {
     //        while (sob <= pos) {
-    //            printf("%5i: Block of %i/%i characters at 0x%x starts `%10.10s'\n", sob, block->chars,
+    //            NSLog(@"%5i: Block of %i/%i characters at 0x%x starts `%10.10s'\n", sob, block->chars,
     //                   malloc_size(block->text), block->text, block->text);
     //            sob = sob + block->chars;
     //            block = block->next;
     //        }
-    //        printf("%5i: %3i of fnt=%i p=%i gy=%3.2f RGB=%i i=%i fl=%x\n", pos, r->chars, (int)r->font, r->paraStyle,
+    //        NSLog(@"%5i: %3i of fnt=%i p=%i gy=%3.2f RGB=%i i=%i fl=%x\n", pos, r->chars, (int)r->font, r->paraStyle,
     //               r->textGray, r->textRGBColor, (int)(r->info), *(int *)&(r->rFlags));
     //    }
     //    r--; /* Point to run for start of selection */
     //
-    //    printf("\n    Current run:\n\tFont name:\t%s\n", [r->font fontName]);
+    //    NSLog(@"\n    Current run:\n\tFont name:\t%s\n", [r->font fontName]);
     //    {
     //        NSParagraphStyle *p = (NSParagraphStyle *)r->paraStyle;
     //        if (!p) {
-    //            printf("\tNo paragraph style!\n");
+    //            NSLog(@"\tNo paragraph style!\n");
     //        } else {
     //            int tab;
-    //            printf("\tParagraph style %i\n", p);
-    //            printf("\tIndents: first=%f, left=%f\n", p.firstLineHeadIndent, p.headIndent);
-    //            printf("\tAlignment type=%i, %i tabs:\n", p.alignment, p.tabStops.count);
+    //            NSLog(@"\tParagraph style %i\n", p);
+    //            NSLog(@"\tIndents: first=%f, left=%f\n", p.firstLineHeadIndent, p.headIndent);
+    //            NSLog(@"\tAlignment type=%i, %i tabs:\n", p.alignment, p.tabStops.count);
     //            for (tab = 0; tab < p.tabStops.count; tab++) {
-    //                printf("\t    Tab kind=%i at %f\n", p.tabStops[tab].tabStopType, p.tabStops[tab].location);
+    //                NSLog(@"\t    Tab kind=%i at %f\n", p.tabStops[tab].tabStopType, p.tabStops[tab].location);
     //            }
     //        }
     //    }
-    //    printf("\n");
+    //    NSLog(@"\n");
     return self;
 }
 
@@ -446,7 +446,7 @@ static float page_width() {
             return a;
     }
     if (TRACE)
-        printf("HyperText: No anchor selected.\n");
+        NSLog(@"HyperText: No anchor selected.\n");
     return nil;
 }
 
@@ -574,7 +574,7 @@ static float page_width() {
     }
 
     if (TRACE)
-        printf("HT: Anchor has no explicitly related text.\n");
+        NSLog(@"HT: Anchor has no explicitly related text.\n");
     [self.window makeKeyAndOrderFront:self];
     return nil;
 }
@@ -628,7 +628,7 @@ static float page_width() {
 
     if (!a) {
         if (TRACE)
-            printf("HyperText: No anchor selected.\n");
+            NSLog(@"HyperText: No anchor selected.\n");
         return nil;
     }
 
@@ -671,7 +671,7 @@ static float page_width() {
         return a; // Try to follow link
 
     if (TRACE)
-        printf("HyperText: Can't follow anchor.\n");
+        NSLog(@"HyperText: Can't follow anchor.\n");
     return a; // ... but we did highlight it.
 }
 
@@ -1100,7 +1100,7 @@ void append_start_block() {
     NXTextBlock *previous_block = write_block; /* to previous write block */
 
     if (TRACE)
-        printf("    Starting to append new block.\n");
+        NSLog(@"    Starting to append new block.\n");
 
     lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
     write_block = (NXTextBlock *)malloc(sizeof(*write_block));
@@ -1125,12 +1125,12 @@ void append_start_block() {
 //
 void append_begin() {
     if (TRACE)
-        printf("Begin append to text.\n");
+        NSLog(@"Begin append to text.\n");
 
     [HT setText:""]; // Delete everything there
     original_length = HT->textLength;
     if (TRACE)
-        printf("Text now contains %i characters\n", original_length);
+        NSLog(@"Text now contains %i characters\n", original_length);
 
     lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
 
@@ -1144,7 +1144,7 @@ void append_begin() {
 
     if (original_length == 1) {
         if (TRACE)
-            printf("HT: Clearing out single character from Text.\n");
+            NSLog(@"HT: Clearing out single character from Text.\n");
         lastRun->chars = 0;     /* Empty the run */
         write_block->chars = 0; /* Empty the text block */
         HT->textLength = 0;     /* Empty the whole Text object */
@@ -1160,11 +1160,11 @@ void append_begin() {
 void set_style(HTStyle *style) {
     if (!style) {
         if (TRACE)
-            printf("set_style: style is null!\n");
+            NSLog(@"set_style: style is null!\n");
         return;
     }
     if (TRACE)
-        printf("    Changing to style `%s' -- %s change.\n", style->name,
+        NSLog(@"    Changing to style `%s' -- %s change.\n", style->name,
                willChange(style, lastRun) ? "will" : "won't");
     if (willChange(style, lastRun)) {
         int size = (write_pointer - write_block->text);
@@ -1174,7 +1174,7 @@ void set_style(HTStyle *style) {
             int new_used = (((char *)(lastRun + 2)) - (char *)HT->theRuns->runs);
             if (new_used > HT->theRuns->chunk.allocated) {
                 if (TRACE)
-                    printf("    HT: Extending runs.\n");
+                    NSLog(@"    HT: Extending runs.\n");
                 HT->theRuns = (NXRunArray *)NXChunkGrow(&HT->theRuns->chunk, new_used);
                 lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
             }
@@ -1192,7 +1192,7 @@ void set_style(HTStyle *style) {
 void end_output() {
     int size = (write_pointer - write_block->text);
     if (TRACE)
-        printf("    HT: Adding block of %i characters, starts: `%.20s...'\n", size, write_block->text);
+        NSLog(@"    HT: Adding block of %i characters, starts: `%.20s...'\n", size, write_block->text);
     lastRun->chars = lastRun->chars + size - write_block->chars;
     write_block->chars = size;
     HT->textLength = HT->textLength + size;
@@ -1223,7 +1223,7 @@ void finish_output() {
         unsigned char *p = HT->lastTextBlock->text + HT->lastTextBlock->chars - 1;
         if (*p != '\n') {
             if (TRACE)
-                printf("HT: Warning: Last character was %i not newline: overwriting!\n", *p);
+                NSLog(@"HT: Warning: Last character was %i not newline: overwriting!\n", *p);
             *p = '\n';
         }
     }
@@ -1347,7 +1347,7 @@ void loadPlainText() {
         int inserted = originalEnd - originalStart + textLength - originalLength;
 
         if (TRACE)
-            printf("KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart,
+            NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart,
                    originalEnd, textLength, sp0.cp, spN.cp);
 
         if (inserted > 0) {
@@ -1360,7 +1360,7 @@ void loadPlainText() {
             //	s points to run containing first char of insertion
 
             if (pos != start)
-                printf("HT: Strange: inserted %i at %i, start of run=%i !!\n", inserted, start, pos);
+                NSLog(@"HT: Strange: inserted %i at %i, start of run=%i !!\n", inserted, start, pos);
 
             if (s > theRuns->runs) {       /* ie s-1 is valid */
                 s->paraStyle = typingPara; /* Repair damage to runs */
@@ -1400,9 +1400,9 @@ void loadPlainText() {
 
         if (typingRun.paraStyle != 0) {
             if (typingRun.paraStyle != s->paraStyle)
-                printf("WWW: Strange: Typing run has bad style.\n");
+                NSLog(@"WWW: Strange: Typing run has bad style.\n");
             if ((s->info != 0) && (typingRun.info != s->info))
-                printf("WWW: Strange: Typing run has bad anchor info.\n");
+                NSLog(@"WWW: Strange: Typing run has bad anchor info.\n");
         }
 
         typingRun = *s; /* Copy run to be used for insertion */
@@ -1423,9 +1423,9 @@ void loadPlainText() {
 */
         if (TRACE) {
             if (typingRun.info != run.info)
-                printf("Typing run info was %p, now %p !!\n", run.info, typingRun.info);
+                NSLog(@"Typing run info was %p, now %p !!\n", run.info, typingRun.info);
             if (typingRun.paraStyle != run.paraStyle)
-                printf("Typing run paraStyle was %p, now %p !!\n", run.paraStyle, typingRun.paraStyle);
+                NSLog(@"Typing run paraStyle was %p, now %p !!\n", run.paraStyle, typingRun.paraStyle);
         }
         /*	Patch the new run if necessary:
 */
@@ -1433,7 +1433,7 @@ void loadPlainText() {
             int inserted = originalEnd - originalStart + textLength - originalLength;
 
             if (TRACE)
-                printf("KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart,
+                NSLog(@"KeyDown, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart,
                        originalEnd, textLength, sp0.cp, spN.cp);
 
             if (inserted > 0) {
@@ -1447,11 +1447,11 @@ void loadPlainText() {
 
                 if (pos != start) { /* insert in middle of run */
                     if (TRACE)
-                        printf("HT: Inserted %i at %i, in run starting at=%i\n", inserted, start, pos);
+                        NSLog(@"HT: Inserted %i at %i, in run starting at=%i\n", inserted, start, pos);
 
                 } else { /* inserted stuff starts run */
                     if (TRACE)
-                        printf("Patching info from %d to %d\n", s->info, run.info);
+                        NSLog(@"Patching info from %d to %d\n", s->info, run.info);
                     s->info = run.info;
                     s->paraStyle = run.paraStyle; /* free old one? */
                     s->rFlags.dummy = 1;
@@ -1480,7 +1480,7 @@ void loadPlainText() {
         int inserted = originalEnd - originalStart + textLength - originalLength;
 
         if (TRACE)
-            printf("Paste, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart, originalEnd,
+            NSLog(@"Paste, size(sel) %i (%i-%i)before, %i (%i-%i)after.\n", originalLength, originalStart, originalEnd,
                    textLength, sp0.cp, spN.cp);
 
         if (inserted > 0) {
@@ -1492,7 +1492,7 @@ void loadPlainText() {
             //		s points to run containing first char of insertion
 
             if (pos != sp0.cp - inserted)
-                printf("HT paste: Strange: insert@%i != run@%i !!\n", start, pos);
+                NSLog(@"HT paste: Strange: insert@%i != run@%i !!\n", start, pos);
 
             if (s > theRuns->runs)
                 typingInfo = (s - 1)->info;
