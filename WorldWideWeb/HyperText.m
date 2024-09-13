@@ -427,6 +427,19 @@ static float page_width() {
     }
 }
 
+//  Find associated attributes for runs
+//  -----------------------------------
+
+- (Anchor *)anchorForRun:(NSTextStorage *)run {
+    // TODO: Can we be sure to always find an associated anchor (if existent) at the first index? Does attributeRuns already guaranteed that or should we document it as an invariant if not?
+    return [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
+}
+
+- (NSParagraphStyle *)paragraphStyleForRun:(NSTextStorage *)run {
+    // TODO: Can we be sure to always find an associated paragraph style at the first index?
+    return [run attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+}
+
 //	Check whether an anchor has been selected
 //	-----------------------------------------
 
@@ -434,8 +447,7 @@ static float page_width() {
     Anchor *a;
 
     for (NSTextStorage *run in [self runsContainingSelection]) {
-        // TODO: Can we guarantee to only ever store anchors on the first character? Does attributeRuns already guaranteed that or should we document it as an invariant if not?
-        a = [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
+        a = [self anchorForRun:run];
         if (a)
             return a;
     }
@@ -554,7 +566,7 @@ static float page_width() {
 
     for (NSUInteger i = 0; i < runs.count; i++) {
         NSTextStorage *run = runs[i];
-        Anchor *runAnchor = [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
+        Anchor *runAnchor = [self anchorForRun:run];
         if (runAnchor == anchor && !foundStart) {
             startChars = chars;
         } else if (runAnchor != anchor && foundStart) {
@@ -614,7 +626,7 @@ static float page_width() {
     NSRange runRange = [self runRangeContainingSelection];
 
     for (NSTextStorage *run in [runs subarrayWithRange:runRange]) {
-        a = [run attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
+        a = [self anchorForRun:run];
         if (a) {
             break;
         }
@@ -630,7 +642,7 @@ static float page_width() {
 
     {
         while (runRange.location > 0) {
-            Anchor *runAnchor = [runs[runRange.location] attribute:AnchorAttributeName atIndex:0 effectiveRange:nil];
+            Anchor *runAnchor = [self anchorForRun:runs[runRange.location]];
             if (runAnchor == a) {
                 runRange.location--;
                 runRange.length++;
@@ -638,9 +650,7 @@ static float page_width() {
         }
 
         while (runRange.location + runRange.length < runs.count) {
-            Anchor *runAnchor = [runs[runRange.location + runRange.length] attribute:AnchorAttributeName
-                                                                             atIndex:0
-                                                                      effectiveRange:nil];
+            Anchor *runAnchor = [self anchorForRun:runs[runRange.location + runRange.length]];
             if (runAnchor == a) {
                 runRange.length++;
             }
@@ -690,7 +700,7 @@ static float page_width() {
     NSArray<NSTextStorage *> *runs = self.textStorage.attributeRuns;
     for (NSUInteger i = 0; i < runs.count; i++) {
         NSTextStorage *run = runs[i];
-        NSParagraphStyle *paraStyle = [run attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+        NSParagraphStyle *paraStyle = [self paragraphStyleForRun:run];
         if (!HTStyleForParagraph(sheet, paraStyle)) {
             [self setSelectedRange:NSMakeRange(chars, run.length)]; /* Select unstyled run */
             return self;
@@ -761,7 +771,6 @@ static BOOL willChange(HTStyle *style, NSTextStorage *r) {
 //
 //
 - updateStyle:(HTStyle *)style {
-    NSTextStorage *r = theRuns->runs;
     int sor;
     for (sor = 0; sor < textLength; r++) {
         if (r->paraStyle == style->paragraph)
