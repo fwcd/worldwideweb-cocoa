@@ -44,6 +44,11 @@ static HyperText *slot[SLOTS];  /* Ids of HT objects taking them */
 #define MIN_WIDTH 200.0
 
 static HyperText *HT; /* Global pointer to self to allow C mixing */
+
+/// A key that we use to store anchors in attributed string runs to replace `NXRun.info`, which the NeXTStep API reserved for app-specific usage.
+/// See https://www.nextop.de/NeXTstep_3.3_Developer_Documentation/GeneralRef/02_ApplicationKit/TypesAndConstants/AppKitTypes.htmld/index.html
+static NSString *const AnchorAttributeName = @"WorldWideWeb.Anchor";
+
 + (void)initialize {
     int i;
     for (i = 0; i < SLOTS; i++)
