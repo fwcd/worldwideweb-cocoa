@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional, Self
 
-from Scripts.helpers.reader import Reader
+from helpers.reader import Reader
 
 # Based on https://www.biblioscape.com/rtf15_spec.htm
 
