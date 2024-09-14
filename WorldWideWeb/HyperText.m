@@ -154,14 +154,14 @@ static float page_width(void) {
     //            sob = sob + block->chars;
     //            block = block->next;
     //        }
-    //        NSLog(@"%5i: %3i of fnt=%i p=%i gy=%3.2f RGB=%i i=%i fl=%x", pos, r->chars, (int)r->font, r->paraStyle,
-    //               r->textGray, r->textRGBColor, (int)(r->info), *(int *)&(r->rFlags));
+    //        NSLog(@"%5i: %3i of fnt=%i p=%i gy=%3.2f RGB=%i i=%i fl=%x", pos, r->chars, (int)r->font, r.paragraphStyle,
+    //               r->textGray, r->textRGBColor, (int)(r.anchor), *(int *)&(r->rFlags));
     //    }
     //    r--; /* Point to run for start of selection */
     //
     //    NSLog(@"\n    Current run:\n\tFont name:\t%s", [r->font fontName]);
     //    {
-    //        NSParagraphStyle *p = (NSParagraphStyle *)r->paraStyle;
+    //        NSParagraphStyle *p = (NSParagraphStyle *)r.paragraphStyle;
     //        if (!p) {
     //            NSLog(@"\tNo paragraph style!");
     //        } else {
@@ -771,7 +771,7 @@ static void applyRange(HTStyle *style, NSMutableAttributedString *r, NSRange ran
         }
     }
     // TODO: Do we need this?
-    // r->rFlags.dummy = (r->info != 0); /* Keep track for typingRun */
+    // r->rFlags.dummy = (r.anchor != 0); /* Keep track for typingRun */
 }
 
 //  Copy a style into an attributed string (e.g. a run)

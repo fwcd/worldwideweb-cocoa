@@ -1142,7 +1142,7 @@ static int lineLength;       /* Number of characters on a line so far */
 
 /*	This function, for any paragraph style, finds the SGML style, if any
 */
-SGML_style *findSGML(void *para) {
+SGML_style *findSGML(NSParagraphStyle *para) {
     int i;
     if (!para)
         return &Normal; /* Totally unstyled becomes Normal */
@@ -1166,15 +1166,15 @@ SGML_style *findSGML(void *para) {
 **
 */
 void change_run(NSTextStorage *last, NSTextStorage *r) {
-    int chars_left = r->chars;
+    int chars_left = (int)r.length;
 
-    if (r->info != last->info) { /* End anchor */
-        if (last->info)
+    if (r.anchor != last.anchor) { /* End anchor */
+        if (last.anchor)
             NXPrintf(sgmlStream, "</A>");
     }
 
-    if (r->paraStyle != last->paraStyle)
-        if (last->paraStyle) { /* End paragraph */
+    if (r.paragraphStyle != last.paragraphStyle)
+        if (last.paragraphStyle) { /* End paragraph */
             if (currentSGML)
                 NXPrintf(sgmlStream, "%s", currentSGML->end_tag);
             else
@@ -1182,8 +1182,8 @@ void change_run(NSTextStorage *last, NSTextStorage *r) {
             lineLength = 0; /* At column 1 */
         }
 
-    if (r->paraStyle != last->paraStyle) { /* Start paragraph */
-        currentSGML = findSGML(r->paraStyle);
+    if (r.paragraphStyle != last.paragraphStyle) { /* Start paragraph */
+        currentSGML = findSGML(r.paragraphStyle);
         if (currentSGML) {
 
             if (currentSGML->free_format)
@@ -1197,14 +1197,14 @@ void change_run(NSTextStorage *last, NSTextStorage *r) {
         SGML_gen_newlines = 0; /* Cancel  */
     }
 
-    if (r->info != last->info) { /* Start anchor */
+    if (r.anchor != last.anchor) { /* Start anchor */
 
         if (SGML_gen_newlines) { /* Got anchor, need paragraph separator */
             NXPrintf(sgmlStream, "%s", currentSGML->paragraph_tag);
             SGML_gen_newlines = 0; /* paragraph flushed. */
         }
-        if (r->info) {
-            Anchor *a = (Anchor *)r->info;
+        if (r.anchor) {
+            Anchor *a = (Anchor *)r.anchor;
             Anchor *d = [a destination];
             NXPrintf(sgmlStream, "<A\nNAME=%s", [a address]);
             if (d) {
