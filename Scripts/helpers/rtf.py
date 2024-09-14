@@ -75,22 +75,26 @@ class RTFNode:
 @dataclass
 class RTF:
     version: Optional[int] = None
+    contents: list[RTFNode] = field(default_factory=list)
 
     @classmethod
     def parse_from(cls, group: RTFGroup) -> Self:
         self = cls()
+        in_header = True
 
-        # Parse header
-        it = iter(group.elements)
-        while node := next(it, None):
-            match node.value:
-                case RTFControlWord('rtf', version):
-                    self.version = version
-                case RTFText(_):
-                    break
-
-        # Parse contents
-        # TODO
+        for node in group.elements:
+            # Parse header node
+            if in_header:
+                match node.value:
+                    case RTFControlWord('rtf', version):
+                        self.version = version
+                    case RTFText(_):
+                        in_header = False
+            
+            # Parse content node
+            # TODO: Interpret the contents in a higher-level way (e.g. sections/paragraphs)
+            if not in_header:
+                self.contents.append(node)
 
         return self
     
