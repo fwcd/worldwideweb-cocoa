@@ -58,6 +58,9 @@
 		354F5AB02C9527CC00CBFA57 /* paper.style */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = paper.style; sourceTree = "<group>"; };
 		354F5AB12C9527CC00CBFA57 /* default.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = default.html; sourceTree = "<group>"; };
 		354F5AB22C9527CC00CBFA57 /* project.style */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = project.style; sourceTree = "<group>"; };
+		354F5ABE2C952BF300CBFA57 /* Bugs.html */ = {isa = PBXFileReference; lastKnownFileType = text.html.documentation; path = Bugs.html; sourceTree = "<group>"; };
+		354F5ABF2C952BF300CBFA57 /* Features.html */ = {isa = PBXFileReference; lastKnownFileType = text.html.documentation; path = Features.html; sourceTree = "<group>"; };
+		354F5AC02C952BF300CBFA57 /* SourceFiles.html */ = {isa = PBXFileReference; lastKnownFileType = text.html.documentation; path = SourceFiles.html; sourceTree = "<group>"; };
 		3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldWideWeb.xib; sourceTree = "<group>"; };
 		359DEE762C90CFCB00FDB95E /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		359DEE772C90CFCB00FDB95E /* Minimal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Minimal.xib; sourceTree = "<group>"; };
@@ -213,6 +216,16 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		354F5AC12C952BF300CBFA57 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				354F5ABE2C952BF300CBFA57 /* Bugs.html */,
+				354F5ABF2C952BF300CBFA57 /* Features.html */,
+				354F5AC02C952BF300CBFA57 /* SourceFiles.html */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
 		359DEE7B2C90CFCB00FDB95E /* Reference */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +256,7 @@
 		35DC78872BFAD16400432284 = {
 			isa = PBXGroup;
 			children = (
+				354F5AC12C952BF300CBFA57 /* Documentation */,
 				359DEE7B2C90CFCB00FDB95E /* Reference */,
 				359DEE872C91148100FDB95E /* Scripts */,
 				35DC78DE2BFAD62100432284 /* WorldWideWeb */,
