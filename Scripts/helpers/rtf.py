@@ -83,7 +83,7 @@ class RTF:
         # Parse header
         it = iter(group.elements)
         while node := next(it, None):
-            match node:
+            match node.value:
                 case RTFControlWord('rtf', version):
                     self.version = version
                 case RTFText(_):
