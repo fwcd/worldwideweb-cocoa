@@ -96,4 +96,4 @@ class RTF:
     
     @classmethod
     def parse(cls, s: str) -> Self:
-        return cls.parse_from(RTFGroup.parse_from(s))
+        return cls.parse_from(RTFGroup.parse_from(Reader(s)))
