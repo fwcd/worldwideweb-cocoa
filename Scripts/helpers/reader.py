@@ -30,6 +30,10 @@ class Reader:
         if s != expected:
             raise ReaderError(f"Expected '{expected}', but got '{s}'")
     
+    def skip_whitespace(self):
+        while self.peek() in {' ', '\n', '\t'}:
+            self.skip()
+
     def next_word(self) -> str:
         w = ''
         while (c := self.peek()) and c.isalpha():
