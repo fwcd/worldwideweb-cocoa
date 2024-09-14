@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+
+from helpers.rtf import RTF
+
+import argparse
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('input', type=Path, help='The RTF file to parse')
+
+    args = parser.parse_args()
+
+    with open(args.input, 'r') as f:
+        raw_rtf = f.read()
+
+    rtf = RTF.parse(raw_rtf)
+    print(rtf)
+
+if __name__ == '__main__':
+    main()
