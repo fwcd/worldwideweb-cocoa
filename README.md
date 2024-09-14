@@ -2,6 +2,8 @@
 
 An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wiki/WorldWideWeb) web browser from the early 1990s.
 
+<img width="128" src="WorldWideWeb/Resources/Assets.xcassets/AppIcon.appiconset/256x256.png">
+
 > [!IMPORTANT]
 > This project is still in its early stages and, while it compiles, is still largely non-functional. Anyone interested is highly encouraged to explore the codebase and hack on it though.
 
