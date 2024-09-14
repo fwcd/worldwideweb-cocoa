@@ -31,7 +31,7 @@ More information on this can be found in [issue #1](https://github.com/fwcd/worl
 
 ## Project Structure
 
-This Cocoa port uses a standard Xcode project ([`WorldWideWeb.xcodeproj`](WorldWideWeb.xcodeproj)). The source code, which largely retains the original file structure, can be found under [`Sources`](Sources) and a few helper scripts (e.g. for the NIB-to-XIB conversion) under [`Scripts`](Scripts).
+This Cocoa port uses a standard Xcode project ([`WorldWideWeb.xcodeproj`](WorldWideWeb.xcodeproj)). The source code can be found under [`WorldWideWeb`](WorldWideWeb) and a few helper scripts (e.g. for the NIB-to-XIB conversion) under [`Scripts`](Scripts).
 
 A few files that are not really used anymore, but kept around out of historical interest and for reference purposes can be found in the [`Legacy`](Legacy) folder. This includes the original Makefiles, Project Builder projects and the legacy NIB that we generate the modern XIB from.
 
