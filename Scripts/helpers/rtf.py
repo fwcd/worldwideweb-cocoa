@@ -79,11 +79,19 @@ class RTF:
     @classmethod
     def parse_from(cls, group: RTFGroup) -> Self:
         self = cls()
+
+        # Parse header
         it = iter(group.elements)
         while node := next(it, None):
             match node:
-                case RTFControlWord('rtf', version): self.version = version
+                case RTFControlWord('rtf', version):
+                    self.version = version
+                case RTFText(_):
+                    break
+
+        # Parse contents
         # TODO
+
         return self
     
     @classmethod
