@@ -3,4 +3,4 @@
 set -e
 cd "$(dirname $0)/.."
 
-clang-format -i WorldWideWeb/{*.c,*.h,*.m}
+clang-format -i WorldWideWeb/Sources/{*.c,*.h,*.m}
