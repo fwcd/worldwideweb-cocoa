@@ -31,6 +31,8 @@ More information on this can be found in [issue #1](https://github.com/fwcd/worl
 
 ## Project Structure
 
-This Cocoa port uses a standard Xcode project, along with a few helper scripts, but otherwise retains the exact same file structure as the original source code. A few files are not really used anymore (e.g. the Project Builder file `PB.project` or the Makefile), but are kept around since they may be of historic interest.
+This Cocoa port uses a standard Xcode project ([`WorldWideWeb.xcodeproj`](WorldWideWeb.xcodeproj)). The source code, which largely retains the original file structure, can be found under [`Sources`](Sources) and a few helper scripts (e.g. for the NIB-to-XIB conversion) under [`Scripts`](Scripts).
+
+A few files that are not really used anymore, but kept around out of historical interest and for reference purposes can be found in the [`Legacy`](Legacy) folder. This includes the original Makefiles, Project Builder projects and the legacy NIB that we generate the modern XIB from.
 
 [^1]: A specific example of this is the menu bar. On NeXTStep, the main menu (i.e. the root of the menu hierarchy) was displayed as a single menu, while on macOS the "main menu" is actually the menu bar. This subtility results in slightly different conventions, e.g. on macOS it would be very uncommon for the menu bar to contain a menu item that directly represents an action such as "Print" or "Quit" and not a submenu itself. We deal with this by moving the top-level actions into the application menu (i.e. "WorldWideWeb") during the conversion from NIB to XIB. More details and screenshots can be found in [#1](https://github.com/fwcd/worldwideweb-cocoa/issues/1).
