@@ -32,7 +32,7 @@ class Reader(Generic[T]):
         if s != expected:
             raise ParseError(f"Expected '{expected}', but got '{s}'")
     
-    def read_word(self) -> str:
+    def next_word(self) -> str:
         assert isinstance(self.raw, str), 'read_word is only implemented for string readers'
 
         w = ''
@@ -41,7 +41,7 @@ class Reader(Generic[T]):
             self.skip()
         return w
 
-    def read_int(self) -> int:
+    def next_int(self) -> int:
         assert isinstance(self.raw, str), 'read_int is only implemented for string readers'
 
         d = ''

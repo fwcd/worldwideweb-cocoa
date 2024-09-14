@@ -15,9 +15,9 @@ class RTFControlWord:
     @classmethod
     def parse_from(cls, r: Reader[str]) -> Self:
         r.expect('\\')
-        name = r.read_word()
+        name = r.next_word()
         if r.peek().isnumeric():
-            value = r.read_int()
+            value = r.next_int()
         else:
             value = None
         return cls(name=name, value=value)
@@ -69,3 +69,23 @@ class RTFNode:
     
     def __str__(self) -> str:
         return str(self.value)
+
+# Higher level (structured) parsing
+
+@dataclass
+class RTF:
+    version: Optional[int] = None
+
+    @classmethod
+    def parse_from(cls, group: RTFGroup) -> Self:
+        self = cls()
+        it = iter(group.elements)
+        while node := next(it, None):
+            match node:
+                case RTFControlWord('rtf', version): self.version = version
+        # TODO
+        return self
+    
+    @classmethod
+    def parse(cls, s: str) -> Self:
+        return cls.parse_from(RTFGroup.parse_from(s))
