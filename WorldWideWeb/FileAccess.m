@@ -528,13 +528,13 @@ NSString *existing_filename(void) {
     [a setAddress:node_address]; // 	Adopt new address as node name
 
     /*	Make a default title for the document from the file name:
-**
-** On entry,
-**	node_address must be valid and have a colon in it
-** On exit,
-**	Title is set
-**	This is destructive of the node_address string.
-*/
+     **
+     ** On entry,
+     **	node_address must be valid and have a colon in it
+     ** On exit,
+     **	Title is set
+     **	This is destructive of the node_address string.
+     */
     {
         char *pDir = 0;                            /* Last Directory name */
         char *pTitle = strrchr(node_address, '/'); /* File name */
