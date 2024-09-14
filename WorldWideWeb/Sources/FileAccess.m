@@ -26,7 +26,7 @@
 @implementation FileAccess : HyperAccess
 
 #define LENGTH 256
-extern char *appDirectory; /* Pointer to directory for application */
+extern NSString *appDirectory; /* Pointer to directory for application */
 
 //	Overlay method returning the name of the access.
 
@@ -471,7 +471,7 @@ NSString *existing_filename(void) {
         }
     }
 
-    strcpy(template, appDirectory);
+    strcpy(template, appDirectory.UTF8String);
     strcat(template, filename);
     a = [self openFile:template diagnostic:diagnostic];
     if (!a)

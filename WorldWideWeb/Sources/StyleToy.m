@@ -21,7 +21,7 @@
 
 @implementation StyleToy
 
-extern char *appDirectory; /* Pointer to directory for application */
+extern NSString *appDirectory; /* Pointer to directory for application */
 
 //	Global styleSheet available to every one:
 
@@ -169,8 +169,8 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
     if (!styleSheet)
         styleSheet = HTStyleSheetNew();
-    styleSheet->name = malloc(strlen(appDirectory) + 13 + 1);
-    strcpy(styleSheet->name, appDirectory);
+    styleSheet->name = malloc([appDirectory lengthOfBytesUsingEncoding:NSUTF8StringEncoding] + 13 + 1);
+    strcpy(styleSheet->name, appDirectory.UTF8String);
     strcat(styleSheet->name, "default.style");
 
     if (getenv("HOME")) {
@@ -184,7 +184,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
     if (!stream) {
         char name[256];
-        strcpy(name, appDirectory);
+        strcpy(name, appDirectory.UTF8String);
         strcat(name, "default.style");
         if (TRACE)
             NSLog(@"Couldn't open $(HOME)/WWW/default.style");

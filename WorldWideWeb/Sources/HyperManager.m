@@ -24,7 +24,7 @@ extern char *WWW_nameOfFile(const char *name); /* In file access */
 /*	Exported to everyone */
 
 extern int WWW_TraceFlag; /* Exported to everyone */
-char *appDirectory;       /* Name of the directory containing the application */
+extern NSString *appDirectory; /* Name of the directory containing the application */
 
 /*	Private to this module
 */
@@ -256,9 +256,9 @@ PRIVATE FileAccess *fileAccess = nil;
     if (TRACE)
         NSLog(@"HyperManager: appDidInit");
 
-    //    StrAllocCopy(appDirectory, NXArgv[0]);
-    //    if (p = strrchr(appDirectory, '/')) p[1]=0;	/* Chop home slash */
-    //    if (TRACE) NSLog(@"WWW: Run from %s", appDirectory);
+    //    StrAllocCopy(appDirectory.UTF8String, NXArgv[0]);
+    //    if (p = strrchr(appDirectory.UTF8String, '/')) p[1]=0;	/* Chop home slash */
+    //    if (TRACE) NSLog(@"WWW: Run from %@", appDirectory);
 
     [Anchor setManager:self];
     [self goHome:self];

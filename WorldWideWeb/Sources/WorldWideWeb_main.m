@@ -13,19 +13,15 @@
 #import <stdlib.h>
 #import <string.h> /* TBL */
 
-extern char *appDirectory; /* Name of the directory containing the application */
+NSString *appDirectory; /* Name of the directory containing the application */
 
 int main(int argc, const char *argv[]) {
     // Cocoa port note: Some of the logic been moved to the AppDelegate, so we can use NSApplicationMain
 
-    char *p;
+    appDirectory = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/"];
 
-    appDirectory = malloc(strlen(argv[0]));
-    strcpy(appDirectory, argv[0]);
-    if ((p = strrchr(appDirectory, '/')))
-        p[1] = 0; /* Chop home directory after slash */
     if (TRACE)
-        NSLog(@"WWW: Run from %s", appDirectory);
+        NSLog(@"WWW: Run from %@", appDirectory);
 
     return NSApplicationMain(argc, argv);
 }
