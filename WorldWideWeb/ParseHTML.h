@@ -291,13 +291,13 @@ static BOOL check(char *s) {
         if (*p == ' ') {
             for (c = NEXT_CHAR; WHITE(c); c = NEXT_CHAR) /*null*/
                 ;
-            BACK_UP; /* Put non-blank back into stream */
+            BACK_UP(c); /* Put non-blank back into stream */
         } else {
             c = NEXT_CHAR;
             if (upper(c) != *p) {
                 printf("SGML parse: `%c' found when `%c' in `%s' was expected.\n", c, *p, s);
-                BACK_UP;   /* Put eroneous character back on stream */
-                return NO; /* failed: syntax error */
+                BACK_UP(c); /* Put eroneous character back on stream */
+                return NO;  /* failed: syntax error */
             } /* bad char */
         } /* non-blank */
     } /* for */
@@ -446,13 +446,13 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
             if (c == '.') {
                 SETSTATE(S_dot);
             }
-            BACK_UP;
+            BACK_UP(c);
             SETSTATE(S_text);
 
         case S_dot: /* Dot in first column */
             if (WHITE(c)) {
                 OUTPUT('.');
-                BACK_UP;
+                BACK_UP(c);
                 SETSTATE(S_text); /* OOPS: must have been real "." */
             } else {
                 SETSTATE(S_junk_script); /* Throw away SCRIPT commands */
@@ -499,7 +499,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                         output_paragraph(); /* n newlines becomes a paragraph.*/
                         output_in_word = 0;
                     }
-                    BACK_UP; /* Go back and check c again */
+                    BACK_UP(c); /* Go back and check c again */
                     SETSTATE(S_column_1);
                 }
 #else
@@ -508,7 +508,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                     while ((c = NEXT_CHAR) == 10) {
                         newlines++;
                     }
-                    BACK_UP; /* Go back and check c again */
+                    BACK_UP(c); /* Go back and check c again */
                     SETSTATE(S_column_1);
                 }
 #endif
@@ -630,7 +630,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
             case 'I':
             case 'i':
                 if (check("ISINDEX"))
-                    isIndex = YES;
+                    self->isIndex = YES;
                 SETSTATE(S_junk_tag);
             case 'n':
             case 'N':
@@ -669,7 +669,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
             case 's':
             case 'S':
                 if (check("SINDEX"))
-                    isIndex = YES;
+                    self->isIndex = YES;
                 SETSTATE(S_junk_tag);
             default:
                 SETSTATE(S_junk_tag);
@@ -763,10 +763,10 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                         if (c == '"')
                             continue; /* 921122 */
                         if ((c < '0') || (c > '9')) {
-                            nextAnchorNumber = value;
+                            self->nextAnchorNumber = value;
                             if (TRACE)
                                 fprintf(stderr, "Next anchor number: %i\n", value);
-                            BACK_UP;
+                            BACK_UP(c);
                             SETSTATE(S_junk_tag);
                             break;
                         }
@@ -805,19 +805,19 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                 anchor_name[anchor_name_length] = 0; /* Terminate it */
 
                 style->anchor =
-                    *anchor_name ? [[Anchor alloc] initWithParent:nodeAnchor tag:anchor_name] : [self anchor];
+                    *anchor_name ? [[Anchor alloc] initWithParent:self->nodeAnchor tag:anchor_name] : [self anchor];
                 style->clearAnchor = NO;
 
                 /* If next anchor number not specified, ensure it is safe */
 
                 if ((anchor_name[0] == ANCHOR_ID_PREFIX) &&
                     (sscanf(anchor_name + 1, "%i", &anchorNumber) > 0)) /* numeric? */
-                    if (anchorNumber >= nextAnchorNumber)
-                        nextAnchorNumber = anchorNumber + 1; /* Prevent reuse */
+                    if (anchorNumber >= self->nextAnchorNumber)
+                        self->nextAnchorNumber = anchorNumber + 1; /* Prevent reuse */
 
                 [(Anchor *)style->anchor isLastChild]; /* Put in correct order */
                 if (*reference) {                      /* Link only if href */
-                    parsed_address = HTParse(reference, [nodeAnchor address], PARSE_ALL);
+                    parsed_address = HTParse(reference, [self->nodeAnchor address], PARSE_ALL);
                     [(Anchor *)(style->anchor) linkTo:[[Anchor alloc] initWithAddress:parsed_address]];
                     free(parsed_address);
                 }
@@ -837,7 +837,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
             if ((c == ' ') || (c == '\n'))
                 SETSTATE(S_anchor);
             if (c == '>') {
-                BACK_UP;
+                BACK_UP(c);
                 SETSTATE(S_anchor);
             }
             if (reference_length < 255) {
@@ -857,7 +857,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
             if ((c == ' ') || (c == '\n'))
                 SETSTATE(S_anchor);
             if (c == '>') {
-                BACK_UP;
+                BACK_UP(c);
                 SETSTATE(S_anchor);
             }
             if (anchor_name_length < 255) {
@@ -1066,7 +1066,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                     title[title_length] = 0; /* Add a terminator */
                     if (TRACE)
                         printf("\nTitle:\t`%s'\n", title);
-                    self.window.title = title;
+                    self.window.title = [NSString stringWithUTF8String:title];
                     SETSTATE(S_text);
                 } else
                     SETSTATE(S_junk_tag); /* @@@ forgets < in titles! */
@@ -1100,8 +1100,9 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
         free(N);
     }
 
-    [window setDocumentEdited:NO];
-    tFlags.changeState = 0; /* Please notify delegate if changed */
+    self.window.documentEdited = NO;
+    // TODO: Do we need this?
+    // tFlags.changeState = 0; /* Please notify delegate if changed */
     return self;
 
 } /* readSGML:diagnostic: */

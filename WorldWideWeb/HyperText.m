@@ -1060,7 +1060,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 /*		Input procedure for printing a trace as we go
 */
 #define NEXT_CHAR NXGetc(sgmlStream)
-#define BACK_UP NXUngetc(sgmlStream)
+#define BACK_UP(c) NXUngetc(c, sgmlStream)
 
 /*	Globals for using many subroutines within a method
 */
@@ -1255,7 +1255,7 @@ void loadPlainText(void) {
 
 #define END_OF_FILE NXAtEOS(sgmlStream)
 #define NEXT_CHAR NXGetc(sgmlStream)
-#define BACK_UP NXUngetc(sgmlStream)
+#define BACK_UP(c) NXUngetc(c, sgmlStream)
 
 #include "ParseHTML.h"
 
