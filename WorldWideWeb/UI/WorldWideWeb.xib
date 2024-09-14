@@ -390,7 +390,7 @@
                                 <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11">
                                     <rect key="frame" x="0.0" y="16" width="110" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <textFieldCell key="cell" title="Save file as:" id="uV0-pe-pjO">
+                                    <textFieldCell key="cell" title="Save file as:" id="wWL-p8-VYs">
                                         <font key="font" size="18" name="Helvetica"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -448,7 +448,7 @@
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22">
                         <rect key="frame" x="13" y="16" width="347" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="4lz-CA-qpL">
+                        <textFieldCell key="cell" id="pnS-ty-DHz">
                             <font key="font" size="12" name="Helvetica"/>
                             <string key="title">The navigation buttons allow you to navigate through the Hypertext web as a tree. The "Backup" button takes you back the way you came,  to the text which you selected to get to where you are. You can use it repeatedly to retrace your steps back to the first link you followed.
 
@@ -488,7 +488,7 @@ The "Home" button reselects the original page which you get when you started the
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27">
                         <rect key="frame" x="23" y="51" width="325" height="165"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="ebI-Ov-Fv8">
+                        <textFieldCell key="cell" id="3OY-mf-fAW">
                             <font key="font" size="12" name="Helvetica"/>
                             <string key="title">You can just create a new hypertext document with Command/n, but it's better to make a reference to it and link that reference to it as you make it, using Command/N. This ensures that you can always find the document again. 
 
@@ -499,7 +499,7 @@ The "Home" button reselects the original page which you get when you started the
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28">
                         <rect key="frame" x="93" y="13" width="81" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Making links" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="SNt-WY-Sqj">
+                        <buttonCell key="cell" type="square" title="Making links" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="92s-Rg-vkp">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -510,7 +510,7 @@ The "Home" button reselects the original page which you get when you started the
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29">
                         <rect key="frame" x="30" y="20" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="See also:" id="H6f-fo-V4a">
+                        <textFieldCell key="cell" title="See also:" id="Dxz-Mb-KC6">
                             <font key="font" size="12" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -530,7 +530,7 @@ The "Home" button reselects the original page which you get when you started the
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32">
                         <rect key="frame" x="122" y="415" width="236" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="HyperMedia Browser/Editor" id="d3x-Po-3Uh">
+                        <textFieldCell key="cell" title="HyperMedia Browser/Editor" id="j2y-7P-d4H">
                             <font key="font" size="18" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -538,7 +538,7 @@ The "Home" button reselects the original page which you get when you started the
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33">
                         <rect key="frame" x="379" y="410" width="93" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="uaN-2e-8d5">
+                        <textFieldCell key="cell" id="60R-eS-v0J">
                             <font key="font" size="10" name="Helvetica"/>
                             <string key="title"> Version 0.15
 Beta only</string>
@@ -548,7 +548,7 @@ Beta only</string>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34">
                         <rect key="frame" x="332" y="349" width="133" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="by Tim Berners-Lee" id="uS5-mC-DkA">
+                        <textFieldCell key="cell" title="by Tim Berners-Lee" id="MZK-N2-BP2">
                             <font key="font" size="14" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -556,7 +556,7 @@ Beta only</string>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35">
                         <rect key="frame" x="10" y="328" width="432" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Copyright 1990,91, CERN.   Distribution restricted: ask for terms.  TEST VERSION ONLY" id="MzY-Tx-sxX">
+                        <textFieldCell key="cell" title="Copyright 1990,91, CERN.   Distribution restricted: ask for terms.  TEST VERSION ONLY" id="Fb4-uR-ViM">
                             <font key="font" size="10" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -572,7 +572,7 @@ Beta only</string>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38">
                         <rect key="frame" x="121" y="367" width="208" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="An excercise in global information availability" id="iMN-H8-t2l">
+                        <textFieldCell key="cell" title="An excercise in global information availability" id="Xp1-Jm-P7G">
                             <font key="font" size="14" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -580,7 +580,7 @@ Beta only</string>
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39">
                         <rect key="frame" x="5" y="281" width="463" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="849-Gs-u2D">
+                        <textFieldCell key="cell" id="M83-0X-jdu">
                             <font key="font" size="14" name="Helvetica"/>
                             <string key="title">HyperText:   Text which is not constrained to be linear.
 HyperMedia: Information which is not constrained linear... or to be text.</string>
@@ -602,24 +602,19 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                                     <size key="maxSize" width="418" height="231"/>
                                     <attributedString key="textStorage">
                                         <fragment>
-                                            <mutableString key="content">{\rtf0\ansi{\fonttbl\f0\fswiss Helvetica;}
-\margl40
-\margr40
-{\colortbl;\red0\green0\blue0;}
-\pard\tx533\tx1067\tx1601\tx2135\tx2668\tx3202\tx3736\tx4270\tx4803\tx5337\f0\b0\i0\ulnone\fs24\fc1\cf1 This version of the WWW application  can pick up hypertext infomation from files in a number of formats, from local files, from remote files using NFS or anonymous FTP, from hypertext servers  by name or text search,  and from internet news.  Hypertext files may be editied, and links made from hypertext files to other files or any other information.\
-\
-This was the original prototype for the World-Wide Web. Many browers for other platforms now exist.  Read the web for details.\
-\
-You should configure the newsreader code in this application to klnow where your local news (NNTP) srever is. Type in a terminal window\
-\
-  dwrite WorldWideWeb NewsHost xxxx\
-\
-where xxxx is replaced by the intrenet name of your news server.\
-\
-For more help,  use "Help" from the menu. If that doesn't work, then your application has been incompletely installed.\
-\
+                                            <mutableString key="content">This version of the WWW application  can pick up hypertext infomation from files in a number of formats, from local files, from remote files using NFS or anonymous FTP, from hypertext servers  by name or text search,  and from internet news.  Hypertext files may be editied, and links made from hypertext files to other files or any other information.
+
+This was the original prototype for the World-Wide Web. Many browers for other platforms now exist.  Read the web for details.
+
+You should configure the newsreader code in this application to klnow where your local news (NNTP) srever is. Type in a terminal window
+
+  dwrite WorldWideWeb NewsHost xxxx
+
+where xxxx is replaced by the intrenet name of your news server.
+
+For more help,  use "Help" from the menu. If that doesn't work, then your application has been incompletely installed.
+
 If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting the version number (above).
-}
 </mutableString>
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -651,7 +646,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="46">
                         <rect key="frame" x="4" y="293" width="166" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Apply style to selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="kde-nF-ACf">
+                        <buttonCell key="cell" type="square" title="Apply style to selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Ha5-y1-lmW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica-Bold"/>
                         </buttonCell>
@@ -662,7 +657,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
                         <rect key="frame" x="4" y="228" width="168" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Find unstyled text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="ag8-Er-bUf">
+                        <buttonCell key="cell" type="square" title="Find unstyled text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="HtN-cH-ns6">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -673,7 +668,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48">
                         <rect key="frame" x="4" y="262" width="167" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Apply style to all similar text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="ZRy-4K-lYC">
+                        <buttonCell key="cell" type="square" title="Apply style to all similar text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="sXt-4U-h6C">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -684,7 +679,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49">
                         <rect key="frame" x="120" y="342" width="105" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="style of selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="H9N-hy-o5G">
+                        <buttonCell key="cell" type="square" title="style of selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="k6j-vc-bLO">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -695,7 +690,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50">
                         <rect key="frame" x="232" y="342" width="56" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&gt;&gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="2lc-hE-mEP">
+                        <buttonCell key="cell" type="square" title="&gt;&gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="p7b-mv-7uD">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -706,7 +701,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51">
                         <rect key="frame" x="56" y="342" width="56" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&lt;&lt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Jbv-cg-ghb">
+                        <buttonCell key="cell" type="square" title="&lt;&lt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="FIE-ni-mpl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -735,7 +730,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="56">
                         <rect key="frame" x="226" y="281" width="72" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="qmk-qk-CAB">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="yY1-NY-bvK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -746,7 +741,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57">
                         <rect key="frame" x="226" y="252" width="72" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Save as..." bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Rhf-Ur-K6a">
+                        <buttonCell key="cell" type="square" title="Save as..." bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="VMg-vl-7ak">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -791,7 +786,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68">
                                     <rect key="frame" x="232" y="60" width="72" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="9uC-oK-8Tu">
+                                    <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="Tf9-WD-QEp">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" size="12" name="Helvetica"/>
                                     </buttonCell>
@@ -814,7 +809,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71">
                         <rect key="frame" x="6" y="41" width="71" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&lt; Previous" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="6Mo-Nu-roZ">
+                        <buttonCell key="cell" type="square" title="&lt; Previous" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="GbA-o9-I4E">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -825,7 +820,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="72">
                         <rect key="frame" x="9" y="10" width="56" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Home" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Qm9-Ju-3WS">
+                        <buttonCell key="cell" type="square" title="Home" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="YhP-ak-XqE">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -836,7 +831,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73">
                         <rect key="frame" x="82" y="41" width="57" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Back up" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="04o-wG-H6l">
+                        <buttonCell key="cell" type="square" title="Back up" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="tXz-zw-eK2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -847,7 +842,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74">
                         <rect key="frame" x="144" y="41" width="56" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Next &gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="bbV-1u-hR0">
+                        <buttonCell key="cell" type="square" title="Next &gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="boC-8B-m37">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -858,7 +853,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="75">
                         <rect key="frame" x="152" y="8" width="48" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Help" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="bOc-9J-3Sy">
+                        <buttonCell key="cell" type="square" title="Help" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="woY-6u-UJ7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -902,7 +897,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="82">
                         <rect key="frame" x="366" y="21" width="96" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="wA7-Vs-ohM">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="dtI-W1-RFc">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="16" name="Helvetica-Bold"/>
                         </buttonCell>
@@ -913,7 +908,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="83">
                         <rect key="frame" x="130" y="20" width="135" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="eX7-pC-nke">
+                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="hdw-GT-EUW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -924,7 +919,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="84">
                         <rect key="frame" x="3" y="102" width="102" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Link selection to" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="d24-rq-Wx3">
+                        <buttonCell key="cell" type="square" title="Link selection to" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="FCt-wL-LVZ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -961,7 +956,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="88">
                         <rect key="frame" x="16" y="27" width="343" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="skB-oB-DLi">
+                        <textFieldCell key="cell" id="qFL-vx-4Cr">
                             <font key="font" size="12" name="Helvetica"/>
                             <string key="title">If you want to link one peice of text to another, whether they are in the same hypertext document or not, you follow the same procedure.
 
@@ -977,7 +972,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89">
                         <rect key="frame" x="26" y="14" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="See also:" id="9fO-y1-iLT">
+                        <textFieldCell key="cell" title="See also:" id="Aro-W2-WHq">
                             <font key="font" size="12" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -985,7 +980,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90">
                         <rect key="frame" x="88" y="9" width="148" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Making a new document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="WJi-3V-zjA">
+                        <buttonCell key="cell" type="square" title="Making a new document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="uLl-dk-pfU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -1021,7 +1016,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95">
                         <rect key="frame" x="383" y="252" width="82" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="EUM-Gt-kCc">
+                        <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="RbW-Ws-d8z">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -1032,7 +1027,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96">
                         <rect key="frame" x="63" y="202" width="400" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="MA4-q5-UtG">
+                        <textFieldCell key="cell" id="hk0-a0-sfY">
                             <font key="font" size="12" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -1040,7 +1035,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97">
                         <rect key="frame" x="5" y="216" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Address:" id="Xvu-ce-6Oz">
+                        <textFieldCell key="cell" title="Address:" id="hca-EF-uws">
                             <font key="font" size="12" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -1061,7 +1056,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="100">
                         <rect key="frame" x="55" y="132" width="144" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Other document" id="iMf-aw-dVg">
+                        <textFieldCell key="cell" title="Other document" id="Ckk-w1-jWV">
                             <font key="font" size="18" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -1069,7 +1064,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
                         <rect key="frame" x="270" y="174" width="192" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Link selection to other document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="nNz-lz-5uB">
+                        <buttonCell key="cell" type="square" title="Link selection to other document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Ibd-bV-CIn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -1080,7 +1075,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="102">
                         <rect key="frame" x="1" y="161" width="471" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="______________________________________________" id="6oR-6Q-ps3">
+                        <textFieldCell key="cell" title="______________________________________________" id="ucT-UG-VfQ">
                             <font key="font" size="18" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -1088,7 +1083,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="103">
                         <rect key="frame" x="370" y="30" width="96" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="2U2-7y-KDE">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="DB5-8m-Qch">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="16" name="Helvetica-Bold"/>
                         </buttonCell>
@@ -1099,7 +1094,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="104">
                         <rect key="frame" x="6" y="101" width="41" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Copy" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="7mu-gY-cVg">
+                        <buttonCell key="cell" type="square" title="Copy" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="p4b-Bz-yWy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -1110,7 +1105,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="105">
                         <rect key="frame" x="63" y="174" width="125" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Inspect selected link" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Y5w-uV-A1g">
+                        <buttonCell key="cell" type="square" title="Inspect selected link" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="dEI-JE-lR4">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -1129,7 +1124,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="108">
                         <rect key="frame" x="76" y="23" width="135" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="YCs-V8-soP">
+                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Lbj-n3-1Pd">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
@@ -1165,7 +1160,7 @@ From then on, whenever you double click on the linked text, you will jump across
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="113">
                         <rect key="frame" x="357" y="6" width="107" height="33"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Search" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="u5i-IX-ylB">
+                        <buttonCell key="cell" type="square" title="Search" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="jv0-CA-nAu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="14" name="Helvetica-Bold"/>
                         </buttonCell>

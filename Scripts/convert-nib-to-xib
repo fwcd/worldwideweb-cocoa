@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Optional
 
+from helpers.rtf import RTF
 from helpers.xib import XIB, XIBNode
 
 import argparse
@@ -305,7 +306,8 @@ class XIBConverter:
         
         assert isinstance(raw_contents, typedstream.archiving.Array)
 
-        contents = raw_contents.elements.decode()
+        raw_rtf = raw_contents.elements.decode()
+        rtf = RTF.parse(raw_rtf)
 
         xib_text_view = xib_parent.add_object('textView', **kwargs)
         xib_text_view.add('rect', key='frame', **frame)
@@ -322,7 +324,7 @@ class XIBConverter:
         )
 
         xib_fragment_string = xib_fragment.add('mutableString', key='content')
-        xib_fragment_string.element.text = contents
+        xib_fragment_string.element.text = rtf.plain_contents()
     
     def traverse_text_field_cell(self, obj: typedstream.GenericArchivedObject, xib_text_field: XIBNode):
         '''Traverses the given NIB text field cell and adds it to the XIB.'''
