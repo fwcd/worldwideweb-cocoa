@@ -7,4 +7,4 @@ cd "$(dirname $0)/.."
 
 Scripts/convert-nib-to-xib \
     Legacy/WorldWideWeb.app/WorldWideWeb.nib \
-    -o WorldWideWeb/WorldWideWeb.xib
+    -o WorldWideWeb/UI/WorldWideWeb.xib
