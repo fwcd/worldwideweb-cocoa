@@ -17,7 +17,7 @@ extern char *appDirectory; /* Name of the directory containing the application *
 
 int main(int argc, const char *argv[]) {
     // Cocoa port note: Some of the logic been moved to the AppDelegate, so we can use NSApplicationMain
-    
+
     char *p;
 
     appDirectory = malloc(strlen(argv[0]));
@@ -26,6 +26,6 @@ int main(int argc, const char *argv[]) {
         p[1] = 0; /* Chop home directory after slash */
     if (TRACE)
         NSLog(@"WWW: Run from %s", appDirectory);
-    
+
     return NSApplicationMain(argc, argv);
 }

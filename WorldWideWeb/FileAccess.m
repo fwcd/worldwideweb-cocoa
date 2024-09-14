@@ -146,22 +146,22 @@ NSString *ask_name(HyperText *hint, int format) {
 //	Save as an HTML file	using save panel
 //	--------------------
 //
-- saveAs:sender {
-    return [self saveIn:WWW_HTML like:THIS_TEXT];
+- (IBAction)saveAs:sender {
+    [self saveIn:WWW_HTML like:THIS_TEXT];
 }
 
 //	Save as an RTF file	using save panel
 //	--------------------
 //
-- saveAsRichText:sender {
-    return [self saveIn:WWW_RICHTEXT like:THIS_TEXT];
+- (IBAction)saveAsRichText:sender {
+    [self saveIn:WWW_RICHTEXT like:THIS_TEXT];
 }
 
 //	Save as a plain text file	using save panel
 //	-------------------------
 //
-- saveAsPlainText:sender {
-    return [self saveIn:WWW_PLAINTEXT like:THIS_TEXT];
+- (IBAction)saveAsPlainText:sender {
+    [self saveIn:WWW_PLAINTEXT like:THIS_TEXT];
 }
 
 //	Save as an HTML file of same name
@@ -362,7 +362,7 @@ NSString *existing_filename(void) {
     HyperText *HT; //	The new node
     char *suggestion = 0;
     char *slash;
-    int status;
+    NSInteger status;
     static NSOpenPanel *openPanel = 0;
 
     //	Get The Filename from the User
@@ -402,16 +402,15 @@ NSString *existing_filename(void) {
 //	Link to a given file
 //	--------------------
 
-- linkToFile:sender {
+- (IBAction)linkToFile:sender {
     NSString *filename = existing_filename(); // Ask for filename
     if (filename) {
         char *node_address = WWW_nameOfFile([filename UTF8String]);
         Anchor *a = [[Anchor alloc] initWithAddress:node_address];
         free(node_address);
 
-        return [THIS_TEXT linkSelTo:a];
+        [THIS_TEXT linkSelTo:a];
     }
-    return nil;
 }
 
 //	Open A File using the panel			openDiagnostic:
@@ -519,7 +518,7 @@ NSString *existing_filename(void) {
     [a select];
     HT = [a node];
     if (!HT)
-        return HT; //	No node?!
+        return a; //	No node?!
 
     filename = ask_name(hint, WWW_HTML);
     if (!filename)

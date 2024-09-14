@@ -99,7 +99,7 @@ PRIVATE char next_char(void) {
 //	3.	News
 //	4.	Defualt to cernvax.cern.ch	(!!!)
 
-+ initialize {
++ (void)initialize {
     const struct hostent *phost; /* Pointer to host - See netdb.h */
     struct sockaddr_in *sin = &soc_address;
 
@@ -122,10 +122,10 @@ PRIVATE char next_char(void) {
         phost = gethostbyname([NewsHost UTF8String]); /* See netdb.h */
         if (!phost) {
             NSAlert *alert = [[NSAlert alloc] init];
-            [alert setInformativeText:[NSString stringWithFormat:@"Can't find internet node name `%s'.", NewsHost]];
+            alert.informativeText = [NSString stringWithFormat:@"Can't find internet node name `%@'.", NewsHost];
             [alert runModal];
-            CTRACE(tfp, "NewsAccess: Can't find internet node name `%s'.\n", NewsHost);
-            return nil; /* Fail */
+            CTRACE(tfp, "NewsAccess: Can't find internet node name `%s'.\n", [NewsHost UTF8String]);
+            return; /* Fail */
         }
         memcpy(&sin->sin_addr, phost->h_addr, phost->h_length);
     }
@@ -136,8 +136,6 @@ PRIVATE char next_char(void) {
               (int)*((unsigned char *)(&sin->sin_addr) + 2), (int)*((unsigned char *)(&sin->sin_addr) + 3));
 
     s = -1; /* Disconnected */
-
-    return self;
 }
 
 //	Return the name of the access

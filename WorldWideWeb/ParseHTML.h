@@ -424,7 +424,7 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
     current_style = &Normal;
 
     if (TRACE)
-        printf("Parsing SGML stream %i\n", sgmlStream);
+        printf("Parsing SGML stream %p\n", sgmlStream);
     START_OUTPUT;
     set_style(Normal.style); /* Was random! 910910 TBL */
 

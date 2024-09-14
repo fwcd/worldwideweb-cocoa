@@ -22,7 +22,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    
+
     NSDictionary<NSString *, id> *myDefaults = @{
         @"PaperType" : @"Letter", // Non-USA users will have to override
         @"LeftMargin" : @"72",    //  (72) Space for ring binding

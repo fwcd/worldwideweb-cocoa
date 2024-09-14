@@ -62,7 +62,6 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 
     if (style->paragraph) {
         char tabstring[255];
-        int i;
         [(NSFormCell *)[self.ParameterForm cellAtIndex:FIRST_INDENT_FIELD]
             setFloatValue:style->paragraph.firstLineHeadIndent];
         [(NSFormCell *)[self.ParameterForm cellAtIndex:SECOND_INDENT_FIELD] setFloatValue:style->paragraph.headIndent];
@@ -118,7 +117,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
 //	We overlay any previously defined styles with new ones, but leave
 //	old ones which are not redefined.
 
-- open:sender {
+- (IBAction)open:sender {
     NXStream *s;                                   //	The file stream
     NSString *filename;                            //	The name of the file
     NSArray<NSString *> *typelist = @[ @"style" ]; //	Extension must be ".style."
@@ -131,7 +130,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     if (![open_panel runModalForTypes:typelist]) {
         if (TRACE)
             NSLog(@"No file selected.");
-        return nil;
+        return;
     }
 
     filename = [open_panel filename];
@@ -144,7 +143,7 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     if (!s) {
         if (TRACE)
             NSLog(@"Styles: Can't open file %@", filename);
-        return nil;
+        return;
     }
     if (TRACE)
         NSLog(@"Stylesheet: New one called %s.", styleSheet->name);
@@ -152,7 +151,6 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     NXClose(s);
     style = styleSheet->styles;
     [self display_style];
-    return self;
 }
 
 //	Load default style sheet

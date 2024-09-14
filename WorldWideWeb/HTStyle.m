@@ -121,7 +121,7 @@ HTStyle *HTStyleWrite(HTStyle *style, NXStream *stream) {
 HTStyle *HTStyleDump(HTStyle *style) {
     int tab;
     NSParagraphStyle *p = style->paragraph;
-    NSLog(@"Style %i `%s' SGML:%s, type=%i. Font %@ %.1f point.", style, style->name, style->SGMLTag, style->SGMLType,
+    NSLog(@"Style %p `%s' SGML:%s, type=%i. Font %@ %.1f point.", style, style->name, style->SGMLTag, style->SGMLType,
           [style->font fontName], style -> fontSize);
     if (p) {
         short alignment = p.alignment;
