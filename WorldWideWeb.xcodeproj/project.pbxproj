@@ -29,13 +29,8 @@
 		35DC79312BFAD6AB00432284 /* TcpAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F72BFAD6AA00432284 /* TcpAccess.m */; };
 		35DC79322BFAD6AB00432284 /* HyperManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F82BFAD6AA00432284 /* HyperManager.m */; };
 		35DC79332BFAD6AB00432284 /* worldbook.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78F92BFAD6AA00432284 /* worldbook.tiff */; };
-		35DC79342BFAD6AB00432284 /* IB.proj in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78FD2BFAD6AA00432284 /* IB.proj */; };
 		35DC79352BFAD6AB00432284 /* Bugs.html in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78FE2BFAD6AA00432284 /* Bugs.html */; };
 		35DC79362BFAD6AB00432284 /* Anchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78FF2BFAD6AA00432284 /* Anchor.m */; };
-		35DC79372BFAD6AB00432284 /* Makefile.preamble in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79002BFAD6AA00432284 /* Makefile.preamble */; };
-		35DC79382BFAD6AB00432284 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79022BFAD6AA00432284 /* Makefile */; };
-		35DC79392BFAD6AB00432284 /* Makefile.dependencies in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79052BFAD6AA00432284 /* Makefile.dependencies */; };
-		35DC793A2BFAD6AB00432284 /* PB.project in Resources */ = {isa = PBXBuildFile; fileRef = 35DC79062BFAD6AA00432284 /* PB.project */; };
 		35DC793B2BFAD6AB00432284 /* HyperAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79092BFAD6AA00432284 /* HyperAccess.m */; };
 		35DC793C2BFAD6AB00432284 /* StyleToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC790A2BFAD6AA00432284 /* StyleToy.m */; };
 		35DC793D2BFAD6AB00432284 /* icon1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC790D2BFAD6AA00432284 /* icon1.tiff */; };
@@ -46,7 +41,6 @@
 		35DC79422BFAD6AB00432284 /* NewsAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79182BFAD6AA00432284 /* NewsAccess.m */; };
 		35DC79432BFAD6AB00432284 /* HTFile.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79192BFAD6AA00432284 /* HTFile.c */; };
 		35DC79442BFAD6AB00432284 /* HTFTP.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC791A2BFAD6AA00432284 /* HTFTP.c */; };
-		35DC79452BFAD6AB00432284 /* PB.gdbinit in Resources */ = {isa = PBXBuildFile; fileRef = 35DC791B2BFAD6AA00432284 /* PB.gdbinit */; };
 		35DC79462BFAD6AB00432284 /* HTAccess.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC791C2BFAD6AB00432284 /* HTAccess.c */; };
 		35DC79472BFAD6AB00432284 /* docflash.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 35DC791D2BFAD6AB00432284 /* docflash.tiff */; };
 		35DC79482BFAD6AB00432284 /* HyperText.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC791E2BFAD6AB00432284 /* HyperText.m */; };
@@ -95,16 +89,11 @@
 		35DC78F92BFAD6AA00432284 /* worldbook.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = worldbook.tiff; sourceTree = "<group>"; };
 		35DC78FA2BFAD6AA00432284 /* WWWPageLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWPageLayout.h; sourceTree = "<group>"; };
 		35DC78FC2BFAD6AA00432284 /* HyperManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyperManager.h; sourceTree = "<group>"; };
-		35DC78FD2BFAD6AA00432284 /* IB.proj */ = {isa = PBXFileReference; lastKnownFileType = file; path = IB.proj; sourceTree = "<group>"; };
 		35DC78FE2BFAD6AA00432284 /* Bugs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Bugs.html; sourceTree = "<group>"; };
 		35DC78FF2BFAD6AA00432284 /* Anchor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anchor.m; sourceTree = "<group>"; };
-		35DC79002BFAD6AA00432284 /* Makefile.preamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.preamble; sourceTree = "<group>"; };
 		35DC79012BFAD6AA00432284 /* HTFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTFile.h; sourceTree = "<group>"; };
-		35DC79022BFAD6AA00432284 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		35DC79032BFAD6AA00432284 /* HTStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTStyle.h; sourceTree = "<group>"; };
 		35DC79042BFAD6AA00432284 /* HTAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAccess.h; sourceTree = "<group>"; };
-		35DC79052BFAD6AA00432284 /* Makefile.dependencies */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.dependencies; sourceTree = "<group>"; };
-		35DC79062BFAD6AA00432284 /* PB.project */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PB.project; sourceTree = "<group>"; };
 		35DC79072BFAD6AA00432284 /* HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTP.h; sourceTree = "<group>"; };
 		35DC79082BFAD6AA00432284 /* HyperText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyperText.h; sourceTree = "<group>"; };
 		35DC79092BFAD6AA00432284 /* HyperAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyperAccess.m; sourceTree = "<group>"; };
@@ -124,7 +113,6 @@
 		35DC79182BFAD6AA00432284 /* NewsAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsAccess.m; sourceTree = "<group>"; };
 		35DC79192BFAD6AA00432284 /* HTFile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTFile.c; sourceTree = "<group>"; };
 		35DC791A2BFAD6AA00432284 /* HTFTP.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTFTP.c; sourceTree = "<group>"; };
-		35DC791B2BFAD6AA00432284 /* PB.gdbinit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PB.gdbinit; sourceTree = "<group>"; };
 		35DC791C2BFAD6AB00432284 /* HTAccess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HTAccess.c; sourceTree = "<group>"; };
 		35DC791D2BFAD6AB00432284 /* docflash.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = docflash.tiff; sourceTree = "<group>"; };
 		35DC791E2BFAD6AB00432284 /* HyperText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyperText.m; sourceTree = "<group>"; };
@@ -233,20 +221,14 @@
 				35DC79082BFAD6AA00432284 /* HyperText.h */,
 				35DC791E2BFAD6AB00432284 /* HyperText.m */,
 				354F5A5C2C94A55800CBFA57 /* HyperTextDelegate.h */,
-				35DC78FD2BFAD6AA00432284 /* IB.proj */,
 				35DC790D2BFAD6AA00432284 /* icon1.tiff */,
 				35DC78EF2BFAD6AA00432284 /* icon2.tiff */,
-				35DC79022BFAD6AA00432284 /* Makefile */,
-				35DC79052BFAD6AA00432284 /* Makefile.dependencies */,
-				35DC79002BFAD6AA00432284 /* Makefile.preamble */,
 				354F5A592C94960A00CBFA57 /* NSAttributedString+Attributes.h */,
 				354F5A5A2C94960A00CBFA57 /* NSAttributedString+Attributes.m */,
 				35DC79132BFAD6AA00432284 /* NewsAccess.h */,
 				35DC79182BFAD6AA00432284 /* NewsAccess.m */,
 				834673772C796EB4006F7FC0 /* NXShims.h */,
 				35DC78ED2BFAD6AA00432284 /* ParseHTML.h */,
-				35DC791B2BFAD6AA00432284 /* PB.gdbinit */,
-				35DC79062BFAD6AA00432284 /* PB.project */,
 				35DC79142BFAD6AA00432284 /* SourceFiles.html */,
 				35DC792A2BFAD6AB00432284 /* StyleToy.h */,
 				35DC790A2BFAD6AA00432284 /* StyleToy.m */,
@@ -327,22 +309,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3590F34F2BFC108E00E81CF2 /* WorldWideWeb.xib in Resources */,
-				35DC79392BFAD6AB00432284 /* Makefile.dependencies in Resources */,
 				35DC79352BFAD6AB00432284 /* Bugs.html in Resources */,
 				35DC793D2BFAD6AB00432284 /* icon1.tiff in Resources */,
 				35DC79412BFAD6AB00432284 /* SourceFiles.html in Resources */,
-				35DC79372BFAD6AB00432284 /* Makefile.preamble in Resources */,
 				35DC792C2BFAD6AB00432284 /* icon2.tiff in Resources */,
 				35DC792B2BFAD6AB00432284 /* Features.html in Resources */,
 				35DC792F2BFAD6AB00432284 /* docflash2.tiff in Resources */,
 				35DC79472BFAD6AB00432284 /* docflash.tiff in Resources */,
 				359DEE8D2C91148100FDB95E /* regenerate-xibs in Resources */,
-				35DC79342BFAD6AB00432284 /* IB.proj in Resources */,
 				359DEE8A2C91148100FDB95E /* convert-nib-to-xib in Resources */,
 				35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */,
-				35DC79452BFAD6AB00432284 /* PB.gdbinit in Resources */,
 				359DEE7F2C91147900FDB95E /* WorldWideWeb.xml in Resources */,
-				35DC793A2BFAD6AB00432284 /* PB.project in Resources */,
 				359DEE882C91148100FDB95E /* convert-nib-to-graph in Resources */,
 				359DEE892C91148100FDB95E /* convert-nib-to-json in Resources */,
 				359DEE7E2C91147900FDB95E /* WorldWideWeb.json in Resources */,
@@ -375,7 +352,6 @@
 				35DC793C2BFAD6AB00432284 /* StyleToy.m in Sources */,
 				35DC79362BFAD6AB00432284 /* Anchor.m in Sources */,
 				354F5A5B2C94960A00CBFA57 /* NSAttributedString+Attributes.m in Sources */,
-				35DC79382BFAD6AB00432284 /* Makefile in Sources */,
 				35DC79462BFAD6AB00432284 /* HTAccess.c in Sources */,
 				35DC794A2BFAD6AB00432284 /* HTTP.c in Sources */,
 				35DC79402BFAD6AB00432284 /* FileAccess.m in Sources */,
