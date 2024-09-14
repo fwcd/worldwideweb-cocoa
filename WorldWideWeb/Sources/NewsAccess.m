@@ -121,10 +121,7 @@ PRIVATE char next_char(void) {
     } else {                                          /* Alphanumeric node name: */
         phost = gethostbyname([NewsHost UTF8String]); /* See netdb.h */
         if (!phost) {
-            NSAlert *alert = [[NSAlert alloc] init];
-            alert.informativeText = [NSString stringWithFormat:@"Can't find internet node name `%@'.", NewsHost];
-            [alert runModal];
-            CTRACE(tfp, "NewsAccess: Can't find internet node name `%s'.\n", [NewsHost UTF8String]);
+            NSLog(@"NewsAccess: Can't find internet node name `%@'.", NewsHost);
             return; /* Fail */
         }
         memcpy(&sin->sin_addr, phost->h_addr, phost->h_length);
