@@ -20,15 +20,6 @@
 		354F5A892C95245B00CBFA57 /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 354F5A7E2C95245B00CBFA57 /* help.html */; };
 		354F5A8A2C95245B00CBFA57 /* paper.style in Resources */ = {isa = PBXBuildFile; fileRef = 354F5A7F2C95245B00CBFA57 /* paper.style */; };
 		3590F34F2BFC108E00E81CF2 /* WorldWideWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */; };
-		359DEE7E2C91147900FDB95E /* WorldWideWeb.json in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE7C2C91147900FDB95E /* WorldWideWeb.json */; };
-		359DEE7F2C91147900FDB95E /* WorldWideWeb.xml in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE7D2C91147900FDB95E /* WorldWideWeb.xml */; };
-		359DEE882C91148100FDB95E /* convert-nib-to-graph in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE802C91148100FDB95E /* convert-nib-to-graph */; };
-		359DEE892C91148100FDB95E /* convert-nib-to-json in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE812C91148100FDB95E /* convert-nib-to-json */; };
-		359DEE8A2C91148100FDB95E /* convert-nib-to-xib in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE822C91148100FDB95E /* convert-nib-to-xib */; };
-		359DEE8B2C91148100FDB95E /* convert-nib-to-xml in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE832C91148100FDB95E /* convert-nib-to-xml */; };
-		359DEE8C2C91148100FDB95E /* format in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE842C91148100FDB95E /* format */; };
-		359DEE8D2C91148100FDB95E /* regenerate-xibs in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE852C91148100FDB95E /* regenerate-xibs */; };
-		359DEE8E2C91148100FDB95E /* requirements.txt in Resources */ = {isa = PBXBuildFile; fileRef = 359DEE862C91148100FDB95E /* requirements.txt */; };
 		35DC78E12BFAD62100432284 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78E02BFAD62100432284 /* AppDelegate.m */; };
 		35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E22BFAD62200432284 /* Assets.xcassets */; };
 		35DC792D2BFAD6AB00432284 /* WorldWideWeb_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */; };
@@ -344,19 +335,10 @@
 				354F5A822C95245B00CBFA57 /* project.style in Resources */,
 				354F5A852C95245B00CBFA57 /* blank.html in Resources */,
 				354F5A862C95245B00CBFA57 /* worldbook2.tiff in Resources */,
-				359DEE8D2C91148100FDB95E /* regenerate-xibs in Resources */,
-				359DEE8A2C91148100FDB95E /* convert-nib-to-xib in Resources */,
 				35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */,
-				359DEE7F2C91147900FDB95E /* WorldWideWeb.xml in Resources */,
 				354F5A812C95245B00CBFA57 /* icon1.tiff in Resources */,
-				359DEE882C91148100FDB95E /* convert-nib-to-graph in Resources */,
 				354F5A832C95245B00CBFA57 /* docflash.tiff in Resources */,
-				359DEE892C91148100FDB95E /* convert-nib-to-json in Resources */,
-				359DEE7E2C91147900FDB95E /* WorldWideWeb.json in Resources */,
 				354F5A802C95245B00CBFA57 /* docflash2.tiff in Resources */,
-				359DEE8C2C91148100FDB95E /* format in Resources */,
-				359DEE8E2C91148100FDB95E /* requirements.txt in Resources */,
-				359DEE8B2C91148100FDB95E /* convert-nib-to-xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
