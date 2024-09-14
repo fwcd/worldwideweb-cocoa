@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+cd "$(dirname $0)/.."
+
+appicongen \
+    Icons/AppIcon.png \
+    --macos \
+    -o WorldWideWeb/Resources/Assets.xcassets/AppIcon.appiconset

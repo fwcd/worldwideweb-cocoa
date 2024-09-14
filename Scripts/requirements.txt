@@ -1,1 +1,2 @@
 pytypedstream~=0.1
+appicongen~=0.2
