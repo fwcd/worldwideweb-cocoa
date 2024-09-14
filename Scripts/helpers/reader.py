@@ -1,6 +1,6 @@
 from typing import Generic, Self, TypeVar
 
-class ParseError(Exception):
+class ReaderError(Exception):
     pass
 
 T = TypeVar('T')
@@ -15,7 +15,7 @@ class Reader(Generic[T]):
 
     def peek(self, n: int = 1) -> T:
         if self.i + n > len(self.raw):
-            raise ParseError(f'RTF file ended too early, could not read next {n} char(s)')
+            raise ReaderError(f'String ended too early, could not read next {n} char(s)')
 
         return self.raw[self.i:self.i + n]
 
@@ -30,7 +30,7 @@ class Reader(Generic[T]):
     def expect(self, expected: T):
         s = self.next(len(expected))
         if s != expected:
-            raise ParseError(f"Expected '{expected}', but got '{s}'")
+            raise ReaderError(f"Expected '{expected}', but got '{s}'")
     
     def next_word(self) -> str:
         assert isinstance(self.raw, str), 'read_word is only implemented for string readers'
