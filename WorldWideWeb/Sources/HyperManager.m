@@ -23,7 +23,7 @@ extern char *WWW_nameOfFile(const char *name); /* In file access */
 
 /*	Exported to everyone */
 
-extern int WWW_TraceFlag; /* Exported to everyone */
+extern int WWW_TraceFlag;      /* Exported to everyone */
 extern NSString *appDirectory; /* Name of the directory containing the application */
 
 /*	Private to this module

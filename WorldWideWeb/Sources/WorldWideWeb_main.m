@@ -15,7 +15,7 @@
 
 // Exported global variables
 
-int WWW_TraceFlag = 1; /* Global variable for whether trace output is enabled. */
+int WWW_TraceFlag = 1;  /* Global variable for whether trace output is enabled. */
 NSString *appDirectory; /* Name of the directory containing the application */
 
 int main(int argc, const char *argv[]) {
