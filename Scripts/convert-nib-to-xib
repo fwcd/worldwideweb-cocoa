@@ -387,6 +387,20 @@ class XIBConverter:
 
     # TODO: Abstract over more commonalities between the different view types
 
+    def traverse_font(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode):
+        '''Traverses the given NIB font and adds it to the XIB.'''
+
+        assert obj.clazz.name == b'Font', obj.clazz.name
+
+        name = obj.contents[0].values[0].decode()
+        size = obj.contents[0].values[1]
+
+        xib_parent.add('font',
+            key='font',
+            name=name,
+            size=size,
+        )
+
     def traverse_view(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         '''Traverses the given NIB view and adds it to the XIB.'''
         
@@ -427,6 +441,7 @@ class XIBConverter:
         assert obj.clazz.name == b'ButtonCell', obj.clazz.name
 
         title = obj.contents[0].values[0].decode()
+        font = obj.contents[0].values[1]
         image = obj.contents[5].values[0]
 
         xib_properties = {}
@@ -451,6 +466,8 @@ class XIBConverter:
             **xib_properties,
         )
         self.object_to_xib_node[obj] = xib_cell
+
+        self.traverse_font(font, xib_cell)
 
     def traverse_button(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         '''Traverses the given NIB button and adds it to the XIB.'''
@@ -501,6 +518,7 @@ class XIBConverter:
         assert obj.clazz.name == b'TextFieldCell', obj.clazz.name
 
         title = obj.contents[0].values[0].decode()
+        font = obj.contents[0].values[1]
 
         # TODO: Figure out a cleaner looking button style that preserves the intended look and feel
         xib_cell = xib_text_field.add('textFieldCell',
@@ -514,6 +532,8 @@ class XIBConverter:
             colorSpace='catalog',
         )
         self.object_to_xib_node[obj] = xib_cell
+
+        self.traverse_font(font, xib_cell)
 
     def traverse_text_field(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
         '''Traverses the given NIB text field and adds it to the XIB.'''
