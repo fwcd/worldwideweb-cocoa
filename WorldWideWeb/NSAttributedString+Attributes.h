@@ -7,12 +7,13 @@
 
 #pragma once
 
+#import "HTUtils.h"
 #import <Cocoa/Cocoa.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// A key that we use to store anchors in attributed string runs to replace `NXRun.info`, which the NeXTStep API reserved for app-specific usage.
-NSString *const AnchorAttributeName;
+extern NSString *const AnchorAttributeName;
 
 @interface NSAttributedString (Attributes)
 
