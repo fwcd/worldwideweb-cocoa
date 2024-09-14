@@ -86,6 +86,9 @@ typedef FILE NXStream;
 #define NXOpenFile fopen
 #define NXFlush fflush
 #define NXClose fclose
+#define NXGetc getc
+#define NXUngetc ungetc
+#define NXAtEOS feof
 
 #define NX_READONLY "r"
 #define NX_WRITEONLY "w"
