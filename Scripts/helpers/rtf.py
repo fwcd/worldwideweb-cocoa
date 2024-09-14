@@ -64,6 +64,9 @@ class RTFControlWord:
         else:
             value = None
         return cls(name=name, value=value)
+    
+    def __str__(self) -> str:
+        return f"\\{self.name}{str(self.value) if self.value is not None else ''}"
 
 @dataclass
 class RTFGroup:
@@ -81,6 +84,9 @@ class RTFGroup:
     @classmethod
     def parse(cls, s: str) -> Self:
         return cls.parse_from(RTFReader(s))
+    
+    def __str__(self) -> str:
+        return f"{{{''.join(map(str, self.elements))}}}"
 
 @dataclass
 class RTFText:
@@ -93,6 +99,9 @@ class RTFText:
             value += c
             r.skip()
         return cls(value)
+    
+    def __str__(self) -> str:
+        return self.value
 
 @dataclass
 class RTFNode:
@@ -104,3 +113,6 @@ class RTFNode:
             case '\\': return cls(RTFControlWord.parse_from(r))
             case '{': return cls(RTFGroup.parse_from(r))
             case _: return cls(RTFText.parse_from(r))
+    
+    def __str__(self):
+        return str(self.value)
