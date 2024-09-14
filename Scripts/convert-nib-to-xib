@@ -178,7 +178,8 @@ class XIB:
 
         app_item = main_menu.add_menu_item(title='WorldWideWeb')
         app_menu = app_item.add_submenu(systemMenu='apple')
-        app_menu.add_menu_item(title='About WorldWideWeb')
+        about_item = app_menu.add_menu_item(title='About WorldWideWeb')
+        about_item.connect_action('orderFrontStandardAboutPanel:', target=self.first_responder)
         app_menu.add_menu_item(isSeparatorItem=True)
 
         self.main_menu = main_menu
