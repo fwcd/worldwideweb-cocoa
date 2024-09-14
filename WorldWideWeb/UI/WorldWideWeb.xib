@@ -584,7 +584,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView verticallyResizable="NO" id="42">
-                                    <rect key="frame" x="0.0" y="0.0" width="395" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="229" width="395" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="395" height="0.0"/>
