@@ -27,7 +27,7 @@ class RTFControlWord:
 
 @dataclass
 class RTFGroup:
-    elements: list['RTFNode'] = field(default_factory=list)
+    nodes: list['RTFNode'] = field(default_factory=list)
 
     @classmethod
     def parse_from(cls, r: Reader[str]) -> Self:
@@ -38,8 +38,11 @@ class RTFGroup:
         r.skip()
         return cls(elements)
 
+    def plain(self) -> str:
+        return ''.join(node.plain() for node in self.nodes)
+
     def __str__(self) -> str:
-        return f"{{{''.join(map(str, self.elements))}}}"
+        return f"{{{''.join(map(str, self.nodes))}}}"
 
 @dataclass
 class RTFText:
@@ -53,6 +56,9 @@ class RTFText:
             r.skip()
         return cls(value)
     
+    def plain(self) -> str:
+        return self.value
+
     def __str__(self) -> str:
         return self.value
 
@@ -67,6 +73,12 @@ class RTFNode:
             case '{': return cls(RTFGroup.parse_from(r))
             case _: return cls(RTFText.parse_from(r))
     
+    def plain(self) -> str:
+        match self.value:
+            case RTFText() as t: return t.plain()
+            case RTFGroup() as g: return g.plain()
+            case _: return ''
+
     def __str__(self) -> str:
         return str(self.value)
 
@@ -82,13 +94,13 @@ class RTF:
         self = cls()
         in_header = True
 
-        for node in group.elements:
+        for node in group.nodes:
             # Parse header node
             if in_header:
                 match node.value:
                     case RTFControlWord('rtf', version):
                         self.version = version
-                    case RTFText(_):
+                    case RTFText():
                         in_header = False
             
             # Parse content node
@@ -98,6 +110,9 @@ class RTF:
 
         return self
     
+    def plain_contents(self) -> str:
+        return ''.join(node.plain() for node in self.contents)
+
     @classmethod
     def parse(cls, s: str) -> Self:
         return cls.parse_from(RTFGroup.parse_from(Reader(s)))

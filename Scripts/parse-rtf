@@ -16,7 +16,7 @@ def main():
         raw_rtf = f.read()
 
     rtf = RTF.parse(raw_rtf)
-    print(rtf)
+    print(rtf.plain_contents())
 
 if __name__ == '__main__':
     main()
