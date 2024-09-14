@@ -15,7 +15,7 @@
 
 extern char *appDirectory; /* Name of the directory containing the application */
 
-static int int_default(NSString *param) { return [[NSUserDefaults standardUserDefaults] integerForKey:param]; }
+static int int_default(NSString *param) { return (int)[[NSUserDefaults standardUserDefaults] integerForKey:param]; }
 
 int main(int argc, char *argv[]) {
     //    NXArgc = argc;		/* TBL */
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 
     appDirectory = malloc(strlen(argv[0]));
     strcpy(appDirectory, argv[0]);
-    if (p = strrchr(appDirectory, '/'))
+    if ((p = strrchr(appDirectory, '/')))
         p[1] = 0; /* Chop home directory after slash */
     if (TRACE)
         NSLog(@"WWW: Run from %s", appDirectory);
