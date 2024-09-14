@@ -1070,23 +1070,19 @@ static HyperText *HT; /* Pointer to self for C */
 //	Inputting from the text object:
 //	------------------------------
 
-static unsigned char *read_pointer; /* next character to be read */
-static unsigned char *read_limit;
-static NXTextBlock *read_block;
+static const char *read_pointer; /* next character to be read */
+static const char *read_limit;
+static NSString *read_string;
 
 void start_input(void) {
-    read_block = HT->firstTextBlock;
-    read_pointer = read_block->text; /* next character to be read */
-    read_limit = read_pointer + read_block->chars;
+    read_string = HT.string;
+    read_pointer = read_string.UTF8String; /* next character to be read */
+    read_limit = read_pointer + read_string.length;
 }
 
 unsigned char next_input_block(void) {
     char c = *read_pointer;
-    read_block = read_block->next;
-    if (!read_block)
-        read_block = HT->firstTextBlock; /* @@@ FUDGE */
-    read_pointer = read_block->text;
-    read_limit = read_pointer + read_block->chars;
+    start_input();
     return c;
 }
 #define START_INPUT start_input()
@@ -1099,25 +1095,12 @@ unsigned char next_input_block(void) {
 //
 #define BLOCK_SIZE NX_TEXTPER /* Match what Text seems to use */
 
-static NXTextBlock *write_block;     /* Pointer to block being filled */
-static unsigned char *write_pointer; /* Pointer to next characetr to be written */
-static unsigned char *write_limit;   /* Pointer to the end of the allocated area*/
-static NSTextStorage *lastRun;       /* Pointer to the run being appended to */
-static int original_length;          /* of text */
+static NSTextStorage *write_storage;     /* Pointer to string being filled */
+static int original_length;              /* of text */
+static bool endsWithDummyCharacter = NO; /* A workaround for preapplying a new style at the end. */
 
-#define OUTPUT(c)                                                                                                      \
-    {                                                                                                                  \
-        *write_pointer++ = (c);                                                                                        \
-        if (write_pointer == write_limit) {                                                                            \
-            end_output();                                                                                              \
-        }                                                                                                              \
-    }
-#define OUTPUTS(string)                                                                                                \
-    {                                                                                                                  \
-        const char *p;                                                                                                 \
-        for (p = (string); *p; p++)                                                                                    \
-            OUTPUT(*p);                                                                                                \
-    }
+#define OUTPUT(c) output_char(c)
+#define OUTPUTS(string) output_c_string(string)
 #define START_OUTPUT append_begin()
 #define FINISH_OUTPUT finish_output()
 #define LOADPLAINTEXT loadPlainText()
@@ -1130,15 +1113,13 @@ void append_begin(void) {
         NSLog(@"Begin append to text.");
 
     HT.string = @""; // Delete everything there
-    original_length = HT->textLength;
+    original_length = (int)HT.textStorage.length;
     if (TRACE)
         NSLog(@"Text now contains %i characters", original_length);
 
-    lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
+    //	Use the text storage
 
-    //	Use the last existing text block:
-
-    write_block = HT->lastTextBlock;
+    write_storage = HT.textStorage;
 
     //	It seems that the Text object doesn't like to be empty: it always wants to
     //	have a newline in at leats. However, we need it seriously empty and so we
@@ -1147,15 +1128,31 @@ void append_begin(void) {
     if (original_length == 1) {
         if (TRACE)
             NSLog(@"HT: Clearing out single character from Text.");
-        lastRun->chars = 0;     /* Empty the run */
-        write_block->chars = 0; /* Empty the text block */
-        HT->textLength = 0;     /* Empty the whole Text object */
-        original_length = 0;    /* Note we have cleared it */
+        write_storage.attributedString = [[NSAttributedString alloc] init]; /* Empty the text */
+        original_length = 0;                                                /* Note we have cleared it */
     }
-
-    write_pointer = write_block->text + write_block->chars;
-    write_limit = write_pointer + BLOCK_SIZE;
 }
+
+//  Removes a dummy character at the end.
+void remove_dummy_character_if_needed(NSUInteger position) {
+    if (endsWithDummyCharacter) { /* Chop off dummy character */
+        [write_storage deleteCharactersInRange:NSMakeRange(position, 1)];
+        endsWithDummyCharacter = NO;
+    }
+}
+
+//  Appends the given NSString.
+void output_string(NSString *s) {
+    NSUInteger originalLength = write_storage.length;
+    [write_storage.mutableString appendString:s];
+    remove_dummy_character_if_needed(originalLength);
+}
+
+//  Appends the given character.
+void output_char(char c) { output_string([NSString stringWithFormat:@"%c", c]); }
+
+//  Appends the given c string.
+void output_c_string(const char *p) { output_string([NSString stringWithUTF8String:p]); }
 
 //	Set a style for new text
 //
@@ -1165,69 +1162,23 @@ void set_style(HTStyle *style) {
             NSLog(@"set_style: style is null!");
         return;
     }
+    BOOL willChangeStyle = willChange(style, write_storage.attributeRuns.lastObject);
     if (TRACE)
-        NSLog(@"    Changing to style `%s' -- %s change.", style->name, willChange(style, lastRun) ? "will" : "won't");
-    if (willChange(style, lastRun)) {
-        int size = (write_pointer - write_block->text);
-        lastRun->chars = lastRun->chars + size - write_block->chars;
-        write_block->chars = size;
-        if (lastRun->chars) {
-            int new_used = (((char *)(lastRun + 2)) - (char *)HT->theRuns->runs);
-            if (new_used > HT->theRuns->chunk.allocated) {
-                if (TRACE)
-                    NSLog(@"    HT: Extending runs.");
-                HT->theRuns = (NXRunArray *)NXChunkGrow(&HT->theRuns->chunk, new_used);
-                lastRun = ((NSTextStorage *)((char *)HT->theRuns->runs + HT->theRuns->chunk.used)) - 1;
-            }
-            lastRun[1] = lastRun[0];
-            lastRun++;
-            HT->theRuns->chunk.used = new_used;
-        }
-        apply(style, lastRun);
-        lastRun->chars = 0; /* For now */
+        NSLog(@"    Changing to style `%s' -- %s change.", style->name, willChangeStyle ? "will" : "won't");
+    if (willChangeStyle) {
+        // Unfortunately attributed strings no longer use runs under the hood and empty strings cannot store attributes. So we work around this by adding a "dummy" space at the end that is removed upon the next append.
+        NSMutableAttributedString *dummy = [[NSMutableAttributedString alloc] initWithString:@" "];
+        apply(style, dummy);
+        [write_storage appendAttributedString:dummy];
+        endsWithDummyCharacter = YES;
     }
-}
-
-//	Transfer text to date to the Text object
-//	----------------------------------------
-void end_output(void) {
-    int size = (write_pointer - write_block->text);
-    if (TRACE)
-        NSLog(@"    HT: Adding block of %i characters, starts: `%.20s...'", size, write_block->text);
-    lastRun->chars = lastRun->chars + size - write_block->chars;
-    write_block->chars = size;
-    HT->textLength = HT->textLength + size;
 }
 
 //	Finish altogether
 //	-----------------
 
 void finish_output(void) {
-    int size = write_pointer - write_block->text;
-    if (size == 0) {
-        HT->lastTextBlock = write_block->prior; /* Remove empty text block */
-        write_block->prior->next = 0;
-        free(write_block->text);
-        free(write_block);
-    } else {
-        end_output();
-    }
-
-    // get rid of zero length run if any
-
-    if (lastRun->chars == 0) { /* Chop off last run */
-        HT->theRuns->chunk.used = (char *)lastRun - (char *)HT->theRuns;
-    }
-
-    //	calcLine requires that the last character be a newline!
-    {
-        unsigned char *p = HT->lastTextBlock->text + HT->lastTextBlock->chars - 1;
-        if (*p != '\n') {
-            if (TRACE)
-                NSLog(@"HT: Warning: Last character was %i not newline: overwriting!", *p);
-            *p = '\n';
-        }
-    }
+    remove_dummy_character_if_needed(write_storage.length - 1);
 
     [HT adjustWindow]; /* Adjustscrollers and window size */
 }
@@ -1235,9 +1186,11 @@ void finish_output(void) {
 //	Loading plain text
 
 void loadPlainText(void) {
-    [HT setMonoFont:YES];
+    // TODO: Set a proper mono font
+    // [HT setMonoFont:YES];
     [HT setHorizontallyResizable:YES];
-    [HT setNoWrap];
+    // TODO: Figure this one out
+    // [HT setNoWrap];
     [HT readText:sgmlStream]; /* will read to end */
     [HT adjustWindow];        /* Fix scrollers */
 }
