@@ -21,6 +21,8 @@ int main(int argc, char *argv[]) {
     //    NXArgc = argc;		/* TBL */
     //    NXArgv = argv;		/* TBL */
 
+    NSApplication *app = [NSApplication sharedApplication];
+
     char *p;
 
     NSDictionary<NSString *, id> *myDefaults = @{
@@ -41,7 +43,7 @@ int main(int argc, char *argv[]) {
     [[NSUserDefaults standardUserDefaults] registerDefaults:myDefaults];
 
     NSArray *tl;
-    [[NSBundle mainBundle] loadNibNamed:@"WorldWideWeb.nib" owner:NSApp topLevelObjects:&tl];
+    [[NSBundle mainBundle] loadNibNamed:@"WorldWideWeb.nib" owner:app topLevelObjects:&tl];
 
     //	The default margins seem to be 72, 72, 108, 108 which is a lot.
     {
@@ -60,6 +62,6 @@ int main(int argc, char *argv[]) {
         [pi setBottomMargin:bottomM];
     }
 
-    [NSApp run];
+    [app run];
     return 0;
 }

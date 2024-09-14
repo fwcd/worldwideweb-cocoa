@@ -23,8 +23,8 @@ extern char *WWW_nameOfFile(const char *name); /* In file access */
 
 /*	Exported to everyone */
 
-extern int WWW_TraceFlag;  /* Exported to everyone */
-char *appDirectory; /* Name of the directory containing the application */
+extern int WWW_TraceFlag; /* Exported to everyone */
+char *appDirectory;       /* Name of the directory containing the application */
 
 /*	Private to this module
 */
