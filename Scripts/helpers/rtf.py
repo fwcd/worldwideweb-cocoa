@@ -1,3 +1,4 @@
+from dataclasses import dataclass, field
 from typing import Optional, Self
 
 # Based on https://www.biblioscape.com/rtf15_spec.htm
@@ -32,6 +33,13 @@ class RTFReader:
         if s != expected:
             raise RTFParseError(f"Expected '{expected}', but got '{s}'")
     
+    def read_word(self) -> str:
+        w = ''
+        while (c := self.peek()) and c.isalpha():
+            w += c
+            self.skip()
+        return w
+
     def read_int(self) -> int:
         d = ''
         if (c := self.peek()) and c == '-':
@@ -41,80 +49,58 @@ class RTFReader:
             d += c
             self.skip()
         return int(d)
-    
-    def read_control_word(self) -> str:
-        self.expect('\\')
-        cw = ''
-        while (c := self.peek()) and c.isalpha():
-            cw += c
-            self.skip()
-        return cw
 
-    def peek_control_word(self) -> Optional[str]:
-        if self.peek() != '\\':
-            return None
-        return self.child().read_control_word()
-    
-    def ignore_int(self):
-        if self.peek().isnumeric():
-            self.read_int()
-
-    def ignore_control_word(self, ignored: str) -> str:
-        cw = self.peek_control_word()
-        if cw == ignored:
-            self.skip(len(cw))
-            self.ignore_int()
-
-    def expect_control_word(self, expected: str) -> str:
-        cw = self.read_control_word()
-        if cw != expected:
-            raise RTFParseError(f'Expected control word \\{expected}, but got \\{cw}')
-
-class RTFFontTable:
-    @classmethod
-    def parse_from(cls, reader: RTFReader) -> Self:
-        self = cls()
-
-        return self
-
-class RTFHeader:
-    @classmethod
-    def parse_from(cls, reader: RTFReader) -> Self:
-        self = cls()
-
-        reader.expect_control_word('rtf')
-        self.rtf_version = reader.read_int()
-        self.charset = reader.read_control_word()
-
-        reader.ignore_control_word('deff')
-
-        self.font_table = RTFFontTable.parse
-
-        return self
-
-class RTFDocument:
-    @classmethod
-    def parse_from(cls, reader: RTFReader) -> Self:
-        self = cls()
-
-        # TODO
-
-        return self
-
-class RTF:
-    '''An Rich Text Format (RTF) file.'''
+@dataclass
+class RTFControlWord:
+    name: str
+    value: Optional[int] = None
 
     @classmethod
-    def parse_from(cls, reader: RTFReader) -> Self:
-        self = cls()
-        reader.expect('{')
+    def parse_from(cls, r: RTFReader) -> Self:
+        r.expect('\\')
+        name = r.read_word()
+        if r.peek().isnumeric():
+            value = r.read_int()
+        else:
+            value = None
+        return cls(name=name, value=value)
 
-        self.header = RTFHeader.parse_from(reader)
-        self.document = RTFDocument.parse_from(reader)
+@dataclass
+class RTFGroup:
+    elements: list['RTFNode'] = field(default_factory=list)
 
-        reader.expect('}')
-        return self
-    
+    @classmethod
+    def parse_from(cls, r: RTFReader) -> Self:
+        elements = []
+        r.expect('{')
+        while r.peek() != '}':
+            elements.append(RTFNode.parse_from(r))
+        r.skip()
+        return cls(elements)
+
     @classmethod
     def parse(cls, s: str) -> Self:
-        cls.parse_from(RTFReader(s))
+        return cls.parse_from(RTFReader(s))
+
+@dataclass
+class RTFText:
+    value: str
+
+    @classmethod
+    def parse_from(cls, r: RTFReader) -> Self:
+        value = ''
+        while (c := r.peek()) and c not in {'\\', '{', '}'}:
+            value += c
+            r.skip()
+        return cls(value)
+
+@dataclass
+class RTFNode:
+    value: RTFControlWord | RTFGroup | RTFText
+
+    @classmethod
+    def parse_from(cls, r: RTFReader):
+        match r.peek():
+            case '\\': return cls(RTFControlWord.parse_from(r))
+            case '{': return cls(RTFGroup.parse_from(r))
+            case _: return cls(RTFText.parse_from(r))
