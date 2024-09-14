@@ -51,9 +51,15 @@ class RTFText:
     @classmethod
     def parse_from(cls, r: Reader[str]) -> Self:
         value = ''
-        while (c := r.peek()) and c not in {'\\', '{', '}'}:
-            value += c
-            r.skip()
+        while True:
+            if (c := r.peek()) and c not in {'\\', '{', '}'}:
+                value += c
+                r.skip(len(c))
+            elif (nl := r.peek(2)) and nl == '\\\n':
+                value += nl[1:]
+                r.skip(len(nl))
+            else:
+                break
         return cls(value)
     
     def plain(self) -> str:
