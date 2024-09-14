@@ -108,11 +108,11 @@ class RTFNode:
     value: RTFControlWord | RTFGroup | RTFText
 
     @classmethod
-    def parse_from(cls, r: RTFReader):
+    def parse_from(cls, r: RTFReader) -> Self:
         match r.peek():
             case '\\': return cls(RTFControlWord.parse_from(r))
             case '{': return cls(RTFGroup.parse_from(r))
             case _: return cls(RTFText.parse_from(r))
     
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.value)
