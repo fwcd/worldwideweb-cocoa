@@ -13,7 +13,7 @@ class RTFControlWord:
     value: Optional[int] = None
 
     @classmethod
-    def parse_from(cls, r: Reader[str]) -> Self:
+    def parse_from(cls, r: Reader) -> Self:
         r.expect('\\')
         name = r.next_word()
         if r.peek().isnumeric():
@@ -30,10 +30,11 @@ class RTFGroup:
     nodes: list['RTFNode'] = field(default_factory=list)
 
     @classmethod
-    def parse_from(cls, r: Reader[str]) -> Self:
+    def parse_from(cls, r: Reader) -> Self:
         elements = []
         r.expect('{')
         while r.peek() != '}':
+            r.skip_whitespace()
             elements.append(RTFNode.parse_from(r))
         r.skip()
         return cls(elements)
@@ -49,7 +50,7 @@ class RTFText:
     value: str
 
     @classmethod
-    def parse_from(cls, r: Reader[str]) -> Self:
+    def parse_from(cls, r: Reader) -> Self:
         value = ''
         while True:
             if (c := r.peek()) and c not in {'\\', '{', '}'}:
@@ -73,7 +74,7 @@ class RTFNode:
     value: RTFControlWord | RTFGroup | RTFText
 
     @classmethod
-    def parse_from(cls, r: Reader[str]) -> Self:
+    def parse_from(cls, r: Reader) -> Self:
         match r.peek():
             case '\\': return cls(RTFControlWord.parse_from(r))
             case '{': return cls(RTFGroup.parse_from(r))
