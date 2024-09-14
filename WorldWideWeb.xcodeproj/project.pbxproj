@@ -201,6 +201,8 @@
 			children = (
 				35DC78F02BFAD6AA00432284 /* Anchor.h */,
 				35DC78FF2BFAD6AA00432284 /* Anchor.m */,
+				35DC78DF2BFAD62100432284 /* AppDelegate.h */,
+				35DC78E02BFAD62100432284 /* AppDelegate.m */,
 				35DC78FE2BFAD6AA00432284 /* Bugs.html */,
 				35DC791D2BFAD6AB00432284 /* docflash.tiff */,
 				35DC78F32BFAD6AA00432284 /* docflash2.tiff */,
@@ -261,8 +263,6 @@
 				35DC79162BFAD6AA00432284 /* WWW.h */,
 				35DC78FA2BFAD6AA00432284 /* WWWPageLayout.h */,
 				35DC79112BFAD6AA00432284 /* WWWPageLayout.m */,
-				35DC78DF2BFAD62100432284 /* AppDelegate.h */,
-				35DC78E02BFAD62100432284 /* AppDelegate.m */,
 				35DC78E22BFAD62200432284 /* Assets.xcassets */,
 				35DC78E92BFAD62200432284 /* WorldWideWeb.entitlements */,
 			);
