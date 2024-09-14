@@ -10,7 +10,7 @@
 #include "tcp.h"
 #include <ctype.h>
 
-PUBLIC int WWW_TraceFlag = 0;                      /* Global trace flag for ALL W3 code */
+PUBLIC extern int WWW_TraceFlag;                   /* Global trace flag for ALL W3 code */
 PUBLIC CONST char *HTLibraryVersion = "nextfudge"; /* String for help screen etc */
 
 #ifndef VM /* VM has these already it seems */
