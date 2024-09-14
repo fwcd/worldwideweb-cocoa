@@ -3,7 +3,7 @@
 An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wiki/WorldWideWeb) web browser from the early 1990s.
 
 > [!IMPORTANT]
-> This project is still in its early stages and does even not compile yet due to the large number of to-be-ported legacy APIs. Anyone interested is highly encouraged to explore the codebase and hack on it though.
+> This project is still in its early stages and, while it compiles, is still largely non-functional. Anyone interested is highly encouraged to explore the codebase and hack on it though.
 
 ## Background
 
