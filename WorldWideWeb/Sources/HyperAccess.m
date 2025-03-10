@@ -100,7 +100,7 @@
 
 //	These delegate methods are special to HyperText:
 
-- (void)hyperTextDidBecomeMain:(HyperText *)sender {
-    [self.manager hyperTextDidBecomeMain:sender]; /* Pass the buck */
+- (void)hyperTextDidBecomeMain:(HyperText *)sender window:(NSWindow *)window {
+    [self.manager hyperTextDidBecomeMain:sender window:window]; /* Pass the buck */
 }
 @end

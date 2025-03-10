@@ -51,6 +51,6 @@
 
 //	HyperText delegate methods:
 
-- (void)hyperTextDidBecomeMain:(HyperText *)sender;
+- (void)hyperTextDidBecomeMain:(HyperText *)sender window:(NSWindow *)window;
 
 @end

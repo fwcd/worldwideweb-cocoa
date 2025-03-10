@@ -450,14 +450,14 @@ PRIVATE FileAccess *fileAccess = nil;
 // and the default address in the "open using full reference" panel
 // is set to the address of the current hypertext.
 //
-- (void)hyperTextDidBecomeMain:(HyperText *)sender {
+- (void)hyperTextDidBecomeMain:(HyperText *)sender window:(NSWindow *)window {
     if ([sender isIndex]) {
         [[self.keywords window] makeKeyAndOrderFront:self];
     } else {
         [[self.keywords window] close];
         //        [[keywords window] orderOut:self];	bug?
     }
-    [[self.titleString cellAtIndex:0] setStringValue:[[sender window] title]];
+    [[self.titleString cellAtIndex:0] setStringValue:[window title]];
     [self.addressString setStringValue:[NSString stringWithUTF8String:[[sender nodeAnchor] address]]];
     //  [openString setStringValue: [[sender nodeAnchor] address] at:0];
 }

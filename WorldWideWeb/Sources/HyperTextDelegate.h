@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol HyperTextDelegate <NSObject>
 
-- (void)hyperTextDidBecomeMain:(id)hyperText;
+- (void)hyperTextDidBecomeMain:(id)hyperText window:(NSWindow *)window;
 
 @end
 

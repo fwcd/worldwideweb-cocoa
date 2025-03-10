@@ -1047,7 +1047,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 //
 - (void)windowDidBecomeMain:(NSNotification *)notification {
     if ([self.delegate respondsToSelector:@selector(hyperTextDidBecomeMain:)]) {
-        [((id<HyperTextDelegate>)self.delegate) hyperTextDidBecomeMain:self];
+        [((id<HyperTextDelegate>)self.delegate) hyperTextDidBecomeMain:self window:(NSWindow *)notification.object];
     }
 }
 
