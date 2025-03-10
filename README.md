@@ -18,7 +18,7 @@ A port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wik
 
 Open [`WorldWideWeb.xcodeproj`](WorldWideWeb.xcodeproj) in Xcode, then build and run the WorldWideWeb target.
 
-The easiest way to test the browser on a real page is to open one of the HTML files from this repo, e.g. [`Documentation/SourceFiles.html`](Documentation/SourceFiles.html), since that will ensure that the browser can parse the page fully. Opening a file can be done from the menu bar (`Document` > `Open file...`) or by pressing Cmd + O.
+The easiest way to test the browser on a real page is to open one of the HTML files from this repo, e.g. [`Documentation/SourceFiles.html`](Documentation/SourceFiles.html), since that will ensure that the browser can parse the page fully. Opening a file can be done from the menu bar (`Document` > `Open file...`) or by pressing <kbd>Cmd</kbd> + <kbd>O</kbd>.
 
 ## Background
 
