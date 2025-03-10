@@ -1,6 +1,6 @@
 # WorldWideWeb Cocoa
 
-An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wiki/WorldWideWeb) web browser from the early 1990s that runs on modern versions of macOS/AppKit.
+A port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wiki/WorldWideWeb) web browser from the early 1990s to modern macOS.
 
 <div align="center">
 <img width="128" src="WorldWideWeb/Resources/Assets.xcassets/AppIcon.appiconset/256x256.png">
