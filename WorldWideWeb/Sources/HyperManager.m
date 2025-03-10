@@ -17,8 +17,6 @@
 
 @implementation HyperManager
 
-#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] documentView]
-
 extern char *WWW_nameOfFile(const char *name); /* In file access */
 
 /*	Exported to everyone */

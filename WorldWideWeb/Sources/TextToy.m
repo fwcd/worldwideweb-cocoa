@@ -13,8 +13,6 @@
 
 @implementation TextToy
 
-#define THIS_TEXT (HyperText *)[[[NSApp mainWindow] contentView] documentView]
-
 Anchor *Mark; /* A marked Anchor */
 
 - setSearchWindow:anObject {

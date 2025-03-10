@@ -18,6 +18,8 @@
 #define HT_LINK_FROM_PART 32
 #define HT_DO_ANYTHING 63
 
+#define THIS_TEXT ((HyperText *)([NSApp.mainWindow.contentView documentView]))
+
 extern void write_rtf_header(NXStream *rtfStream);
 
 @interface HyperText : NSTextView <NSWindowDelegate> {
