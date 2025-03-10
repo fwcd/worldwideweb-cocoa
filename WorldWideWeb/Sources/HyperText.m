@@ -340,6 +340,12 @@ static float page_width(void) {
     window.delegate = self;                                       // Get closure warning
     [window makeKeyAndOrderFront:self];                           // Make it visible
     window.backgroundColor = NSColor.whiteColor;                  // White seems to be necessary.
+    
+    // Use light mode for the hypertext window to avoid dark text on dark bg
+    window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+    if (@available(macOS 11.0, *)) {
+        window.titlebarSeparatorStyle = NSTitlebarSeparatorStyleShadow;
+    }
 
     scrollview = [[NSScrollView alloc] initWithFrame:scroll_frame];
     scrollview.hasVerticalScroller = YES;
