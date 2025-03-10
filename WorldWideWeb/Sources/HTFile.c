@@ -28,6 +28,7 @@ include<unixio.h>
 #include "HTUtils.h"
 #include "WWW.h"
 #include "tcp.h"
+#include <unistd.h>
 
     PRIVATE char *HTMountRoot = "/Net/";         /* Where to find mounts */
 /* PRIVATE char *HTCacheRoot = "/tmp/Cache/";*/  /* Where to cache things */

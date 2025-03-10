@@ -11,6 +11,7 @@
 #include "HTTCP.h"
 #include "HTUtils.h"
 #include "tcp.h"
+#include <unistd.h>
 
 /*		Open Socket for reading from HTTP Server	HTTP_get()
 **		========================================

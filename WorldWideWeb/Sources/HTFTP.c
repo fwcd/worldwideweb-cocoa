@@ -60,6 +60,7 @@ BUGS:	@@@  	Limit connection cache size!
 #include "HTTCP.h"
 #include "HTUtils.h"
 #include "tcp.h"
+#include <unistd.h>
 
 #ifdef REMOVED_CODE
 extern char *malloc();
