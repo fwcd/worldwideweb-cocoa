@@ -5,9 +5,9 @@ A port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wik
 <div align="center">
 <img width="128" src="WorldWideWeb/Resources/Assets.xcassets/AppIcon.appiconset/256x256.png">
 
-| macOS | NeXTStep |
-| ----- | ---- |
-| <img alt="WorldWideWeb on macOS" src="Screenshots/worldwideweb-macos.png"> | <img alt="WorldWideWeb on NeXTStep" src="Screenshots/worldwideweb-nextstep.png"> |
+| NeXTStep | macOS |
+| -------- | ----- |
+| <img alt="WorldWideWeb on NeXTStep" src="Screenshots/worldwideweb-nextstep.png"> | <img alt="WorldWideWeb on macOS" src="Screenshots/worldwideweb-macos.png"> |
 
 </div>
 
