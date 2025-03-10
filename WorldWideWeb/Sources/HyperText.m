@@ -1130,6 +1130,7 @@ void append_begin(void) {
             NSLog(@"HT: Clearing out single character from Text.");
         write_storage.attributedString = [[NSAttributedString alloc] init]; /* Empty the text */
         original_length = 0;                                                /* Note we have cleared it */
+        endsWithDummyCharacter = NO;
     }
 }
 
@@ -1143,9 +1144,9 @@ void remove_dummy_character_if_needed(NSUInteger position) {
 
 //  Appends the given NSString.
 void output_string(NSString *s) {
-    NSUInteger originalLength = write_storage.length;
+    NSUInteger originalEnd = write_storage.length - 1;
     [write_storage.mutableString appendString:s];
-    remove_dummy_character_if_needed(originalLength);
+    remove_dummy_character_if_needed(originalEnd);
 }
 
 //  Appends the given character.
