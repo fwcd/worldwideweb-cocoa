@@ -18,7 +18,9 @@
 #define HT_LINK_FROM_PART 32
 #define HT_DO_ANYTHING 63
 
-#define THIS_TEXT ((HyperText *)([NSApp.mainWindow.contentView documentView]))
+#define THIS_TEXT ((HyperText *)([NSApp.mainWindow.contentView respondsToSelector:@selector(documentView)] \
+    ? [NSApp.mainWindow.contentView documentView] \
+    : nil))
 
 extern void write_rtf_header(NXStream *rtfStream);
 
