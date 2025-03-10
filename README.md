@@ -12,7 +12,7 @@ A port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wik
 </div>
 
 > [!IMPORTANT]
-> This project is still in its early stages and, while it compiles, is still largely non-functional. Anyone interested is highly encouraged to explore the codebase and hack on it though.
+> This project is in its early stages and, while it does compile and even render simple web pages, is still largely non-functional. Anyone interested is highly encouraged to explore the codebase and hack on it though.
 
 ## Building and Running
 
