@@ -173,23 +173,19 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     strcat(styleSheet->name, "default.style");
 
     if (getenv("HOME")) {
-        char name[256];
-        strcpy(name, getenv("HOME"));
-        strcat(name, "/WWW/default.style");
-        StrAllocCopy(styleSheet->name, name);
-        stream = NXOpenFile(name, NX_READONLY);
+        NSString *name = [NSString stringWithFormat:@"%s/WWW/default.style", getenv("HOME")];
+        StrAllocCopy(styleSheet->name, name.UTF8String);
+        stream = NXOpenFile(name.UTF8String, NX_READONLY);
     } else
         stream = 0;
 
     if (!stream) {
-        char name[256];
-        strcpy(name, appDirectory.UTF8String);
-        strcat(name, "default.style");
+        NSString *name = [NSString stringWithFormat:@"%@%@", appDirectory, @"default.style"];
         if (TRACE)
             NSLog(@"Couldn't open $(HOME)/WWW/default.style");
-        stream = NXOpenFile(name, NX_READONLY);
+        stream = NXOpenFile(name.UTF8String, NX_READONLY);
         if (!stream)
-            NSLog(@"Couldn't open %s, errno=%i", name, errno);
+            NSLog(@"Couldn't open %@, errno=%i", name, errno);
     }
 
     if (stream) {
