@@ -1151,9 +1151,11 @@ void output_string(NSString *s) {
         return;
     }
     
-    NSUInteger originalEnd = write_storage.length - 1;
-    [write_storage.mutableString appendString:s];
-    remove_dummy_character_if_needed(originalEnd);
+    if (s.length > 0) {
+        NSUInteger originalEnd = write_storage.length - 1;
+        [write_storage.mutableString appendString:s];
+        remove_dummy_character_if_needed(originalEnd);
+    }
 }
 
 //  Appends the given character.
