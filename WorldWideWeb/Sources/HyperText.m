@@ -654,18 +654,18 @@ static float page_width(void) {
 
     {
         while (runRange.location > 0) {
-            Anchor *runAnchor = runs[runRange.location].anchor;
+            Anchor *runAnchor = runs[runRange.location - 1].anchor;
             if (runAnchor == a) {
                 runRange.location--;
                 runRange.length++;
-            }
+            } else break;
         }
 
         while (runRange.location + runRange.length < runs.count) {
             Anchor *runAnchor = runs[runRange.location + runRange.length].anchor;
             if (runAnchor == a) {
                 runRange.length++;
-            }
+            } else break;
         }
 
         [self setSelectedRange:[self charRangeForRunRange:runRange]];
