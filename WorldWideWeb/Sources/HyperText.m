@@ -1145,6 +1145,12 @@ void remove_dummy_character_if_needed(NSUInteger position) {
 
 //  Appends the given NSString.
 void output_string(NSString *s) {
+    // Apparently some of the SGML styles contain text that doesn't convert to valid UTF8, causing nils to end up here. We should probably debug and fix these cases on an individual basis, but to avoid having them crash the application and to make debuggability easier, we'll just catch them and skip them here for now.
+    if (s == nil) {
+        NSLog(@"Warning: Cannot append nil to string in HyperText!");
+        return;
+    }
+    
     NSUInteger originalEnd = write_storage.length - 1;
     [write_storage.mutableString appendString:s];
     remove_dummy_character_if_needed(originalEnd);
