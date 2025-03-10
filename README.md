@@ -2,7 +2,14 @@
 
 An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wiki/WorldWideWeb) web browser from the early 1990s.
 
+<div align="center">
 <img width="128" src="WorldWideWeb/Resources/Assets.xcassets/AppIcon.appiconset/256x256.png">
+
+| macOS | NeXTStep |
+| ----- | ---- |
+| <img alt="WorldWideWeb on macOS" src="Screenshots/worldwideweb-macos.png"> | <img alt="WorldWideWeb on NeXTStep" src="Screenshots/worldwideweb-nextstep.png"> |
+
+</div>
 
 > [!IMPORTANT]
 > This project is still in its early stages and, while it compiles, is still largely non-functional. Anyone interested is highly encouraged to explore the codebase and hack on it though.
