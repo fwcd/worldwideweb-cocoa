@@ -244,7 +244,8 @@ static float page_width(void) {
     //	it to fit.
 
     if (!scroll_X) {
-        [self setFrameSize:NSMakeSize(size.width, maxY)];
+        // TODO: In the original source the height is maxY here, but that seems to be a very, very large constant which AppKit doesn't like, so we'll just keep the current frame height here.
+        self.frameSize = NSMakeSize(size.width, self.frame.size.height);
         // TODO: Do we need this?
         // [self calcLine];
         [self sizeToFit]; // Algorithm found by trial and error.
