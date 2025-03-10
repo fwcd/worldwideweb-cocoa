@@ -229,7 +229,7 @@ PRIVATE void get_host_details()
         return;                    /* Already done */
     gethostname(name, namelength); /* Without domain */
     CTRACE(tfp, "TCP: Local host name is %s\n", name);
-    phost = gethostbyname(name); /* See netdb.h */
+    phost = gethostbyname("localhost"); /* See netdb.h */
     if (!phost) {
         if (TRACE)
             printf("TCP: Can't find my own internet node address for `%s'!!\n", name);
