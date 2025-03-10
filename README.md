@@ -7,6 +7,12 @@ An experimental Cocoa port of Tim Berners-Lee's original [WorldWideWeb](https://
 > [!IMPORTANT]
 > This project is still in its early stages and, while it compiles, is still largely non-functional. Anyone interested is highly encouraged to explore the codebase and hack on it though.
 
+## Building and Running
+
+Open [`WorldWideWeb.xcodeproj`](WorldWideWeb.xcodeproj) in Xcode, then build and run the WorldWideWeb target.
+
+The easiest way to test the browser on a real page is to open one of the HTML files from this repo, e.g. [`Documentation/SourceFiles.html`](Documentation/SourceFiles.html), since that will ensure that the browser can parse the page fully. Opening a file can be done from the menu bar (`Document` > `Open file...`) or by pressing Cmd + O.
+
 ## Background
 
 This port is mainly motivated by academic curiosity, specifically learning about the implementation of the first web browser (how HTML rendering works etc.) and the history of the NeXTStep API. The goal is to eventually have a working Cocoa application that stays faithful to the original code and design while adopting modern conventions where they make sense[^1]. This is not a small goal and may even be infeasible given the complexity of the project and potential need to replace or reimplement removed APIs.
