@@ -117,7 +117,7 @@ static SGML_style Glossary = /* Large hanging indent with tab */
     {"\n<DL>\n<DT>", "\n<DT>", "\n<DD>", "\n</DL>\n", "", "", "", 0, 1};
 
 static SGML_style listStyle = /* Hanging indent with tab */
-    {"\n<UL>\n<LI>", "\n<LI>", "\t", "\n</UL>", "\267\t", "\267\t", "", 0, 1, 0};
+    {"\n<UL>\n<LI>", "\n<LI>", "\t", "\n</UL>", "\xe2\x80\xa2\t", "\xe2\x80\xa2\t", "", 0, 1, 0};
 
 static SGML_style addressStyle = {"\n<ADDRESS>", "<P>", "\t", "\n</ADDRESS>", "", "", "", 0, 1, 0};
 
