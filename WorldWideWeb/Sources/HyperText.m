@@ -402,7 +402,7 @@ static float page_width(void) {
         }
         if (chars + run.length >= selection.location + selection.length) {
             // Found run containing selection end
-            NSRange runRange = NSMakeRange(startRunIndex, i - startRunIndex);
+            NSRange runRange = NSMakeRange(startRunIndex, i - startRunIndex + 1);
             return runRange;
         }
         chars += run.length;
