@@ -97,6 +97,6 @@ extern void write_rtf_header(NXStream *rtfStream);
 //	Window delegate methods:
 
 - (void)windowDidBecomeMain:(NSNotification *)notification;
-- (void)windowWillClose:(NSNotification *)notification;
+- (BOOL)windowShouldClose:(NSNotification *)notification;
 
 @end

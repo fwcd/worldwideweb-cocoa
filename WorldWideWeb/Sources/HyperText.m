@@ -1035,14 +1035,13 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
 
 //	Prevent closure of edited window without save
 //
-- (void)windowWillClose:(NSNotification *)notification {
-    if (![self.window isDocumentEdited])
-        return;
+- (BOOL)windowShouldClose:(NSNotification *)notification {
+    if (![self.window isDocumentEdited]) return true;
     NSInteger choice =
         NSRunAlertPanel(@"Close", @"Save changes to `%@'?", @"Yes", @"No", @"Don't close", [self.window title]);
-    if (choice == NSAlertAlternateReturn || choice == NSAlertOtherReturn)
-        return;
-    [server saveNode:self];
+    if (choice == NSAlertAlternateReturn) return true;
+    if (choice == NSAlertOtherReturn) return false;
+    return [server saveNode:self] != nil;
 }
 
 //	Change configuration as window becomes key window
