@@ -536,7 +536,7 @@ class XIBConverter:
             visibleAtLaunch=False,
         )
         xib_window.add('point', key='canvasLocation', x=20.0, y=canvas_location_y)
-        xib_window.add('windowStyleMask', key='styleMask', titled=True, utility=True, closable=True)
+        xib_window.add('windowStyleMask', key='styleMask', titled=True, utility=title != 'Info', closable=True)
         xib_window.add('rect', key='contentRect', **rect)
         self.object_to_xib_node[obj] = xib_window
 
