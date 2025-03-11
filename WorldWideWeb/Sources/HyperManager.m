@@ -411,12 +411,7 @@ PRIVATE FileAccess *fileAccess = nil;
 //	-----------------------------------------
 
 - (IBAction)print:sender {
-    // TODO: Figure out how we could implement this
-    // [THIS_TEXT printPSCode:sender];
-    NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"PostScript printing is not supported!";
-    [alert addButtonWithTitle:@"Ok"];
-    [alert runModal];
+    [THIS_TEXT print:sender];
 }
 
 //	Run the page layout panel
