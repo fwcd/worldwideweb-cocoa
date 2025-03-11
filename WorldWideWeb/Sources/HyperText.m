@@ -1039,7 +1039,7 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
     if (![self.window isDocumentEdited])
         return;
     NSInteger choice =
-        NSRunAlertPanel(@"Close", @"Save changes to `%s'?", @"Yes", @"No", @"Don't close", [self.window title]);
+        NSRunAlertPanel(@"Close", @"Save changes to `%@'?", @"Yes", @"No", @"Don't close", [self.window title]);
     if (choice == NSAlertAlternateReturn || choice == NSAlertOtherReturn)
         return;
     [server saveNode:self];
