@@ -36,7 +36,7 @@ char *arg;
 #endif
 {
     int s;             /* Socket number for returned data */
-    char command[257]; /* The whole command */
+    char command[1024]; /* The whole command */
     int status;        /* tcp return */
 
     struct sockaddr_in soc_address; /* Binary network address */
@@ -68,10 +68,20 @@ char *arg;
     strcpy(command, "GET ");
     {
         char *p1 = HTParse(arg, "", PARSE_PATH | PARSE_PUNCTUATION);
+        if (*p1) {
+            strcat(command, p1);
+        } else {
+            strcat(command, "/");
+        }
+        free(p1);
+    }
+    strcat(command, " HTTP/1.1\r\nHost: ");
+    {
+        char *p1 = HTParse(arg, "", PARSE_HOST);
         strcat(command, p1);
         free(p1);
     }
-    strcat(command, "\n");
+    strcat(command, "\r\n\r\n");
 
     /*	Now, let's get a socket set up from the server for the sgml data:
 */
