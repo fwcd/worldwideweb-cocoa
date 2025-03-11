@@ -525,9 +525,14 @@ class XIBConverter:
         canvas_location_y = self.canvas_location_y
         self.canvas_location_y += rect['height'] / 2
 
-        xib_window = self.xib.objects.add_object('window', title=title, titlebarAppearsTransparent=True)
+        xib_window = self.xib.objects.add_object('window',
+            title=title,
+            titlebarAppearsTransparent=True,
+            customClass='NSPanel',
+            hidesOnDeactivate=True,
+        )
         xib_window.add('point', key='canvasLocation', x=20.0, y=canvas_location_y)
-        xib_window.add('windowStyleMask', key='styleMask', titled=True, closable=True)
+        xib_window.add('windowStyleMask', key='styleMask', titled=True, utility=True, closable=True)
         xib_window.add('rect', key='contentRect', **rect)
         self.object_to_xib_node[obj] = xib_window
 
