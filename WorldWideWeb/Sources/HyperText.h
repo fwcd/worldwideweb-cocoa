@@ -98,5 +98,6 @@ extern void write_rtf_header(NXStream *rtfStream);
 
 - (void)windowDidBecomeMain:(NSNotification *)notification;
 - (BOOL)windowShouldClose:(NSNotification *)notification;
+- (void)windowWillClose:(NSNotification *)notification;
 
 @end

@@ -108,13 +108,6 @@ static float page_width(void) {
 //			Instance Methods
 //			----------------
 
-//	Free the hypertext.
-
-- (void)dealloc {
-    slot[slotNumber] = 0;  //	Allow slot to be reused
-    nodeAnchor.node = nil; // 	Invalidate the node
-}
-
 //	Read and set format
 
 - (int)format {
@@ -340,8 +333,10 @@ static float page_width(void) {
                                                    styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable
                                                      backing:NSBackingStoreBuffered
                                                        defer:NO]; // display now
-    window.delegate = self;                                       // Get closure warning
-    [window makeKeyAndOrderFront:NSApp];                           // Make it visible
+    window.delegate = self;              // Get closure warning
+    window.releasedWhenClosed = NO;      // Needed to avoid crashing the app on close, see https://stackoverflow.com/a/78684365
+    [window makeKeyAndOrderFront:self]; // Make it visible
+    
     
     scrollview = [[NSScrollView alloc] initWithFrame:scroll_frame];
     scrollview.hasVerticalScroller = YES;
@@ -1042,6 +1037,12 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
     if (choice == NSAlertAlternateReturn) return true;
     if (choice == NSAlertOtherReturn) return false;
     return [server saveNode:self] != nil;
+}
+
+- (void)windowWillClose:(NSNotification *)notification {
+    NSLog(@"Closing window");
+    slot[slotNumber] = 0;  //    Allow slot to be reused
+    nodeAnchor.node = nil; //    Invalidate the node
 }
 
 //	Change configuration as window becomes key window
