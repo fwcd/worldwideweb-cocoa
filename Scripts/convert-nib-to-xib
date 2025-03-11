@@ -185,6 +185,14 @@ class XIBConverter:
                 name = 'return'
                 width = 17
                 height = 14
+            case 'NXradio':
+                name = 'circle'
+                width = 16
+                height = 15
+            case 'NXradioH':
+                name = 'button.programmable'
+                width = 16
+                height = 15
             case _:
                 print(f'Warning: Image name {nx_name} could not be converted')
                 return None
