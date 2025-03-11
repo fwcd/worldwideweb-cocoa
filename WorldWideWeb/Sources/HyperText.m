@@ -337,11 +337,11 @@ static float page_width(void) {
 
 #define NX_ALLBUTTONS 7 // Fudge -- the followin methos is obsolete in 3.0:
     NSWindow *window = [[NSWindow alloc] initWithContentRect:scroll_frame
-                                                   styleMask:NSWindowStyleMaskTitled
+                                                   styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable
                                                      backing:NSBackingStoreBuffered
                                                        defer:NO]; // display now
     window.delegate = self;                                       // Get closure warning
-    [window makeKeyAndOrderFront:self];                           // Make it visible
+    [window makeKeyAndOrderFront:NSApp];                           // Make it visible
     
     scrollview = [[NSScrollView alloc] initWithFrame:scroll_frame];
     scrollview.hasVerticalScroller = YES;
