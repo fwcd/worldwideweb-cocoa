@@ -52,7 +52,7 @@
     s = HTTP_Get(arg);
     if (s < 0)
         return nil; /* Failed .. error will be reported by HTTP_get */
-    sgmlStream = NXOpenFile(s, NX_READONLY);
+    sgmlStream = NXOpenFileDescriptor(s, NX_READONLY);
 
     if (diagnostic == 2) { /* Can read the SGML straight */
         [HT readText:sgmlStream];
