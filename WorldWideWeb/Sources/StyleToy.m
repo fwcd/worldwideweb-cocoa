@@ -55,7 +55,9 @@ static NSSavePanel *save_panel; /* Keep a Save panel too */
     else
         [(NSFormCell *)[self.ParameterForm cellAtIndex:SGMLTAG_FIELD] setStringValue:@""];
 
-    [(NSFormCell *)[self.ParameterForm cellAtIndex:FONT_NAME_FIELD] setStringValue:[style->font fontName]];
+    if ([style->font fontName] != nil) {
+        [(NSFormCell *)[self.ParameterForm cellAtIndex:FONT_NAME_FIELD] setStringValue:[style->font fontName]];
+    }
 
     [(NSFormCell *)[self.ParameterForm cellAtIndex:FONT_SIZE_FIELD] setFloatValue:style->fontSize];
 
