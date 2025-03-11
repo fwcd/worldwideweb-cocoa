@@ -1190,8 +1190,10 @@ void set_style(HTStyle *style) {
 
 void finish_output(void) {
     remove_dummy_character_if_needed(write_storage.length - 1);
-
+    
     [HT adjustWindow]; /* Adjustscrollers and window size */
+    HT.needsDisplay = YES;
+    HT.needsLayout = YES;
 }
 
 //	Loading plain text
