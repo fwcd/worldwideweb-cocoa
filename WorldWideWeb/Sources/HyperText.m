@@ -333,8 +333,8 @@ static float page_width(void) {
                                                    styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable
                                                      backing:NSBackingStoreBuffered
                                                        defer:NO]; // display now
-    window.delegate = self;              // Get closure warning
-    window.releasedWhenClosed = NO;      // Needed to avoid crashing the app on close, see https://stackoverflow.com/a/78684365
+    window.delegate = self;             // Get closure warning
+    window.releasedWhenClosed = NO;     // Needed to avoid crashing the app on close, see https://stackoverflow.com/a/78684365
     [window makeKeyAndOrderFront:self]; // Make it visible
     
     

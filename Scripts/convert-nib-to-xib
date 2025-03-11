@@ -404,6 +404,32 @@ class XIBConverter:
                 assert isinstance(cell, typedstream.GenericArchivedObject), type(cell)
                 self.traverse_form_cell(cell, xib_form.cells.column)
 
+    def traverse_matrix_cell(self, obj: typedstream.GenericArchivedObject, xib_cells: XIBNode):
+        '''Traverses the given NIB matrix cell and adds it to the XIB.'''
+
+        # TODO: Do we need to support other types of matrix cells?
+        self.traverse_button_cell(obj, xib_cells)
+
+    def traverse_matrix(self, obj: typedstream.GenericArchivedObject, xib_parent: XIBNode, **kwargs):
+        '''Traverses the given NIB matrix and adds it to the XIB.'''
+        
+        assert obj.clazz.name == b'Matrix', obj.clazz.name
+
+        frame = self.convert_rect(obj.contents[2])
+        cells = obj.contents[12].values[0]
+        cell_size = self.convert_size(obj.contents[13])
+
+        xib_matrix = xib_parent.add_object('matrix', **kwargs)
+        xib_matrix.add('rect', key='frame', **frame)
+        xib_matrix.add('size', key='cellSize', **cell_size)
+        self.object_to_xib_node[obj] = xib_matrix
+
+        if cells is not None:
+            assert isinstance(cells, typedstream.types.nextstep.List)
+            for cell in cells.elements:
+                assert isinstance(cell, typedstream.GenericArchivedObject), type(cell)
+                self.traverse_matrix_cell(cell, xib_matrix.cells.column)
+
     def traverse_clip_view(self, obj: typedstream.GenericArchivedObject, xib_scroll_view: XIBNode, **kwargs):
         '''Traverses the given NIB clip view and adds it to the XIB.'''
         
@@ -470,6 +496,8 @@ class XIBConverter:
                 self.traverse_form(obj, xib_parent, **kwargs)
             case 'ScrollView':
                 self.traverse_scroll_view(obj, xib_parent, **kwargs)
+            case 'Matrix':
+                self.traverse_matrix(obj, xib_parent, **kwargs)
             case class_name:
                 print(f'Warning: Skipping unrecognized view class name {class_name}')
 

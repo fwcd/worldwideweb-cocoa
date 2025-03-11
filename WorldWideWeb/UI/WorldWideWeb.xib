@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="116" id="224"/>
+                <outlet property="delegate" destination="117" id="225"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -25,347 +25,347 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="6"/>
-                            <menuItem title="Print..." keyEquivalent="p" id="206">
+                            <menuItem title="Print..." keyEquivalent="p" id="207">
                                 <connections>
-                                    <action selector="print:" target="116" id="267"/>
+                                    <action selector="print:" target="117" id="268"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Page layout..." id="207">
+                            <menuItem title="Page layout..." id="208">
                                 <connections>
-                                    <action selector="runPagelayout:" target="116" id="268"/>
+                                    <action selector="runPagelayout:" target="117" id="269"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Services" id="213">
-                                <menu key="submenu" title="Services" id="214"/>
+                            <menuItem title="Services" id="214">
+                                <menu key="submenu" title="Services" id="215"/>
                             </menuItem>
-                            <menuItem title="Hide" keyEquivalent="h" id="215">
+                            <menuItem title="Hide" keyEquivalent="h" id="216">
                                 <connections>
-                                    <action selector="hide:" target="-2" id="217"/>
+                                    <action selector="hide:" target="-2" id="218"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Quit" keyEquivalent="q" id="216">
+                            <menuItem title="Quit" keyEquivalent="q" id="217">
                                 <connections>
-                                    <action selector="terminate:" target="-2" id="218"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Info" id="118">
-                    <menu key="submenu" title="Info" id="119">
-                        <items>
-                            <menuItem title="Panel..." id="120">
-                                <connections>
-                                    <action selector="makeKeyAndOrderFront:" target="30" id="289"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Help..." id="121">
-                                <connections>
-                                    <action selector="help:" target="116" id="288"/>
+                                    <action selector="terminate:" target="-2" id="219"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Navigate" id="122">
-                    <menu key="submenu" title="Navigate" id="123">
+                <menuItem title="Info" id="119">
+                    <menu key="submenu" title="Info" id="120">
                         <items>
-                            <menuItem title="Back" keyEquivalent="^" id="124">
+                            <menuItem title="Panel..." id="121">
                                 <connections>
-                                    <action selector="back:" target="116" id="248"/>
+                                    <action selector="makeKeyAndOrderFront:" target="31" id="290"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Next" keyEquivalent="&gt;" id="125">
+                            <menuItem title="Help..." id="122">
                                 <connections>
-                                    <action selector="next:" target="116" id="249"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Previous" keyEquivalent="&lt;" id="126">
-                                <connections>
-                                    <action selector="previous:" target="116" id="250"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Home" keyEquivalent="H" id="127">
-                                <connections>
-                                    <action selector="goHome:" target="116" id="251"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Panel..." id="128">
-                                <connections>
-                                    <action selector="makeKeyAndOrderFront:" target="69" id="227"/>
+                                    <action selector="help:" target="117" id="289"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Document" id="129">
-                    <menu key="submenu" title="Document" id="130">
+                <menuItem title="Navigate" id="123">
+                    <menu key="submenu" title="Navigate" id="124">
                         <items>
-                            <menuItem title="Open file..." keyEquivalent="o" id="131">
+                            <menuItem title="Back" keyEquivalent="^" id="125">
                                 <connections>
-                                    <action selector="open:" target="117" id="252"/>
+                                    <action selector="back:" target="117" id="249"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open given document address" keyEquivalent="O" id="132">
+                            <menuItem title="Next" keyEquivalent="&gt;" id="126">
                                 <connections>
-                                    <action selector="makeKeyAndOrderFront:" target="91" id="307"/>
+                                    <action selector="next:" target="117" id="250"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="New file..." keyEquivalent="n" id="133">
+                            <menuItem title="Previous" keyEquivalent="&lt;" id="127">
                                 <connections>
-                                    <action selector="makeNew:" target="117" id="253"/>
+                                    <action selector="previous:" target="117" id="251"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save" keyEquivalent="s" id="134">
+                            <menuItem title="Home" keyEquivalent="H" id="128">
                                 <connections>
-                                    <action selector="save:" target="116" id="255"/>
+                                    <action selector="goHome:" target="117" id="252"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save all edited windows" keyEquivalent="S" id="135">
+                            <menuItem title="Panel..." id="129">
                                 <connections>
-                                    <action selector="saveAll:" target="116" id="256"/>
+                                    <action selector="makeKeyAndOrderFront:" target="70" id="228"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save a copy in" id="136">
-                                <menu key="submenu" title="Save a copy in" id="137">
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Document" id="130">
+                    <menu key="submenu" title="Document" id="131">
+                        <items>
+                            <menuItem title="Open file..." keyEquivalent="o" id="132">
+                                <connections>
+                                    <action selector="open:" target="118" id="253"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open given document address" keyEquivalent="O" id="133">
+                                <connections>
+                                    <action selector="makeKeyAndOrderFront:" target="92" id="308"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="New file..." keyEquivalent="n" id="134">
+                                <connections>
+                                    <action selector="makeNew:" target="118" id="254"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Save" keyEquivalent="s" id="135">
+                                <connections>
+                                    <action selector="save:" target="117" id="256"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Save all edited windows" keyEquivalent="S" id="136">
+                                <connections>
+                                    <action selector="saveAll:" target="117" id="257"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Save a copy in" id="137">
+                                <menu key="submenu" title="Save a copy in" id="138">
                                     <items>
-                                        <menuItem title="HyperText Markup Language..." id="138">
+                                        <menuItem title="HyperText Markup Language..." id="139">
                                             <connections>
-                                                <action selector="saveAs:" target="117" id="257"/>
+                                                <action selector="saveAs:" target="118" id="258"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Rich Text Format ..." id="139">
+                                        <menuItem title="Rich Text Format ..." id="140">
                                             <connections>
-                                                <action selector="saveAsRichText:" target="117" id="258"/>
+                                                <action selector="saveAsRichText:" target="118" id="259"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Plain Text..." id="140">
+                                        <menuItem title="Plain Text..." id="141">
                                             <connections>
-                                                <action selector="saveAsPlainText:" target="117" id="259"/>
+                                                <action selector="saveAsPlainText:" target="118" id="260"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="PostScript..." id="141">
+                                        <menuItem title="PostScript..." id="142">
                                             <connections>
-                                                <action selector="print:" target="116" id="284"/>
+                                                <action selector="print:" target="117" id="285"/>
                                             </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Inspect ..." keyEquivalent="3" id="142">
+                            <menuItem title="Inspect ..." keyEquivalent="3" id="143">
                                 <connections>
-                                    <action selector="makeKeyAndOrderFront:" target="91" id="226"/>
+                                    <action selector="makeKeyAndOrderFront:" target="92" id="227"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="(Diagnostics)" id="143">
-                                <menu key="submenu" title="(Diagnostics)" id="144">
+                            <menuItem title="(Diagnostics)" id="144">
+                                <menu key="submenu" title="(Diagnostics)" id="145">
                                     <items>
-                                        <menuItem title="Panel" id="145"/>
-                                        <menuItem title="Open HTML file showing SGML source" id="146">
+                                        <menuItem title="Panel" id="146"/>
+                                        <menuItem title="Open HTML file showing SGML source" id="147">
                                             <connections>
-                                                <action selector="openSGML:" target="117" id="260"/>
+                                                <action selector="openSGML:" target="118" id="261"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open HTML file showing RTF" id="147">
+                                        <menuItem title="Open HTML file showing RTF" id="148">
                                             <connections>
-                                                <action selector="openRTF:" target="117" id="261"/>
+                                                <action selector="openRTF:" target="118" id="262"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Dump text format to standard out" keyEquivalent="?" id="148">
+                                        <menuItem title="Dump text format to standard out" keyEquivalent="?" id="149">
                                             <connections>
-                                                <action selector="dump:" target="114" id="262"/>
+                                                <action selector="dump:" target="115" id="263"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Turn console trace on" keyEquivalent="+" id="149">
+                                        <menuItem title="Turn console trace on" keyEquivalent="+" id="150">
                                             <connections>
-                                                <action selector="traceOn:" target="116" id="263"/>
+                                                <action selector="traceOn:" target="117" id="264"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Turn console trace off" keyEquivalent="-" id="150">
+                                        <menuItem title="Turn console trace off" keyEquivalent="-" id="151">
                                             <connections>
-                                                <action selector="traceOff:" target="116" id="264"/>
+                                                <action selector="traceOff:" target="117" id="265"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Item" id="151">
+                                        <menuItem title="Item" id="152">
                                             <connections>
-                                                <action selector="makeKeyAndOrderFront:" target="30" id="287"/>
+                                                <action selector="makeKeyAndOrderFront:" target="31" id="288"/>
                                             </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Miniaturize" id="152"/>
-                            <menuItem title="Open master template document" id="153">
+                            <menuItem title="Miniaturize" id="153"/>
+                            <menuItem title="Open master template document" id="154">
                                 <connections>
-                                    <action selector="goToBlank:" target="116" id="265"/>
+                                    <action selector="goToBlank:" target="117" id="266"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Close all other windows" keyEquivalent="W" id="154">
+                            <menuItem title="Close all other windows" keyEquivalent="W" id="155">
                                 <connections>
-                                    <action selector="closeOthers:" target="116" id="266"/>
+                                    <action selector="closeOthers:" target="117" id="267"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Close" keyEquivalent="w" id="155"/>
+                            <menuItem title="Close" keyEquivalent="w" id="156"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Edit" id="156">
-                    <menu key="submenu" title="Edit" id="157">
+                <menuItem title="Edit" id="157">
+                    <menu key="submenu" title="Edit" id="158">
                         <items>
-                            <menuItem title="Cut" keyEquivalent="x" id="158"/>
-                            <menuItem title="Copy" keyEquivalent="c" id="159"/>
-                            <menuItem title="Paste" keyEquivalent="v" id="160"/>
-                            <menuItem title="Paste As" id="161">
-                                <menu key="submenu" title="Paste As" id="162"/>
+                            <menuItem title="Cut" keyEquivalent="x" id="159"/>
+                            <menuItem title="Copy" keyEquivalent="c" id="160"/>
+                            <menuItem title="Paste" keyEquivalent="v" id="161"/>
+                            <menuItem title="Paste As" id="162">
+                                <menu key="submenu" title="Paste As" id="163"/>
                             </menuItem>
-                            <menuItem title="Delete" id="163"/>
-                            <menuItem title="Undo" keyEquivalent="z" id="164"/>
-                            <menuItem title="Find" id="165">
-                                <menu key="submenu" title="Find" id="166">
+                            <menuItem title="Delete" id="164"/>
+                            <menuItem title="Undo" keyEquivalent="z" id="165"/>
+                            <menuItem title="Find" id="166">
+                                <menu key="submenu" title="Find" id="167">
                                     <items>
-                                        <menuItem title="Find Panel..." keyEquivalent="f" id="167"/>
-                                        <menuItem title="Find Next" keyEquivalent="g" id="168"/>
-                                        <menuItem title="Find Previous" keyEquivalent="d" id="169"/>
-                                        <menuItem title="Enter Selection" keyEquivalent="e" id="170"/>
-                                        <menuItem title="Jump To Selection" keyEquivalent="j" id="171"/>
+                                        <menuItem title="Find Panel..." keyEquivalent="f" id="168"/>
+                                        <menuItem title="Find Next" keyEquivalent="g" id="169"/>
+                                        <menuItem title="Find Previous" keyEquivalent="d" id="170"/>
+                                        <menuItem title="Enter Selection" keyEquivalent="e" id="171"/>
+                                        <menuItem title="Jump To Selection" keyEquivalent="j" id="172"/>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Spelling..." id="172"/>
-                            <menuItem title="Check Spelling" keyEquivalent=";" id="173"/>
-                            <menuItem title="Select All" keyEquivalent="a" id="174"/>
+                            <menuItem title="Spelling..." id="173"/>
+                            <menuItem title="Check Spelling" keyEquivalent=";" id="174"/>
+                            <menuItem title="Select All" keyEquivalent="a" id="175"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Find" id="175">
-                    <menu key="submenu" title="Find" id="176">
+                <menuItem title="Find" id="176">
+                    <menu key="submenu" title="Find" id="177">
                         <items>
-                            <menuItem title="Find Panel..." keyEquivalent="f" id="177"/>
-                            <menuItem title="Find Next" keyEquivalent="g" id="178"/>
-                            <menuItem title="Find Previous" keyEquivalent="d" id="179"/>
-                            <menuItem title="Enter Selection" keyEquivalent="e" id="180"/>
-                            <menuItem title="Jump to Selection" keyEquivalent="j" id="181"/>
+                            <menuItem title="Find Panel..." keyEquivalent="f" id="178"/>
+                            <menuItem title="Find Next" keyEquivalent="g" id="179"/>
+                            <menuItem title="Find Previous" keyEquivalent="d" id="180"/>
+                            <menuItem title="Enter Selection" keyEquivalent="e" id="181"/>
+                            <menuItem title="Jump to Selection" keyEquivalent="j" id="182"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Links" id="182">
-                    <menu key="submenu" title="Links" id="183">
+                <menuItem title="Links" id="183">
+                    <menu key="submenu" title="Links" id="184">
                         <items>
-                            <menuItem title="Mark all " keyEquivalent="A" id="184">
+                            <menuItem title="Mark all " keyEquivalent="A" id="185">
                                 <connections>
-                                    <action selector="markAll:" target="114" id="243"/>
+                                    <action selector="markAll:" target="115" id="244"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Mark selection " keyEquivalent="M" id="185">
+                            <menuItem title="Mark selection " keyEquivalent="M" id="186">
                                 <connections>
-                                    <action selector="markSelected:" target="114" id="244"/>
+                                    <action selector="markSelected:" target="115" id="245"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to marked" keyEquivalent="L" id="186">
+                            <menuItem title="Link to marked" keyEquivalent="L" id="187">
                                 <connections>
-                                    <action selector="linkToMark:" target="114" id="245"/>
+                                    <action selector="linkToMark:" target="115" id="246"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to file..." id="187">
+                            <menuItem title="Link to file..." id="188">
                                 <connections>
-                                    <action selector="linkToFile:" target="117" id="283"/>
+                                    <action selector="linkToFile:" target="118" id="284"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Link to New" keyEquivalent="N" id="188">
+                            <menuItem title="Link to New" keyEquivalent="N" id="189">
                                 <connections>
-                                    <action selector="linkToNew:" target="117" id="254"/>
+                                    <action selector="linkToNew:" target="118" id="255"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Follow link" keyEquivalent="j" id="189">
+                            <menuItem title="Follow link" keyEquivalent="j" id="190">
                                 <connections>
-                                    <action selector="followLink:" target="114" id="246"/>
+                                    <action selector="followLink:" target="115" id="247"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Unlink" keyEquivalent="Z" id="190">
+                            <menuItem title="Unlink" keyEquivalent="Z" id="191">
                                 <connections>
-                                    <action selector="unlink:" target="114" id="247"/>
+                                    <action selector="unlink:" target="115" id="248"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Help" id="191">
+                            <menuItem title="Help" id="192">
                                 <connections>
-                                    <action selector="makeKeyAndOrderFront:" target="86" id="222"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Style" id="192">
-                    <menu key="submenu" title="Style" id="193">
-                        <items>
-                            <menuItem title="Copy style" keyEquivalent="1" id="194">
-                                <connections>
-                                    <action selector="PickButton:" target="23" id="269"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Apply style" keyEquivalent="2" id="195">
-                                <connections>
-                                    <action selector="ApplyButton:" target="23" id="270"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Glossary" id="196">
-                                <connections>
-                                    <action selector="glossaryButton:" target="23" id="314"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="List" id="197">
-                                <connections>
-                                    <action selector="listButton:" target="23" id="313"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Example" id="198">
-                                <connections>
-                                    <action selector="exampleButton:" target="23" id="311"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Address" id="199">
-                                <connections>
-                                    <action selector="addressButton:" target="23" id="312"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Normal" id="200">
-                                <connections>
-                                    <action selector="normalButton:" target="23" id="310"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Heading 1" keyEquivalent="!" id="201">
-                                <connections>
-                                    <action selector="heading1Button:" target="23" id="315"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Heading 2" keyEquivalent="@" id="202">
-                                <connections>
-                                    <action selector="heading2Button:" target="23" id="316"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Heading 3" keyEquivalent="#" id="203">
-                                <connections>
-                                    <action selector="heading3Button:" target="23" id="317"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Heading 4" keyEquivalent="$" id="204">
-                                <connections>
-                                    <action selector="heading4Button:" target="23" id="318"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Panel..." id="205">
-                                <connections>
-                                    <action selector="makeKeyAndOrderFront:" target="44" id="229"/>
+                                    <action selector="makeKeyAndOrderFront:" target="87" id="223"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Windows" id="208">
-                    <menu key="submenu" title="Windows" id="209">
+                <menuItem title="Style" id="193">
+                    <menu key="submenu" title="Style" id="194">
                         <items>
-                            <menuItem title="Arrange in Front" id="210"/>
-                            <menuItem title="Miniaturize Window" keyEquivalent="m" id="211"/>
-                            <menuItem title="Close Window" keyEquivalent="w" id="212"/>
+                            <menuItem title="Copy style" keyEquivalent="1" id="195">
+                                <connections>
+                                    <action selector="PickButton:" target="24" id="270"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Apply style" keyEquivalent="2" id="196">
+                                <connections>
+                                    <action selector="ApplyButton:" target="24" id="271"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Glossary" id="197">
+                                <connections>
+                                    <action selector="glossaryButton:" target="24" id="315"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="List" id="198">
+                                <connections>
+                                    <action selector="listButton:" target="24" id="314"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Example" id="199">
+                                <connections>
+                                    <action selector="exampleButton:" target="24" id="312"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Address" id="200">
+                                <connections>
+                                    <action selector="addressButton:" target="24" id="313"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Normal" id="201">
+                                <connections>
+                                    <action selector="normalButton:" target="24" id="311"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Heading 1" keyEquivalent="!" id="202">
+                                <connections>
+                                    <action selector="heading1Button:" target="24" id="316"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Heading 2" keyEquivalent="@" id="203">
+                                <connections>
+                                    <action selector="heading2Button:" target="24" id="317"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Heading 3" keyEquivalent="#" id="204">
+                                <connections>
+                                    <action selector="heading3Button:" target="24" id="318"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Heading 4" keyEquivalent="$" id="205">
+                                <connections>
+                                    <action selector="heading4Button:" target="24" id="319"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Panel..." id="206">
+                                <connections>
+                                    <action selector="makeKeyAndOrderFront:" target="45" id="230"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Windows" id="209">
+                    <menu key="submenu" title="Windows" id="210">
+                        <items>
+                            <menuItem title="Arrange in Front" id="211"/>
+                            <menuItem title="Miniaturize Window" keyEquivalent="m" id="212"/>
+                            <menuItem title="Close Window" keyEquivalent="w" id="213"/>
                         </items>
                     </menu>
                 </menuItem>
@@ -387,10 +387,31 @@
                             <rect key="frame" x="4" y="5" width="194" height="51"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11">
+                                <matrix fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11">
+                                    <rect key="frame" x="109" y="0.0" width="79" height="53"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <size key="cellSize" width="79" height="15"/>
+                                    <cells>
+                                        <column>
+                                            <buttonCell type="square" title="HyperText" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                            </buttonCell>
+                                            <buttonCell type="square" title="Rich Text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                            </buttonCell>
+                                            <buttonCell type="square" title="Plain Text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="12" name="Helvetica"/>
+                                            </buttonCell>
+                                        </column>
+                                    </cells>
+                                </matrix>
+                                <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12">
                                     <rect key="frame" x="0.0" y="16" width="110" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <textFieldCell key="cell" title="Save file as:" id="wWL-p8-VYs">
+                                    <textFieldCell key="cell" title="Save file as:" id="RTU-41-bG2">
                                         <font key="font" size="18" name="Helvetica"/>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -398,35 +419,35 @@
                             </subviews>
                         </view>
                     </box>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="13">
                         <rect key="frame" x="8" y="15" width="213" height="68"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="13">
+                        <view key="contentView" id="14">
                             <rect key="frame" x="4" y="5" width="205" height="48"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14">
+                                <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15">
                                     <rect key="frame" x="0.0" y="3" width="93" height="45"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <size key="cellSize" width="93" height="21"/>
                                     <cells>
                                         <column>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Left:" id="15"/>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Right:" id="16"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Left:" id="16"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Right:" id="17"/>
                                         </column>
                                     </cells>
                                     <connections>
-                                        <outlet property="nextText" destination="17" id="230"/>
+                                        <outlet property="nextText" destination="18" id="231"/>
                                     </connections>
                                 </form>
-                                <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17">
+                                <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18">
                                     <rect key="frame" x="96" y="3" width="103" height="45"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <size key="cellSize" width="103" height="21"/>
                                     <cells>
                                         <column>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Top:" id="18"/>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Bottom:" id="19"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Top:" id="19"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Bottom:" id="20"/>
                                         </column>
                                     </cells>
                                 </form>
@@ -437,18 +458,18 @@
             </view>
             <point key="canvasLocation" x="20" y="383"/>
         </window>
-        <window title="Using the navigation Commands" animationBehavior="default" titlebarAppearsTransparent="YES" id="20">
+        <window title="Using the navigation Commands" animationBehavior="default" titlebarAppearsTransparent="YES" id="21">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="286" y="5" width="376" height="264"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="21">
+            <view key="contentView" id="22">
                 <rect key="frame" x="0.0" y="0.0" width="376" height="264"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="23">
                         <rect key="frame" x="13" y="16" width="347" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="pnS-ty-DHz">
+                        <textFieldCell key="cell" id="clv-uU-Z8c">
                             <font key="font" size="12" name="Helvetica"/>
                             <string key="title">The navigation buttons allow you to navigate through the Hypertext web as a tree. The "Backup" button takes you back the way you came,  to the text which you selected to get to where you are. You can use it repeatedly to retrace your steps back to the first link you followed.
 
@@ -464,31 +485,31 @@ The "Home" button reselects the original page which you get when you started the
             </view>
             <point key="canvasLocation" x="20" y="698"/>
         </window>
-        <customObject id="23" customClass="StyleToy">
+        <customObject id="24" customClass="StyleToy">
             <connections>
-                <outlet property="NameForm" destination="52" id="279"/>
-                <outlet property="ParameterForm" destination="60" id="280"/>
-                <outlet property="StylePanel" destination="44" id="281"/>
-                <outlet property="TabForm" destination="66" id="282"/>
+                <outlet property="NameForm" destination="53" id="280"/>
+                <outlet property="ParameterForm" destination="61" id="281"/>
+                <outlet property="StylePanel" destination="45" id="282"/>
+                <outlet property="TabForm" destination="67" id="283"/>
             </connections>
         </customObject>
-        <customObject id="24" customClass="NewsAccess">
+        <customObject id="25" customClass="NewsAccess">
             <connections>
-                <outlet property="manager" destination="116" id="240"/>
+                <outlet property="manager" destination="117" id="241"/>
             </connections>
         </customObject>
-        <window title="Making a new Document" animationBehavior="default" titlebarAppearsTransparent="YES" id="25">
+        <window title="Making a new Document" animationBehavior="default" titlebarAppearsTransparent="YES" id="26">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="296" y="422" width="376" height="227"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="26">
+            <view key="contentView" id="27">
                 <rect key="frame" x="0.0" y="0.0" width="376" height="227"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28">
                         <rect key="frame" x="23" y="51" width="325" height="165"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="3OY-mf-fAW">
+                        <textFieldCell key="cell" id="cQI-lv-7E9">
                             <font key="font" size="12" name="Helvetica"/>
                             <string key="title">You can just create a new hypertext document with Command/n, but it's better to make a reference to it and link that reference to it as you make it, using Command/N. This ensures that you can always find the document again. 
 
@@ -496,21 +517,21 @@ The "Home" button reselects the original page which you get when you started the
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29">
                         <rect key="frame" x="93" y="13" width="81" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Making links" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="92s-Rg-vkp">
+                        <buttonCell key="cell" type="square" title="Making links" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="70j-K9-MH7">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="makeKeyAndOrderFront:" target="86" id="220"/>
+                            <action selector="makeKeyAndOrderFront:" target="87" id="221"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30">
                         <rect key="frame" x="30" y="20" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="See also:" id="Dxz-Mb-KC6">
+                        <textFieldCell key="cell" title="See also:" id="jkq-2a-tKK">
                             <font key="font" size="12" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -519,83 +540,83 @@ The "Home" button reselects the original page which you get when you started the
             </view>
             <point key="canvasLocation" x="20" y="1043.5"/>
         </window>
-        <window title="Info" animationBehavior="default" titlebarAppearsTransparent="YES" id="30">
+        <window title="Info" animationBehavior="default" titlebarAppearsTransparent="YES" id="31">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="337" y="339" width="472" height="448"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="31">
+            <view key="contentView" id="32">
                 <rect key="frame" x="0.0" y="0.0" width="472" height="448"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33">
                         <rect key="frame" x="122" y="415" width="236" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="HyperMedia Browser/Editor" id="j2y-7P-d4H">
+                        <textFieldCell key="cell" title="HyperMedia Browser/Editor" id="8xY-ZN-iR1">
                             <font key="font" size="18" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34">
                         <rect key="frame" x="379" y="410" width="93" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="60R-eS-v0J">
+                        <textFieldCell key="cell" id="8Bk-fk-QYy">
                             <font key="font" size="10" name="Helvetica"/>
                             <string key="title"> Version 0.15
 Beta only</string>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35">
                         <rect key="frame" x="332" y="349" width="133" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="by Tim Berners-Lee" id="MZK-N2-BP2">
+                        <textFieldCell key="cell" title="by Tim Berners-Lee" id="abD-LC-ILf">
                             <font key="font" size="14" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
                         <rect key="frame" x="10" y="328" width="432" height="13"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Copyright 1990,91, CERN.   Distribution restricted: ask for terms.  TEST VERSION ONLY" id="Fb4-uR-ViM">
+                        <textFieldCell key="cell" title="Copyright 1990,91, CERN.   Distribution restricted: ask for terms.  TEST VERSION ONLY" id="WJa-tI-aM5">
                             <font key="font" size="10" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37">
                         <rect key="frame" x="2" y="343" width="470" height="4"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="37">
+                        <view key="contentView" id="38">
                             <rect key="frame" x="4" y="-3" width="462" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39">
                         <rect key="frame" x="121" y="367" width="208" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="An excercise in global information availability" id="Xp1-Jm-P7G">
+                        <textFieldCell key="cell" title="An excercise in global information availability" id="Wnf-8B-5R0">
                             <font key="font" size="14" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40">
                         <rect key="frame" x="5" y="281" width="463" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="M83-0X-jdu">
+                        <textFieldCell key="cell" id="PiA-D3-Oxb">
                             <font key="font" size="14" name="Helvetica"/>
                             <string key="title">HyperText:   Text which is not constrained to be linear.
 HyperMedia: Information which is not constrained linear... or to be text.</string>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="40">
+                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="41">
                         <rect key="frame" x="25" y="27" width="418" height="231"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <clipView key="contentView" id="41">
+                        <clipView key="contentView" id="42">
                             <rect key="frame" x="1" y="1" width="416" height="229"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView verticallyResizable="NO" id="42">
-                                    <rect key="frame" x="0.0" y="229" width="395" height="0.0"/>
+                                <textView verticallyResizable="NO" id="43">
+                                    <rect key="frame" x="0.0" y="0.0" width="395" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="395" height="0.0"/>
@@ -626,7 +647,7 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
                                 </textView>
                             </subviews>
                         </clipView>
-                        <scroller key="verticalScroller" wantsLayer="YES" horizontal="NO" id="43">
+                        <scroller key="verticalScroller" wantsLayer="YES" horizontal="NO" id="44">
                             <rect key="frame" x="401" y="1" width="16" height="229"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </scroller>
@@ -635,158 +656,158 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
             </view>
             <point key="canvasLocation" x="20" y="1481"/>
         </window>
-        <window title="Style editor" animationBehavior="default" titlebarAppearsTransparent="YES" id="44">
+        <window title="Style editor" animationBehavior="default" titlebarAppearsTransparent="YES" id="45">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="2" y="1" width="342" height="406"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="45">
+            <view key="contentView" id="46">
                 <rect key="frame" x="0.0" y="0.0" width="342" height="406"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="46">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
                         <rect key="frame" x="4" y="293" width="166" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Apply style to selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Ha5-y1-lmW">
+                        <buttonCell key="cell" type="square" title="Apply style to selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="IS3-aw-LLx">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica-Bold"/>
                         </buttonCell>
                         <connections>
-                            <action selector="ApplyButton:" target="23" id="271"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
-                        <rect key="frame" x="4" y="228" width="168" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Find unstyled text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="HtN-cH-ns6">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="Helvetica"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="FindUnstyledButton:" target="23" id="276"/>
+                            <action selector="ApplyButton:" target="24" id="272"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48">
-                        <rect key="frame" x="4" y="262" width="167" height="24"/>
+                        <rect key="frame" x="4" y="228" width="168" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Apply style to all similar text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="sXt-4U-h6C">
+                        <buttonCell key="cell" type="square" title="Find unstyled text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Gm4-rX-U92">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="ApplyToSimilar:" target="23" id="275"/>
+                            <action selector="FindUnstyledButton:" target="24" id="277"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="49">
-                        <rect key="frame" x="120" y="342" width="105" height="24"/>
+                        <rect key="frame" x="4" y="262" width="167" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="style of selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="k6j-vc-bLO">
+                        <buttonCell key="cell" type="square" title="Apply style to all similar text" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="UDp-GG-PYt">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="PickButton:" target="23" id="273"/>
+                            <action selector="ApplyToSimilar:" target="24" id="276"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50">
-                        <rect key="frame" x="232" y="342" width="56" height="24"/>
+                        <rect key="frame" x="120" y="342" width="105" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&gt;&gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="p7b-mv-7uD">
+                        <buttonCell key="cell" type="square" title="style of selection" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="2Mo-Wm-0fn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="NextButton:" target="23" id="274"/>
+                            <action selector="PickButton:" target="24" id="274"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51">
-                        <rect key="frame" x="56" y="342" width="56" height="24"/>
+                        <rect key="frame" x="232" y="342" width="56" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&lt;&lt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="FIE-ni-mpl">
+                        <buttonCell key="cell" type="square" title="&gt;&gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="cAO-Ru-91A">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="PreviousButton:" target="23" id="272"/>
+                            <action selector="NextButton:" target="24" id="275"/>
                         </connections>
                     </button>
-                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="52">
+                        <rect key="frame" x="56" y="342" width="56" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="square" title="&lt;&lt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="SaA-BO-LO3">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="12" name="Helvetica"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="PreviousButton:" target="24" id="273"/>
+                        </connections>
+                    </button>
+                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="53">
                         <rect key="frame" x="8" y="374" width="283" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <size key="cellSize" width="283" height="21"/>
                         <cells>
                             <column>
-                                <formCell selectable="YES" editable="YES" borderStyle="border" title="Style name:" id="53"/>
+                                <formCell selectable="YES" editable="YES" borderStyle="border" title="Style name:" id="54"/>
                             </column>
                         </cells>
                     </form>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55">
                         <rect key="frame" x="208" y="242" width="104" height="80"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="55">
+                        <view key="contentView" id="56">
                             <rect key="frame" x="4" y="5" width="96" height="60"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="56">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57">
                         <rect key="frame" x="226" y="281" width="72" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="yY1-NY-bvK">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="E0u-oN-SFl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="open:" target="23" id="277"/>
+                            <action selector="open:" target="24" id="278"/>
                         </connections>
                     </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58">
                         <rect key="frame" x="226" y="252" width="72" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Save as..." bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="VMg-vl-7ak">
+                        <buttonCell key="cell" type="square" title="Save as..." bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="vjj-pl-7W4">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="saveAs:" target="23" id="278"/>
+                            <action selector="saveAs:" target="24" id="279"/>
                         </connections>
                     </button>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="59">
                         <rect key="frame" x="1" y="14" width="324" height="209"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="59">
+                        <view key="contentView" id="60">
                             <rect key="frame" x="4" y="5" width="316" height="189"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60">
+                                <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61">
                                     <rect key="frame" x="0.0" y="62" width="216" height="127"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <size key="cellSize" width="216" height="23"/>
                                     <cells>
                                         <column>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="First line indent:" id="61"/>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Successive indent:" id="62"/>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Font:" id="63"/>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Point Size:" id="64"/>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="SGML tag:" id="65"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="First line indent:" id="62"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Successive indent:" id="63"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Font:" id="64"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Point Size:" id="65"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="SGML tag:" id="66"/>
                                         </column>
                                     </cells>
                                     <connections>
-                                        <outlet property="nextText" destination="66" id="225"/>
+                                        <outlet property="nextText" destination="67" id="226"/>
                                     </connections>
                                 </form>
-                                <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66">
+                                <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67">
                                     <rect key="frame" x="0.0" y="3" width="305" height="45"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <size key="cellSize" width="305" height="45"/>
                                     <cells>
                                         <column>
-                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Tabs:" id="67"/>
+                                            <formCell selectable="YES" editable="YES" borderStyle="border" title="Tabs:" id="68"/>
                                         </column>
                                     </cells>
                                 </form>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68">
+                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="69">
                                     <rect key="frame" x="232" y="60" width="72" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="Tf9-WD-QEp">
+                                    <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="t9C-EW-Kww">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" size="12" name="Helvetica"/>
                                     </buttonCell>
@@ -798,165 +819,165 @@ If you have any comments or have bugs, please mail www-bug@info.cern.ch. quoting
             </view>
             <point key="canvasLocation" x="20" y="2008"/>
         </window>
-        <window title="Navigation" animationBehavior="default" titlebarAppearsTransparent="YES" id="69">
+        <window title="Navigation" animationBehavior="default" titlebarAppearsTransparent="YES" id="70">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="76" y="183" width="206" height="85"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="70">
+            <view key="contentView" id="71">
                 <rect key="frame" x="0.0" y="0.0" width="206" height="85"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="72">
                         <rect key="frame" x="6" y="41" width="71" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="&lt; Previous" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="GbA-o9-I4E">
+                        <buttonCell key="cell" type="square" title="&lt; Previous" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="CEL-aH-PBs">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="previous:" target="116" id="290"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="72">
-                        <rect key="frame" x="9" y="10" width="56" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Home" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="YhP-ak-XqE">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="Helvetica"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="goHome:" target="116" id="293"/>
+                            <action selector="previous:" target="117" id="291"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73">
-                        <rect key="frame" x="82" y="41" width="57" height="38"/>
+                        <rect key="frame" x="9" y="10" width="56" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Back up" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="tXz-zw-eK2">
+                        <buttonCell key="cell" type="square" title="Home" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="OCX-GX-kJk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="back:" target="116" id="291"/>
+                            <action selector="goHome:" target="117" id="294"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74">
-                        <rect key="frame" x="144" y="41" width="56" height="38"/>
+                        <rect key="frame" x="82" y="41" width="57" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Next &gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="boC-8B-m37">
+                        <buttonCell key="cell" type="square" title="Back up" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Uej-gF-Khg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="next:" target="116" id="292"/>
+                            <action selector="back:" target="117" id="292"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="75">
-                        <rect key="frame" x="152" y="8" width="48" height="24"/>
+                        <rect key="frame" x="144" y="41" width="56" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Help" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="woY-6u-UJ7">
+                        <buttonCell key="cell" type="square" title="Next &gt;" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="VJ1-dB-8MY">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="makeKeyAndOrderFront:" target="20" id="228"/>
+                            <action selector="next:" target="117" id="293"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="76">
+                        <rect key="frame" x="152" y="8" width="48" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="square" title="Help" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="tBB-rg-Nsz">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="12" name="Helvetica"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="makeKeyAndOrderFront:" target="21" id="229"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="20" y="2353.5"/>
         </window>
-        <window title="Other document" animationBehavior="default" titlebarAppearsTransparent="YES" id="76">
+        <window title="Other document" animationBehavior="default" titlebarAppearsTransparent="YES" id="77">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="579" y="571" width="473" height="129"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="77">
+            <view key="contentView" id="78">
                 <rect key="frame" x="0.0" y="0.0" width="473" height="129"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78">
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79">
                         <rect key="frame" x="108" y="8" width="167" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="79">
+                        <view key="contentView" id="80">
                             <rect key="frame" x="4" y="5" width="159" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
-                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80">
+                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="81">
                         <rect key="frame" x="28" y="65" width="414" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <size key="cellSize" width="414" height="32"/>
                         <cells>
                             <column>
-                                <formCell selectable="YES" editable="YES" borderStyle="border" title="Address :" id="81"/>
+                                <formCell selectable="YES" editable="YES" borderStyle="border" title="Address :" id="82"/>
                             </column>
                         </cells>
                         <connections>
-                            <action selector="performClick:" target="82" id="223"/>
+                            <action selector="performClick:" target="83" id="224"/>
                         </connections>
                     </form>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="82">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="83">
                         <rect key="frame" x="366" y="21" width="96" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="dtI-W1-RFc">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="5Kr-Wq-djY">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="16" name="Helvetica-Bold"/>
                         </buttonCell>
                         <connections>
-                            <action selector="open:" target="116" id="285"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="83">
-                        <rect key="frame" x="130" y="20" width="135" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="hdw-GT-EUW">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="Helvetica"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="openSGML:" target="116" id="286"/>
+                            <action selector="open:" target="117" id="286"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="84">
-                        <rect key="frame" x="3" y="102" width="102" height="25"/>
+                        <rect key="frame" x="130" y="20" width="135" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Link selection to" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="FCt-wL-LVZ">
+                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="pCd-n2-YI9">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="linkToString:" target="116" id="301"/>
+                            <action selector="openSGML:" target="117" id="287"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85">
+                        <rect key="frame" x="3" y="102" width="102" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="square" title="Link selection to" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="nNf-Xh-Mu8">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="12" name="Helvetica"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="linkToString:" target="117" id="302"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
             <connections>
-                <outlet property="delegate" destination="116" id="296"/>
+                <outlet property="delegate" destination="117" id="297"/>
             </connections>
             <point key="canvasLocation" x="20" y="2560.5"/>
         </window>
-        <customObject id="85" customClass="WWWPageLayout">
+        <customObject id="86" customClass="WWWPageLayout">
             <connections>
-                <outlet property="accessoryView" destination="12" id="231"/>
-                <outlet property="bottomMargin" destination="19" id="233"/>
-                <outlet property="leftMargin" destination="15" id="232"/>
-                <outlet property="rightMargin" destination="16" id="234"/>
-                <outlet property="sideForm" destination="14" id="236"/>
-                <outlet property="topBotForm" destination="17" id="237"/>
-                <outlet property="topMargin" destination="18" id="235"/>
+                <outlet property="accessoryView" destination="13" id="232"/>
+                <outlet property="bottomMargin" destination="20" id="234"/>
+                <outlet property="leftMargin" destination="16" id="233"/>
+                <outlet property="rightMargin" destination="17" id="235"/>
+                <outlet property="sideForm" destination="15" id="237"/>
+                <outlet property="topBotForm" destination="18" id="238"/>
+                <outlet property="topMargin" destination="19" id="236"/>
             </connections>
         </customObject>
-        <window title="Making links" animationBehavior="default" titlebarAppearsTransparent="YES" id="86">
+        <window title="Making links" animationBehavior="default" titlebarAppearsTransparent="YES" id="87">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="330" y="339" width="376" height="282"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="87">
+            <view key="contentView" id="88">
                 <rect key="frame" x="0.0" y="0.0" width="376" height="282"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="88">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89">
                         <rect key="frame" x="16" y="27" width="343" height="240"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="qFL-vx-4Cr">
+                        <textFieldCell key="cell" id="pQx-sj-HwQ">
                             <font key="font" size="12" name="Helvetica"/>
                             <string key="title">If you want to link one peice of text to another, whether they are in the same hypertext document or not, you follow the same procedure.
 
@@ -969,233 +990,233 @@ From then on, whenever you double click on the linked text, you will jump across
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90">
                         <rect key="frame" x="26" y="14" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="See also:" id="Aro-W2-WHq">
+                        <textFieldCell key="cell" title="See also:" id="Smf-Bg-HyN">
                             <font key="font" size="12" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91">
                         <rect key="frame" x="88" y="9" width="148" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Making a new document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="uLl-dk-pfU">
+                        <buttonCell key="cell" type="square" title="Making a new document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="TZQ-w4-nqv">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="makeKeyAndOrderFront:" target="25" id="221"/>
+                            <action selector="makeKeyAndOrderFront:" target="26" id="222"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="20" y="2866"/>
         </window>
-        <window title="Document Inspector" animationBehavior="default" titlebarAppearsTransparent="YES" id="91">
+        <window title="Document Inspector" animationBehavior="default" titlebarAppearsTransparent="YES" id="92">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="579" y="362" width="473" height="339"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="92">
+            <view key="contentView" id="93">
                 <rect key="frame" x="0.0" y="0.0" width="473" height="339"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93">
+                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="94">
                         <rect key="frame" x="27" y="280" width="439" height="45"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <size key="cellSize" width="439" height="45"/>
                         <cells>
                             <column>
-                                <formCell selectable="YES" editable="YES" borderStyle="border" title="Title:" id="94"/>
+                                <formCell selectable="YES" editable="YES" borderStyle="border" title="Title:" id="95"/>
                             </column>
                         </cells>
                         <connections>
-                            <action selector="performClick:" target="95" id="298"/>
+                            <action selector="performClick:" target="96" id="299"/>
                         </connections>
                     </form>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96">
                         <rect key="frame" x="383" y="252" width="82" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="RbW-Ws-d8z">
+                        <buttonCell key="cell" type="square" title="Set" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="8gC-oQ-ljY">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="setTitle:" target="116" id="299"/>
+                            <action selector="setTitle:" target="117" id="300"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97">
                         <rect key="frame" x="63" y="202" width="400" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" id="hk0-a0-sfY">
+                        <textFieldCell key="cell" id="EGk-VF-PEL">
                             <font key="font" size="12" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98">
                         <rect key="frame" x="5" y="216" width="58" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Address:" id="hca-EF-uws">
+                        <textFieldCell key="cell" title="Address:" id="Fij-f3-nRj">
                             <font key="font" size="12" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98">
+                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="99">
                         <rect key="frame" x="1" y="71" width="465" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <size key="cellSize" width="465" height="32"/>
                         <cells>
                             <column>
-                                <formCell selectable="YES" editable="YES" borderStyle="border" title="Address :" id="99"/>
+                                <formCell selectable="YES" editable="YES" borderStyle="border" title="Address :" id="100"/>
                             </column>
                         </cells>
                         <connections>
-                            <action selector="performClick:" target="103" id="304"/>
+                            <action selector="performClick:" target="104" id="305"/>
                         </connections>
                     </form>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="100">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
                         <rect key="frame" x="55" y="132" width="144" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="Other document" id="Ckk-w1-jWV">
+                        <textFieldCell key="cell" title="Other document" id="9rT-Lk-oBm">
                             <font key="font" size="18" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="101">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="102">
                         <rect key="frame" x="270" y="174" width="192" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Link selection to other document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Ibd-bV-CIn">
+                        <buttonCell key="cell" type="square" title="Link selection to other document" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="YpA-hb-bCC">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="linkToString:" target="116" id="305"/>
+                            <action selector="linkToString:" target="117" id="306"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="102">
+                    <textField focusRingType="none" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="103">
                         <rect key="frame" x="1" y="161" width="471" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" title="______________________________________________" id="ucT-UG-VfQ">
+                        <textFieldCell key="cell" title="______________________________________________" id="VyC-42-t14">
                             <font key="font" size="18" name="Helvetica"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="103">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="104">
                         <rect key="frame" x="370" y="30" width="96" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="DB5-8m-Qch">
+                        <buttonCell key="cell" type="square" title="Open" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="4fm-Tp-t9U">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="16" name="Helvetica-Bold"/>
                         </buttonCell>
                         <connections>
-                            <action selector="open:" target="116" id="302"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="104">
-                        <rect key="frame" x="6" y="101" width="41" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Copy" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="p4b-Bz-yWy">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="12" name="Helvetica"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="copyAddress:" target="116" id="308"/>
+                            <action selector="open:" target="117" id="303"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="105">
-                        <rect key="frame" x="63" y="174" width="125" height="20"/>
+                        <rect key="frame" x="6" y="101" width="41" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Inspect selected link" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="dEI-JE-lR4">
+                        <buttonCell key="cell" type="square" title="Copy" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="03a-86-gBl">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="inspectLink:" target="116" id="309"/>
+                            <action selector="copyAddress:" target="117" id="309"/>
                         </connections>
                     </button>
-                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="106">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="106">
+                        <rect key="frame" x="63" y="174" width="125" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="square" title="Inspect selected link" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="AUo-3H-vfo">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="12" name="Helvetica"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="inspectLink:" target="117" id="310"/>
+                        </connections>
+                    </button>
+                    <box fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="107">
                         <rect key="frame" x="60" y="11" width="167" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <view key="contentView" id="107">
+                        <view key="contentView" id="108">
                             <rect key="frame" x="4" y="5" width="159" height="37"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                     </box>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="108">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="109">
                         <rect key="frame" x="76" y="23" width="135" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="Lbj-n3-1Pd">
+                        <buttonCell key="cell" type="square" title="Open showing source" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" id="UEV-28-gdG">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="12" name="Helvetica"/>
                         </buttonCell>
                         <connections>
-                            <action selector="openSGML:" target="116" id="303"/>
+                            <action selector="openSGML:" target="117" id="304"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="20" y="3276.5"/>
         </window>
-        <window title="Index Search" animationBehavior="default" titlebarAppearsTransparent="YES" id="109">
+        <window title="Index Search" animationBehavior="default" titlebarAppearsTransparent="YES" id="110">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="579" y="724" width="473" height="80"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
-            <view key="contentView" id="110">
+            <view key="contentView" id="111">
                 <rect key="frame" x="0.0" y="0.0" width="473" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="111">
+                    <form fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="112">
                         <rect key="frame" x="16" y="43" width="448" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <size key="cellSize" width="448" height="30"/>
                         <cells>
                             <column>
-                                <formCell selectable="YES" editable="YES" borderStyle="border" title="words:" id="112"/>
+                                <formCell selectable="YES" editable="YES" borderStyle="border" title="words:" id="113"/>
                             </column>
                         </cells>
                         <connections>
-                            <action selector="performClick:" target="113" id="219"/>
+                            <action selector="performClick:" target="114" id="220"/>
                         </connections>
                     </form>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="113">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="114">
                         <rect key="frame" x="357" y="6" width="107" height="33"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="square" title="Search" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="jv0-CA-nAu">
+                        <buttonCell key="cell" type="square" title="Search" bezelStyle="shadowlessSquare" image="return" catalog="system" imagePosition="right" alignment="center" borderStyle="border" id="ih8-Io-wvK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="14" name="Helvetica-Bold"/>
                         </buttonCell>
                         <connections>
-                            <action selector="search:" target="116" id="242"/>
+                            <action selector="search:" target="117" id="243"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
             <connections>
-                <outlet property="delegate" destination="116" id="295"/>
+                <outlet property="delegate" destination="117" id="296"/>
             </connections>
             <point key="canvasLocation" x="20" y="3586"/>
         </window>
-        <customObject id="114" customClass="TextToy">
+        <customObject id="115" customClass="TextToy">
             <connections>
-                <outlet property="SearchWindow" destination="109" id="294"/>
+                <outlet property="SearchWindow" destination="110" id="295"/>
             </connections>
         </customObject>
-        <customObject id="115" customClass="TcpAccess">
+        <customObject id="116" customClass="TcpAccess">
             <connections>
-                <outlet property="manager" destination="116" id="238"/>
+                <outlet property="manager" destination="117" id="239"/>
             </connections>
         </customObject>
-        <customObject id="116" customClass="HyperManager">
+        <customObject id="117" customClass="HyperManager">
             <connections>
-                <outlet property="addressString" destination="96" id="300"/>
-                <outlet property="keywords" destination="111" id="241"/>
-                <outlet property="openString" destination="98" id="306"/>
-                <outlet property="titleString" destination="93" id="297"/>
+                <outlet property="addressString" destination="97" id="301"/>
+                <outlet property="keywords" destination="112" id="242"/>
+                <outlet property="openString" destination="99" id="307"/>
+                <outlet property="titleString" destination="94" id="298"/>
             </connections>
         </customObject>
-        <customObject id="117" customClass="FileAccess">
+        <customObject id="118" customClass="FileAccess">
             <connections>
-                <outlet property="manager" destination="116" id="239"/>
+                <outlet property="manager" destination="117" id="240"/>
             </connections>
         </customObject>
     </objects>
