@@ -20,7 +20,6 @@
 		354F5ABC2C9527CC00CBFA57 /* default.html in Resources */ = {isa = PBXBuildFile; fileRef = 354F5AB12C9527CC00CBFA57 /* default.html */; };
 		354F5ABD2C9527CC00CBFA57 /* project.style in Resources */ = {isa = PBXBuildFile; fileRef = 354F5AB22C9527CC00CBFA57 /* project.style */; };
 		3590F34F2BFC108E00E81CF2 /* WorldWideWeb.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3590F34E2BFC108E00E81CF2 /* WorldWideWeb.xib */; };
-		35DC78E12BFAD62100432284 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78E02BFAD62100432284 /* AppDelegate.m */; };
 		35DC78E32BFAD62200432284 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC78E22BFAD62200432284 /* Assets.xcassets */; };
 		35DC792D2BFAD6AB00432284 /* WorldWideWeb_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */; };
 		35DC792E2BFAD6AB00432284 /* HTParse.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC78F22BFAD6AA00432284 /* HTParse.c */; };
@@ -76,8 +75,6 @@
 		359DEE852C91148100FDB95E /* regenerate-xibs */ = {isa = PBXFileReference; explicitFileType = text.script; fileEncoding = 4; path = "regenerate-xibs"; sourceTree = "<group>"; };
 		359DEE862C91148100FDB95E /* requirements.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = requirements.txt; sourceTree = "<group>"; };
 		35DC78DD2BFAD62100432284 /* WorldWideWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldWideWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		35DC78DF2BFAD62100432284 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		35DC78E02BFAD62100432284 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		35DC78E22BFAD62200432284 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35DC78E92BFAD62200432284 /* WorldWideWeb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WorldWideWeb.entitlements; sourceTree = "<group>"; };
 		35DC78ED2BFAD6AA00432284 /* ParseHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseHTML.h; sourceTree = "<group>"; };
@@ -159,8 +156,6 @@
 			children = (
 				35DC78F02BFAD6AA00432284 /* Anchor.h */,
 				35DC78FF2BFAD6AA00432284 /* Anchor.m */,
-				35DC78DF2BFAD62100432284 /* AppDelegate.h */,
-				35DC78E02BFAD62100432284 /* AppDelegate.m */,
 				35DC790C2BFAD6AA00432284 /* FileAccess.h */,
 				35DC79122BFAD6AA00432284 /* FileAccess.m */,
 				35DC791C2BFAD6AB00432284 /* HTAccess.c */,
@@ -381,7 +376,6 @@
 				35DC79402BFAD6AB00432284 /* FileAccess.m in Sources */,
 				35DC793F2BFAD6AB00432284 /* WWWPageLayout.m in Sources */,
 				35DC79442BFAD6AB00432284 /* HTFTP.c in Sources */,
-				35DC78E12BFAD62100432284 /* AppDelegate.m in Sources */,
 				35DC794E2BFAD6AB00432284 /* TextToy.m in Sources */,
 				35DC794D2BFAD6AB00432284 /* HTString.c in Sources */,
 			);

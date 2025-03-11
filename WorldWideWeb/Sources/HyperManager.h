@@ -13,7 +13,7 @@
 #import "HyperAccess.h"
 #import <AppKit/AppKit.h>
 
-@interface HyperManager : HyperAccess <NSWindowDelegate>
+@interface HyperManager : HyperAccess <NSApplicationDelegate, NSWindowDelegate>
 
 {
     NSMutableArray *accesses;
@@ -38,6 +38,7 @@
 - (IBAction)print:sender;         //	Print the main window
 - (IBAction)runPagelayout:sender; //	Run the page layout panel for the app.
 
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 - (void)windowDidBecomeKey:(NSNotification *)notification; //	Window delegate method
 
 @end
