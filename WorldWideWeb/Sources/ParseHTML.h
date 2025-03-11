@@ -1309,6 +1309,11 @@ void change_run(NSTextStorage *last, NSTextStorage *r) {
 /*	This is the body of the SGML output method.
 */
 - writeSGML:(NXStream *)stream relativeTo:(const char *)aName {
+    if (stream == nil) {
+        printf("Warning: Not writing SGML, stream is nil.\n");
+        return nil;
+    }
+    
     SGML_gen_newlines = 0; /* Number of newlines read but not inserted */
     HT = self;
     saveName = aName;
