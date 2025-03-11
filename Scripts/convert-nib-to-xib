@@ -528,7 +528,10 @@ class XIBConverter:
         xib_window = self.xib.objects.add_object('window',
             title=title,
             titlebarAppearsTransparent=True,
-            customClass='NSPanel',
+            # We use a custom WWWPanel class that inherits from NSPanel to
+            # implement our desired semantics that panels only hide, but not
+            # actually close, when closed.
+            customClass='WWWPanel',
             hidesOnDeactivate=True,
             visibleAtLaunch=False,
         )

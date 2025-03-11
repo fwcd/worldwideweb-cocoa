@@ -40,6 +40,7 @@
 		35DC794D2BFAD6AB00432284 /* HTString.c in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79252BFAD6AB00432284 /* HTString.c */; };
 		35DC794E2BFAD6AB00432284 /* TextToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79272BFAD6AB00432284 /* TextToy.m */; };
 		35DC79502BFAD6AB00432284 /* HTStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DC79292BFAD6AB00432284 /* HTStyle.m */; };
+		35DDA3492D80F79000CF5527 /* WWWPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DDA3482D80F79000CF5527 /* WWWPanel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,8 @@
 		35DC79272BFAD6AB00432284 /* TextToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextToy.m; sourceTree = "<group>"; };
 		35DC79292BFAD6AB00432284 /* HTStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTStyle.m; sourceTree = "<group>"; };
 		35DC792A2BFAD6AB00432284 /* StyleToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleToy.h; sourceTree = "<group>"; };
+		35DDA3472D80F79000CF5527 /* WWWPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWPanel.h; sourceTree = "<group>"; };
+		35DDA3482D80F79000CF5527 /* WWWPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWPanel.m; sourceTree = "<group>"; };
 		834673772C796EB4006F7FC0 /* NXShims.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NXShims.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +200,8 @@
 				35DC79272BFAD6AB00432284 /* TextToy.m */,
 				35DC78F12BFAD6AA00432284 /* WorldWideWeb_main.m */,
 				35DC79162BFAD6AA00432284 /* WWW.h */,
+				35DDA3472D80F79000CF5527 /* WWWPanel.h */,
+				35DDA3482D80F79000CF5527 /* WWWPanel.m */,
 				35DC78FA2BFAD6AA00432284 /* WWWPageLayout.h */,
 				35DC79112BFAD6AA00432284 /* WWWPageLayout.m */,
 			);
@@ -363,6 +368,7 @@
 				35DC79322BFAD6AB00432284 /* HyperManager.m in Sources */,
 				35DC793E2BFAD6AB00432284 /* HTTCP.c in Sources */,
 				35DC793B2BFAD6AB00432284 /* HyperAccess.m in Sources */,
+				35DDA3492D80F79000CF5527 /* WWWPanel.m in Sources */,
 				35DC79312BFAD6AB00432284 /* TcpAccess.m in Sources */,
 				35DC79422BFAD6AB00432284 /* NewsAccess.m in Sources */,
 				35DC79432BFAD6AB00432284 /* HTFile.c in Sources */,
