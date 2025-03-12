@@ -427,8 +427,20 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
         printf("Parsing SGML stream %p\n", sgmlStream);
     START_OUTPUT;
     set_style(Normal.style); /* Was random! 910910 TBL */
+    
+    // Use file descriptor set + select to implement a timeout
+    // See https://stackoverflow.com/questions/2917881/how-to-implement-a-timeout-in-read-function-call
+    
+    int fd = fileno(stream);
+    fd_set set;
+    FD_ZERO(&set);
+    FD_SET(fd, &set);
+    
+    int timeoutSeconds = 4;
+    struct timeval timeout = { .tv_sec = timeoutSeconds, .tv_usec = 0 };
+    int selectResult = -1;
 
-    while (!END_OF_FILE && (state != S_done)) {
+    while (!END_OF_FILE && (selectResult = select(fd + 1, &set, NULL, NULL, &timeout)) > 0 && (state != S_done)) {
         char c = NEXT_CHAR;
         if (c == (char)-1) {
             if (TRACE)
@@ -1080,6 +1092,10 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
 
         } /* switch state */
     } /* for loop */
+    
+    if (selectResult <= 0 && TRACE) {
+        printf("*** SGML stream read timed out after %d seconds\n", timeoutSeconds);
+    }
 
     if ((state != S_text) && (state != S_done))
         if (TRACE)
