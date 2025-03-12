@@ -388,6 +388,9 @@ class XIBConverter:
             title=title,
             selectable=True,
             editable=True,
+            # Workaround for https://github.com/fwcd/worldwideweb-cocoa/issues/8
+            # that disables the initial focus to avoid a layout glitch.
+            refusesFirstResponder=True,
             borderStyle='border',
         )
         self.object_to_xib_node[obj] = xib_cell
