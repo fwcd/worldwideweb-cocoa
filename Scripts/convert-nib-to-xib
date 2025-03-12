@@ -560,6 +560,8 @@ class XIBConverter:
         canvas_location_y = self.canvas_location_y
         self.canvas_location_y += rect['height'] / 2
 
+        is_floating = title != 'Info'
+
         xib_window = self.xib.objects.add_object('window',
             title=title,
             titlebarAppearsTransparent=True,
@@ -567,11 +569,11 @@ class XIBConverter:
             # implement our desired semantics that panels only hide, but not
             # actually close, when closed.
             customClass='WWWPanel',
-            hidesOnDeactivate=True,
+            hidesOnDeactivate=is_floating,
             visibleAtLaunch=False,
         )
         xib_window.add('point', key='canvasLocation', x=20.0, y=canvas_location_y)
-        xib_window.add('windowStyleMask', key='styleMask', titled=True, utility=title != 'Info', closable=True)
+        xib_window.add('windowStyleMask', key='styleMask', titled=True, utility=is_floating, closable=True)
         xib_window.add('rect', key='contentRect', **rect)
         self.object_to_xib_node[obj] = xib_window
 
