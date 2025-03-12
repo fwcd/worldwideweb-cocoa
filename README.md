@@ -12,7 +12,9 @@ A port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wik
 </div>
 
 > [!IMPORTANT]
-> This project is in its early stages and, while it does compile and even render simple web pages, is still largely non-functional. Anyone interested is highly encouraged to explore the codebase and hack on it though.
+> This project is in its early stages and, while it does compile and even render basic web pages, there are still a number of features that don't work. Additionally, many of the parsing routines are not safe against untrusted inputs e.g. triggering buffer overflows, so don't log into your bank account with this.
+
+That said, anyone interested is highly encouraged to explore the codebase and hack on it though.
 
 ## Getting Started
 
