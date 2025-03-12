@@ -82,6 +82,11 @@ char *arg;
         free(p1);
     }
     strcat(command, "\r\n\r\n");
+    
+    {
+        char *ip = inet_ntoa(soc_address.sin_addr);
+        printf("Connecting to IP %s...\n", ip);
+    }
 
     /*	Now, let's get a socket set up from the server for the sgml data:
 */
