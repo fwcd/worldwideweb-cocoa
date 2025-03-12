@@ -61,6 +61,10 @@ class XIBConverter:
         
         # Handle special actions that we need to connect manually
         match title:
+            # Document menu
+            case 'Close':
+                xib_item.connect_action(selector='performClose:', target=self.xib.first_responder)
+            # Edit menu
             case 'Cut':
                 xib_item.connect_action(selector='cut:', target=self.xib.first_responder)
             case 'Copy':
@@ -79,6 +83,13 @@ class XIBConverter:
                 xib_item.connect_action(selector='centerSelectionInVisibleArea:', target=self.xib.first_responder)
             case 'Undo':
                 xib_item.connect_action(selector='undo:', target=self.xib.first_responder)
+            # Window menu
+            case 'Miniaturize Window':
+                xib_item.connect_action(selector='performMiniaturize:', target=self.xib.first_responder)
+            case 'Close Window':
+                xib_item.connect_action(selector='performClose:', target=self.xib.first_responder)
+            case 'Arrange in Front':
+                xib_item.connect_action(selector='arrangeInFront:', target=self.xib.first_responder)
 
         self.object_to_xib_node[cell] = xib_item
 
