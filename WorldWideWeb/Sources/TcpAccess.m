@@ -58,6 +58,15 @@
         [HT readText:sgmlStream];
         return HT;
     }
+    
+    //  Read the HTTP response header (yeah, this is unsafe for too large headers, don't do banking with this...)
+    size_t responseHeaderSize = 2048;
+    char *responseHeader = malloc(responseHeaderSize);
+    printf("HTTP response header:\n");
+    while (getline(&responseHeader, &responseHeaderSize, sgmlStream) > 2 /* \r\n */) {
+        printf("%s", responseHeader);
+    }
+    free(responseHeader);
 
     //	Now we parse the SGML
 
