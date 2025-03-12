@@ -47,7 +47,6 @@ extern void write_rtf_header(NXStream *rtfStream);
 - server;
 - (BOOL)isIndex;
 - setupWindow;
-- adjustWindow; // Adust scroll bars, sizeability, size, etc.
 
 - (int)format;
 - setFormat:(int)format;

@@ -848,7 +848,6 @@ void read_group(const char *groupName, int first_required, int last_required) {
         [HT appendEnd];
 
         [HT setEditable:NO]; /* This is read-only data */
-        [HT adjustWindow];
         return HT;
 
     } /* Retry loop */

@@ -1064,7 +1064,6 @@ int readSGML(HyperText *self, FILE *stream, int diagnostic)
                     if (TRACE)
                         printf("Loading as RTF\n");
                     [self readRichText:sgmlStream]; /* will read to end */
-                    [self adjustWindow];            /* Fix scrollers */
                     SETSTATE(S_done);               /* Inhibit RTF load */
                 }
             }

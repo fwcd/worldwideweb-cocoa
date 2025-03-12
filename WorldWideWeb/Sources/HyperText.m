@@ -173,137 +173,11 @@ static float page_width(void) {
     return self;
 }
 
-//	Adjust Scrollers and Window size for current text size
-//	------------------------------------------------------
-//
-//The scrollers are turned off if they possibly can be, to simplify the screen.
-// If the text is editable, they have to be left on, although formatted text is
-// allowed to wrap round, and so horizontal scroll bars are not necessary.
-// The window size is adjusted as a function of the text size and scrollers.
-//
-//	@@ Bug: The resize bar should be removed if there are no scrollers.
-//	This is difficult to do -- might have to make a new window.
-//
-- adjustWindow {
-#define MAX_WIDTH paperWidth
-
-    NSRect scroll_frame;
-    NSRect old_scroll_frame;
-    NSSize size;
-    BOOL scroll_X, scroll_Y; // Do we need scrollers?
-
-    NSScrollView *scrollview = self.window.contentView; // Pick up id of ScrollView
-    float paperWidth = page_width();                    // Get page layout width
-
-    [self.window disableFlushWindow]; // Prevent flashes
-
-    self.verticallyResizable = YES; // Can change size automatically
-    bool isMonoFont = NO;           // TODO: Figure this out
-    self.horizontallyResizable = isMonoFont;
-    // TODO: Do we need this?
-    // [self calcLine];  // Wrap text to current text size
-    [self sizeToFit]; // Reduce size if possible.
-
-    CGFloat maxX = self.maxSize.width;
-    CGFloat maxY = self.maxSize.height;
-
-    if (maxY > MAX_HEIGHT) {
-        scroll_Y = YES;
-        size.height = NICE_HEIGHT;
-    } else {
-        scroll_Y = self.isEditable;
-        size.height = maxY < MIN_HEIGHT ? MIN_HEIGHT : maxY;
-    }
-
-    if (isMonoFont) {
-        scroll_X = self.isEditable || (maxX > MAX_WIDTH);
-        // FIXME: Disable wrapping
-        // [self setNoWrap];
-    } else {
-        scroll_X = NO;
-        // FIXME: Enable wrapping
-        // [self setCharWrap:NO]; // Word wrap please
-    }
-    if (maxX > MAX_WIDTH) {
-        size.width = MAX_WIDTH;
-    } else {
-        size.width = maxX < MIN_WIDTH ? MIN_WIDTH : maxX;
-    }
-
-    // maxX is the length of the longest line.
-    //	It only represnts the width of the page
-    //	 needed if the line is quad left. If the longest line was
-    //	centered or flush right, it may be truncated unless we resize
-    //	it to fit.
-
-    if (!scroll_X) {
-        // TODO: In the original source the height is maxY here, but that seems to be a very, very large constant which AppKit doesn't like, so we'll just keep the current frame height here.
-        self.frameSize = NSMakeSize(size.width, self.frame.size.height);
-        // TODO: Do we need this?
-        // [self calcLine];
-        [self sizeToFit]; // Algorithm found by trial and error.
-    }
-
-    //	Set up the scroll view and window to match:
-
-    scroll_frame.size = [NSScrollView frameSizeForContentSize:size
-                                        hasHorizontalScroller:scroll_X
-                                          hasVerticalScroller:scroll_Y
-                                                   borderType:NSLineBorder];
-
-    scrollview.hasVerticalScroller = scroll_Y;
-    scrollview.hasHorizontalScroller = scroll_X;
-
-    //	Has the frame size changed?
-
-    old_scroll_frame = scrollview.frame;
-    if ((old_scroll_frame.size.width != scroll_frame.size.width) ||
-        (old_scroll_frame.size.height != scroll_frame.size.height)) {
-
-        // Now we want to leave the top left corner of the window unmoved:
-
-#ifdef OLD_METHOD
-        NSRect oldframe;
-        oldframe = self.window.frame;
-        [self.window sizeWindow:scroll_frame.size.width:scroll_frame.size.height];
-        [self.window moveTopLeftTo:oldframe.origin.x:oldframe.origin.y + oldframe.size.height];
-#else
-        NSRect newFrame;
-        scroll_frame.origin.x = 150 + (slotNumber % 10) * 30 + ((slotNumber / 10) % 3) * 40;
-        scroll_frame.origin.y =
-            185 + NICE_HEIGHT - scroll_frame.size.height - (slotNumber % 10) * 20 - ((slotNumber / 10) % 3) * 3;
-        newFrame = [NSWindow frameRectForContentRect:scroll_frame
-                                           styleMask:NSWindowStyleMaskTitled]; // Doesn't allow space for resize bar
-        newFrame.origin.y = newFrame.origin.y - 9.0;
-        newFrame.size.height = newFrame.size.height + 9.0; // For resize bar
-        [self.window setFrame:newFrame display:true];
-#endif
-    }
-
-#ifdef VERSION_1_STRANGENESS
-    //	In version 2, the format of the last run is overwritten with the format
-    //	of the preceding run!
-    {
-        NSRect frm; /* Try this to get over "text strangeness" */
-        frm = self.frame;
-        [self renewRuns:NULL text:NULL frame:&frm tag:0];
-    }
-#endif
-    [self.window enableFlushWindow];
-    // TODO: Do we need this?
-    // [self calcLine];       /* Prevent messy screen */
-    [self.window display]; /* Ought to clean it up */
-    return self;
-
-} /* adjustWindow */
-
 //	Set up a window in the current application for this hypertext
 //	-------------------------------------------------------------
 
 - setupWindow {
     NSRect scroll_frame;                // Calculated later
-    NSSize min_size = {300.0, 200.0};   // Minimum size of text
-    NSSize max_size = {1.0e30, 1.0e30}; // Maximum size of text
 
     NSScrollView *scrollview;
     NSSize nice_size = {0.0, NICE_HEIGHT}; // Guess height
@@ -330,7 +204,7 @@ static float page_width(void) {
 
 #define NX_ALLBUTTONS 7 // Fudge -- the followin methos is obsolete in 3.0:
     NSWindow *window = [[NSWindow alloc] initWithContentRect:scroll_frame
-                                                   styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable
+                                                   styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskResizable | NSWindowStyleMaskMiniaturizable
                                                      backing:NSBackingStoreBuffered
                                                        defer:NO]; // display now
     window.delegate = self;             // Get closure warning
@@ -342,12 +216,10 @@ static float page_width(void) {
     scrollview.hasVerticalScroller = YES;
     scrollview.hasHorizontalScroller = NO; // Guess.
     window.contentView = scrollview;
-
+    
     scrollview.documentView = self;
     self.verticallyResizable = YES; // Changes size automatically
-    self.horizontallyResizable = NO;
-    self.minSize = min_size;                   // Stop it shrinking to nought
-    self.maxSize = max_size;                   // Stop it being chopped when editing
+    self.horizontallyResizable = YES;
     self.postsFrameChangedNotifications = YES; // Tell scrollview See QA 555
     [window display];                          // Maybe we will see it now
     return self;
@@ -997,7 +869,6 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
         [self renewRuns:NULL text:NULL frame:&frm tag:0];
     }
 #endif
-    [self adjustWindow];
     return self;
 }
 
@@ -1020,7 +891,6 @@ BOOL run_match(NSTextStorage *r1, NSTextStorage *r2) { return [r1 isEqualToAttri
     NSAttributedString *richText = [[NSAttributedString alloc] initWithRTF:data documentAttributes:nil];
     [self.textStorage setAttributedString:richText];
 
-    [self adjustWindow];
     format = WWW_RICHTEXT; // Remember
     return self;
 }
@@ -1191,7 +1061,6 @@ void set_style(HTStyle *style) {
 void finish_output(void) {
     remove_dummy_character_if_needed(write_storage.length - 1);
     
-    [HT adjustWindow]; /* Adjustscrollers and window size */
     HT.needsDisplay = YES;
     HT.needsLayout = YES;
 }
@@ -1205,7 +1074,6 @@ void loadPlainText(void) {
     // TODO: Figure this one out
     // [HT setNoWrap];
     [HT readText:sgmlStream]; /* will read to end */
-    [HT adjustWindow];        /* Fix scrollers */
 }
 
 //	Methods enabling an external parser to add styled data
