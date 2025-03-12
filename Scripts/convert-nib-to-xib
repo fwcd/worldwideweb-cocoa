@@ -59,6 +59,27 @@ class XIBConverter:
         else:
             xib_item = xib_menu.add_menu_item(title=title, **xib_properties)
         
+        # Handle special actions that we need to connect manually
+        match title:
+            case 'Cut':
+                xib_item.connect_action(selector='cut:', target=self.xib.first_responder)
+            case 'Copy':
+                xib_item.connect_action(selector='copy:', target=self.xib.first_responder)
+            case 'Paste':
+                xib_item.connect_action(selector='paste:', target=self.xib.first_responder)
+            case 'Delete':
+                xib_item.connect_action(selector='delete:', target=self.xib.first_responder)
+            case 'Select All':
+                xib_item.connect_action(selector='selectAll:', target=self.xib.first_responder)
+            case 'Check Spelling':
+                xib_item.connect_action(selector='checkSpelling:', target=self.xib.first_responder)
+            case 'Find Panel...':
+                xib_item.connect_action(selector='performFindPanelAction:', target=self.xib.first_responder)
+            case 'Jump to Selection':
+                xib_item.connect_action(selector='centerSelectionInVisibleArea:', target=self.xib.first_responder)
+            case 'Undo':
+                xib_item.connect_action(selector='undo:', target=self.xib.first_responder)
+
         self.object_to_xib_node[cell] = xib_item
 
         if has_submenu:
