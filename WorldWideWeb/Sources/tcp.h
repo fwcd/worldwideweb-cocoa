@@ -19,8 +19,6 @@
 */
 #ifdef NeXT
 #include <libc.h> /* NeXT has all this packaged up */
-#define ntohs(x) (x)
-#define htons(x) (x)
 #include <sys/errno.h> /* Get ECONNRESET etc */
 #define SELECT         /* Is supported ok */
 #define INCLUDES_DONE
