@@ -18,9 +18,11 @@ A port of Tim Berners-Lee's original [WorldWideWeb](https://en.wikipedia.org/wik
 
 Open [`WorldWideWeb.xcodeproj`](WorldWideWeb.xcodeproj) in Xcode, then build and run the WorldWideWeb target.
 
-This should open a browser window displaying [the welcome page](WorldWideWeb/Resources/default.html). To follow a link, double-click it, but be warned: Some of these links point to the internet (info.cern.ch) and may not work yet, even though pages served via IPv4 and HTTP/1.1 should *in principle* be supported.
+This should open a browser window displaying [the welcome page](WorldWideWeb/Resources/default.html). To follow a link, double-click it, but be warned: Some of these links point to the internet (info.cern.ch) and while pages served via IPv4 and HTTP/1.1 should work, note that especially more modern pages often cannot be parsed properly.
 
-The browser can, however, be tested on a local page and the easiest way to do so is to open one of the HTML files from this repo. This ensures that the browser can parse the HTML properly. Opening a page can be done from the menu bar (`Document` > `Open file...`) or by pressing <kbd>Cmd</kbd> + <kbd>O</kbd> and then selecting e.g. [`Documentation/SourceFiles.html`](Documentation/SourceFiles.html).
+![Hypertext windows](Screenshots/worldwideweb-hypertext.png)
+
+You can also open a local page via the menu bar (`Document` > `Open file...`) or by pressing <kbd>Cmd</kbd> + <kbd>O</kbd>. For an example that the browser can parse, try one of the HTML files from this repo, e.g. [`Documentation/SourceFiles.html`](Documentation/SourceFiles.html).
 
 ## Background
 
