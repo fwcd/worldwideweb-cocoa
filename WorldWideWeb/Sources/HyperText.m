@@ -619,7 +619,7 @@ static NSDictionary<NSString *, id> *attributesForStyle(HTStyle *style) {
 static void applyRange(HTStyle *style, NSMutableAttributedString *r, NSRange range) {
     // TODO: Should we implement this in terms of attributesForStyle?
     // TODO: Factor out apply, applyRange, attributesForStyle into HTStyle.
-
+    
     if (style->font) {
         [r setFont:style->font inRange:range];
     }
@@ -1047,7 +1047,8 @@ void set_style(HTStyle *style) {
             NSLog(@"set_style: style is null!");
         return;
     }
-    BOOL willChangeStyle = willChange(style, write_storage.attributeRuns.lastObject);
+    NSTextStorage *lastAttributeRun = write_storage.attributeRuns.lastObject;
+    BOOL willChangeStyle = willChange(style, lastAttributeRun);
     if (TRACE)
         NSLog(@"    Changing to style `%s' -- %s change.", style->name, willChangeStyle ? "will" : "won't");
     if (willChangeStyle) {
@@ -1057,6 +1058,13 @@ void set_style(HTStyle *style) {
 #else
         NSMutableAttributedString *dummy = [[NSMutableAttributedString alloc] initWithString:@" "];
 #endif
+        
+        // Carry over existing attributes
+        NSDictionary *attributes = [lastAttributeRun attributesAtIndex:0 longestEffectiveRange:nil inRange:NSMakeRange(0, lastAttributeRun.length)];
+        if (attributes != nil) {
+            [dummy addAttributes:attributes range:NSMakeRange(0, dummy.length)];
+        }
+        
         apply(style, dummy);
         [write_storage appendAttributedString:dummy];
 #ifndef DEBUG_STYLE_NAMES
