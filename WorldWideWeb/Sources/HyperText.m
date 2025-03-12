@@ -357,6 +357,7 @@ static float page_width(void) {
         return nil;
 
     a = [self anchor];
+    style->name = "_anchorSelected";
     style->anchor = a;
     style->clearAnchor = NO;
     [self applyStyle:style];
@@ -398,6 +399,7 @@ static float page_width(void) {
             NSLog(@"HyperText: Existing source anchor %@ selected.", a);
         }
     }
+    style->name = "_linkSelTo";
     style->anchor = a;
     style->clearAnchor = NO;
     [a linkTo:anAnchor];     // Link it up
@@ -421,6 +423,7 @@ static float page_width(void) {
     else
         return nil;
 
+    style->name = "_unlinkSelection";
     style->anchor = nil;
     style->clearAnchor = YES;
     [self applyStyle:style];
@@ -1049,10 +1052,16 @@ void set_style(HTStyle *style) {
         NSLog(@"    Changing to style `%s' -- %s change.", style->name, willChangeStyle ? "will" : "won't");
     if (willChangeStyle) {
         // Unfortunately attributed strings no longer use runs under the hood and empty strings cannot store attributes. So we work around this by adding a "dummy" space at the end that is removed upon the next append.
+#ifdef DEBUG_STYLE_NAMES
+        NSMutableAttributedString *dummy = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"{%s}", style->name]];
+#else
         NSMutableAttributedString *dummy = [[NSMutableAttributedString alloc] initWithString:@" "];
+#endif
         apply(style, dummy);
         [write_storage appendAttributedString:dummy];
+#ifndef DEBUG_STYLE_NAMES
         endsWithDummyCharacter = YES;
+#endif
     }
 }
 
@@ -1109,6 +1118,7 @@ void loadPlainText(void) {
     char *parsed_address;
     Anchor *a = *name ? [[Anchor alloc] initWithParent:nodeAnchor tag:name] : [self anchor];
 
+    style->name = "_appendBeginAnchor";
     style->anchor = a;
     style->clearAnchor = NO;
     [(Anchor *)style->anchor isLastChild]; /* Put in correct order */
@@ -1125,6 +1135,7 @@ void loadPlainText(void) {
 - appendEndAnchor // End it
 {
     HTStyle *style = HTStyleNew();
+    style->name = "_appendEndAnchor";
     style->anchor = nil;
     style->clearAnchor = YES;
     SET_STYLE(style); /* End anchor here */
