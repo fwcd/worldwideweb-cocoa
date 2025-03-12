@@ -1053,19 +1053,25 @@ void set_style(HTStyle *style) {
         NSLog(@"    Changing to style `%s' -- %s change.", style->name, willChangeStyle ? "will" : "won't");
     if (willChangeStyle) {
         // Unfortunately attributed strings no longer use runs under the hood and empty strings cannot store attributes. So we work around this by adding a "dummy" space at the end that is removed upon the next append.
+
 #ifdef DEBUG_STYLE_NAMES
         NSMutableAttributedString *dummy = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"{%s}", style->name]];
 #else
-        NSMutableAttributedString *dummy = [[NSMutableAttributedString alloc] initWithString:@" "];
+        NSMutableAttributedString *dummy = [[NSMutableAttributedString alloc] initWithString:@"@"];
 #endif
         
-        // Carry over existing attributes
+        // Carry over existing attributes (possibly from previous dummy character)
         NSDictionary *attributes = [lastAttributeRun attributesAtIndex:0 longestEffectiveRange:nil inRange:NSMakeRange(0, lastAttributeRun.length)];
         if (attributes != nil) {
             [dummy addAttributes:attributes range:NSMakeRange(0, dummy.length)];
         }
         
+        // Add new attributes from style
         apply(style, dummy);
+        
+        // Remove previous dummy character if needed
+        remove_dummy_character_if_needed(write_storage.length - 1);
+        
         [write_storage appendAttributedString:dummy];
 #ifndef DEBUG_STYLE_NAMES
         endsWithDummyCharacter = YES;
