@@ -130,6 +130,10 @@ class XIBConverter:
 
         self.traverse_menu(menu, self.xib.main_menu)
 
+        # Add the system help menu
+        help_item = self.xib.main_menu.add_menu_item(title='Help')
+        help_item.add_submenu(systemMenu='help')
+
     def traverse_custom_object(self, obj: typedstream.GenericArchivedObject):
         '''Traverses the given NIB custom object and adds it to the XIB.'''
 
