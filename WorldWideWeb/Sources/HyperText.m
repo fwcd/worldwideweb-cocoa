@@ -215,6 +215,7 @@ static float page_width(void) {
     scrollview = [[NSScrollView alloc] initWithFrame:scroll_frame];
     scrollview.hasVerticalScroller = YES;
     scrollview.hasHorizontalScroller = NO; // Guess.
+    scrollview.scrollerKnobStyle = NSScrollerKnobStyleDark;
     window.contentView = scrollview;
     
     scrollview.documentView = self;
