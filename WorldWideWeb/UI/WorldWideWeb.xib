@@ -449,15 +449,15 @@
                                     <size key="cellSize" width="79" height="15"/>
                                     <cells>
                                         <column>
-                                            <buttonCell type="square" title="HyperText" bezelStyle="shadowlessSquare" image="matrix:11:image" catalog="system" imagePosition="right" alignment="center" borderStyle="border">
+                                            <buttonCell type="square" title="HyperText" bezelStyle="shadowlessSquare" image="matrix:11:image" imagePosition="right" alignment="center" borderStyle="border">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="square" title="Rich Text" bezelStyle="shadowlessSquare" image="matrix:11:image" catalog="system" imagePosition="right" alignment="center" borderStyle="border">
+                                            <buttonCell type="square" title="Rich Text" bezelStyle="shadowlessSquare" image="matrix:11:image" imagePosition="right" alignment="center" borderStyle="border">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
-                                            <buttonCell type="square" title="Plain Text" bezelStyle="shadowlessSquare" image="matrix:11:image" catalog="system" imagePosition="right" alignment="center" borderStyle="border">
+                                            <buttonCell type="square" title="Plain Text" bezelStyle="shadowlessSquare" image="matrix:11:image" imagePosition="right" alignment="center" borderStyle="border">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" size="12" name="Helvetica"/>
                                             </buttonCell>
@@ -672,7 +672,7 @@ HyperMedia: Information which is not constrained linear... or to be text.</strin
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView verticallyResizable="NO" id="43">
-                                    <rect key="frame" x="0.0" y="0.0" width="395" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="229" width="395" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="395" height="0.0"/>
@@ -1277,7 +1277,7 @@ From then on, whenever you double click on the linked text, you will jump across
         </customObject>
     </objects>
     <resources>
-        <image name="matrix:11:image" catalog="system" width="15" height="15">
+        <image name="matrix:11:image" width="15" height="15">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
 S2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBALDB0eIykqKywyPERFSUxNVSRudWxs2A0ODxAREhMUFRYX
