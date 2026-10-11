@@ -62,7 +62,7 @@ Anchor *Mark; /* A marked Anchor */
 //	When a document is selected, turn the index search on or off as
 //	appropriate
 
-- windowDidBecomeMain:window {
+- windowDidBecomeMain:(NSWindow *)window {
     HyperText *HT = [[window contentView] documentView];
     if (!HT)
         return self;
